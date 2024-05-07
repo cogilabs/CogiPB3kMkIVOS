@@ -5,10 +5,18 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <h1>Welcome to Pip-Boy</h1>
-  <div id="interface">
-    <!-- Add your custom UI elements here -->
-  </div>
+    <div id="innerBody">
+        <div id="menu" class="navbar">
+            <div class="nav-item" data-tab="stat">STAT</div>
+            <div class="nav-item" data-tab="inv">INV</div>
+            <div class="nav-item" data-tab="data">DATA</div>
+            <div class="nav-item" data-tab="map">MAP</div>
+            <div class="nav-item" data-tab="radio">RADIO</div>
+        </div>
+        <div id="interface">
+            <!-- Content from tabs will be loaded here -->
+        </div>
+    </div>
   <script src="renderer.js"></script>
 </body>
 </html>

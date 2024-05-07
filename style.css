@@ -1,0 +1,35 @@
+body {
+    background-color: black;
+    margin: 0;
+}
+
+#innerBody {
+    background-color: darkolivegreen;
+    color: lime;
+    width: 640px;
+    height: 480px;
+    position: fixed;
+    top: 0;
+    left: 80px;
+}
+
+.navbar {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.nav-item {
+  float: left;
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.active {
+  background-color: #32f30b; /* Example active color */
+  color: darkolivegreen;
+}
