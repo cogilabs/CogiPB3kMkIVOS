@@ -3,12 +3,14 @@ const { app, BrowserWindow } = require('electron');
 function createWindow () {
   const win = new BrowserWindow({
     width: 800,
-    height: 480//,
+    height: 480,
+    frame: false,
+    useContentSize: true//,
     //webPreferences: {
     //  preload: __dirname + '/preload.js'
     //}
   });
-
+  //win.setFullScreen(true); // ! Only for the raspberry
   win.loadFile('index.html');
 }
 
