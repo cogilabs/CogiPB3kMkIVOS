@@ -40,9 +40,36 @@ document.addEventListener('DOMContentLoaded', () => {
         // Clear existing content and append the new tab content
         interfaceDiv.innerHTML = '';
         interfaceDiv.appendChild(content);
+
+        // Re-initialize the slider functionality if necessary
+        if (tab === "radio") { // Assuming the hue-slider is only in the 'radio' tab
+          initializeColorSliders();
+        }
       })
       .catch(error => console.error(`Error loading ${tab} content:`, error));
   }
+
+  function initializeColorSliders() {
+    const hueSlider = document.getElementById('hue-slider');
+    const satSlider = document.getElementById('sat-slider');
+    const lightSlider = document.getElementById('light-slider');
+
+    function updateColor() {
+        const hueValue = hueSlider.value;
+        const satValue = satSlider.value;
+        const lightValue = lightSlider.value;
+        const newFg = `hsl(${hueValue}, ${satValue}%, ${lightValue}%)`;
+        const newBg = `hsla(${hueValue}, ${satValue}%, ${lightValue}%, 0.067)`;
+        document.documentElement.style.setProperty('--fg', newFg);
+        document.documentElement.style.setProperty('--bg', newBg);
+    }
+
+    // Add event listeners to all sliders
+    hueSlider.addEventListener('input', updateColor);
+    satSlider.addEventListener('input', updateColor);
+    lightSlider.addEventListener('input', updateColor);
+  }
+
   
   document.addEventListener('keydown', (event) => {
     handleKeyEvent(event.code);

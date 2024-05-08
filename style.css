@@ -1,3 +1,8 @@
+:root {
+  --bg: #0F01;
+  --fg: lime;
+}
+
 body {
     background-color: black;
     margin: 0;
@@ -5,8 +10,8 @@ body {
 }
 
 #innerBody {
-    background-color: #010;
-    color: lime;
+    background-color: var(--bg);
+    color: var(--fg);
     font-family: Roboto;
     width: 640px;
     height: 480px;
@@ -33,10 +38,10 @@ body {
   text-decoration: none;
   font-size: 17px;
   width: 80px;
-  border-bottom: 1px solid lime;
+  border-bottom: 1px solid var(--fg);
 }
 
 .active {
-  border: 1px solid lime;
+  border: 1px solid var(--fg);
   border-bottom: none;
 }
