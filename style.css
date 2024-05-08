@@ -1,32 +1,37 @@
 :root {
-  --bg: #0F01;
-  --fg: lime;
+  --light: hsl(120, 100%, 50%);
+  --medium: hsla(120, 100%, 50%, 0.2);
+  --dark: hsla(120, 100%, 50%, 0.067);
+  --hue: -20deg;
+  --sat: 100%;
+  --brightness: 100%;
 }
 
 body {
     background-color: black;
     margin: 0;
     cursor: none;
+      cursor:unset;
 }
 
 #innerBody {
-    background-color: var(--bg);
-    color: var(--fg);
+    background-color: var(--dark);
+    color: var(--light);
     font-family: Roboto;
     width: 640px;
-    height: 480px;
+    height: 435px;
     position: fixed;
     top: 0;
     left: 80px;
-    padding-top: 40px;
+    padding-top: 45px;
 }
 
 .navbar {
   font-weight: bold;
   overflow: hidden;
   position: fixed;
-  top: 0;
-  left: 120px;
+  top: 5px;
+  left: 80px;
   height: 40px;
 }
 
@@ -38,10 +43,56 @@ body {
   text-decoration: none;
   font-size: 17px;
   width: 80px;
-  border-bottom: 1px solid var(--fg);
+  border-bottom: 1px solid var(--light);
+}
+
+.nav-item-small {
+  float: left;
+  display: block;
+  text-align: center;
+  padding: 0;
+  padding-top: 38.5px;
+  text-decoration: none;
+  font-size: 17px;
+  width: 40px;
+  border-bottom: 1px solid var(--light);
 }
 
 .active {
-  border: 1px solid var(--fg);
+  border: 1px solid var(--light);
   border-bottom: none;
+}
+
+img {
+  filter: hue-rotate(var(--hue)) saturate(var(--sat)) brightness(var(--brightness));
+}
+
+input[type="range"] {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 8px; /* Specified height */
+  background: var(--medium); /* Grey background */
+  outline: none; /* Remove outline */
+  cursor: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 5px; /* Set a specific slider handle width */
+  height: 20px; /* Slider handle height */
+  background: var(--light); /* Green background */
+}
+
+.slider-container {
+  margin: 10px 0;
+  color: var(--light); /* Theme color */
+  font-family: 'Roboto', sans-serif; /* Consistent font style */
+}
+
+.slider-container label {
+  display: block; /* Ensure labels are above sliders */
+  margin-bottom: 5px; /* Spacing for clarity */
+  cursor: none;
 }

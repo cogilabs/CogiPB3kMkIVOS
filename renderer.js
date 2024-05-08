@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         interfaceDiv.appendChild(content);
 
         // Re-initialize the slider functionality if necessary
-        if (tab === "radio") { // Assuming the hue-slider is only in the 'radio' tab
+        if (tab === "settings") { // Assuming the hue-slider is only in the 'settings' tab
           initializeColorSliders();
         }
       })
@@ -58,10 +58,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const hueValue = hueSlider.value;
         const satValue = satSlider.value;
         const lightValue = lightSlider.value;
-        const newFg = `hsl(${hueValue}, ${satValue}%, ${lightValue}%)`;
-        const newBg = `hsla(${hueValue}, ${satValue}%, ${lightValue}%, 0.067)`;
-        document.documentElement.style.setProperty('--fg', newFg);
-        document.documentElement.style.setProperty('--bg', newBg);
+        const newLight = `hsl(${hueValue}, ${satValue}%, ${lightValue}%)`;
+        const newMed = `hsla(${hueValue}, ${satValue}%, ${lightValue}%, 0.2)`;
+        const newDark = `hsla(${hueValue}, ${satValue}%, ${lightValue}%, 0.067)`;
+        document.documentElement.style.setProperty('--hue', `${hueSlider.value-140}deg`);
+        document.documentElement.style.setProperty('--sat', `${satSlider.value}%`);
+        document.documentElement.style.setProperty('--brightness', `${lightSlider.value*2}%`);
+        document.documentElement.style.setProperty('--light', newLight);
+        document.documentElement.style.setProperty('--medium', newMed);
+        document.documentElement.style.setProperty('--dark', newDark);
     }
 
     // Add event listeners to all sliders
