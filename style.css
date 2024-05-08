@@ -24,6 +24,7 @@ body {
     top: 0;
     left: 80px;
     padding-top: 45px;
+    overflow: hidden;
 }
 
 .navbar {
@@ -58,7 +59,7 @@ body {
   border-bottom: 1px solid var(--light);
 }
 
-.active {
+.nav-item.active {
   border: 1px solid var(--light);
   border-bottom: none;
 }
@@ -95,4 +96,26 @@ input[type="range"]::-webkit-slider-thumb {
   display: block; /* Ensure labels are above sliders */
   margin-bottom: 5px; /* Spacing for clarity */
   cursor: none;
+}
+
+.submenu {
+  display: flex;
+  justify-content: flex-start;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  transition: transform 0.5s ease-out;
+}
+
+.sub-nav-item {
+  transition: transform 0.5s, font-size 0.5s, opacity 0.5s;
+  opacity: 0.5; /* Starting opacity for non-selected items */
+  font-size: 16px; /* Adjust based on your design */
+  cursor: pointer;
+  padding: 10px;
+  text-align: center;
+}
+
+.sub-nav-item.active {
+  opacity: 1;
 }
