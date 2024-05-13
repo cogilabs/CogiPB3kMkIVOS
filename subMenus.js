@@ -19,12 +19,16 @@ export function handleArrowKeys(event, submenuItems) {
     let newIndex;
     switch (event.key) {
         case 'ArrowRight':
-            newIndex = (Array.from(submenuItems).indexOf(activeItem) + 1) % submenuItems.length;
-            setActiveAndCenter(submenuItems[newIndex]);
+            if (Array.from(submenuItems).indexOf(activeItem) != submenuItems.length - 1) {
+                newIndex = (Array.from(submenuItems).indexOf(activeItem) + 1);
+                setActiveAndCenter(submenuItems[newIndex]);
+            }
             break;
         case 'ArrowLeft':
-            newIndex = (Array.from(submenuItems).indexOf(activeItem) - 1 + submenuItems.length) % submenuItems.length;
-            setActiveAndCenter(submenuItems[newIndex]);
+            if (Array.from(submenuItems).indexOf(activeItem) != 0) {
+                newIndex = (Array.from(submenuItems).indexOf(activeItem) - 1);
+                setActiveAndCenter(submenuItems[newIndex]);
+            }
             break;
     }
 }
