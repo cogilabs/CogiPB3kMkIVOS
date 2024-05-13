@@ -64,6 +64,11 @@ function loadTabContent(tab) {
             interfaceDiv.innerHTML = '';
             interfaceDiv.appendChild(content);
 
+            // Check if the tab is not 'stat' and then load the footer
+            if (tab !== "stat") {
+                loadFooter(); // TODO: put tab in then use to display stat-only footer?
+            }
+
             if (tab === "stat" || tab === "inv" || tab === "data") {
                 import('./subMenus.js').then(module => {
                     module.initializeSubMenuActions();
@@ -87,6 +92,21 @@ export function loadSubMenuContent(category) {
           contentArea.innerHTML = html;
       })
       .catch(error => console.error('Failed to load content:', error));
+}
+
+function loadFooter() {
+  const footerArea = document.getElementById('footer');
+  
+  if (footerArea) {
+    fetch(`tabs/footer.html`)
+    .then(response => response.text())
+    .then(html => {
+      footerArea.innerHTML = html;
+    })
+    .catch(error => console.error('Failed to load footer:', error));
+  } else {
+    console.log('Footer area not found, cannot load footer.');
+  }
 }
 
 function initializeColorSliders() {
