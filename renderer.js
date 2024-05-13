@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function setActiveTab(tab) {
     // Cleanup if moving away from 'inv'
-    if (currentTab === 'inv') {
+    if (currentTab === "stat" || currentTab === "inv" || currentTab === "data") {
         if (keyDownListener) {
             document.removeEventListener('keydown', keyDownListener);
             keyDownListener = null;
@@ -94,20 +94,34 @@ function initializeColorSliders() {
   const satSlider = document.getElementById('sat-slider');
   const lightSlider = document.getElementById('light-slider');
 
+  const hueDisplay = document.getElementById('hue-val');
+  const satDisplay = document.getElementById('sat-val');
+  const lightDisplay = document.getElementById('light-val');
+
   // Initialize sliders with stored values
   if (hueSlider && satSlider && lightSlider) {
       hueSlider.value = hueValue;
       satSlider.value = satValue;
       lightSlider.value = lightValue;
+
+      hueDisplay.textContent = hueValue;
+      satDisplay.textContent = satValue;
+      lightDisplay.textContent = lightValue;
   }
 
-  function updateColor() { // TODO: implement reset button
+  function updateColor() { // TODO: implement reset button, implement button interactions
       hueValue = hueSlider.value;
       satValue = satSlider.value;
       lightValue = lightSlider.value;
+
+      hueDisplay.textContent = hueValue;
+      satDisplay.textContent = satValue;
+      lightDisplay.textContent = lightValue;
+
       const newLight = `hsl(${hueValue}, ${satValue}%, ${lightValue}%)`;
       const newMed = `hsla(${hueValue}, ${satValue}%, ${lightValue}%, 0.2)`;
       const newDark = `hsla(${hueValue}, ${satValue}%, ${lightValue}%, 0.067)`;
+
       document.documentElement.style.setProperty('--hue', `${hueSlider.value-140}deg`);
       document.documentElement.style.setProperty('--sat', `${satSlider.value}%`);
       document.documentElement.style.setProperty('--brightness', `${lightSlider.value*2}%`);

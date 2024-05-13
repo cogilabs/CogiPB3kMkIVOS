@@ -1,19 +1,22 @@
 <template>
-    <div class="container template" id="settings-template" data-tab="settings">
+    <div class="container-template" id="settings-template" data-tab="settings">
 
         <p>Settings</p>
 
         <div class="slider-container">
             <label for="hue-slider">Hue</label>
             <input type="range" id="hue-slider" min="0" max="360" step="1">
+            <span class="slider-val" id="hue-val"></span>
         </div>
         <div class="slider-container">
             <label for="sat-slider">Saturation</label>
             <input type="range" id="sat-slider" min="0" max="100" step="1">
+            <span class="slider-val" id="sat-val"></span>
         </div>
         <div class="slider-container">
             <label for="light-slider">Brightness</label>
-            <input type="range" id="light-slider" min="0" max="60" step="1">
+            <input type="range" id="light-slider" min="0" max="100" step="1">
+            <span class="slider-val" id="light-val"></span>
         </div>
 
         <img src="images/vaultBoy.gif" alt="Vault-Boy" height="100">

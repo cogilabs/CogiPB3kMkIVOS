@@ -17,7 +17,6 @@ export function initializeSubMenuActions() {
 // Define a global function to handle arrow key navigation
 export function handleArrowKeys(event, submenuItems) {
     const activeItem = document.querySelector('.sub-nav-item.active');
-    submenuItems[0].parentElement.removeAttribute('style');
     let newIndex;
     switch (event.key) {
         case 'ArrowRight':
