@@ -2,6 +2,10 @@
 let currentTab = 'stat';  // Keep track of the current tab
 let keyDownListener;  // Reference to the global keydown listener
 
+let hueValue = 120;
+let satValue = 100;
+let lightValue = 50;
+
 export function setKeyDownListener(newListener) {
     if (keyDownListener) {
         document.removeEventListener('keydown', keyDownListener);
@@ -79,10 +83,17 @@ function initializeColorSliders() {
   const satSlider = document.getElementById('sat-slider');
   const lightSlider = document.getElementById('light-slider');
 
-  function updateColor() { // TODO: update the sliders to the current values
-      const hueValue = hueSlider.value;
-      const satValue = satSlider.value;
-      const lightValue = lightSlider.value;
+  // Initialize sliders with stored values
+  if (hueSlider && satSlider && lightSlider) {
+      hueSlider.value = hueValue;
+      satSlider.value = satValue;
+      lightSlider.value = lightValue;
+  }
+
+  function updateColor() { // TODO: implement reset button
+      hueValue = hueSlider.value;
+      satValue = satSlider.value;
+      lightValue = lightSlider.value;
       const newLight = `hsl(${hueValue}, ${satValue}%, ${lightValue}%)`;
       const newMed = `hsla(${hueValue}, ${satValue}%, ${lightValue}%, 0.2)`;
       const newDark = `hsla(${hueValue}, ${satValue}%, ${lightValue}%, 0.067)`;
