@@ -8,6 +8,7 @@ export function initializeSubMenuActions() {
         item.removeEventListener('click', setActiveAndCenterHandler); // Remove old listener to avoid duplicates
         item.addEventListener('click', setActiveAndCenterHandler); // Add new listener
     });
+    submenuItems[0].parentElement.setAttribute('style', 'transition: unset');
 
     setKeyDownListener((event) => handleArrowKeys(event, submenuItems));
     setActiveAndCenter(submenuItems[0])
@@ -16,6 +17,7 @@ export function initializeSubMenuActions() {
 // Define a global function to handle arrow key navigation
 export function handleArrowKeys(event, submenuItems) {
     const activeItem = document.querySelector('.sub-nav-item.active');
+    submenuItems[0].parentElement.removeAttribute('style');
     let newIndex;
     switch (event.key) {
         case 'ArrowRight':
@@ -40,6 +42,7 @@ function setActiveAndCenterHandler(event) {
 // Define a function to set the active submenu item and adjust view as needed
 export function setActiveAndCenter(selectedItem) {
     const submenuItems = document.querySelectorAll('.sub-nav-item');
+    if (selectedItem != submenuItems[0]) selectedItem.parentElement.removeAttribute('style');
     submenuItems.forEach(item => {
         item.classList.remove('active');
         item.style.opacity = "0.5"; // Reset opacity

@@ -108,7 +108,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .sub-nav-item {
-  transition: transform 0.5s, font-size 0.5s, opacity 0.5s;
+  /*transition: transform 0.5s, font-size 0.5s, opacity 0.5s;*/
   opacity: 0.5;
   font-size: 18px;
   cursor: pointer;
