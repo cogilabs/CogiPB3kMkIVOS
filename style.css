@@ -52,7 +52,7 @@ body {
   display: block;
   text-align: center;
   padding: 0;
-  padding-top: 38.5px;
+  padding-top: 38px; /* 38 or 38.5 ? depends on screen */
   text-decoration: none;
   font-size: 17px;
   width: 40px;
