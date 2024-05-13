@@ -4,7 +4,7 @@ let keyDownListener;  // Reference to the global keydown listener
 
 let hueValue = 120;
 let satValue = 100;
-let lightValue = 50;
+let lightValue = 60;
 
 export function setKeyDownListener(newListener) {
     if (keyDownListener) {
@@ -64,7 +64,7 @@ function loadTabContent(tab) {
             interfaceDiv.innerHTML = '';
             interfaceDiv.appendChild(content);
 
-            if (tab === "inv") {
+            if (tab === "stat" || tab === "inv" || tab === "data") {
                 import('./subMenus.js').then(module => {
                     module.initializeSubMenuActions();
                 });
@@ -76,6 +76,17 @@ function loadTabContent(tab) {
             }
         })
         .catch(error => console.error(`Error loading ${tab} content:`, error));
+}
+
+export function loadSubMenuContent(category) {
+  const contentArea = document.getElementById('content-area');
+  // Example: Loading content from a static HTML file or rendering from JS objects
+  fetch(`tabs/${category}.html`)
+      .then(response => response.text())
+      .then(html => {
+          contentArea.innerHTML = html;
+      })
+      .catch(error => console.error('Failed to load content:', error));
 }
 
 function initializeColorSliders() {
@@ -134,10 +145,10 @@ function handleKeyEvent(keyCode) {
       setActiveTab('radio');
       break;
     case 'ArrowLeft':
-      console.log('Scroll Knob Turned Left');
+      
       break;
     case 'ArrowRight':
-      console.log('Scroll Knob Turned Right');
+      
       break;
     default:
       break;

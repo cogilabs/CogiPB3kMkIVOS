@@ -1,5 +1,5 @@
 // subMenus.js
-import { setKeyDownListener } from './renderer.js';
+import { setKeyDownListener, loadSubMenuContent } from './renderer.js';
 
 export function initializeSubMenuActions() {
     const submenuItems = document.querySelectorAll('.sub-nav-item');
@@ -45,10 +45,11 @@ export function setActiveAndCenter(selectedItem) {
         item.style.opacity = "0.5"; // Reset opacity
     });
 
-    console.log(selectedItem);
-    console.log(selectedItem.classList);
     selectedItem.classList.add('active');
     selectedItem.style.opacity = "1";
+    
+    const category = selectedItem.getAttribute('data-category');
+    loadSubMenuContent(category);
 
     const submenu = document.querySelector('.submenu');
     const submenuWidth = submenu.offsetWidth;

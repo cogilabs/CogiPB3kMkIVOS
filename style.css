@@ -119,3 +119,9 @@ input[type="range"]::-webkit-slider-thumb {
 .sub-nav-item.active {
   opacity: 1;
 }
+
+#statusContainer {
+    display: flex;
+    justify-content: center;
+    /*height: 390px;*/
+}
