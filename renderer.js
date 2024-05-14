@@ -64,11 +64,6 @@ function loadTabContent(tab) {
             interfaceDiv.innerHTML = '';
             interfaceDiv.appendChild(content);
 
-            // Check if the tab is not 'stat' and then load the footer
-            if (tab !== "stat") {
-                loadFooter(); // TODO: put tab in then use to display stat-only footer?
-            }
-
             if (tab === "stat" || tab === "inv" || tab === "data") {
                 import('./subMenus.js').then(module => {
                     module.initializeSubMenuActions();
@@ -79,34 +74,80 @@ function loadTabContent(tab) {
             if (tab === "settings") { // Assuming the hue-slider is only in the 'settings' tab
               initializeColorSliders();
             }
+
+            if (tab === "data" || tab === "map") {
+              loadDateAndTime();
+            }
         })
         .catch(error => console.error(`Error loading ${tab} content:`, error));
 }
 
 export function loadSubMenuContent(category) {
   const contentArea = document.getElementById('content-area');
-  // Example: Loading content from a static HTML file or rendering from JS objects
+  const tableContent = document.getElementById('table-content');
+  
   fetch(`tabs/${category}.html`)
       .then(response => response.text())
       .then(html => {
           contentArea.innerHTML = html;
+          const footerContent = document.getElementById('footer-content');
+          
+          if (tableContent) {
+            if (footerContent) {
+              tableContent.innerHTML = footerContent.innerHTML;
+            } else {
+              tableContent.innerHTML = '';
+            }
+          }
       })
       .catch(error => console.error('Failed to load content:', error));
 }
 
-function loadFooter() {
-  const footerArea = document.getElementById('footer');
-  
-  if (footerArea) {
-    fetch(`tabs/footer.html`)
-    .then(response => response.text())
-    .then(html => {
-      footerArea.innerHTML = html;
-    })
-    .catch(error => console.error('Failed to load footer:', error));
-  } else {
-    console.log('Footer area not found, cannot load footer.');
+function addLeadingZero(num) {
+  if (num < 10) {
+      num = "0" + num;
   }
+  return num;
+}
+
+function loadDateAndTime() {
+  const dateArea = document.getElementById('date');
+  const timeArea = document.getElementById('time');
+  const d = new Date();
+  
+  if (dateArea) {
+    dateArea.innerHTML = addLeadingZero(d.getDate()) 
+      + "/" + addLeadingZero(d.getMonth() + 1) 
+      + "/" + d.getFullYear();
+  } else {
+    console.log('Date area not found, cannot load footer.');
+  }
+  
+  if (timeArea) {
+    timeArea.innerHTML = addLeadingZero(d.getHours()) 
+      + ":" + addLeadingZero(d.getMinutes());
+  } else {
+    console.log('Time area not found, cannot load footer.');
+  }
+}
+
+function loadCustomTable(category) {
+  const tableContent = document.getElementById('table-content');
+  fetch(`tabs/${category}.html`)
+  .then(response => response.text())
+  .then(html => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      const footerContent = document.getElementById('footer-content');
+      console.log(tableContent.innerHTML);
+
+      if (footerContent) {
+        tableContent.innerHTML = footerContent.innerHTML;
+      } else {
+        tableContent.innerHTML = '';
+      }
+
+  });
 }
 
 function initializeColorSliders() {
