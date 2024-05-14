@@ -146,26 +146,26 @@ input[type="range"]::-webkit-slider-thumb {
   padding: 10px;
 }
 
-table {
+#footer table {
   width: 620px;
   height: 35px;
   font-weight: bold;
 }
 
-td {
+#footer table td {
   background-color: var(--medium);
   padding: 0 10px;
 }
 
-td.small {
+#footer table td.small {
   width: 25%;
 }
 
-td.large {
+#footer table td.large {
   width: 50%;
 }
 
-td.full {
+#footer table td.full {
   width: 100%;
 }
 
@@ -204,4 +204,29 @@ td.full {
 #name {
   margin-top: -10px;
   margin-bottom: 10px;
+}
+
+.status-overview-table {
+  width: 300px;
+  height: 68px;
+  font-weight: bold;
+  border-spacing: 5px;
+}
+
+.status-overview-table td {
+  background-color: var(--medium);
+  padding: 0 10px;
+}
+
+td.status-overview-image {
+  width: 23%;
+}
+
+td.status-overview-symbol-and-value {
+  width: 13%;
+}
+
+td.status-overview-separator {
+  background-color: unset;
+  width: 2%;
 }
