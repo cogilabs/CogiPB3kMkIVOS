@@ -41,6 +41,7 @@ function setActiveAndCenterHandler(event) {
 // Define a function to set the active submenu item and adjust view as needed
 export function setActiveAndCenter(selectedItem) {
     const submenuItems = document.querySelectorAll('.sub-nav-item');
+    let offsetMultiplier = 3.05;
     if (selectedItem != submenuItems[0]) selectedItem.parentElement.removeAttribute('style');
     submenuItems.forEach(item => {
         item.classList.remove('active');
@@ -52,11 +53,20 @@ export function setActiveAndCenter(selectedItem) {
     
     const category = selectedItem.getAttribute('data-category');
     loadSubMenuContent(category);
+    let currentTab = category.split("/")[0];
+
+    if (currentTab == 'stat') {
+        offsetMultiplier = 6.3;
+    } else if (currentTab == 'inv') {
+        offsetMultiplier = 3.05;
+    } else if (currentTab == 'data') {
+        offsetMultiplier = 2;
+    }
 
     const submenu = document.querySelector('.submenu');
     const submenuWidth = submenu.offsetWidth;
     const itemCenter = selectedItem.offsetLeft + selectedItem.offsetWidth / 2;
-    const offset = -(itemCenter - submenuWidth / 3.5);
+    const offset = -(itemCenter - submenuWidth / offsetMultiplier);
     submenu.style.transform = `translateX(${offset}px)`;
 
     const activeIndex = Array.from(submenuItems).indexOf(selectedItem);

@@ -77,9 +77,6 @@ function calculateLevel() {
   );
   const levelProgress = 100*(1-(totalDaysLeft/365))
 
-  console.log("Level " + level);
-  console.log(parseInt(levelProgress) + "%");
-
   document.getElementById("currentLevel").innerHTML = "Level " + level + '<span class="loading-bar" id="level-bar"><span id="levels"></span></span>';
   document.getElementById("levels").setAttribute('style', 'width:  ' + levelProgress + '%');
 }
