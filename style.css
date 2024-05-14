@@ -137,7 +137,6 @@ input[type="range"]::-webkit-slider-thumb {
 #statusContainer {
     display: flex;
     justify-content: center;
-    /*height: 390px;*/
 }
 
 #footer {
@@ -167,4 +166,34 @@ td.large {
 
 td.full {
   width: 100%;
+}
+
+/*---*/
+
+.loading-bar {
+  display: inline-block;
+  border: 1px solid var(--light);
+  margin-left: 10px;
+}
+
+#level-bar {
+  width: 72%;
+}
+
+#health-bar {
+  width: 85%;
+}
+
+.loading-bar span {
+  display: block;
+  height: 9px;
+  background-color: var(--light);
+}
+
+#levels {
+  width: 85%; /*TODO: auto level with age?*/
+}
+
+#health-points {
+  width: 95%;
 }
