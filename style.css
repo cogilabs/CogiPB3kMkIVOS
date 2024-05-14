@@ -1,11 +1,11 @@
-:root {
+/*:root {
   --light: hsl(120, 100%, 50%);
   --medium: hsla(120, 100%, 50%, 0.2);
-  --dark: hsla(120, 100%, 50%, 0.067);
+  --dark: hsla(120, 100%, 50%, 0.02);
   --hue: -20deg;
   --sat: 100%;
   --brightness: 100%;
-}
+}*/
 
 body {
     background-color: black;
@@ -56,7 +56,7 @@ body {
   padding-top: 38.25px; /* 38 or 38.5 ? depends on screen */
   text-decoration: none;
   font-size: 17px;
-  width: 40px;
+  width: 39px;
   border-bottom: 1px solid var(--light);
 }
 
@@ -65,8 +65,12 @@ body {
   border-bottom: none;
 }
 
-img {
+#vault-boy {
   filter: hue-rotate(var(--hue)) saturate(var(--sat)) brightness(var(--brightness));
+}
+
+.black-icon {
+  filter: grayscale(1) brightness(200) contrast(0) sepia(100%) hue-rotate(var(--biHue)) saturate(var(--biSat)) brightness(var(--biBrightness));
 }
 
 /*---*/

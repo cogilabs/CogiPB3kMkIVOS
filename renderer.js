@@ -10,25 +10,7 @@ let lightValue = 60;
 
 let birthday = new Date();
 
-if (nickName == "David") {
-
-  hueValue = 120;
-  satValue = 100;
-  lightValue = 60;
-
-  birthday = "1997/02/10";
-}
-
-if (nickName == "Marie" || nickName == "Ashe" || nickName == "Aiden") {
-
-  hueValue = 300;
-  satValue = 30;
-  lightValue = 70;
-
-  birthday = "2003/08/26";
-}
-
-initializeColorSliders(true);
+setProfile(nickName);
 
 export function setKeyDownListener(newListener) {
     if (keyDownListener) {
@@ -56,6 +38,28 @@ function addLeadingZero(num) {
       num = "0" + num;
   }
   return num;
+}
+
+function setProfile(chosenName) {
+  if (chosenName == "David") {
+
+    hueValue = 120;
+    satValue = 100;
+    lightValue = 60;
+
+    birthday = "1997/02/10";
+  }
+
+  if (chosenName == "Marie" || chosenName == "Ashe" || chosenName == "Aiden") {
+
+    hueValue = 300;
+    satValue = 40;
+    lightValue = 60;
+
+    birthday = "2003/08/26";
+  }
+
+  initializeColorSliders(true);
 }
 
 function calculateLevel() {
@@ -224,11 +228,15 @@ function initializeColorSliders(force) {
 
       const newLight = `hsl(${hueValue}, ${satValue}%, ${lightValue}%)`;
       const newMed = `hsla(${hueValue}, ${satValue}%, ${lightValue}%, 0.2)`;
-      const newDark = `hsla(${hueValue}, ${satValue}%, ${lightValue}%, 0.067)`;
+      const newDark = `hsla(${hueValue}, ${satValue}%, ${lightValue}%, 0.02)`;
 
       document.documentElement.style.setProperty('--hue', `${hueValue-140}deg`);
+      document.documentElement.style.setProperty('--biHue', `${hueValue-50}deg`);
+      document.documentElement.style.setProperty('--realHue', `${hueValue}deg`);
       document.documentElement.style.setProperty('--sat', `${satValue}%`);
+      document.documentElement.style.setProperty('--biSat', `${parseInt(satValue)*5}%`);
       document.documentElement.style.setProperty('--brightness', `${lightValue*2}%`);
+      document.documentElement.style.setProperty('--biBrightness', `${lightValue*1.5}%`);
       document.documentElement.style.setProperty('--light', newLight);
       document.documentElement.style.setProperty('--medium', newMed);
       document.documentElement.style.setProperty('--dark', newDark);
