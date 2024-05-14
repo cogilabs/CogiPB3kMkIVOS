@@ -135,8 +135,9 @@ input[type="range"]::-webkit-slider-thumb {
 /*---*/
 
 #statusContainer {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #footer {
@@ -181,7 +182,7 @@ td.full {
 }
 
 #health-bar {
-  width: 85%;
+  width: 86.6%;
 }
 
 .loading-bar span {
@@ -196,4 +197,11 @@ td.full {
 
 #health-points {
   width: 95%;
+}
+
+/*---*/
+
+#name {
+  margin-top: -10px;
+  margin-bottom: 10px;
 }

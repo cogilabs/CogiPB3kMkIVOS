@@ -2,7 +2,7 @@
 let currentTab = 'stat';  // Keep track of the current tab
 let keyDownListener;  // Reference to the global keydown listener
 
-const firstName = "David"
+const nickName = "David"
 
 let hueValue = 120;
 let satValue = 100;
@@ -10,7 +10,7 @@ let lightValue = 60;
 
 let birthday = new Date();
 
-if (firstName == "David") {
+if (nickName == "David") {
 
   hueValue = 120;
   satValue = 100;
@@ -19,7 +19,7 @@ if (firstName == "David") {
   birthday = "1997/02/10";
 }
 
-if (firstName == "Marie" || firstName == "Ashe" || firstName == "Aiden") {
+if (nickName == "Marie" || nickName == "Ashe" || nickName == "Aiden") {
 
   hueValue = 300;
   satValue = 30;
@@ -147,6 +147,7 @@ export function loadSubMenuContent(category) {
   fetch(`tabs/${category}.html`)
       .then(response => response.text())
       .then(html => {
+          let tab = category.split("/")[0];
           contentArea.innerHTML = html;
           const footerContent = document.getElementById('footer-content');
           
@@ -156,6 +157,9 @@ export function loadSubMenuContent(category) {
             } else {
               tableContent.innerHTML = '';
             }
+          }
+          if (tab == "stat") {
+            document.getElementById("name").innerHTML = nickName;
           }
       })
       .catch(error => console.error('Failed to load content:', error));
