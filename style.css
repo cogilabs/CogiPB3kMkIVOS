@@ -191,7 +191,7 @@ td.full {
 }
 
 #levels {
-  width: 85%; /*TODO: auto level with age?*/
+  width: 0%;
 }
 
 #health-points {

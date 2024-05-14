@@ -2,9 +2,33 @@
 let currentTab = 'stat';  // Keep track of the current tab
 let keyDownListener;  // Reference to the global keydown listener
 
+const firstName = "David"
+
 let hueValue = 120;
 let satValue = 100;
 let lightValue = 60;
+
+let birthday = new Date();
+
+if (firstName == "David") {
+
+  hueValue = 120;
+  satValue = 100;
+  lightValue = 60;
+
+  birthday = "1997/02/10";
+}
+
+if (firstName == "Marie" || firstName == "Ashe" || firstName == "Aiden") {
+
+  hueValue = 300;
+  satValue = 30;
+  lightValue = 70;
+
+  birthday = "2003/08/26";
+}
+
+initializeColorSliders(true);
 
 export function setKeyDownListener(newListener) {
     if (keyDownListener) {
@@ -26,6 +50,39 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set initial active tab
     setActiveTab('stat');
 });
+
+function addLeadingZero(num) {
+  if (num < 10) {
+      num = "0" + num;
+  }
+  return num;
+}
+
+function calculateLevel() {
+  const today = new Date();
+  const birthdate = new Date(birthday);
+  let level = today.getYear() - birthdate.getYear();
+  
+  let birthDayThisYear = new Date(
+    `${today.getFullYear()}-${birthdate.getMonth() + 1}-${birthdate.getDate()}`
+    );
+    if (today > birthDayThisYear) {
+        birthDayThisYear.setFullYear(today.getFullYear() + 1);
+    } else {
+      level--;
+    }
+
+  let totalDaysLeft = Math.round(
+    Math.abs(birthDayThisYear.getTime() - today.getTime()) / 86400000
+  );
+  const levelProgress = 100*(1-(totalDaysLeft/365))
+
+  console.log("Level " + level);
+  console.log(parseInt(levelProgress) + "%");
+
+  document.getElementById("currentLevel").innerHTML = "Level " + level + '<span class="loading-bar" id="level-bar"><span id="levels"></span></span>';
+  document.getElementById("levels").setAttribute('style', 'width:  ' + levelProgress + '%');
+}
 
 function setActiveTab(tab) {
     // Cleanup if moving away from 'inv'
@@ -78,6 +135,10 @@ function loadTabContent(tab) {
             if (tab === "data" || tab === "map") {
               loadDateAndTime();
             }
+
+            if (tab === "stat") {
+              calculateLevel();
+            }
         })
         .catch(error => console.error(`Error loading ${tab} content:`, error));
 }
@@ -103,13 +164,6 @@ export function loadSubMenuContent(category) {
       .catch(error => console.error('Failed to load content:', error));
 }
 
-function addLeadingZero(num) {
-  if (num < 10) {
-      num = "0" + num;
-  }
-  return num;
-}
-
 function loadDateAndTime() {
   const dateArea = document.getElementById('date');
   const timeArea = document.getElementById('time');
@@ -131,26 +185,11 @@ function loadDateAndTime() {
   }
 }
 
-function loadCustomTable(category) {
-  const tableContent = document.getElementById('table-content');
-  fetch(`tabs/${category}.html`)
-  .then(response => response.text())
-  .then(html => {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(html, 'text/html');
-      const footerContent = document.getElementById('footer-content');
-      console.log(tableContent.innerHTML);
-
-      if (footerContent) {
-        tableContent.innerHTML = footerContent.innerHTML;
-      } else {
-        tableContent.innerHTML = '';
-      }
-
-  });
-}
-
-function initializeColorSliders() {
+function initializeColorSliders(force) {
+  if (force) {
+    updateColor();
+    return;
+  }
   const hueSlider = document.getElementById('hue-slider');
   const satSlider = document.getElementById('sat-slider');
   const lightSlider = document.getElementById('light-slider');
@@ -171,6 +210,8 @@ function initializeColorSliders() {
   }
 
   function updateColor() { // TODO: implement reset button, implement button interactions
+
+    if (!force) {
       hueValue = hueSlider.value;
       satValue = satSlider.value;
       lightValue = lightSlider.value;
@@ -178,14 +219,15 @@ function initializeColorSliders() {
       hueDisplay.textContent = hueValue;
       satDisplay.textContent = satValue;
       lightDisplay.textContent = lightValue;
+    }
 
       const newLight = `hsl(${hueValue}, ${satValue}%, ${lightValue}%)`;
       const newMed = `hsla(${hueValue}, ${satValue}%, ${lightValue}%, 0.2)`;
       const newDark = `hsla(${hueValue}, ${satValue}%, ${lightValue}%, 0.067)`;
 
-      document.documentElement.style.setProperty('--hue', `${hueSlider.value-140}deg`);
-      document.documentElement.style.setProperty('--sat', `${satSlider.value}%`);
-      document.documentElement.style.setProperty('--brightness', `${lightSlider.value*2}%`);
+      document.documentElement.style.setProperty('--hue', `${hueValue-140}deg`);
+      document.documentElement.style.setProperty('--sat', `${satValue}%`);
+      document.documentElement.style.setProperty('--brightness', `${lightValue*2}%`);
       document.documentElement.style.setProperty('--light', newLight);
       document.documentElement.style.setProperty('--medium', newMed);
       document.documentElement.style.setProperty('--dark', newDark);
