@@ -1,17 +1,8 @@
-/*:root {
-  --light: hsl(120, 100%, 50%);
-  --medium: hsla(120, 100%, 50%, 0.2);
-  --dark: hsla(120, 100%, 50%, 0.02);
-  --hue: -20deg;
-  --sat: 100%;
-  --brightness: 100%;
-}*/
-
 body {
     background-color: black;
     margin: 0;
-    cursor: none;
     user-select: none;
+    cursor: none;
     cursor: unset; /* debug */
 }
 
@@ -234,4 +225,112 @@ td.status-overview-symbol-and-value {
 td.status-overview-separator {
   background-color: unset;
   width: 2%;
+}
+
+/*---*/
+
+.list-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.list-half {
+  height: 340px;
+  margin: 0 20px;
+}
+
+.left-half {
+  width: 60%;
+}
+
+.right-half {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 40%;
+}
+
+.right-half table {
+  width: 200px;
+}
+
+.right-half table td {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  background-color: var(--medium);
+  width: 190px;
+  padding: 0 5px;
+}
+
+#dmg {
+  background-color: unset;
+  width: 198px;
+  border-spacing: 0;
+  padding: 0;
+}
+
+#dmg span {
+  display: table-cell;
+}
+
+#dmg > span {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  background-color: var(--mediumLight);
+  padding: 0 5px;
+}
+
+#dmg-txt {
+  width: 150px;
+}
+
+#dmg-val {
+  width: 50px;
+  transform: translateX(2px);
+}
+
+#ammo {
+  background-color: var(--mediumLight);
+}
+
+/*---*/
+
+.itemList {
+}
+
+.itemList span {
+  margin-left: -10px;
+}
+
+.itemList-item {
+  font-size: 17px;
+  font-weight: bold;
+  padding: 7px;
+  padding-left: 10px;
+  display: list-item;
+  list-style-position: inside;
+  list-style-type: square;
+}
+
+.itemList-item.active {
+  background-color: var(--light);
+  color: var(--darkText);
+}
+
+.itemList-item::marker {
+  color: #00000000;
+  margin: 0 5px 0 0;
+}
+
+.itemList-item.equipped::marker {
+  color: var(--light);
+}
+
+.itemList-item.equipped.active::marker {
+  color: var(--darkText);
 }

@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     // Set initial active tab
-    setActiveTab('stat');
+    setActiveTab(currentTab);
 });
 
 function addLeadingZero(num) {
@@ -57,6 +57,15 @@ function setProfile(chosenName) {
     lightValue = 60;
 
     birthday = "2003/08/26";
+  }
+
+  if (chosenName == "Guest") {
+
+    hueValue = 120;
+    satValue = 100;
+    lightValue = 60;
+
+    birthday = "2000/01/01";
   }
 
   initializeColorSliders(true);
@@ -164,6 +173,9 @@ export function loadSubMenuContent(category) {
           }
           if (tab == "stat") {
             document.getElementById("name").innerHTML = nickName;
+            if (nickName == 'Guest') {
+              document.getElementById("name").innerHTML = '';
+            }
           }
       })
       .catch(error => console.error('Failed to load content:', error));
@@ -227,8 +239,11 @@ function initializeColorSliders(force) {
     }
 
       const newLight = `hsl(${hueValue}, ${satValue}%, ${lightValue}%)`;
+      const newMedLight = `hsla(${hueValue}, ${satValue}%, ${lightValue}%, 0.3)`;
       const newMed = `hsla(${hueValue}, ${satValue}%, ${lightValue}%, 0.2)`;
+      const newMedDark = `hsla(${hueValue}, ${satValue}%, ${lightValue}%, 0.1)`;
       const newDark = `hsla(${hueValue}, ${satValue}%, ${lightValue}%, 0.02)`;
+      const newDarkText = `hsla(${hueValue}, ${satValue}%, 2%)`; //--darkText: hsla(120, 100%, 2%);
 
       document.documentElement.style.setProperty('--hue', `${hueValue-140}deg`);
       document.documentElement.style.setProperty('--biHue', `${hueValue-50}deg`);
@@ -237,9 +252,13 @@ function initializeColorSliders(force) {
       document.documentElement.style.setProperty('--biSat', `${Math.pow(parseInt(satValue), 2)/10}%`);
       document.documentElement.style.setProperty('--brightness', `${lightValue*2}%`);
       document.documentElement.style.setProperty('--biBrightness', `${lightValue*1.5}%`);
+
       document.documentElement.style.setProperty('--light', newLight);
+      document.documentElement.style.setProperty('--mediumLight', newMedLight);
       document.documentElement.style.setProperty('--medium', newMed);
+      document.documentElement.style.setProperty('--mediumDark', newMedDark);
       document.documentElement.style.setProperty('--dark', newDark);
+      document.documentElement.style.setProperty('--darkText', newDarkText);
   }
 
   // Add event listeners to all sliders
