@@ -240,11 +240,11 @@ td.status-overview-separator {
   margin: 0 20px;
 }
 
-.left-half {
+.inv-left-half {
   width: 60%;
 }
 
-.right-half {
+.inv-right-half {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -329,5 +329,33 @@ td.status-overview-separator {
 }
 
 .itemList-item.equipped.active::marker {
+  color: var(--darkText);
+}
+
+/*---*/
+
+.perk-left-half {
+  width: 50%;
+}
+
+.perk-right-half {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.perkList-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 7px;
+  padding-left: 10px;
+}
+
+.perkList-item.active {
+  background-color: var(--light);
   color: var(--darkText);
 }
