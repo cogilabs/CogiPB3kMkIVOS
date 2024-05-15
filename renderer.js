@@ -81,7 +81,7 @@ function calculateLevel() {
   );
   const levelProgress = 100*(1-(totalDaysLeft/365))
 
-  document.getElementById("currentLevel").innerHTML = "Level " + level + '<span class="loading-bar" id="level-bar"><span id="levels"></span></span>';
+  document.getElementById("currentLevel").innerHTML = "LEVEL " + level + '<span class="loading-bar" id="level-bar"><span id="levels"></span></span>';
   document.getElementById("levels").setAttribute('style', 'width:  ' + levelProgress + '%');
 }
 
@@ -234,7 +234,7 @@ function initializeColorSliders(force) {
       document.documentElement.style.setProperty('--biHue', `${hueValue-50}deg`);
       document.documentElement.style.setProperty('--realHue', `${hueValue}deg`);
       document.documentElement.style.setProperty('--sat', `${satValue}%`);
-      document.documentElement.style.setProperty('--biSat', `${parseInt(satValue)*5}%`);
+      document.documentElement.style.setProperty('--biSat', `${Math.pow(parseInt(satValue), 2)/10}%`);
       document.documentElement.style.setProperty('--brightness', `${lightValue*2}%`);
       document.documentElement.style.setProperty('--biBrightness', `${lightValue*1.5}%`);
       document.documentElement.style.setProperty('--light', newLight);
