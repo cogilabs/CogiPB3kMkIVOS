@@ -251,11 +251,11 @@ td.status-overview-separator {
   width: 40%;
 }
 
-.right-half table {
+.inv-right-half table {
   width: 200px;
 }
 
-.right-half table td {
+.inv-right-half table td {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
