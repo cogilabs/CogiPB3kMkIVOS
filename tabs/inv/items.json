@@ -1,0 +1,119 @@
+{
+    "weapons": {
+        "firearms": {
+            "pistol": {
+                "name": "10mm Pistol",
+                "damageType": "bullets",
+                "damageAmount": "18",
+                "ammoType": "10mm",
+                "ammoAmount": "120",
+                "fireRate": "46",
+                "range": "83",
+                "accuracy": "60",
+                "weight": "3.5",
+                "value": "50",
+                "equipped": "true"
+            },
+            "fatMan": {
+                "name": "Fat Man",
+                "damageType": "bullets",
+                "damageAmount": "468",
+                "ammoType": "Mini Nuke",
+                "ammoAmount": "2",
+                "fireRate": "1",
+                "range": "117",
+                "accuracy": "63",
+                "weight": "30.7",
+                "value": "512"
+            },
+            "laserMusket": {
+                "name": "Laser Musket",
+                "damageType": "energy",
+                "damageAmount": "33",
+                "ammoType": "Cell",
+                "ammoAmount": "64",
+                "fireRate": "6",
+                "range": "215",
+                "accuracy": "72",
+                "weight": "15.4",
+                "value": "73"
+            },
+            "minigun": {
+                "name": "Minigun",
+                "damageType": "bullets",
+                "damageAmount": "8",
+                "ammoType": "5mm",
+                "ammoAmount": "486",
+                "fireRate": "272",
+                "range": "131",
+                "accuracy": "35",
+                "weight": "27.4",
+                "value": "382"
+            },
+            "pipeBoltPistol": {
+                "name": "Pipe Bolt-Action Pistol",
+                "damageType": "bullets",
+                "damageAmount": "35",
+                "ammoType": ".308",
+                "ammoAmount": "130",
+                "fireRate": "2",
+                "range": "95",
+                "accuracy": "63",
+                "weight": "3.2",
+                "value": "30"
+            },
+            "shDblShotgun": {
+                "name": "Short Double-Barrel Shotgun",
+                "damageType": "bullets",
+                "damageAmount": "47",
+                "ammoType": "Shell",
+                "ammoAmount": "26",
+                "fireRate": "36",
+                "range": "47",
+                "accuracy": "16",
+                "weight": "9",
+                "value": "39"
+            }
+        },
+        "melee": {
+            "bat": {
+                "name": "Baseball Bat",
+                "damageAmount": "28",
+                "speed": "SLOW",
+                "weight": "3",
+                "value": "25"
+            },
+            "machete": {
+                "name": "Machete",
+                "damageAmount": "24",
+                "speed": "MEDIUM",
+                "weight": "2",
+                "value": "25"
+            }
+        },
+        "throwables": {
+            "fragMine": {
+                "name": "Fragmentation Mine",
+                "damageType": "bullets",
+                "damageAmount": "101",
+                "ammoAmount": "6",
+                "fireRate": "0",
+                "range": "93",
+                "accuracy": "0",
+                "weight": "0.5",
+                "value": "50"
+            },
+            "molotov": {
+                "name": "Molotov Cocktail",
+                "damageType": "bullets",
+                "damageAmount": "51",
+                "ammoAmount": "3",
+                "fireRate": "0",
+                "range": "93",
+                "accuracy": "0",
+                "weight": "0.5",
+                "value": "20"
+            }
+        }
+    }
+}

@@ -261,12 +261,10 @@ function initializeColorSliders(force) {
       document.documentElement.style.setProperty('--darkText', newDarkText);
   }
 
-  // Add event listeners to all sliders
   hueSlider.addEventListener('input', updateColor);
   satSlider.addEventListener('input', updateColor);
   lightSlider.addEventListener('input', updateColor);
 }
-
 
 document.addEventListener('keydown', (event) => {
   handleKeyEvent(event.code);
@@ -275,19 +273,28 @@ document.addEventListener('keydown', (event) => {
 function handleKeyEvent(keyCode) {
   switch (keyCode) {
     case 'Digit1':
-      setActiveTab('stat');
+      if (currentTab != 'stat')
+        setActiveTab('stat');
       break;
     case 'Digit2':
+      if (currentTab != 'inv')
       setActiveTab('inv');
       break;
     case 'Digit3':
+      if (currentTab != 'data')
       setActiveTab('data');
       break;
     case 'Digit4':
+      if (currentTab != 'map')
       setActiveTab('map');
       break;
     case 'Digit5':
+      if (currentTab != 'radio')
       setActiveTab('radio');
+      break;
+    case 'KeyS':
+      if (currentTab != 'settings')
+      setActiveTab('settings');
       break;
     case 'ArrowLeft':
       
@@ -295,6 +302,12 @@ function handleKeyEvent(keyCode) {
     case 'ArrowRight':
       
       break;
+      case 'ArrowUp':
+        
+        break;
+      case 'ArrowDown':
+        
+        break;
     default:
       break;
   }
