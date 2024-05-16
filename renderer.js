@@ -104,16 +104,9 @@ function calculateLevel() {
 }
 
 function setActiveTab(tab) {
-    // Cleanup if moving away from 'inv'
-    if (currentTab === "stat" || currentTab === "inv" || currentTab === "data") {
-      if (subMenuskeyDownListener) {
-          document.removeEventListener('keydown', subMenuskeyDownListener);
-          subMenuskeyDownListener = null;
-      }
-      if (itemListskeyDownListener) {
-          document.removeEventListener('keydown', itemListskeyDownListener);
-          itemListskeyDownListener = null;
-      }
+    if (subMenuskeyDownListener) {
+        document.removeEventListener('keydown', subMenuskeyDownListener);
+        subMenuskeyDownListener = null;
     }
 
     // Clear active state for all items
@@ -169,6 +162,10 @@ function loadTabContent(tab) {
 export function loadSubMenuContent(category) {
   const contentArea = document.getElementById('content-area');
   const tableContent = document.getElementById('table-content');
+  if (itemListskeyDownListener) {
+      document.removeEventListener('keydown', itemListskeyDownListener);
+      itemListskeyDownListener = null;
+  }
   
   fetch(`tabs/${category}.html`)
       .then(response => response.text())
@@ -310,7 +307,7 @@ function handleKeyEvent(keyCode) {
       if (currentTab != 'radio')
       setActiveTab('radio');
       break;
-    case 'KeyS':
+    case 'KeyP':
       if (currentTab != 'settings')
       setActiveTab('settings');
       break;

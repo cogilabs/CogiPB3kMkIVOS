@@ -19,24 +19,18 @@ export function handleSubMenusKeys(event, submenuItems) {
 
     const activeItem = document.querySelector('.sub-nav-item.active');
     let newIndex;
-    switch (event.key) {
-    case 'ArrowRight':
+    switch (event.code) {
+    case 'KeyD':
         if (Array.from(submenuItems).indexOf(activeItem) != submenuItems.length - 1) {
             newIndex = (Array.from(submenuItems).indexOf(activeItem) + 1);
             setActiveAndCenter(submenuItems[newIndex]);
         }
         break;
-    case 'ArrowLeft':
+    case 'KeyA':
         if (Array.from(submenuItems).indexOf(activeItem) != 0) {
             newIndex = (Array.from(submenuItems).indexOf(activeItem) - 1);
             setActiveAndCenter(submenuItems[newIndex]);
         }
-        break;
-    case 'ArrowUp':
-        console.log("Up!");
-        break;
-    case 'ArrowDown':
-        console.log("Down!");
         break;
     }
 }
