@@ -1,0 +1,37 @@
+{
+  "guest": {
+    "displayName": "Guest",
+    "hue": "120",
+    "sat": "100",
+    "light": "60",
+    "birthday": "2000/01/01"
+  },
+  "david": {
+    "displayName": "David",
+    "hue": "120",
+    "sat": "100",
+    "light": "60",
+    "birthday": "1997/02/10"
+  },
+  "marie": {
+    "displayName": "Marie",
+    "hue": "300",
+    "sat": "40",
+    "light": "60",
+    "birthday": "2003/08/26"
+  },
+  "ashe": {
+    "displayName": "Ashe",
+    "hue": "300",
+    "sat": "40",
+    "light": "60",
+    "birthday": "2003/08/26"
+  },
+  "aiden": {
+    "displayName": "Aiden",
+    "hue": "300",
+    "sat": "40",
+    "light": "60",
+    "birthday": "2003/08/26"
+  }
+}
