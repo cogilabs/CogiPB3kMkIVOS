@@ -1,5 +1,5 @@
 // renderer.js
-let currentTab = 'inv';  // Keep track of the current tab
+let currentTab = 'stat';  // Keep track of the current tab
 let subMenuskeyDownListener;  // Reference to the global keydown listener
 let itemListskeyDownListener;  // Reference to the global keydown listener
 
@@ -108,6 +108,10 @@ function setActiveTab(tab) {
         document.removeEventListener('keydown', subMenuskeyDownListener);
         subMenuskeyDownListener = null;
     }
+    if (itemListskeyDownListener) {
+        document.removeEventListener('keydown', itemListskeyDownListener);
+        itemListskeyDownListener = null;
+    }
 
     // Clear active state for all items
     const menuItems = document.querySelectorAll('#menu .nav-item');
@@ -206,14 +210,14 @@ function loadDateAndTime() {
       + "/" + addLeadingZero(d.getMonth() + 1) 
       + "/" + d.getFullYear();
   } else {
-    console.log('Date area not found, cannot load footer.');
+    console.error('Date area not found, cannot load footer.');
   }
   
   if (timeArea) {
     timeArea.innerHTML = addLeadingZero(d.getHours()) 
       + ":" + addLeadingZero(d.getMinutes());
   } else {
-    console.log('Time area not found, cannot load footer.');
+    console.error('Time area not found, cannot load footer.');
   }
 }
 
