@@ -300,11 +300,11 @@ td.status-overview-separator {
 
 /*---*/
 
-.itemList span {
+.weaponList span {
   margin-left: -10px;
 }
 
-.itemList-item {
+.weaponList-item {
   font-size: 17px;
   font-weight: bold;
   padding: 7px;
@@ -314,21 +314,21 @@ td.status-overview-separator {
   list-style-type: square;
 }
 
-.itemList-item.active {
+.weaponList-item.active {
   background-color: var(--light);
   color: var(--darkText);
 }
 
-.itemList-item::marker {
+.weaponList-item::marker {
   color: #00000000;
   margin: 0 5px 0 0;
 }
 
-.itemList-item.equipped::marker {
+.weaponList-item.equipped::marker {
   color: var(--light);
 }
 
-.itemList-item.equipped.active::marker {
+.weaponList-item.equipped.active::marker {
   color: var(--darkText);
 }
 

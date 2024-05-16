@@ -1,6 +1,7 @@
 // renderer.js
-let currentTab = 'stat';  // Keep track of the current tab
-let keyDownListener;  // Reference to the global keydown listener
+let currentTab = 'inv';  // Keep track of the current tab
+let subMenuskeyDownListener;  // Reference to the global keydown listener
+let itemListskeyDownListener;  // Reference to the global keydown listener
 
 const nickName = "David"
 
@@ -12,12 +13,20 @@ let birthday = new Date();
 
 setProfile(nickName);
 
-export function setKeyDownListener(newListener) {
-    if (keyDownListener) {
-        document.removeEventListener('keydown', keyDownListener);
+export function setSubMenusKeyDownListener(newListener) {
+    if (subMenuskeyDownListener) {
+        document.removeEventListener('keydown', subMenuskeyDownListener);
     }
-    keyDownListener = newListener;
-    document.addEventListener('keydown', keyDownListener);
+    subMenuskeyDownListener = newListener;
+    document.addEventListener('keydown', subMenuskeyDownListener);
+}
+
+export function setItemListsKeyDownListener(newListener) {
+    if (itemListskeyDownListener) {
+        document.removeEventListener('keydown', itemListskeyDownListener);
+    }
+    itemListskeyDownListener = newListener;
+    document.addEventListener('keydown', itemListskeyDownListener);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -97,10 +106,14 @@ function calculateLevel() {
 function setActiveTab(tab) {
     // Cleanup if moving away from 'inv'
     if (currentTab === "stat" || currentTab === "inv" || currentTab === "data") {
-        if (keyDownListener) {
-            document.removeEventListener('keydown', keyDownListener);
-            keyDownListener = null;
-        }
+      if (subMenuskeyDownListener) {
+          document.removeEventListener('keydown', subMenuskeyDownListener);
+          subMenuskeyDownListener = null;
+      }
+      if (itemListskeyDownListener) {
+          document.removeEventListener('keydown', itemListskeyDownListener);
+          itemListskeyDownListener = null;
+      }
     }
 
     // Clear active state for all items
@@ -171,11 +184,16 @@ export function loadSubMenuContent(category) {
               tableContent.innerHTML = '';
             }
           }
-          if (tab == "stat") {
+          if (category == "stat/status") {
             document.getElementById("name").innerHTML = nickName;
             if (nickName == 'Guest') {
               document.getElementById("name").innerHTML = '';
             }
+          }
+          if (category === "stat/special" || category === "stat/perks" || category === "inv/weapons") {
+              import('./itemLists.js').then(module => {
+                  module.initializeItemListActions();
+              });
           }
       })
       .catch(error => console.error('Failed to load content:', error));

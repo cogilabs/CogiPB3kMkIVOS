@@ -1,5 +1,5 @@
 // subMenus.js
-import { setKeyDownListener, loadSubMenuContent } from './renderer.js';
+import { setSubMenusKeyDownListener, loadSubMenuContent } from './renderer.js';
 
 export function initializeSubMenuActions() {
     const submenuItems = document.querySelectorAll('.sub-nav-item');
@@ -10,27 +10,34 @@ export function initializeSubMenuActions() {
     });
     submenuItems[0].parentElement.setAttribute('style', 'transition: unset');
 
-    setKeyDownListener((event) => handleArrowKeys(event, submenuItems));
+    setSubMenusKeyDownListener((event) => handleSubMenusKeys(event, submenuItems));
     setActiveAndCenter(submenuItems[0])
 }
 
-// Define a global function to handle arrow key navigation
-export function handleArrowKeys(event, submenuItems) {
+// Define a global function to handle left and right arrow key navigation
+export function handleSubMenusKeys(event, submenuItems) {
+
     const activeItem = document.querySelector('.sub-nav-item.active');
     let newIndex;
     switch (event.key) {
-        case 'ArrowRight':
-            if (Array.from(submenuItems).indexOf(activeItem) != submenuItems.length - 1) {
-                newIndex = (Array.from(submenuItems).indexOf(activeItem) + 1);
-                setActiveAndCenter(submenuItems[newIndex]);
-            }
-            break;
-        case 'ArrowLeft':
-            if (Array.from(submenuItems).indexOf(activeItem) != 0) {
-                newIndex = (Array.from(submenuItems).indexOf(activeItem) - 1);
-                setActiveAndCenter(submenuItems[newIndex]);
-            }
-            break;
+    case 'ArrowRight':
+        if (Array.from(submenuItems).indexOf(activeItem) != submenuItems.length - 1) {
+            newIndex = (Array.from(submenuItems).indexOf(activeItem) + 1);
+            setActiveAndCenter(submenuItems[newIndex]);
+        }
+        break;
+    case 'ArrowLeft':
+        if (Array.from(submenuItems).indexOf(activeItem) != 0) {
+            newIndex = (Array.from(submenuItems).indexOf(activeItem) - 1);
+            setActiveAndCenter(submenuItems[newIndex]);
+        }
+        break;
+    case 'ArrowUp':
+        console.log("Up!");
+        break;
+    case 'ArrowDown':
+        console.log("Down!");
+        break;
     }
 }
 
