@@ -35,7 +35,6 @@ export function handleItemListsKeys(event, itemListsItem) {
 
 function setItemActiveHandler(event) {
   setItemActive(event.currentTarget);  // Pass currentTarget instead of the event object
-  console.log(event.currentTarget);
 }
 
 export function setItemActive(selectedItem) {
