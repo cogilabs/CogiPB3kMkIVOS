@@ -1,4 +1,11 @@
 {
+  "demo": {
+    "displayName": "Demo",
+    "hue": "120",
+    "sat": "100",
+    "light": "60",
+    "birthday": "2000/01/01"
+  },
   "guest": {
     "displayName": "Guest",
     "hue": "120",

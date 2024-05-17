@@ -1,9 +1,11 @@
-// renderer.js
 let currentTab = 'stat';  // Keep track of the current tab
 let subMenuskeyDownListener;  // Reference to the global keydown listener
 let itemListskeyDownListener;  // Reference to the global keydown listener
 
-const nickName = "David"
+let nickName = "Demo"
+
+let profiles = {};  // Will hold profiles loaded from JSON
+let currentProfile = {};  // Will hold the current profile data
 
 let hueValue = 120;
 let satValue = 100;
@@ -11,7 +13,14 @@ let lightValue = 60;
 
 let birthday = new Date();
 
-setProfile(nickName);
+// Load profiles from JSON file
+fetch('profiles.json')
+    .then(response => response.json())
+    .then(data => {
+        profiles = data;
+        setProfile(nickName);  // Initialize profile once data is loaded
+    })
+    .catch(error => console.error('Failed to load profiles:', error));
 
 export function setSubMenusKeyDownListener(newListener) {
     if (subMenuskeyDownListener) {
@@ -50,34 +59,18 @@ function addLeadingZero(num) {
 }
 
 function setProfile(chosenName) {
-  if (chosenName == "David") {
-
-    hueValue = 120;
-    satValue = 100;
-    lightValue = 60;
-
-    birthday = "1997/02/10";
-  }
-
-  if (chosenName == "Marie" || chosenName == "Ashe" || chosenName == "Aiden") {
-
-    hueValue = 300;
-    satValue = 40;
-    lightValue = 60;
-
-    birthday = "2003/08/26";
-  }
-
-  if (chosenName == "Guest") {
-
-    hueValue = 120;
-    satValue = 100;
-    lightValue = 60;
-
-    birthday = "2000/01/01";
-  }
-
-  initializeColorSliders(true);
+    if (profiles[chosenName.toLowerCase()]) {
+        currentProfile = profiles[chosenName.toLowerCase()];
+        nickName = currentProfile.displayName;
+        hueValue = currentProfile.hue;
+        satValue = currentProfile.sat;
+        lightValue = currentProfile.light;
+        birthday = currentProfile.birthday;
+        initializeColorSliders(true);
+    } else {
+        console.error(`Profile for ${chosenName} not found, loading profile Guest.`);
+        setProfile("Guest");
+    }
 }
 
 function calculateLevel() {
@@ -188,7 +181,10 @@ export function loadSubMenuContent(category) {
           if (category == "stat/status") {
             document.getElementById("name").innerHTML = nickName;
             if (nickName == 'Guest') {
-              document.getElementById("name").innerHTML = '';
+              document.getElementById("name").innerHTML = '&nbsp;';
+            }
+            if (nickName == 'Demo') {
+              document.getElementById("name").innerHTML = 'DEMO MODE';
             }
           }
           if (category === "stat/special" || category === "stat/perks" || category === "inv/weapons") {
@@ -283,6 +279,14 @@ function initializeColorSliders(force) {
   hueSlider.addEventListener('input', updateColor);
   satSlider.addEventListener('input', updateColor);
   lightSlider.addEventListener('input', updateColor);
+
+  // Initialize profile buttons
+  const profileButtons = document.querySelectorAll('.profile-btn');
+  profileButtons.forEach(button => {
+      button.addEventListener('click', () => {
+          setProfile(button.dataset.profile);
+      });
+  });
 }
 
 document.addEventListener('keydown', (event) => {

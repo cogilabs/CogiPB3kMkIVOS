@@ -105,6 +105,18 @@ input[type="range"]::-webkit-slider-thumb {
   margin-left: 20px;
 }
 
+.profile-btn {
+  color: inherit;
+  height: 30px;
+  width: 60px;
+  background-color: var(--dark);
+  border: solid 1px var(--light);
+}
+
+.profile-btn:active {
+  background-color: var(--medium);
+}
+
 /*---*/
 
 .submenu {
