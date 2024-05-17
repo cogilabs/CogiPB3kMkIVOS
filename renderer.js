@@ -66,6 +66,7 @@ function setProfile(chosenName) {
         satValue = currentProfile.sat;
         lightValue = currentProfile.light;
         birthday = currentProfile.birthday;
+        initializeColorSliders(!(currentTab == 'settings'));
         initializeColorSliders(true);
     } else {
         console.error(`Profile for ${chosenName} not found, loading profile Guest.`);
