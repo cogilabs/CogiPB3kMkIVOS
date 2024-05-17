@@ -1,8 +1,6 @@
 <template>
     <div class="container-template" id="settings-template" data-tab="settings">
-
         <p>Settings:</p>
-
         <div class="slider-container">
             <label for="hue-slider">Hue</label>
             <input type="range" id="hue-slider" min="0" max="360" step="1">
@@ -18,41 +16,12 @@
             <input type="range" id="light-slider" min="0" max="100" step="1">
             <span class="slider-val" id="light-val"></span>
         </div>
-        
         <div id="profile-buttons">
             <span>Choose an existing profile:&nbsp;</span>
-            <button class="profile-btn" data-profile="guest">Guest</button>
-            <button class="profile-btn" data-profile="david">David</button>
-            <button class="profile-btn" data-profile="marie">Marie</button>
+            <!-- Profile buttons will be populated here dynamically -->
         </div>
-
         <img id="vault-boy" src="images/vaultBoy.gif" alt="Vault-Boy" height="100">
-        <img src="images/gun.svg" class="black-icon" height="50"/>
-        <img src="images/crosshair.png" class="black-icon" height="50"/>
-        <img src="images/weight.svg" class="black-icon" height="50"/>
-        <img src="images/caps.svg" class="black-icon" height="50"/>
-        <img src="images/shield.svg" class="black-icon" height="50"/>
-        <img src="images/energy.png" class="black-icon" height="50"/>
-        <img src="images/rad.png" class="black-icon" height="50"/>
-        <img src="images/helmet.png" class="black-icon" height="50"/>
-        <img src="images/ammo.svg" class="black-icon" height="50"/>
-        <table>
-            <tr>
-                <td style="background-color: var(--light); width: 30px; height: 30px">
-                </td>
-                <td style="background-color: var(--mediumLight); width: 30px; height: 30px">
-                </td>
-                <td style="background-color: var(--medium); width: 30px; height: 30px">
-                </td>
-                <td style="background-color: var(--mediumDark); width: 30px; height: 30px">
-                </td>
-                <td style="background-color: var(--dark); width: 30px; height: 30px">
-                </td>
-            </tr>
-        </table>
-        
+        <!-- Remaining elements as is -->
     </div>
-    <div id="footer">
-
-    </div>
+    <div id="footer"></div>
 </template>

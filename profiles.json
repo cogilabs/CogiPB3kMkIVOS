@@ -4,7 +4,8 @@
     "hue": "120",
     "sat": "100",
     "light": "60",
-    "birthday": "2000/01/01"
+    "birthday": "2000/01/01",
+    "hidden": true
   },
   "guest": {
     "displayName": "Guest",
@@ -22,20 +23,6 @@
   },
   "marie": {
     "displayName": "Marie",
-    "hue": "300",
-    "sat": "40",
-    "light": "60",
-    "birthday": "2003/08/26"
-  },
-  "ashe": {
-    "displayName": "Ashe",
-    "hue": "300",
-    "sat": "40",
-    "light": "60",
-    "birthday": "2003/08/26"
-  },
-  "aiden": {
-    "displayName": "Aiden",
     "hue": "300",
     "sat": "40",
     "light": "60",

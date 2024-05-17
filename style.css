@@ -111,6 +111,7 @@ input[type="range"]::-webkit-slider-thumb {
   width: 60px;
   background-color: var(--dark);
   border: solid 1px var(--light);
+  margin: 0 10px;
 }
 
 .profile-btn:active {

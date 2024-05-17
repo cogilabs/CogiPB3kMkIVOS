@@ -281,11 +281,18 @@ function initializeColorSliders(force) {
   lightSlider.addEventListener('input', updateColor);
 
   // Initialize profile buttons
-  const profileButtons = document.querySelectorAll('.profile-btn');
-  profileButtons.forEach(button => {
-      button.addEventListener('click', () => {
-          setProfile(button.dataset.profile);
-      });
+  const profileButtonsContainer = document.getElementById('profile-buttons');
+  profileButtonsContainer.innerHTML = '<span>Choose an existing profile:&nbsp;</span>';  // Clear existing buttons
+
+  Object.keys(profiles).forEach(profileName => {
+    if (!profiles[profileName].hidden) {
+      const button = document.createElement('button');
+      button.className = 'profile-btn';
+      button.dataset.profile = profileName;
+      button.textContent = profiles[profileName].displayName;
+      button.addEventListener('click', () => setProfile(profileName));
+      profileButtonsContainer.appendChild(button);
+    }
   });
 }
 
@@ -319,18 +326,6 @@ function handleKeyEvent(keyCode) {
       if (currentTab != 'settings')
       setActiveTab('settings');
       break;
-    case 'ArrowLeft':
-      
-      break;
-    case 'ArrowRight':
-      
-      break;
-      case 'ArrowUp':
-        
-        break;
-      case 'ArrowDown':
-        
-        break;
     default:
       break;
   }
