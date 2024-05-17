@@ -123,38 +123,48 @@ function setActiveTab(tab) {
 }
 
 function loadTabContent(tab) {
-    fetch(`tabs/${tab}.html`)
-        .then(response => response.text())
-        .then(html => {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            const template = doc.querySelector('template');
-            const content = document.importNode(template.content, true);
-            const interfaceDiv = document.getElementById('interface');
+  fetch(`tabs/${tab}.html`)
+      .then(response => response.text())
+      .then(html => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const template = doc.querySelector('template');
+          const content = document.importNode(template.content, true);
+          const interfaceDiv = document.getElementById('interface');
 
-            interfaceDiv.innerHTML = '';
-            interfaceDiv.appendChild(content);
+          interfaceDiv.innerHTML = '';
+          interfaceDiv.appendChild(content);
 
-            if (tab === "stat" || tab === "inv" || tab === "data") {
-                import('./subMenus.js').then(module => {
-                    module.initializeSubMenuActions();
-                });
-            }
+          if (tab === "stat" || tab === "inv" || tab === "data") {
+              import('./subMenus.js').then(module => {
+                  module.initializeSubMenuActions();
+              });
+          }
 
-            // Re-initialize the slider functionality if necessary
-            if (tab === "settings") { // Assuming the hue-slider is only in the 'settings' tab
-              initializeColorSliders();
-            }
+          // Re-initialize the slider functionality if necessary
+          if (tab === "settings") { // Assuming the hue-slider is only in the 'settings' tab
+            initializeColorSliders();
+          }
 
-            if (tab === "data" || tab === "map") {
-              loadDateAndTime();
-            }
+          if (tab === "data" || tab === "map") {
+            loadDateAndTime();
+          }
 
-            if (tab === "stat") {
-              calculateLevel();
-            }
-        })
-        .catch(error => console.error(`Error loading ${tab} content:`, error));
+          if (tab === "stat") {
+            calculateLevel();
+          }
+
+          if (tab === "inv") {
+              import('./itemLists.js').then(module => {
+                  setTimeout(() => {
+                      module.fetchItemsData(nickName).then(() => {
+                          module.initializeItemList(nickName);
+                      });
+                  }, 0);  // Use setTimeout to ensure DOM is fully loaded
+              });
+          }
+      })
+      .catch(error => console.error(`Error loading ${tab} content:`, error));
 }
 
 export function loadSubMenuContent(category) {
@@ -192,6 +202,15 @@ export function loadSubMenuContent(category) {
               import('./itemLists.js').then(module => {
                   module.initializeItemListActions();
               });
+          }
+          if (category === "inv/weapons") {
+            import('./itemLists.js').then(module => {
+                setTimeout(() => {
+                    module.fetchItemsData(nickName).then(() => {
+                        module.initializeItemList(nickName);
+                    });
+                }, 0);  // Use setTimeout to ensure DOM is fully loaded
+            });
           }
       })
       .catch(error => console.error('Failed to load content:', error));
