@@ -11,8 +11,7 @@
                 "range": "83",
                 "accuracy": "60",
                 "weight": "3.5",
-                "value": "50",
-                "equipped": "true"
+                "value": "50"
             },
             "fatMan": {
                 "name": "Fat Man",
@@ -52,7 +51,8 @@
                 "damageAmount": "24",
                 "speed": "MEDIUM",
                 "weight": "2",
-                "value": "25"
+                "value": "25",
+                "equipped": "true"
             }
         },
         "throwables": {
