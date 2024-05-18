@@ -10,7 +10,7 @@ function createWindow () {
     //  preload: __dirname + '/preload.js'
     //}
   });
-  //win.setFullScreen(true); // ! Only for the raspberry
+  win.setFullScreen(true); // ! Only for the raspberry
   win.loadFile('index.html');
 }
 

@@ -1,5 +1,5 @@
 // renderer.js
-
+// TODO: Bundle Roboto
 let currentTab = 'stat';  // Keep track of the current tab
 let subMenuskeyDownListener;  // Reference to the global keydown listener
 let itemListskeyDownListener;  // Reference to the global keydown listener
