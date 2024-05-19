@@ -350,9 +350,12 @@ document.addEventListener('keydown', (event) => {
                 setActiveTab('radio');
             break;
         case 'KeyP':
-            if (currentTab != 'settings')
+            if (currentTab != 'settings') {
                 savedTab = currentTab;
                 setActiveTab('settings');
+            } else {
+                setActiveTab(savedTab);
+            }
             break;
         default:
             break;
