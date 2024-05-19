@@ -1,6 +1,7 @@
 // renderer.js
 // TODO: Bundle Roboto
 let currentTab = 'stat';  // Keep track of the current tab
+let savedTab = currentTab; // Occasionnaly used to remember a tab
 let subMenuskeyDownListener;  // Reference to the global keydown listener
 let itemListskeyDownListener;  // Reference to the global keydown listener
 let settingsKeyListener;  // Reference to the settings keydown listener
@@ -127,6 +128,7 @@ function setActiveTab(tab) {
 
     // Load the selected tab content
     loadTabContent(tab);
+    savedTab = currentTab;
     currentTab = tab;  // Update the current tab
 }
 
@@ -349,6 +351,7 @@ document.addEventListener('keydown', (event) => {
             break;
         case 'KeyP':
             if (currentTab != 'settings')
+                savedTab = currentTab;
                 setActiveTab('settings');
             break;
         default:
@@ -407,7 +410,7 @@ function initializeSettingsKeyNavigation() {
                         elements[currentElementIndex].dispatchEvent(new Event('input'));
                     } else {
                         elements[currentElementIndex].click();
-                        setActiveTab('stat');
+                        setActiveTab(savedTab);
                     }
                     break;
             }
