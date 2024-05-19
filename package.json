@@ -11,5 +11,9 @@
   "license": "ISC",
   "devDependencies": {
     "electron": "^30.0.2"
+  },
+  "dependencies": {
+    "onoff": "^6.0.3",
+    "robotjs": "^0.6.0"
   }
 }
