@@ -76,8 +76,8 @@ function populateInventory() {
         }
         itemElement.setAttribute('item-id', itemData.id);
         itemElement.innerHTML = `<span>${itemData.name}</span>`;
-        if (itemData.throwAmount) {
-            itemElement.innerHTML += ` (${itemData.throwAmount})`;
+        if (itemData.amount) {
+            itemElement.innerHTML += ` (${itemData.amount})`;
         }
         itemElement.addEventListener('click', setItemActiveHandler);  // Add click listener
         inventory.appendChild(itemElement);

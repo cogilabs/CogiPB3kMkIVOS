@@ -60,13 +60,184 @@
                 "name": "Fragmentation Mine",
                 "damageType": "bullets",
                 "damageAmount": "101",
-                "throwAmount": "52",
+                "amount": "52",
                 "fireRate": "0",
                 "range": "93",
                 "accuracy": "0",
                 "weight": "0.5",
                 "value": "50"
             }
+        }
+    },
+    "apparel": {
+        "leatherLeftArm": {
+            "name": "Leather Left Arm",
+            "dmgRes": {
+                "bullet": "1",
+                "energy": "3"
+            },
+            "weight": "2",
+            "value": "8",
+            "equipped": "true"
+        },
+        "leatherRightArm": {
+            "name": "Leather Right Arm",
+            "dmgRes": {
+                "bullet": "1",
+                "energy": "3"
+            },
+            "weight": "2",
+            "value": "8",
+            "equipped": "true"
+        },
+        "leatherRightLeg": {
+            "name": "Leather Right Leg",
+            "dmgRes": {
+                "bullet": "2",
+                "energy": "5"
+            },
+            "weight": "2",
+            "value": "10",
+            "equipped": "true"
+        },
+        "miningHelmet": {
+            "name": "Mining Helmet",
+            "dmgRes": {
+                "bullet": "3"
+            },
+            "weight": "5",
+            "value": "51"
+        },
+        "raiderChestPiece": {
+            "name": "Raider Chest Piece",
+            "dmgRes": {
+                "bullet": "4",
+                "energy": "2"
+            },
+            "weight": "7",
+            "value": "18",
+            "equipped": "true"
+        },
+        "raiderLeftLeg": {
+            "name": "Raider Left Leg",
+            "dmgRes": {
+                "bullet": "2",
+                "energy": "2"
+            },
+            "weight": "3",
+            "value": "8",
+            "equipped": "true"
+        },
+        "vault451Suit": {
+            "name": "Vault 451 Jumpsuit",
+            "dmgRes": {
+                "bullet": "5",
+                "radiation": "10"
+            },
+            "weight": "1",
+            "value": "20",
+            "equipped": "true"
+        },
+        "weldingGoggles": {
+            "name": "Welding Goggles",
+            "special": {
+                "PER": "1"
+            },
+            "weight": "0.3",
+            "value": "10"
+        }
+    },
+    "aid": {
+        "stimpack": {
+            "name": "Stimpack",
+            "amount": "21",
+            "weight": "0.8",
+            "value": "30"
+        },
+        "radaway": {
+            "name": "Radaway",
+            "amount": "13",
+            "weight": "0.3",
+            "value": "25"
+        },
+        "buffout": {
+            "name": "Buffout",
+            "amount": "6",
+            "weight": "0.3",
+            "value": "30"
+        },
+        "psycho": {
+            "name": "Psycho",
+            "amount": "8",
+            "weight": "0.3",
+            "value": "30"
+        },
+        "cure": {
+            "name": "Cure",
+            "amount": "3",
+            "weight": "0.3",
+            "value": "20"
+        },
+        "mentats": {
+            "name": "Mentats",
+            "amount": "5",
+            "weight": "0.3",
+            "value": "30"
+        }
+    },
+    "misc": {
+        "pin": {
+            "name": "Bobby Pin",
+            "amount": "25",
+            "weight": "0",
+            "value": "1"
+
+        }
+    },
+    "junk": {
+        "tinCan": {
+            "name": "Tin Can",
+            "components": {
+                "steel": "2"
+            },
+            "weight": "0.1",
+            "value": "1"
+        },
+        "deskFan": {
+            "name": "Desk Fan",
+            "components": {
+                "gear": "2",
+                "screw": "2",
+                "steel": "2"
+            },
+            "weight": "3",
+            "value": "4"
+        }
+    },
+    "mods": {
+
+    },
+    "ammo": {
+        "308": {
+            "name": ".308 Round",
+            "amount": "9130",
+            "weight": "0",
+            "value": "3"
+
+        },
+        "10mm": {
+            "name": "10mm Round",
+            "amount": "120",
+            "weight": "0",
+            "value": "2"
+
+        },
+        "cell": {
+            "name": "Fusion Cell",
+            "amount": "230",
+            "weight": "0",
+            "value": "3"
+
         }
     }
 }
