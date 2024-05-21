@@ -2,10 +2,12 @@ import { setItemListsKeyDownListener } from './renderer.js';
 
 let itemsData = {};
 
-export function fetchItemsData(nickName, tabPlusSubCategory) {
-  const subCategory = tabPlusSubCategory.split("/")[1];
+export function fetchItemsData(nickName) {
   const defaultFileName = 'items/itemsGuest.json';
-  const userFileName = `items/items${nickName}.json`;
+  let userFileName = `items/items${nickName}.json`;
+
+  if (nickName == 'Demo') userFileName = 'items/itemsGuest.json';
+
 
   return fetch(userFileName)
       .then(response => {
@@ -38,7 +40,7 @@ export function fetchItemsData(nickName, tabPlusSubCategory) {
 export function initializeItemList(nickName, tabPlusSubCategory) {
   const subCategory = tabPlusSubCategory.split("/")[1];
     if (!itemsData[subCategory]) {
-        fetchItemsData(nickName, tabPlusSubCategory).then(() => {
+        fetchItemsData(nickName).then(() => {
             populateInventory(subCategory);
             initializeItemListActions();
         });

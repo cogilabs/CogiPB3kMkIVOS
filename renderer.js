@@ -1,5 +1,5 @@
 // renderer.js
-// TODO: Bundle Roboto, update clock live
+// TODO: Bundle Roboto
 let currentTab = 'stat';  // Keep track of the current tab
 let savedTab = currentTab; // Occasionnaly used to remember a tab
 let subMenuskeyDownListener;  // Reference to the global keydown listener
@@ -133,39 +133,38 @@ function setActiveTab(tab) {
 }
 
 function loadTabContent(tab) {
-    fetch(`tabs/${tab}.html`)
-        .then(response => response.text())
-        .then(html => {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            const template = doc.querySelector('template');
-            const content = document.importNode(template.content, true);
-            const interfaceDiv = document.getElementById('interface');
+  fetch(`tabs/${tab}.html`)
+      .then(response => response.text())
+      .then(html => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const template = doc.querySelector('template');
+          const content = document.importNode(template.content, true);
+          const interfaceDiv = document.getElementById('interface');
 
-            interfaceDiv.innerHTML = '';
-            interfaceDiv.appendChild(content);
+          interfaceDiv.innerHTML = '';
+          interfaceDiv.appendChild(content);
 
-            if (tab === "stat" || tab === "inv" || tab === "data") {
-                import('./subMenus.js').then(module => {
-                    module.initializeSubMenuActions();
-                });
-            }
+          if (tab === "stat" || tab === "inv" || tab === "data") {
+              import('./subMenus.js').then(module => {
+                  module.initializeSubMenuActions();
+              });
+          }
 
-            // Re-initialize the slider functionality if necessary
-            if (tab === "settings") { // Assuming the hue-slider is only in the 'settings' tab
-                initializeColorSliders();
-                initializeSettingsKeyNavigation(); // Initialize key navigation for settings
-            }
+          if (tab === "settings") {
+              initializeColorSliders();
+              initializeSettingsKeyNavigation(); 
+          }
 
-            if (tab === "data" || tab === "map") {
-                loadDateAndTime();
-            }
+          if (tab === "data" || tab === "map") {
+              updateDateAndTimeContinuously();
+          }
 
-            if (tab === "stat") {
-                calculateLevel();
-            }
-        })
-        .catch(error => console.error(`Error loading ${tab} content:`, error));
+          if (tab === "stat") {
+              calculateLevel();
+          }
+      })
+      .catch(error => console.error(`Error loading ${tab} content:`, error));
 }
 
 export function loadSubMenuContent(category) {
@@ -202,7 +201,7 @@ export function loadSubMenuContent(category) {
             if (tab === "inv") {
                 import('./itemLists.js').then(module => {
                     setTimeout(() => {
-                        module.fetchItemsData(nickName, category).then(() => {
+                        module.fetchItemsData(nickName).then(() => {
                             module.initializeItemList(nickName, category);
                         });
                     }, 0);  // Use setTimeout to ensure DOM is fully loaded
@@ -236,6 +235,24 @@ function loadDateAndTime() {
     } else {
         console.error('Time area not found, cannot load footer.');
     }
+}
+
+function updateDateAndTimeContinuously() {
+  const update = () => {
+      const dateArea = document.getElementById('date');
+      const timeArea = document.getElementById('time');
+      const now = new Date();
+
+      if (dateArea) {
+          dateArea.innerHTML = `${addLeadingZero(now.getDate())}/${addLeadingZero(now.getMonth() + 1)}/${now.getFullYear()}`;
+      }
+      if (timeArea) {
+          timeArea.innerHTML = `${addLeadingZero(now.getHours())}:${addLeadingZero(now.getMinutes())}`;
+      }
+  };
+
+  update();  // Update immediately
+  setInterval(update, 60000);  // Update every minute
 }
 
 function initializeColorSliders(force) {
