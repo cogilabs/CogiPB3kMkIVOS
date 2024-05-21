@@ -1,5 +1,5 @@
 // renderer.js
-// TODO: Bundle Roboto
+// TODO: Bundle Roboto, update clock live
 let currentTab = 'stat';  // Keep track of the current tab
 let savedTab = currentTab; // Occasionnaly used to remember a tab
 let subMenuskeyDownListener;  // Reference to the global keydown listener
@@ -164,16 +164,6 @@ function loadTabContent(tab) {
             if (tab === "stat") {
                 calculateLevel();
             }
-
-            if (tab === "inv") {
-                import('./itemLists.js').then(module => {
-                    setTimeout(() => {
-                        module.fetchItemsData(nickName).then(() => {
-                            module.initializeItemList(nickName);
-                        });
-                    }, 0);  // Use setTimeout to ensure DOM is fully loaded
-                });
-            }
         })
         .catch(error => console.error(`Error loading ${tab} content:`, error));
 }
@@ -209,18 +199,18 @@ export function loadSubMenuContent(category) {
                     document.getElementById("name").innerHTML = 'DEMO MODE';
                 }
             }
-            if (category === "stat/special" || category === "stat/perks" || category === "inv/weapons") {
-                import('./itemLists.js').then(module => {
-                    module.initializeItemListActions();
-                });
-            }
-            if (category === "inv/weapons") {
+            if (tab === "inv") {
                 import('./itemLists.js').then(module => {
                     setTimeout(() => {
-                        module.fetchItemsData(nickName).then(() => {
-                            module.initializeItemList(nickName);
+                        module.fetchItemsData(nickName, category).then(() => {
+                            module.initializeItemList(nickName, category);
                         });
                     }, 0);  // Use setTimeout to ensure DOM is fully loaded
+                });
+            }
+            if (category === "stat/special" || category === "stat/perks") {
+                import('./itemLists.js').then(module => {
+                    module.initializeItemListActions();
                 });
             }
         })

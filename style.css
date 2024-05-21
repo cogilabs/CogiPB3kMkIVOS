@@ -332,17 +332,17 @@ td.status-overview-separator {
 
 /*---*/
 
-.weaponList {
+.equipableList {
   height: 100%;
   overflow-y: auto;
   scrollbar-width: thin;
 }
 
-.weaponList span {
+.equipableList span {
   margin-left: -10px;
 }
 
-.weaponList-item {
+.equipableList-item {
   font-size: 17px;
   font-weight: bold;
   padding: 7px;
@@ -352,21 +352,21 @@ td.status-overview-separator {
   list-style-type: square;
 }
 
-.weaponList-item.active {
+.equipableList-item.active {
   background-color: var(--light);
   color: var(--darkText);
 }
 
-.weaponList-item::marker {
+.equipableList-item::marker {
   color: #00000000;
   margin: 0 5px 0 0;
 }
 
-.weaponList-item.equipped::marker {
+.equipableList-item.equipped::marker {
   color: var(--light);
 }
 
-.weaponList-item.equipped.active::marker {
+.equipableList-item.equipped.active::marker {
   color: var(--darkText);
 }
 

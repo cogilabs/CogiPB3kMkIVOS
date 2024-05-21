@@ -2,7 +2,8 @@ import { setItemListsKeyDownListener } from './renderer.js';
 
 let itemsData = {};
 
-export function fetchItemsData(nickName) {
+export function fetchItemsData(nickName, tabPlusSubCategory) {
+  const subCategory = tabPlusSubCategory.split("/")[1];
   const defaultFileName = 'items/itemsGuest.json';
   const userFileName = `items/items${nickName}.json`;
 
@@ -34,19 +35,20 @@ export function fetchItemsData(nickName) {
       });
 }
 
-export function initializeItemList(nickName) {
-    if (!itemsData.weapons) {
-        fetchItemsData(nickName).then(() => {
-            populateInventory();
+export function initializeItemList(nickName, tabPlusSubCategory) {
+  const subCategory = tabPlusSubCategory.split("/")[1];
+    if (!itemsData[subCategory]) {
+        fetchItemsData(nickName, tabPlusSubCategory).then(() => {
+            populateInventory(subCategory);
             initializeItemListActions();
         });
     } else {
-        populateInventory();
+        populateInventory(subCategory);
         initializeItemListActions();
     }
 }
 
-function populateInventory() {
+function populateInventory(subCategory) {
     const inventory = document.getElementById('inventory');
     if (!inventory) {
         console.error('Inventory element not found.');
@@ -57,9 +59,9 @@ function populateInventory() {
     const itemsArray = [];
 
     // Collect items into an array
-    for (let category in itemsData.weapons) {
-        for (let item in itemsData.weapons[category]) {
-            const itemData = itemsData.weapons[category][item];
+    for (let category in itemsData[subCategory]) {
+        for (let item in itemsData[subCategory][category]) {
+            const itemData = itemsData[subCategory][category][item];
             itemsArray.push({ id: item, ...itemData });
         }
     }
@@ -70,7 +72,7 @@ function populateInventory() {
     // Append sorted items to the inventory
     itemsArray.forEach(itemData => {
         const itemElement = document.createElement('div');
-        itemElement.classList.add('itemList-item', 'weaponList-item');
+        itemElement.classList.add('itemList-item', 'equipableList-item');
         if (itemData.equipped) {
             itemElement.classList.add('equipped');
         }
@@ -166,7 +168,8 @@ function scrollIntoViewIfNeeded(element) {
 }
 
 function updateItemDetails(itemId) {
-    const detailsTable = document.getElementById('weapon-details-table');
+    const detailsTable = document.getElementById('details-table');
+    const subCategory = detailsTable.getAttribute('sub-category');
     if (!detailsTable) {
         console.error('Details table element not found.');
         return;
@@ -175,15 +178,16 @@ function updateItemDetails(itemId) {
     let itemData = null;
 
     // Find item data in itemsData
-    for (let category in itemsData.weapons) {
-        if (itemsData.weapons[category][itemId]) {
-            itemData = itemsData.weapons[category][itemId];
+    for (let category in itemsData[subCategory]) {
+        if (itemsData[subCategory][category][itemId]) {
+            itemData = itemsData[subCategory][category][itemId];
             break;
         }
     }
 
     if (itemData) {
         detailsTable.innerHTML = `
+            ${itemData.damageAmount ? `
             <tr>
                 <td id="dmg">
                     <span id="dmg-txt">Damage</span>
@@ -192,6 +196,7 @@ function updateItemDetails(itemId) {
                     </span>
                 </td>
             </tr>
+            ` : ''}
             ${itemData.ammoType ? `
             <tr>
                 <td id="ammo">
