@@ -3,8 +3,6 @@ body {
     margin: 0;
     user-select: none;
     scrollbar-color: var(--light) #00000000;
-    cursor: none;
-    cursor: unset; /* debug */
 }
 
 #innerBody {
@@ -78,8 +76,6 @@ input[type="range"] {
   height: 8px;
   background: var(--medium);
   outline: none;
-  cursor: none;
-  cursor: unset; /* debug */
 }
 
 input[type="range"]::-webkit-slider-thumb {
@@ -101,8 +97,6 @@ input[type="range"]::-webkit-slider-thumb {
   margin-bottom: 5px;
   width: fit-content;
   padding: 5px;
-  cursor: none;
-  cursor: unset; /* debug */
 }
 
 .slider-val {
@@ -116,8 +110,6 @@ input[type="range"]::-webkit-slider-thumb {
   background-color: var(--dark);
   border: solid 1px var(--light);
   margin: 0 10px;
-  cursor: none;
-  cursor: unset; /* debug */
 }
 
 .profile-btn:active {

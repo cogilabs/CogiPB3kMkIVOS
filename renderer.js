@@ -1,15 +1,14 @@
 // renderer.js
-// TODO: Bundle Roboto
-let currentTab = 'stat';  // Keep track of the current tab
-let savedTab = currentTab; // Occasionnaly used to remember a tab
-let subMenuskeyDownListener;  // Reference to the global keydown listener
-let itemListskeyDownListener;  // Reference to the global keydown listener
-let settingsKeyListener;  // Reference to the settings keydown listener
+let currentTab = 'stat';
+let savedTab = currentTab;
+let subMenuskeyDownListener;
+let itemListskeyDownListener;
+let settingsKeyListener;
 
 let nickName = "Demo";
 
-let profiles = {};  // Will hold profiles loaded from JSON
-let currentProfile = {};  // Will hold the current profile data
+let profiles = {};
+let currentProfile = {};
 
 let hueValue = 120;
 let satValue = 100;
@@ -17,12 +16,11 @@ let lightValue = 60;
 
 let birthday = new Date();
 
-// Load profiles from JSON file
 fetch('profiles.json')
     .then(response => response.json())
     .then(data => {
         profiles = data;
-        setProfile(nickName);  // Initialize profile once data is loaded
+        setProfile(nickName);
     })
     .catch(error => console.error('Failed to load profiles:', error));
 
@@ -51,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // Set initial active tab
     setActiveTab(currentTab);
 });
 
@@ -216,27 +213,6 @@ export function loadSubMenuContent(category) {
         .catch(error => console.error('Failed to load content:', error));
 }
 
-function loadDateAndTime() {
-    const dateArea = document.getElementById('date');
-    const timeArea = document.getElementById('time');
-    const d = new Date();
-
-    if (dateArea) {
-        dateArea.innerHTML = addLeadingZero(d.getDate()) 
-            + "/" + addLeadingZero(d.getMonth() + 1) 
-            + "/" + d.getFullYear();
-    } else {
-        console.error('Date area not found, cannot load footer.');
-    }
-
-    if (timeArea) {
-        timeArea.innerHTML = addLeadingZero(d.getHours()) 
-            + ":" + addLeadingZero(d.getMinutes());
-    } else {
-        console.error('Time area not found, cannot load footer.');
-    }
-}
-
 function updateDateAndTimeContinuously() {
   const update = () => {
       const dateArea = document.getElementById('date');
@@ -279,7 +255,7 @@ function initializeColorSliders(force) {
         lightDisplay.textContent = lightValue;
     }
 
-    function updateColor() { // TODO: implement reset button, implement button interactions
+    function updateColor() {
 
         if (!force) {
             hueValue = hueSlider.value;

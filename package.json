@@ -11,5 +11,8 @@
   "license": "ISC",
   "devDependencies": {
     "electron": "^30.0.2"
+  },
+  "dependencies": {
+    "@fontsource/roboto": "^5.0.13"
   }
 }
