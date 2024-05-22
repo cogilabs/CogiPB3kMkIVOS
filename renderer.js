@@ -6,6 +6,7 @@ let settingsKeyListener;
 
 let nickName = "Demo";
 
+const profilesList = ["guest", "david", "marie"];
 let currentProfile = {};
 
 let hueValue = 120;
@@ -287,8 +288,7 @@ function initializeColorSliders(force) {
 	const profileButtonsContainer = document.getElementById('profile-buttons');
 	profileButtonsContainer.innerHTML = '<span>Choose an existing profile:&nbsp;</span>';
 
-	const profileNames = ["guest", "david", "marie"];
-	profileNames.forEach(profileName => {
+	profilesList.forEach(profileName => {
 		const button = document.createElement('button');
 		button.className = 'profile-btn';
 		button.dataset.profile = profileName;
