@@ -1,5 +1,5 @@
 {
-    "guest": {
+    "config": {
         "displayName": "Guest",
         "hue": "120",
         "sat": "100",
