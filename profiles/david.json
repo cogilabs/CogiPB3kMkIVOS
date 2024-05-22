@@ -6,7 +6,7 @@
         "light": "60",
         "birthday": "1997/02/10"
     },
-    "inventory": {
+    "inv": {
         "weapons": {
             "firearms": {
                 "pistol": {

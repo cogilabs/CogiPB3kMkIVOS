@@ -3,11 +3,10 @@ import { setItemListsKeyDownListener } from './renderer.js';
 let itemsData = {};
 
 export function fetchItemsData(nickName) {
-  const defaultFileName = 'items/itemsGuest.json';
-  let userFileName = `items/items${nickName}.json`;
+  const defaultFileName = 'profiles/guest.json';
+  let userFileName = `profiles/${nickName.toLowerCase()}.json`;
 
-  if (nickName == 'Demo') userFileName = 'items/itemsGuest.json';
-
+  if (nickName == 'Demo') userFileName = 'profiles/guest.json';
 
   return fetch(userFileName)
       .then(response => {
@@ -38,19 +37,22 @@ export function fetchItemsData(nickName) {
 }
 
 export function initializeItemList(nickName, tabPlusSubCategory) {
+  const category = tabPlusSubCategory.split("/")[0];
   const subCategory = tabPlusSubCategory.split("/")[1];
-    if (!itemsData[subCategory]) {
+    if (!itemsData[category][subCategory]) {
         fetchItemsData(nickName).then(() => {
-            populateInventory(subCategory);
+            populateInventory(tabPlusSubCategory);
             initializeItemListActions();
         });
     } else {
-        populateInventory(subCategory);
+        populateInventory(tabPlusSubCategory);
         initializeItemListActions();
     }
 }
 
-function populateInventory(subCategory) {
+function populateInventory(tabPlusSubCategory) {
+  const category = tabPlusSubCategory.split("/")[0];
+  const subCategory = tabPlusSubCategory.split("/")[1];
     const inventory = document.getElementById('inventory');
     if (!inventory) {
         console.error('Inventory element not found.');
@@ -61,9 +63,9 @@ function populateInventory(subCategory) {
     const itemsArray = [];
 
     // Collect items into an array
-    for (let category in itemsData[subCategory]) {
-        for (let item in itemsData[subCategory][category]) {
-            const itemData = itemsData[subCategory][category][item];
+    for (let type in itemsData[category][subCategory]) {
+        for (let item in itemsData[category][subCategory][type]) {
+            const itemData = itemsData[category][subCategory][type][item];
             itemsArray.push({ id: item, ...itemData });
         }
     }
@@ -171,7 +173,9 @@ function scrollIntoViewIfNeeded(element) {
 
 function updateItemDetails(itemId) {
     const detailsTable = document.getElementById('details-table');
-    const subCategory = detailsTable.getAttribute('sub-category');
+    const tabPlusSubCategory = detailsTable.getAttribute('category');
+    const category = tabPlusSubCategory.split("/")[0];
+    const subCategory = tabPlusSubCategory.split("/")[1];
     if (!detailsTable) {
         console.error('Details table element not found.');
         return;
@@ -180,9 +184,9 @@ function updateItemDetails(itemId) {
     let itemData = null;
 
     // Find item data in itemsData
-    for (let category in itemsData[subCategory]) {
-        if (itemsData[subCategory][category][itemId]) {
-            itemData = itemsData[subCategory][category][itemId];
+    for (let type in itemsData[category][subCategory]) {
+        if (itemsData[category][subCategory][type][itemId]) {
+            itemData = itemsData[category][subCategory][type][itemId];
             break;
         }
     }
