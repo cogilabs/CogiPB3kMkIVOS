@@ -46,11 +46,15 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(response => response.json())
     .then(data => {
       itemsData = data;
-      setProfile("Local");
+      return setProfile("Local");
     })
-    .catch(error => console.error('Error loading items data:', error));
-
-	setActiveTab(currentTab);
+    .then(() => {
+      setActiveTab(currentTab);
+      if (currentTab === "stat") {
+        calculateLevel();
+      }
+    })
+    .catch(error => console.error('Error loading items data or setting profile:', error));
 });
 
 function addLeadingZero(num) {
@@ -61,53 +65,59 @@ function addLeadingZero(num) {
 }
 
 function setProfile(chosenName) {
-  if (chosenName === "Local") {
-    const localProfilePath = window.electron.getLocalProfilePath();
-    window.electron.readFile(localProfilePath)
-      .then(data => {
-        if (data) {
-          isLocalFile = true;
-          const localProfile = JSON.parse(data).config;
-          currentProfile = localProfile;
-          nickName = currentProfile.displayName || "Local";
+  return new Promise((resolve, reject) => {
+    if (chosenName === "Local") {
+      const localProfilePath = window.electron.getLocalProfilePath();
+      window.electron.readFile(localProfilePath)
+        .then(data => {
+          if (data) {
+            isLocalFile = true;
+            const localProfile = JSON.parse(data).config;
+            currentProfile = localProfile;
+            nickName = currentProfile.displayName || "Local";
+            hueValue = currentProfile.hue;
+            satValue = currentProfile.sat;
+            lightValue = currentProfile.light;
+            birthday = new Date(currentProfile.birthday);
+            initializeColorSliders(!(currentTab === 'settings'));
+            initializeColorSliders(true);
+            resolve();
+          } else {
+            isLocalFile = false;
+            setProfile(nickName).then(resolve).catch(reject);
+          }
+        })
+        .catch(error => {
+          console.log("Error reading local profile, falling back to default profile.", error);
+          setProfile(nickName).then(resolve).catch(reject);
+        });
+    } else {
+      let profileFile = `profiles/${chosenName.toLowerCase()}.json`;
+      if (chosenName === "Demo") profileFile = `profiles/guest.json`;
+      fetch(profileFile)
+        .then(response => response.json())
+        .then(data => {
+          currentProfile = data.config;
+          nickName = currentProfile.displayName;
+          if (chosenName === "Demo") nickName = "Demo";
           hueValue = currentProfile.hue;
           satValue = currentProfile.sat;
           lightValue = currentProfile.light;
-          birthday = currentProfile.birthday;
+          birthday = new Date(currentProfile.birthday);
           initializeColorSliders(!(currentTab === 'settings'));
           initializeColorSliders(true);
-        } else {
-          isLocalFile = false;
-          setProfile(nickName);
-        }
-      })
-      .catch(error => {
-        console.log("Error reading local profile, falling back to default profile.", error);
-        setProfile(nickName);
-      });
-  } else {
-    let profileFile = `profiles/${chosenName.toLowerCase()}.json`;
-    if (chosenName === "Demo") profileFile = `profiles/guest.json`;
-    fetch(profileFile)
-      .then(response => response.json())
-      .then(data => {
-        currentProfile = data.config;
-        nickName = currentProfile.displayName;
-        if (chosenName === "Demo") nickName = "Demo";
-        hueValue = currentProfile.hue;
-        satValue = currentProfile.sat;
-        lightValue = currentProfile.light;
-        birthday = currentProfile.birthday;
-        initializeColorSliders(!(currentTab === 'settings'));
-        initializeColorSliders(true);
-      })
-      .catch(error => {
-        console.error(`Profile for ${chosenName} not found, loading profile Guest.`, error);
-        if (chosenName !== "Guest") {
-          setProfile("Guest");
-        }
-      });
-  }
+          resolve();
+        })
+        .catch(error => {
+          console.error(`Profile for ${chosenName} not found, loading profile Guest.`, error);
+          if (chosenName !== "Guest") {
+            setProfile("Guest").then(resolve).catch(reject);
+          } else {
+            reject(error);
+          }
+        });
+    }
+  });
 }
 
 function calculateLevel() {
@@ -125,8 +135,8 @@ function calculateLevel() {
   let totalDaysLeft = Math.round(Math.abs(birthDayThisYear.getTime() - today.getTime()) / 86400000);
   const levelProgress = 100 * (1 - (totalDaysLeft / 365));
 
-  document.getElementById("currentLevel").innerHTML = "LEVEL " + level + '<span class="loading-bar" id="level-bar"><span id="levels"></span></span>';
-  document.getElementById("levels").setAttribute('style', 'width: ' + levelProgress + '%');
+  if (document.getElementById("currentLevel")) document.getElementById("currentLevel").innerHTML = "LEVEL " + level + '<span class="loading-bar" id="level-bar"><span id="levels"></span></span>';
+  if (document.getElementById("levels")) document.getElementById("levels").setAttribute('style', 'width: ' + levelProgress + '%');
 }
 
 function setActiveTab(tab) {
@@ -152,13 +162,18 @@ function setActiveTab(tab) {
     activeItem.classList.add('active');
   }
 
-  loadTabContent(tab);
-  savedTab = currentTab;
-  currentTab = tab;
+  loadTabContent(tab).then(() => {
+    savedTab = currentTab;
+    currentTab = tab;
+
+    if (tab === "stat") {
+      calculateLevel();
+    }
+  }).catch(error => console.error(`Error loading ${tab} content:`, error));
 }
 
 function loadTabContent(tab) {
-  fetch(`tabs/${tab}.html`)
+  return fetch(`tabs/${tab}.html`)
     .then(response => response.text())
     .then(html => {
       const parser = new DOMParser();
@@ -171,7 +186,7 @@ function loadTabContent(tab) {
       interfaceDiv.appendChild(content);
 
       if (tab === "stat" || tab === "inv" || tab === "data") {
-        import('./subMenus.js').then(module => {
+        return import('./subMenus.js').then(module => {
           module.initializeSubMenuActions();
         });
       }
@@ -185,12 +200,14 @@ function loadTabContent(tab) {
         updateDateAndTimeContinuously();
       }
 
-      if (tab === "stat") {
-        calculateLevel();
-      }
+      return Promise.resolve();
     })
-    .catch(error => console.error(`Error loading ${tab} content:`, error));
+    .catch(error => {
+      console.error(`Error loading ${tab} content:`, error);
+      return Promise.reject(error);
+    });
 }
+
 
 export function loadSubMenuContent(category) {
   const contentArea = document.getElementById('content-area');

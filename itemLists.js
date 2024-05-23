@@ -293,7 +293,6 @@ function updateFooterWeight(totalWeight) {
 
 function updateTotalWeight() {
   let totalWeight = 0;
-  console.log(profileItems)
   for (let category in profileItems) {
     for (let subCategory in profileItems[category]) {
       for (let type in profileItems[category][subCategory]) {
