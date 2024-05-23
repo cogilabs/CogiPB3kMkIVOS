@@ -58,10 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function addLeadingZero(num) {
-  if (num < 10) {
-    num = "0" + num;
-  }
-  return num;
+  return num < 10 ? `0${num}` : num;
 }
 
 function setProfile(chosenName) {
@@ -169,6 +166,9 @@ function setActiveTab(tab) {
     if (tab === "stat") {
       calculateLevel();
     }
+		if (tab === "data" || tab === "map") {
+      updateDateAndTimeContinuously();
+    }
   }).catch(error => console.error(`Error loading ${tab} content:`, error));
 }
 
@@ -196,10 +196,6 @@ function loadTabContent(tab) {
         initializeSettingsKeyNavigation();
       }
 
-      if (tab === "data" || tab === "map") {
-        updateDateAndTimeContinuously();
-      }
-
       return Promise.resolve();
     })
     .catch(error => {
@@ -207,7 +203,6 @@ function loadTabContent(tab) {
       return Promise.reject(error);
     });
 }
-
 
 export function loadSubMenuContent(category) {
   const contentArea = document.getElementById('content-area');
