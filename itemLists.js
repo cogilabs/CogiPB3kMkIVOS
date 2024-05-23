@@ -79,6 +79,7 @@ function populateInventory(tabPlusSubCategory) {
   }
 
   const itemsArray = [];
+  let totalWeight = 0;
 
   // Collect items into an array
   for (let type in profileItems[category][subCategory]) {
@@ -87,6 +88,8 @@ function populateInventory(tabPlusSubCategory) {
         const itemData = itemsData[category][subCategory][type][item];
         if (itemData) {
           itemsArray.push({ id: item, type: type, ...itemData });
+          const itemAmount = profileItems[category][subCategory][type][item].amount || 1;
+          totalWeight += parseFloat(itemData.weight) * itemAmount;
         } else {
           console.warn(`Item data for ${item} not found in items.json.`);
         }
@@ -113,6 +116,8 @@ function populateInventory(tabPlusSubCategory) {
     itemElement.addEventListener('click', setItemActiveHandler);  // Add click listener
     inventory.appendChild(itemElement);
   });
+
+  updateFooterWeight(totalWeight);
 }
 
 export function initializeItemListActions() {
@@ -212,16 +217,12 @@ function updateItemDetails(itemId, itemType) {
   // Find item data in itemsData
   if (itemsData[category] && itemsData[category][subCategory] && itemsData[category][subCategory][itemType] && itemsData[category][subCategory][itemType][itemId]) {
     itemData = itemsData[category][subCategory][itemType][itemId];
-    console.log(itemData);
-    console.log(itemsData);
-    console.log(profileItems);
   }
 
   if (itemData) {
     let ammoDetails = '';
     if (itemData.ammoType) {
       const ammoType = itemData.ammoType;
-      const damageType = itemData.damageType;
       let ammoName = ammoType;
       let ammoAmount = 0;
 
@@ -270,5 +271,14 @@ function updateItemDetails(itemId, itemType) {
     `;
   } else {
     console.error('Item data not found.', itemId);
+  }
+}
+
+function updateFooterWeight(totalWeight) {
+  const weightElement = document.querySelector('#footer td.small:first-child');
+  if (weightElement) {
+    weightElement.innerHTML = `<img src="images/weight.svg" height="20" class="black-icon" style="margin: -3.5px 0">&nbsp;&nbsp;${Math.round(totalWeight)}/240`;
+  } else {
+    console.error('Weight element not found in footer.');
   }
 }
