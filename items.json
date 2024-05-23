@@ -1,0 +1,307 @@
+{
+    "inv": {
+        "weapons": {
+            "firearms": {
+                "pistol": {
+                    "name": "10mm Pistol",
+                    "damageType": "bullet",
+                    "damageAmount": "18",
+                    "ammoType": "10mm",
+                    "fireRate": "46",
+                    "range": "83",
+                    "accuracy": "60",
+                    "weight": "3.5",
+                    "value": "50"
+                },
+                "fatMan": {
+                    "name": "Fat Man",
+                    "damageType": "bullet",
+                    "damageAmount": "468",
+                    "ammoType": "miniNuke",
+                    "fireRate": "1",
+                    "range": "117",
+                    "accuracy": "63",
+                    "weight": "30.7",
+                    "value": "512"
+                },
+                "laserMusket": {
+                    "name": "Laser Musket",
+                    "damageType": "energy",
+                    "damageAmount": "33",
+                    "ammoType": "cell",
+                    "fireRate": "6",
+                    "range": "215",
+                    "accuracy": "72",
+                    "weight": "15.4",
+                    "value": "73"
+                },
+                "minigun": {
+                    "name": "Minigun",
+                    "damageType": "bullet",
+                    "damageAmount": "8",
+                    "ammoType": "5mm",
+                    "fireRate": "272",
+                    "range": "131",
+                    "accuracy": "35",
+                    "weight": "27.4",
+                    "value": "382"
+                },
+                "pipeBoltPistol": {
+                    "name": "Pipe Bolt-Action Pistol",
+                    "damageType": "bullet",
+                    "damageAmount": "35",
+                    "ammoType": "308",
+                    "fireRate": "2",
+                    "range": "95",
+                    "accuracy": "63",
+                    "weight": "3.2",
+                    "value": "30"
+                },
+                "shDblShotgun": {
+                    "name": "Short Double-Barrel Shotgun",
+                    "damageType": "bullet",
+                    "damageAmount": "47",
+                    "ammoType": "shell",
+                    "fireRate": "36",
+                    "range": "47",
+                    "accuracy": "16",
+                    "weight": "9",
+                    "value": "39"
+                }
+            },
+            "melee": {
+                "bat": {
+                    "name": "Baseball Bat",
+                    "damageAmount": "28",
+                    "speed": "SLOW",
+                    "weight": "3",
+                    "value": "25"
+                },
+                "machete": {
+                    "name": "Machete",
+                    "damageAmount": "24",
+                    "speed": "MEDIUM",
+                    "weight": "2",
+                    "value": "25"
+                }
+            },
+            "throwables": {
+                "fragMine": {
+                    "name": "Fragmentation Mine",
+                    "damageType": "bullet",
+                    "damageAmount": "101",
+                    "fireRate": "0",
+                    "range": "93",
+                    "accuracy": "0",
+                    "weight": "0.5",
+                    "value": "50"
+                },
+                "molotov": {
+                    "name": "Molotov Cocktail",
+                    "damageType": "bullet",
+                    "damageAmount": "51",
+                    "fireRate": "0",
+                    "range": "93",
+                    "accuracy": "0",
+                    "weight": "0.5",
+                    "value": "20"
+                }
+            }
+        },
+        "apparel": {
+            "armor": {
+                "leatherLeftArm": {
+                    "name": "Leather Left Arm",
+                    "dmgRes": {
+                        "bullet": "1",
+                        "energy": "3"
+                    },
+                    "weight": "2",
+                    "value": "8"
+                },
+                "leatherRightArm": {
+                    "name": "Leather Right Arm",
+                    "dmgRes": {
+                        "bullet": "1",
+                        "energy": "3"
+                    },
+                    "weight": "2",
+                    "value": "8"
+                },
+                "leatherRightLeg": {
+                    "name": "Leather Right Leg",
+                    "dmgRes": {
+                        "bullet": "2",
+                        "energy": "5"
+                    },
+                    "weight": "2",
+                    "value": "10"
+                },
+                "raiderChestPiece": {
+                    "name": "Raider Chest Piece",
+                    "dmgRes": {
+                        "bullet": "4",
+                        "energy": "2"
+                    },
+                    "weight": "7",
+                    "value": "18"
+                },
+                "raiderLeftLeg": {
+                    "name": "Raider Left Leg",
+                    "dmgRes": {
+                        "bullet": "2",
+                        "energy": "2"
+                    },
+                    "weight": "3",
+                    "value": "8"
+                }
+            },
+            "misc": {
+                "vault451Suit": {
+                    "name": "Vault 451 Jumpsuit",
+                    "dmgRes": {
+                        "bullet": "5",
+                        "radiation": "10"
+                    },
+                    "weight": "1",
+                    "value": "20"
+                },
+                "miningHelmet": {
+                    "name": "Mining Helmet",
+                    "dmgRes": {
+                        "bullet": "3"
+                    },
+                    "weight": "5",
+                    "value": "51"
+                },
+                "weddingRing": {
+                    "name": "Wedding Ring",
+                    "weight": "0",
+                    "value": "250"
+                },
+                "weldingGoggles": {
+                    "name": "Welding Goggles",
+                    "special": {
+                        "PER": "1"
+                    },
+                    "weight": "0.3",
+                    "value": "10"
+                }
+            }
+        },
+        "aid": {
+            "drugs": {
+                "stimpak": {
+                    "name": "Stimpak",
+                    "weight": "0.8",
+                    "value": "30"
+                },
+                "radaway": {
+                    "name": "Radaway",
+                    "weight": "0.3",
+                    "value": "25"
+                },
+                "cure": {
+                    "name": "Cure",
+                    "weight": "0.3",
+                    "value": "20"
+                },
+                "buffout": {
+                    "name": "Buffout",
+                    "weight": "0.3",
+                    "value": "30"
+                },
+                "psycho": {
+                    "name": "Psycho",
+                    "weight": "0.3",
+                    "value": "30"
+                },
+                "mentats": {
+                    "name": "Mentats",
+                    "weight": "0.3",
+                    "value": "30"
+                }
+            }
+        },
+        "misc": {
+            "tools": {
+                "pin": {
+                    "name": "Bobby Pin",
+                    "weight": "0",
+                    "value": "1"
+                }
+            }
+        },
+        "junk": {
+            "junk": {
+                "tinCan": {
+                    "name": "Tin Can",
+                    "components": {
+                        "steel": "2"
+                    },
+                    "weight": "0.1",
+                    "value": "1"
+                },
+                "deskFan": {
+                    "name": "Desk Fan",
+                    "components": {
+                        "gear": "2",
+                        "screw": "2",
+                        "steel": "2"
+                    },
+                    "weight": "3",
+                    "value": "4"
+                }
+            }
+        },
+        "mods": {
+            "weapons": {
+
+            },
+            "armor": {
+
+            }
+        },
+        "ammo": {
+            "bullet": {
+                "308": {
+                    "name": ".308 Round",
+                    "weight": "0",
+                    "value": "3"
+
+                },
+                "10mm": {
+                    "name": "10mm Round",
+                    "weight": "0",
+                    "value": "2"
+
+                },
+                "5mm": {
+                    "name": "5mm Round",
+                    "weight": "0",
+                    "value": "1"
+
+                },
+                "shell": {
+                    "name": "Shotgun Shell",
+                    "weight": "0",
+                    "value": "3"
+
+                },
+                "miniNuke": {
+                    "name": "Mini Nuke",
+                    "weight": "0",
+                    "value": "100"
+
+                }
+            },
+            "energy": {
+                "cell": {
+                    "name": "Fusion Cell",
+                    "weight": "0",
+                    "value": "3"
+                }
+            }
+        }
+    }
+}

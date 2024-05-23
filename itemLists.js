@@ -1,8 +1,20 @@
 import { setItemListsKeyDownListener } from './renderer.js';
 
 let itemsData = {};
+let profileItems = {};
 
-export function fetchItemsData(nickName) {
+export function fetchItemsData() {
+  return fetch('items.json')
+    .then(response => response.json())
+    .then(data => {
+      itemsData = data;
+    })
+    .catch(error => {
+      console.error('Failed to load items:', error);
+    });
+}
+
+export function fetchProfileData(nickName) {
   const defaultFileName = 'profiles/guest.json';
   let userFileName = `profiles/${nickName.toLowerCase()}.json`;
 
@@ -11,27 +23,27 @@ export function fetchItemsData(nickName) {
   return fetch(userFileName)
     .then(response => {
       if (!response.ok) {
-          throw new Error('User file not found');
+        throw new Error('User file not found');
       }
       return response.json();
     })
     .then(data => {
-      itemsData = data;
+      profileItems = data;
     })
     .catch(error => {
       console.warn(`Failed to load ${userFileName}, trying ${defaultFileName}.`, error);
       return fetch(defaultFileName)
         .then(response => {
           if (!response.ok) {
-              throw new Error('Default file not found');
+            throw new Error('Default file not found');
           }
           return response.json();
         })
         .then(data => {
-          itemsData = data;
+          profileItems = data;
         })
         .catch(error => {
-          console.error('Failed to load items:', error);
+          console.error('Failed to load profile items:', error);
         });
     });
 }
@@ -39,15 +51,16 @@ export function fetchItemsData(nickName) {
 export function initializeItemList(nickName, tabPlusSubCategory) {
   const category = tabPlusSubCategory.split("/")[0];
   const subCategory = tabPlusSubCategory.split("/")[1];
-    if (!itemsData[category][subCategory]) {
-      fetchItemsData(nickName).then(() => {
-        populateInventory(tabPlusSubCategory);
-        initializeItemListActions();
-      });
-    } else {
+
+  fetchItemsData()
+    .then(() => fetchProfileData(nickName))
+    .then(() => {
       populateInventory(tabPlusSubCategory);
       initializeItemListActions();
-    }
+    })
+    .catch(error => {
+      console.error('Error initializing item list:', error);
+    });
 }
 
 function populateInventory(tabPlusSubCategory) {
@@ -60,13 +73,24 @@ function populateInventory(tabPlusSubCategory) {
   }
   inventory.innerHTML = '';  // Clear any existing items
 
+  if (!profileItems[category] || !profileItems[category][subCategory]) {
+    console.error(`Profile data for ${category}/${subCategory} not found.`);
+    return;
+  }
+
   const itemsArray = [];
 
   // Collect items into an array
-  for (let type in itemsData[category][subCategory]) {
-    for (let item in itemsData[category][subCategory][type]) {
-      const itemData = itemsData[category][subCategory][type][item];
-      itemsArray.push({ id: item, ...itemData });
+  for (let type in profileItems[category][subCategory]) {
+    for (let item in profileItems[category][subCategory][type]) {
+      if (profileItems[category][subCategory][type][item].possessed === "true") {
+        const itemData = itemsData[category][subCategory][type][item];
+        if (itemData) {
+          itemsArray.push({ id: item, type: type, ...itemData });
+        } else {
+          console.warn(`Item data for ${item} not found in items.json.`);
+        }
+      }
     }
   }
 
@@ -77,13 +101,14 @@ function populateInventory(tabPlusSubCategory) {
   itemsArray.forEach(itemData => {
     const itemElement = document.createElement('div');
     itemElement.classList.add('itemList-item', 'equipableList-item');
-    if (itemData.equipped) {
+    if (profileItems[category][subCategory][itemData.type][itemData.id].equipped === "true") {
       itemElement.classList.add('equipped');
     }
     itemElement.setAttribute('item-id', itemData.id);
+    itemElement.setAttribute('item-type', itemData.type);
     itemElement.innerHTML = `<span>${itemData.name}</span>`;
-    if (itemData.amount) {
-      itemElement.innerHTML += ` (${itemData.amount})`;
+    if (profileItems[category][subCategory][itemData.type][itemData.id].amount && profileItems[category][subCategory][itemData.type][itemData.id].amount > 1) {
+      itemElement.innerHTML += ` (${profileItems[category][subCategory][itemData.type][itemData.id].amount})`;
     }
     itemElement.addEventListener('click', setItemActiveHandler);  // Add click listener
     inventory.appendChild(itemElement);
@@ -149,8 +174,9 @@ export function setItemActive(selectedItem) {
   scrollIntoViewIfNeeded(selectedItem);
 
   const itemId = selectedItem.getAttribute('item-id');
+  const itemType = selectedItem.getAttribute('item-type');
   if (itemId != "loading")
-    updateItemDetails(itemId);
+    updateItemDetails(itemId, itemType);
 }
 
 function scrollIntoViewIfNeeded(element) {
@@ -171,7 +197,7 @@ function scrollIntoViewIfNeeded(element) {
   }
 }
 
-function updateItemDetails(itemId) {
+function updateItemDetails(itemId, itemType) {
   const detailsTable = document.getElementById('details-table');
   const tabPlusSubCategory = detailsTable.getAttribute('category');
   const category = tabPlusSubCategory.split("/")[0];
@@ -184,14 +210,45 @@ function updateItemDetails(itemId) {
   let itemData = null;
 
   // Find item data in itemsData
-  for (let type in itemsData[category][subCategory]) {
-    if (itemsData[category][subCategory][type][itemId]) {
-      itemData = itemsData[category][subCategory][type][itemId];
-      break;
-    }
+  if (itemsData[category] && itemsData[category][subCategory] && itemsData[category][subCategory][itemType] && itemsData[category][subCategory][itemType][itemId]) {
+    itemData = itemsData[category][subCategory][itemType][itemId];
+    console.log(itemData);
+    console.log(itemsData);
+    console.log(profileItems);
   }
 
   if (itemData) {
+    let ammoDetails = '';
+    if (itemData.ammoType) {
+      const ammoType = itemData.ammoType;
+      const damageType = itemData.damageType;
+      let ammoName = ammoType;
+      let ammoAmount = 0;
+
+      // Look for the ammo details in itemsData and profileItems
+      for (let ammoCategory in itemsData.inv.ammo) {
+        if (itemsData.inv.ammo[ammoCategory][ammoType]) {
+          ammoName = itemsData.inv.ammo[ammoCategory][ammoType].name;
+          break;
+        }
+      }
+
+      for (let ammoCategory in profileItems.inv.ammo) {
+        if (profileItems.inv.ammo[ammoCategory][ammoType] && profileItems.inv.ammo[ammoCategory][ammoType].amount) {
+          ammoAmount = profileItems.inv.ammo[ammoCategory][ammoType].amount;
+          break;
+        }
+      }
+
+      ammoDetails = `
+      <tr>
+        <td id="ammo">
+          <span><img src="images/ammo.svg" height="11" class="black-icon">&nbsp;${ammoName}</span><span>${ammoAmount}</span>
+        </td>
+      </tr>
+      `;
+    }
+
     detailsTable.innerHTML = `
       ${itemData.damageAmount ? `
       <tr>
@@ -203,13 +260,7 @@ function updateItemDetails(itemId) {
         </td>
       </tr>
       ` : ''}
-      ${itemData.ammoType ? `
-      <tr>
-        <td id="ammo">
-          <span><img src="images/ammo.svg" height="11" class="black-icon">&nbsp;${itemData.ammoType}</span><span>${itemData.ammoAmount}</span>
-        </td>
-      </tr>
-      ` : ''}
+      ${ammoDetails}
       ${itemData.speed ? `<tr><td><span>Speed</span><span>${itemData.speed}</span></td></tr>` : ''}
       ${itemData.fireRate ? `<tr><td><span>Fire Rate</span><span>${itemData.fireRate}</span></td></tr>` : ''}
       ${itemData.range ? `<tr><td><span>Range</span><span>${itemData.range}</span></td></tr>` : ''}

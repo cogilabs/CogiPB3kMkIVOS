@@ -9,6 +9,7 @@ let nickName = "Demo";
 const profilesList = ["guest", "david", "marie"];
 let currentProfile = {};
 let isLocalFile = false;
+let itemsData = {};
 
 let hueValue = 120;
 let satValue = 100;
@@ -40,8 +41,15 @@ document.addEventListener('DOMContentLoaded', () => {
       setActiveTab(item.dataset.tab);
     });
   });
-  setProfile("Local");
-  setActiveTab(currentTab);
+  
+  fetch('items.json')
+    .then(response => response.json())
+    .then(data => {
+      itemsData = data;
+      setProfile("Local");
+      setActiveTab(currentTab);
+    })
+    .catch(error => console.error('Error loading items data:', error));
 });
 
 function addLeadingZero(num) {
@@ -52,41 +60,39 @@ function addLeadingZero(num) {
 }
 
 function setProfile(chosenName) {
-  if (chosenName == "Local") {
-    // Check if the local profile file exists
-  const localProfilePath = window.electron.getLocalProfilePath();
-  window.electron.readFile(localProfilePath)
-    .then(data => {
-      if (data) {
-        isLocalFile = true;
-        const localProfile = JSON.parse(data).config;
-        currentProfile = localProfile;
-        nickName = currentProfile.displayName || "Local";
-        hueValue = currentProfile.hue;
-        satValue = currentProfile.sat;
-        lightValue = currentProfile.light;
-        birthday = currentProfile.birthday;
-        initializeColorSliders(!(currentTab === 'settings'));
-        initializeColorSliders(true);
-      } else {
-        // Fallback to "Demo" profile if local.json does not exist
-        isLocalFile = false;
+  if (chosenName === "Local") {
+    const localProfilePath = window.electron.getLocalProfilePath();
+    window.electron.readFile(localProfilePath)
+      .then(data => {
+        if (data) {
+          isLocalFile = true;
+          const localProfile = JSON.parse(data).config;
+          currentProfile = localProfile;
+          nickName = currentProfile.displayName || "Local";
+          hueValue = currentProfile.hue;
+          satValue = currentProfile.sat;
+          lightValue = currentProfile.light;
+          birthday = currentProfile.birthday;
+          initializeColorSliders(!(currentTab === 'settings'));
+          initializeColorSliders(true);
+        } else {
+          isLocalFile = false;
+          setProfile(nickName);
+        }
+      })
+      .catch(error => {
+        console.log("Error reading local profile, falling back to default profile.", error);
         setProfile(nickName);
-      }
-    })
-    .catch(error => {
-      console.log("Error reading local profile, falling back to default profile.", error);
-      setProfile(nickName);
-    });
+      });
   } else {
-    let profileFile = `profiles/${chosenName.toLowerCase()}.json`
-    if (chosenName == "Demo") profileFile = `profiles/guest.json`
+    let profileFile = `profiles/${chosenName.toLowerCase()}.json`;
+    if (chosenName === "Demo") profileFile = `profiles/guest.json`;
     fetch(profileFile)
       .then(response => response.json())
       .then(data => {
         currentProfile = data.config;
         nickName = currentProfile.displayName;
-        if (chosenName == "Demo") nickName = "Demo";
+        if (chosenName === "Demo") nickName = "Demo";
         hueValue = currentProfile.hue;
         satValue = currentProfile.sat;
         lightValue = currentProfile.light;
@@ -207,19 +213,19 @@ export function loadSubMenuContent(category) {
           tableContent.innerHTML = '';
         }
       }
-      if (category == "stat/status") {
+      if (category === "stat/status") {
         document.getElementById("name").innerHTML = nickName;
-        if (nickName == 'Guest') {
+        if (nickName === 'Guest') {
           document.getElementById("name").innerHTML = '&nbsp;';
         }
-        if (nickName == 'Demo') {
+        if (nickName === 'Demo') {
           document.getElementById("name").innerHTML = 'DEMO MODE';
         }
       }
       if (tab === "inv") {
         import('./itemLists.js').then(module => {
           setTimeout(() => {
-            module.fetchItemsData(nickName).then(() => {
+            module.fetchItemsData().then(() => {
               module.initializeItemList(nickName, category);
             });
           }, 0);
