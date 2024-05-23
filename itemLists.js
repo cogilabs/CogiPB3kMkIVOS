@@ -29,6 +29,7 @@ export function fetchProfileData(nickName) {
     })
     .then(data => {
       profileItems = data;
+      updateTotalWeight(); // Update total weight after fetching profile data
     })
     .catch(error => {
       console.warn(`Failed to load ${userFileName}, trying ${defaultFileName}.`, error);
@@ -41,6 +42,7 @@ export function fetchProfileData(nickName) {
         })
         .then(data => {
           profileItems = data;
+          updateTotalWeight(); // Update total weight after fetching default profile data
         })
         .catch(error => {
           console.error('Failed to load profile items:', error);
@@ -79,7 +81,6 @@ function populateInventory(tabPlusSubCategory) {
   }
 
   const itemsArray = [];
-  let totalWeight = 0;
 
   // Collect items into an array
   for (let type in profileItems[category][subCategory]) {
@@ -88,8 +89,6 @@ function populateInventory(tabPlusSubCategory) {
         const itemData = itemsData[category][subCategory][type][item];
         if (itemData) {
           itemsArray.push({ id: item, type: type, ...itemData });
-          const itemAmount = profileItems[category][subCategory][type][item].amount || 1;
-          totalWeight += parseFloat(itemData.weight) * itemAmount;
         } else {
           console.warn(`Item data for ${item} not found in items.json.`);
         }
@@ -116,8 +115,6 @@ function populateInventory(tabPlusSubCategory) {
     itemElement.addEventListener('click', setItemActiveHandler);  // Add click listener
     inventory.appendChild(itemElement);
   });
-
-  updateFooterWeight(totalWeight);
 }
 
 export function initializeItemListActions() {
@@ -292,4 +289,26 @@ function updateFooterWeight(totalWeight) {
   } else {
     console.error('Weight element not found in footer.');
   }
+}
+
+function updateTotalWeight() {
+  let totalWeight = 0;
+  console.log(profileItems)
+  for (let category in profileItems) {
+    for (let subCategory in profileItems[category]) {
+      for (let type in profileItems[category][subCategory]) {
+        for (let item in profileItems[category][subCategory][type]) {
+          if (profileItems[category][subCategory][type][item].possessed === "true") {
+            const itemData = itemsData[category][subCategory][type][item];
+            if (itemData) {
+              const itemAmount = profileItems[category][subCategory][type][item].amount || 1;
+              totalWeight += parseFloat(itemData.weight) * itemAmount;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  updateFooterWeight(totalWeight);
 }
