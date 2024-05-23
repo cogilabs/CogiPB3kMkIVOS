@@ -275,7 +275,7 @@ function updateItemDetails(itemId, itemType) {
 }
 
 function updateFooterWeight(totalWeight) {
-  const weightElement = document.querySelector('#footer td.small:first-child');
+  const weightElement = document.getElementById('weight');
   if (weightElement) {
     weightElement.innerHTML = `<img src="images/weight.svg" height="20" class="black-icon" style="margin: -3.5px 0">&nbsp;&nbsp;${Math.round(totalWeight)}/240`;
   } else {
