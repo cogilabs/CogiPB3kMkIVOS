@@ -47,9 +47,10 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(data => {
       itemsData = data;
       setProfile("Local");
-      setActiveTab(currentTab);
     })
     .catch(error => console.error('Error loading items data:', error));
+
+	setActiveTab(currentTab);
 });
 
 function addLeadingZero(num) {
