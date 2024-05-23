@@ -237,7 +237,7 @@
                 "tinCan": {
                     "name": "Tin Can",
                     "components": {
-                        "steel": "2"
+                        "steel": "1"
                     },
                     "weight": "0.1",
                     "value": "1"
@@ -246,7 +246,7 @@
                     "name": "Desk Fan",
                     "components": {
                         "gear": "2",
-                        "screw": "2",
+                        "screw": "3",
                         "steel": "2"
                     },
                     "weight": "3",

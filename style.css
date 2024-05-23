@@ -188,6 +188,10 @@ button.selected {
   width: 100%;
 }
 
+#junk-components {
+  text-align: center;
+}
+
 /*---*/
 
 .loading-bar {

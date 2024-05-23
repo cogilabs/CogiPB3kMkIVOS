@@ -204,6 +204,7 @@ function scrollIntoViewIfNeeded(element) {
 
 function updateItemDetails(itemId, itemType) {
   const detailsTable = document.getElementById('details-table');
+  const junkComponents = document.getElementById('junk-components');
   const tabPlusSubCategory = detailsTable.getAttribute('category');
   const category = tabPlusSubCategory.split("/")[0];
   const subCategory = tabPlusSubCategory.split("/")[1];
@@ -220,37 +221,7 @@ function updateItemDetails(itemId, itemType) {
   }
 
   if (itemData) {
-    let ammoDetails = '';
-    if (itemData.ammoType) {
-      const ammoType = itemData.ammoType;
-      let ammoName = ammoType;
-      let ammoAmount = 0;
-
-      // Look for the ammo details in itemsData and profileItems
-      for (let ammoCategory in itemsData.inv.ammo) {
-        if (itemsData.inv.ammo[ammoCategory][ammoType]) {
-          ammoName = itemsData.inv.ammo[ammoCategory][ammoType].name;
-          break;
-        }
-      }
-
-      for (let ammoCategory in profileItems.inv.ammo) {
-        if (profileItems.inv.ammo[ammoCategory][ammoType] && profileItems.inv.ammo[ammoCategory][ammoType].amount) {
-          ammoAmount = profileItems.inv.ammo[ammoCategory][ammoType].amount;
-          break;
-        }
-      }
-
-      ammoDetails = `
-      <tr>
-        <td id="ammo">
-          <span><img src="images/ammo.svg" height="11" class="black-icon">&nbsp;${ammoName}</span><span>${ammoAmount}</span>
-        </td>
-      </tr>
-      `;
-    }
-
-    detailsTable.innerHTML = `
+    let detailsHTML = `
       ${itemData.damageAmount ? `
       <tr>
         <td id="dmg">
@@ -261,7 +232,13 @@ function updateItemDetails(itemId, itemType) {
         </td>
       </tr>
       ` : ''}
-      ${ammoDetails}
+      ${itemData.ammoType ? `
+      <tr>
+        <td id="ammo">
+          <span><img src="images/ammo.svg" height="11" class="black-icon">&nbsp;${getAmmoName(itemData.ammoType)}</span><span>${getAmmoAmount(itemData.ammoType)}</span>
+        </td>
+      </tr>
+      ` : ''}
       ${itemData.speed ? `<tr><td><span>Speed</span><span>${itemData.speed}</span></td></tr>` : ''}
       ${itemData.fireRate ? `<tr><td><span>Fire Rate</span><span>${itemData.fireRate}</span></td></tr>` : ''}
       ${itemData.range ? `<tr><td><span>Range</span><span>${itemData.range}</span></td></tr>` : ''}
@@ -269,9 +246,43 @@ function updateItemDetails(itemId, itemType) {
       ${itemData.weight ? `<tr><td><span>Weight</span><span>${itemData.weight}</span></td></tr>` : ''}
       ${itemData.value ? `<tr><td><span>Value</span><span>${itemData.value}</span></td></tr>` : ''}
     `;
+
+    detailsTable.innerHTML = detailsHTML;
+
+    // Check for components if item is junk
+    if (category === 'inv' && subCategory === 'junk' && itemData.components) {
+      let componentsHTML = '';
+      for (let component in itemData.components) {
+        componentsHTML += `<span>${component.charAt(0).toUpperCase() + component.slice(1)} (${itemData.components[component]})</span><br>`;
+      }
+      junkComponents.innerHTML = componentsHTML;
+    } else {
+      junkComponents.innerHTML = ''; // Clear components if not a junk item
+    }
   } else {
     console.error('Item data not found.', itemId);
+    detailsTable.innerHTML = '';
+    junkComponents.innerHTML = ''; // Clear components if item data is not found
   }
+}
+
+// Helper functions to get ammo name and amount
+function getAmmoName(ammoType) {
+  for (let type in itemsData.inv.ammo) {
+    if (itemsData.inv.ammo[type][ammoType]) {
+      return itemsData.inv.ammo[type][ammoType].name;
+    }
+  }
+  return ammoType;
+}
+
+function getAmmoAmount(ammoType) {
+  for (let type in profileItems.inv.ammo) {
+    if (profileItems.inv.ammo[type][ammoType]) {
+      return profileItems.inv.ammo[type][ammoType].amount;
+    }
+  }
+  return 0;
 }
 
 function updateFooterWeight(totalWeight) {
