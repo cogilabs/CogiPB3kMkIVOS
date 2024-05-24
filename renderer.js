@@ -316,9 +316,9 @@ function initializeColorSliders(force) {
     document.documentElement.style.setProperty('--biHue', `${hueValue - 50}deg`);
     document.documentElement.style.setProperty('--realHue', `${hueValue}deg`);
     document.documentElement.style.setProperty('--sat', `${satValue}%`);
-    document.documentElement.style.setProperty('--biSat', `${Math.pow(parseInt(satValue), 2) / 10}%`);
+    document.documentElement.style.setProperty('--biSat', `${satValue*5}%`);
     document.documentElement.style.setProperty('--brightness', `${lightValue * 2}%`);
-    document.documentElement.style.setProperty('--biBrightness', `${lightValue * 1.5}%`);
+    document.documentElement.style.setProperty('--biBrightness', `${lightValue * 2}%`);
 
     document.documentElement.style.setProperty('--light', newLight);
     document.documentElement.style.setProperty('--mediumLight', newMedLight);

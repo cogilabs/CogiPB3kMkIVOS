@@ -1,9 +1,13 @@
+:root {
+  --cursor: none;/* none for prod, unset for dev*/
+}
+
 body {
     background-color: black;
     margin: 0;
     user-select: none;
     scrollbar-color: var(--light) #00000000;
-    cursor: none;
+    cursor: var(--cursor);
 }
 
 #innerBody {
@@ -77,7 +81,7 @@ input[type="range"] {
   height: 8px;
   background: var(--medium);
   outline: none;
-  cursor: none;
+  cursor: var(--cursor);
 }
 
 input[type="range"]::-webkit-slider-thumb {
@@ -112,7 +116,7 @@ input[type="range"]::-webkit-slider-thumb {
   background-color: var(--dark);
   border: solid 1px var(--light);
   margin: 0 10px;
-  cursor: none;
+  cursor: var(--cursor);
 }
 
 .profile-btn:active {
