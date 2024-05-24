@@ -400,3 +400,21 @@ td.status-overview-separator {
   background-color: var(--light);
   color: var(--darkText);
 }
+
+.icon {
+  display: inline-block;
+  width: 85px;
+  height: 85px;
+  overflow: hidden;
+}
+
+.icon>span {
+  -webkit-filter: drop-shadow(85px 0px var(--light));
+  filter: drop-shadow(85px 0px var(--light));
+  background-position: -100% 0;
+  margin-left: -85px;
+  display: block;
+  width: 85px; /* +1px for chrome bug...*/
+  height: 85px;
+  background-image: url(./images/caps.svg);
+}
