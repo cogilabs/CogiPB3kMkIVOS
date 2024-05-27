@@ -4,22 +4,22 @@
 
 body {
   background-color: var(--darkText);
-    margin: 0;
-    user-select: none;
-    scrollbar-color: var(--light) #00000000;
-    cursor: var(--cursor);
+  margin: 0;
+  user-select: none;
+  scrollbar-color: var(--light) #00000000;
+  cursor: var(--cursor);
 }
 
 #innerBody {
-    color: var(--light);
-    font-family: Roboto;
-    width: 640px;
-    height: 435px;
-    position: fixed;
-    top: 0;
-    left: 80px;
-    padding-top: 45px;
-    overflow: hidden;
+  color: var(--light);
+  font-family: Roboto;
+  width: 640px;
+  height: 435px;
+  position: fixed;
+  top: 0;
+  left: 80px;
+  padding-top: 45px;
+  overflow: hidden;
 }
 
 .navbar {
@@ -416,4 +416,17 @@ td.status-overview-separator {
   width: 85px; /* +1px for chrome bug...*/
   height: 85px;
   background-image: url(./images/caps.svg);
+}
+
+/*---*/
+
+#map-template {
+  display: block;
+  overflow: scroll;
+  height: 390px;
+}
+
+.map-image {
+  filter: invert() sepia(1) contrast(4) brightness(1) hue-rotate(var(--biHue)); /* Invert()? */
+  width: 200%;
 }
