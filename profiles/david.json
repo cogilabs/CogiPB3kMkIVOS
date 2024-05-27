@@ -1,9 +1,10 @@
 {
     "config": {
         "displayName": "David",
-        "hue": "120",
+        "hue": "60",
         "sat": "100",
         "light": "60",
+        "lightOffset": "100",
         "birthday": "1997/02/10"
     },
     "inv": {

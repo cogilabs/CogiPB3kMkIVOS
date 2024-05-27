@@ -430,6 +430,8 @@ td.status-overview-separator {
   color: var(--darkText);
 }
 
+/*---*/
+/*
 .icon {
   display: inline-block;
   width: 85px;
@@ -443,11 +445,11 @@ td.status-overview-separator {
   background-position: -100% 0;
   margin-left: -85px;
   display: block;
-  width: 85px; /* +1px for chrome bug...*/
+  width: 85px;
   height: 85px;
   background-image: url(./images/caps.svg);
 }
-
+*/
 /*---*/
 
 #map-template {

@@ -4,6 +4,7 @@
         "hue": "120",
         "sat": "100",
         "light": "60",
+        "lightOffset": "100",
         "birthday": "2000/01/01"
     },
     "inv": {
