@@ -169,6 +169,11 @@ function setActiveTab(tab) {
 		if (tab === "data" || tab === "map") {
       updateDateAndTimeContinuously();
     }
+    if (tab === "radio") {
+      return import('./radioWave.js').then(module => {
+          module.radioWave();
+        });
+    }
   }).catch(error => console.error(`Error loading ${tab} content:`, error));
 }
 

@@ -334,6 +334,35 @@ td.status-overview-separator {
 
 /*---*/
 
+.radio-left-half {
+  width: 50%;
+}
+
+.radio-right-half {
+  width: 50%;
+}
+
+.radio-right-half div {
+  display: flex;
+  background-color: #00000000;
+  margin: 0;
+}
+
+.wave {
+  animation: moveWave 1s linear infinite;
+}
+
+@keyframes moveWave {
+  from {
+      transform: translateX(0%);
+  }
+  to {
+      transform: translateX(-100%);
+  }
+}
+
+/*---*/
+
 .equipableList {
   height: 100%;
   overflow-y: auto;
