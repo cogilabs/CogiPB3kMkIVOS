@@ -1,7 +1,7 @@
 
 export function radioWave() {
-    const waveLength = 600; // Total length of the wave
-    const numPoints = 100; // Number of points in the wave
+    const waveLength = 400; // Total length of the wave
+    const numPoints = 75; // Number of points in the wave
     const centerY = 200; // Center Y position
     const minAmplitude = 50;
     const maxAmplitude = 150;
@@ -39,7 +39,7 @@ export function radioWave() {
     waveClone.setAttribute('fill', 'none');
     waveClone.setAttribute('stroke', 'var(--light)');
     waveClone.setAttribute('stroke-width', '2');
-    waveClone.setAttribute('transform', 'translate(600, 0)');
+    waveClone.setAttribute('transform', 'translate(400, 0)');
     document.getElementById('wave-path').appendChild(waveClone);
 
     function createGraduations() {
@@ -48,10 +48,10 @@ export function radioWave() {
 
         // Vertical graduations
         for (let y = 0; y <= 400; y += 10) {
-            if (y >= 390) continue;
+            if (y >= 400) continue;
             const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-            line.setAttribute('x1', (y+10) % 50 === 0 ? 2 : 6); // Longer graduation for multiples of 50
-            line.setAttribute('x2', 10);
+            line.setAttribute('x1', y % 50 === 0 ? 393 : 396); // Longer graduation for multiples of 50
+            line.setAttribute('x2', 400);
             line.setAttribute('y1', y);
             line.setAttribute('y2', y);
             line.setAttribute('stroke', 'var(--light)');
@@ -60,13 +60,13 @@ export function radioWave() {
         }
 
         // Horizontal graduations
-        for (let x = 0; x <= 600; x += 10) {
-            if (x <= 10) continue;
+        for (let x = 0; x <= 400; x += 10) {
+            if (x >= 400) continue;
             const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
             line.setAttribute('x1', x);
             line.setAttribute('x2', x);
-            line.setAttribute('y1', 391);
-            line.setAttribute('y2', (x-10) % 50 === 0 ? 396 : 393); // Longer graduation for multiples of 50
+            line.setAttribute('y1', 400);
+            line.setAttribute('y2', x % 50 === 0 ? 393 : 396); // Longer graduation for multiples of 50
             line.setAttribute('stroke', 'var(--light)');
             line.setAttribute('stroke-width', '2');
             horizontalGraduations.appendChild(line);

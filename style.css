@@ -335,17 +335,18 @@ td.status-overview-separator {
 /*---*/
 
 .radio-left-half {
-  width: 50%;
+  width: 60%;
 }
 
 .radio-right-half {
-  width: 50%;
+  width: 40%;
 }
 
 .radio-right-half div {
   display: flex;
   background-color: #00000000;
-  margin: 0;
+  margin: 40px 0;
+  justify-content: flex-end;
 }
 
 .wave {
