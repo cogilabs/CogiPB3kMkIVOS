@@ -470,6 +470,7 @@ td.status-overview-separator {
 #map-template {
   display: block;
   overflow: scroll;
+  scrollbar-width: thin;
   height: 390px;
 }
 
