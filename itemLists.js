@@ -51,9 +51,6 @@ export function fetchProfileData(nickName) {
 }
 
 export function initializeItemList(nickName, tabPlusSubCategory) {
-  const category = tabPlusSubCategory.split("/")[0];
-  const subCategory = tabPlusSubCategory.split("/")[1];
-
   fetchItemsData()
     .then(() => fetchProfileData(nickName))
     .then(() => {
@@ -120,10 +117,7 @@ function populateInventory(tabPlusSubCategory) {
 export function initializeItemListActions() {
   const itemListItems = document.querySelectorAll('.itemList-item');
 
-  if (itemListItems.length === 0) {
-    console.warn('No items found in the item list.');
-    return;
-  }
+  if (itemListItems.length === 0) return;
 
   itemListItems.forEach(item => {
     item.removeEventListener('click', setItemActiveHandler); // Remove old listener to avoid duplicates
@@ -201,14 +195,11 @@ function scrollIntoViewIfNeeded(element) {
 
 function updateItemDetails(itemId, itemType) {
   const detailsTable = document.getElementById('details-table');
+  if (!detailsTable) return;
   const junkComponents = document.getElementById('junk-components');
   const tabPlusSubCategory = detailsTable.getAttribute('category');
   const category = tabPlusSubCategory.split("/")[0];
   const subCategory = tabPlusSubCategory.split("/")[1];
-  if (!detailsTable) {
-    console.error('Details table element not found.');
-    return;
-  }
 
   let itemData = null;
 
@@ -253,8 +244,6 @@ function updateItemDetails(itemId, itemType) {
         componentsHTML += `<span>${component.charAt(0).toUpperCase() + component.slice(1)} (${itemData.components[component]})</span><br>`;
       }
       junkComponents.innerHTML = componentsHTML;
-    } else {
-      junkComponents.innerHTML = ''; // Clear components if not a junk item
     }
   } else {
     console.error('Item data not found.', itemId);
