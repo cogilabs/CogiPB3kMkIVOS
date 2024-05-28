@@ -41,6 +41,12 @@ Note the footers for the inventory tabs:
 For the Data and Map tabs, the footer gives the date and time, so the Pip-Boy could even be used as a watch:  
 ![Data/Quests](/readme_sources/images/quests.png)  
   
+For the Map, since it's mostly for cosplays during conventions, I tested with a low-resolution version of the map of my city's last year local convention, just to see. The CSS filters work great to make a "Pip-Boyified" map with any image:
+![Map](/readme_sources/images/map.png)  
+  
+For the Radio, I put the games radios as "unreachable" and my own radio as the only working one. For the graph, it's randomly generated, I plan to try to smooth it more:  
+![Radio](/readme_sources/images/radio.png)  
+  
 This settings page allows you to customize you Pip-Boy screen colors.  
 ![The Settings page](/readme_sources/images/settings.png)  
   

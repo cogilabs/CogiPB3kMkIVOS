@@ -41,6 +41,12 @@ Notez les pieds de page pour les onglets d'inventaire :
 Pour les onglets Données et Carte, le pied de page donne la date et l'heure, donc le Pip-Boy peut même être utilisé comme une montre :  
 ![Données/Quêtes](/readme_sources/images/quests.png)  
   
+Pour la carte, comme c'est principalement pour des cosplays en conventions, j'ai fais un test avec une version basse résolution de la carte de la convention locale de ma ville, juste pour voir. Les filtres CSS sont incroyables pour "Pip-Boyifier" n'importe quelle image de carte:  
+![Carte](/readme_sources/images/map.png)  
+  
+Pour la radio, j'ai mis les radios des jeux en "inaccessible", et ma propre radio comme la seule fonctionnelle, pour le graphique, il est généré aléatoirement, j'ai l'intention de le lisser plus à l'avenir:  
+![Radio](/readme_sources/images/radio.png)  
+  
 Cette page de paramètres vous permet de personnaliser les couleurs de l'écran de votre Pip-Boy.  
 ![La page des Paramètres](/readme_sources/images/settings.png)  
   
