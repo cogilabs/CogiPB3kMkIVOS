@@ -145,6 +145,11 @@ export function handleItemListsKeys(event, itemListsItem) {
         setItemActive(itemListsItem[newIndex]);
       }
       break;
+    case 'KeyD':
+      if(itemListsItem[Array.from(itemListsItem).indexOf(activeItem)].parentElement.id === 'radio-list') {
+        setEquippedState(itemListsItem[Array.from(itemListsItem).indexOf(activeItem)]);
+      }
+      break;
   }
 }
 
@@ -173,6 +178,22 @@ export function setItemActive(selectedItem) {
   const itemType = selectedItem.getAttribute('item-type');
   if (itemId != "loading")
     updateItemDetails(itemId, itemType);
+}
+
+function setEquippedState(selectedItem) {
+  if (!selectedItem) {
+    console.error('No item selected to set as equipped.');
+    return;
+  }
+
+  const itemListItems = document.querySelectorAll('.itemList-item');
+
+  itemListItems.forEach(item => {
+    if (item != selectedItem) item.classList.remove('equipped');
+  });
+
+  selectedItem.classList.toggle('equipped');
+
 }
 
 function scrollIntoViewIfNeeded(element) {

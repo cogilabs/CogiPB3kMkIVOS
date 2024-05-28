@@ -214,6 +214,12 @@ function loadTabContent(tab) {
         initializeMapKeyNavigation();
       }
 
+      if (tab === "radio") {
+        import('./itemLists.js').then(module => {
+          module.initializeItemListActions();
+        });
+      }
+
       return Promise.resolve();
     })
     .catch(error => {
