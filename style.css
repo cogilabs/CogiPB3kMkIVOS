@@ -446,26 +446,6 @@ td.status-overview-separator {
 }
 
 /*---*/
-/*
-.icon {
-  display: inline-block;
-  width: 85px;
-  height: 85px;
-  overflow: hidden;
-}
-
-.icon>span {
-  -webkit-filter: drop-shadow(85px 0px var(--light));
-  filter: drop-shadow(85px 0px var(--light));
-  background-position: -100% 0;
-  margin-left: -85px;
-  display: block;
-  width: 85px;
-  height: 85px;
-  background-image: url(./images/caps.svg);
-}
-*/
-/*---*/
 
 #map-template {
   display: block;
@@ -475,6 +455,6 @@ td.status-overview-separator {
 }
 
 .map-image {
-  filter: invert(var(--invertMap)) sepia(1) contrast(4) brightness(1) hue-rotate(var(--biHue)); /* Invert()? */
+  filter: invert(var(--invertMap)) sepia(1) contrast(4) brightness(1) hue-rotate(var(--biHue));
   zoom: 1.5;
 }
