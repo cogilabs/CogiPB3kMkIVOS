@@ -3,6 +3,7 @@ let savedTab = currentTab;
 let subMenuskeyDownListener;
 let itemListskeyDownListener;
 let settingsKeyListener;
+let mapKeyListener;
 
 let nickName = "Demo";
 
@@ -154,6 +155,11 @@ function setActiveTab(tab) {
     settingsKeyListener = null;
   }
 
+  if (mapKeyListener) {
+    document.removeEventListener('keydown', mapKeyListener);
+    mapKeyListener = null;
+  }
+
   const menuItems = document.querySelectorAll('#menu .nav-item');
   menuItems.forEach(item => item.classList.remove('active'));
 
@@ -202,6 +208,10 @@ function loadTabContent(tab) {
       if (tab === "settings") {
         initializeColorSliders();
         initializeSettingsKeyNavigation();
+      }
+
+      if (tab === "map") {
+        initializeMapKeyNavigation();
       }
 
       return Promise.resolve();
@@ -468,4 +478,34 @@ function initializeSettingsKeyNavigation() {
   }
   settingsKeyListener = settingsKeyListenerHandler;
   document.addEventListener('keydown', settingsKeyListenerHandler);
+}
+
+function initializeMapKeyNavigation() {
+
+  let mapTemplate = document.getElementById('map-template');
+
+  const mapKeyListenerHandler = (event) => {
+    if (currentTab === "map") {
+      switch (event.code) {
+        case 'KeyW':
+          mapTemplate.scrollTop -= 20;
+          break;
+        case 'KeyS':
+          mapTemplate.scrollTop += 20;
+          break;
+        case 'KeyA':
+          mapTemplate.scrollLeft -= 20;
+          break;
+        case 'KeyD':
+          mapTemplate.scrollLeft += 20;
+          break;
+      }
+    }
+  };
+
+  if (mapKeyListener) {
+    document.removeEventListener('keydown', mapKeyListener);
+  }
+  mapKeyListener = mapKeyListenerHandler;
+  document.addEventListener('keydown', mapKeyListenerHandler);
 }

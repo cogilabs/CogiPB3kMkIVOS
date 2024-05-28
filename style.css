@@ -1,5 +1,6 @@
 :root {
   --cursor: none; /* none for prod, unset for dev*/
+  --invertMap: 1;
   cursor: var(--cursor);
 }
 
@@ -460,6 +461,6 @@ td.status-overview-separator {
 }
 
 .map-image {
-  filter: invert() sepia(1) contrast(4) brightness(1) hue-rotate(var(--biHue)); /* Invert()? */
-  width: 200%;
+  filter: invert(var(--invertMap)) sepia(1) contrast(4) brightness(1) hue-rotate(var(--biHue)); /* Invert()? */
+  zoom: 1.5;
 }
