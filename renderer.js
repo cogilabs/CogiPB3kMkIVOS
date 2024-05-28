@@ -11,6 +11,7 @@ const profilesList = ["guest", "david", "marie"];
 let currentProfile = {};
 let isLocalFile = false;
 let itemsData = {};
+let isMusicPlaying = false;
 
 let hueValue = 120;
 let satValue = 100;
@@ -88,7 +89,7 @@ function setProfile(chosenName) {
           }
         })
         .catch(error => {
-          console.log("Error reading local profile, falling back to default profile.", error);
+          console.warn("Error reading local profile, falling back to default profile.", error);
           setProfile(nickName).then(resolve).catch(reject);
         });
     } else {
@@ -218,6 +219,7 @@ function loadTabContent(tab) {
         import('./itemLists.js').then(module => {
           module.initializeItemListActions();
         });
+        updateRadio();
       }
 
       return Promise.resolve();
@@ -514,4 +516,30 @@ function initializeMapKeyNavigation() {
   }
   mapKeyListener = mapKeyListenerHandler;
   document.addEventListener('keydown', mapKeyListenerHandler);
+}
+
+export function updateRadio(item) {
+  let isEquipped = false;
+  if (!item) {
+    if(isMusicPlaying) {
+      document.getElementById('cogilabs-radio').classList.add('equipped');
+    }
+    return;
+  }
+  item.classList.forEach(currentClass => {
+    if (currentClass == 'equipped') isEquipped = true;
+  });
+  if (item.firstChild.innerText === 'Cogilabs Radio' && isEquipped) {
+    isMusicPlaying = true;
+    playMusic();
+  } else {
+    if(isMusicPlaying) {
+      isMusicPlaying = false;
+      playMusic();
+    }
+  }
+}
+
+function playMusic() {
+  //console.log(`Music set to ${isMusicPlaying}`); 
 }

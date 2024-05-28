@@ -1,4 +1,4 @@
-import { setItemListsKeyDownListener } from './renderer.js';
+import { setItemListsKeyDownListener, updateRadio } from './renderer.js';
 
 let itemsData = {};
 let profileItems = {};
@@ -163,6 +163,15 @@ export function setItemActive(selectedItem) {
     return;
   }
 
+  if (selectedItem.parentElement.id === 'radio-list') {
+    selectedItem.classList.forEach(currentClass => {
+      if (currentClass == 'active') {
+        setEquippedState(selectedItem);
+        return;
+      };
+    });
+  }
+
   const itemListItems = document.querySelectorAll('.itemList-item');
 
   itemListItems.forEach(item => {
@@ -193,6 +202,8 @@ function setEquippedState(selectedItem) {
   });
 
   selectedItem.classList.toggle('equipped');
+
+  updateRadio(selectedItem);
 
 }
 
