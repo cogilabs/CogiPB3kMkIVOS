@@ -386,14 +386,27 @@ td.status-overview-separator {
   list-style-type: square;
 }
 
+.equipableList-item.greyed-out {
+  color: var(--mediumLight);
+}
+
 .equipableList-item.active {
   background-color: var(--light);
+  color: var(--darkText);
+}
+
+.equipableList-item.greyed-out.active {
+  background-color: var(--mediumLight);
   color: var(--darkText);
 }
 
 .equipableList-item::marker {
   color: #00000000;
   margin: 0 5px 0 0;
+}
+
+.equipableList-item.greyed-out.equipped::marker {
+  color: var(--mediumLight);
 }
 
 .equipableList-item.equipped::marker {
