@@ -38,7 +38,7 @@ export function radioWave() {
     waveClone.setAttribute('d', wavePathData);
     waveClone.setAttribute('fill', 'none');
     waveClone.setAttribute('stroke', 'var(--light)');
-    waveClone.setAttribute('stroke-width', '3');
+    waveClone.setAttribute('stroke-width', '4');
     waveClone.setAttribute('transform', 'translate(400, 0)');
     document.getElementById('wave-path').appendChild(waveClone);
 
