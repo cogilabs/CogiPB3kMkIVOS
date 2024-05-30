@@ -534,13 +534,22 @@ export function updateRadio(item) {
   item.classList.forEach(currentClass => {
     if (currentClass == 'equipped') isEquipped = true;
   });
-  if (item.firstChild.innerText === "Rocket's Hideout Radio" && isEquipped) {
-    isMusicPlaying = true;
-    playMusic();
-  } else {
-    if(isMusicPlaying) {
-      isMusicPlaying = false;
+  if (item.firstChild.innerText === "Rocket's Hideout Radio") {
+    if (isEquipped) {
+      isMusicPlaying = true;
       playMusic();
+    } else {
+      if(isMusicPlaying) {
+        isMusicPlaying = false;
+        playMusic();
+      }
+    }
+  } else {
+    if (isEquipped) {
+      if(isMusicPlaying) {
+        isMusicPlaying = false;
+        playMusic();
+      }
     }
   }
 }

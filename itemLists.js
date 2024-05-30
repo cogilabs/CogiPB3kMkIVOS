@@ -147,7 +147,12 @@ export function handleItemListsKeys(event, itemListsItem) {
       break;
     case 'KeyD':
       if(itemListsItem[Array.from(itemListsItem).indexOf(activeItem)].parentElement.id === 'radio-list') {
-        setEquippedState(itemListsItem[Array.from(itemListsItem).indexOf(activeItem)]);
+        setEquippedState(itemListsItem[Array.from(itemListsItem).indexOf(activeItem)], 'equip');
+      }
+      break;
+    case 'KeyA':
+      if(itemListsItem[Array.from(itemListsItem).indexOf(activeItem)].parentElement.id === 'radio-list') {
+        setEquippedState(itemListsItem[Array.from(itemListsItem).indexOf(activeItem)], 'unequip');
       }
       break;
   }
@@ -189,22 +194,36 @@ export function setItemActive(selectedItem) {
     updateItemDetails(itemId, itemType);
 }
 
-function setEquippedState(selectedItem) {
+function setEquippedState(selectedItem, state) {
   if (!selectedItem) {
     console.error('No item selected to set as equipped.');
     return;
   }
 
   const itemListItems = document.querySelectorAll('.itemList-item');
+    
+  if (!state) {
 
-  itemListItems.forEach(item => {
-    if (item != selectedItem) item.classList.remove('equipped');
-  });
+    itemListItems.forEach(item => {
+      if (item != selectedItem) item.classList.remove('equipped');
+    });
 
-  selectedItem.classList.toggle('equipped');
+    selectedItem.classList.toggle('equipped');
 
+  } else {
+    if (state == 'equip') {
+
+      itemListItems.forEach(item => {
+        if (item != selectedItem) item.classList.remove('equipped');
+      });
+
+      selectedItem.classList.add('equipped');
+
+    } else {
+      selectedItem.classList.remove('equipped');
+    }
+  }
   updateRadio(selectedItem);
-
 }
 
 function scrollIntoViewIfNeeded(element) {
