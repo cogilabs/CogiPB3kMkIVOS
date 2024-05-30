@@ -34,6 +34,20 @@ ipcMain.handle('read-file', async (event, filePath) => {
   });
 });
 
+ipcMain.handle('get-songs', async () => {
+  const musicDir = path.join(__dirname, 'musics');
+  return new Promise((resolve, reject) => {
+    fs.readdir(musicDir, (err, files) => {
+      if (err) {
+        reject(err);
+      } else {
+        const songs = files.filter(file => path.extname(file) === '.mp3').map(file => path.join('musics', file));
+        resolve(songs);
+      }
+    });
+  });
+});
+
 app.whenReady().then(createWindow);
 
 app.on('window-all-closed', () => {

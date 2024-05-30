@@ -12,6 +12,7 @@ let currentProfile = {};
 let isLocalFile = false;
 let itemsData = {};
 let isMusicPlaying = false;
+let isMusicRunning = false;
 
 let hueValue = 120;
 let satValue = 100;
@@ -19,6 +20,8 @@ let lightValue = 60;
 let lightOffsetValue = 0;
 
 let birthday = new Date();
+let songList = [];
+let currentSongIndex = 0;
 
 export function setSubMenusKeyDownListener(newListener) {
   if (subMenuskeyDownListener) {
@@ -58,6 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     })
     .catch(error => console.error('Error loading items data or setting profile:', error));
+  
+  getSongs().then(() => playMusic());
 });
 
 function addLeadingZero(num) {
@@ -78,7 +83,7 @@ function setProfile(chosenName) {
             hueValue = currentProfile.hue;
             satValue = currentProfile.sat;
             lightValue = currentProfile.light;
-            lightOffsetValue = currentProfile.lightOffset ? currentProfile.lightOffset:0;
+            lightOffsetValue = currentProfile.lightOffset ? currentProfile.lightOffset : 0;
             birthday = new Date(currentProfile.birthday);
             initializeColorSliders(!(currentTab === 'settings'));
             initializeColorSliders(true);
@@ -104,7 +109,7 @@ function setProfile(chosenName) {
           hueValue = currentProfile.hue;
           satValue = currentProfile.sat;
           lightValue = currentProfile.light;
-          lightOffsetValue = currentProfile.lightOffset ? currentProfile.lightOffset:0;
+          lightOffsetValue = currentProfile.lightOffset ? currentProfile.lightOffset : 0;
           birthday = new Date(currentProfile.birthday);
           initializeColorSliders(!(currentTab === 'settings'));
           initializeColorSliders(true);
@@ -522,14 +527,14 @@ export function updateRadio(item) {
   let isEquipped = false;
   if (!item) {
     if(isMusicPlaying) {
-      document.getElementById('cogilabs-radio').classList.add('equipped');
+      document.getElementById('music-radio').classList.add('equipped');
     }
     return;
   }
   item.classList.forEach(currentClass => {
     if (currentClass == 'equipped') isEquipped = true;
   });
-  if (item.firstChild.innerText === 'Cogilabs Radio' && isEquipped) {
+  if (item.firstChild.innerText === "Rocket's Hideout Radio" && isEquipped) {
     isMusicPlaying = true;
     playMusic();
   } else {
@@ -540,6 +545,38 @@ export function updateRadio(item) {
   }
 }
 
+async function getSongs() {
+  try {
+    songList = await window.electron.invoke('get-songs');
+    shuffleSongs();
+  } catch (error) {
+    console.error('Failed to load songs:', error);
+  }
+}
+
+function shuffleSongs() {
+  for (let i = songList.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [songList[i], songList[j]] = [songList[j], songList[i]];
+  }
+}
+
+function playNextSong() {
+  currentSongIndex = (currentSongIndex + 1) % songList.length;
+  const audio = document.getElementById('audio');
+  audio.src = songList[currentSongIndex];
+  if (!isMusicRunning) {
+    audio.currentTime = 30;
+  }
+  audio.play();
+}
+
 function playMusic() {
-  //console.log(`Music set to ${isMusicPlaying}`); 
+  const audio = document.getElementById('audio');
+  if (!isMusicRunning) {
+    audio.addEventListener('ended', playNextSong);
+    playNextSong();
+    isMusicRunning = true;
+  }
+  audio.volume = isMusicPlaying ? 1 : 0;
 }
