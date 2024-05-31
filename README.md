@@ -15,24 +15,27 @@ The **Cogilabs Pip-Boy 3000 Mk4** is a version of Fallout 4's Pip-Boy I'm making
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [App description](#app-description)
+- [The application](#the-application)
   - [Profile file](#profile-file)
   - [Color customisation](#color-customisation)
   - [Inventory display](#inventory-display)
   - [Map](#map)
   - [Radio](#radio)
   - [Other](#other)
+- [The physical Pip-Boy](#the-physical-pip-boy)
+  - [The wiring](#the-wiring)
+  - [The 3D model](#the-3d-model)
 
 ## Introduction
 
 The project is really in two parts:
 
 - The "OS", which I'm remaking from scratch in Electron. It will be mostly functionnal.
-- The object itself, which will be a Raspberry Pi 4 encased in a 3D printed Pip-Boy, I will modify a model from the internet which will be credited here later.
+- The object itself, which will be a Raspberry Pi 3B+ encased in a 3D printed Pip-Boy, I will modify a model from the internet which will be credited here later.
 
 For the moment I'm waiting for the delivery of my components, so I'm working on the App.  
 
-## App description
+## The application
   
 ![The Status page](/readme_sources/images/status.png)  
   
@@ -146,3 +149,30 @@ For my Pip-Boy I added most songs from Fallout 4 and Fallout 76, which I will of
 
 For the Data and Map tabs, the footer gives the date and time, so the Pip-Boy could even be used as a watch:  
 ![Data/Quests](/readme_sources/images/quests.png)  
+
+## The physical Pip-Boy
+
+The physical part of the Pip-Boy is made of:  
+(everything here is subject to change)  
+  
+- 1 Raspberry 3B+ with 1Gb RAM and Raspbian installed
+- 1 5 inches touchscreen
+- 1 Powerboost 1000C
+- 1 6600 mAh battery
+- 2 rotary encoders
+- 1 potentiometer
+- 2 LEDs
+- 1 physical button
+- The 3D model
+
+### The wiring
+
+[WIP]
+
+### The 3D model
+
+[WIP]
+
+#### Modifications to the model
+
+[WIP]

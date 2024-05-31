@@ -15,24 +15,27 @@ Le **Cogilabs Pip-Boy 3000 Mk4** est une version du Pip-Boy de Fallout 4 que je 
 ## Table des matières
 
 - [Introduction](#introduction)
-- [Description de l'application](#description-de-lapplication)
+- [L'application](#lapplication)
   - [Fichier de profil](#fichier-de-profil)
   - [Personnalisation des couleurs](#personnalisation-des-couleurs)
   - [Affichage de l'inventaire](#affichage-de-linventaire)
   - [Carte](#carte)
   - [Radio](#radio)
   - [Autre](#autre)
+- [Le Pip-Boy physique](#le-pip-boy-physique)
+  - [Les branchements](#les-branchements)
+  - [Le modèle 3D](#le-modèle-3d)
 
 ## Introduction
 
 Le projet se divise en deux parties :
 
 - Le "système d'exploitation", que je recrée de zéro avec Electron. Il sera principalement fonctionnel.
-- L'objet lui-même, qui sera une Raspberry Pi 4 encasée dans un Pip-Boy imprimé en 3D. Je modifierai un modèle trouvé sur internet qui sera crédité ici plus tard.
+- L'objet lui-même, qui sera une Raspberry Pi 3B+ encasée dans un Pip-Boy imprimé en 3D. Je modifierai un modèle trouvé sur internet qui sera crédité ici plus tard.
 
 Pour le moment, j'attends la livraison de mes composants, donc je travaille sur l'application.  
 
-## Description de l'application
+## L'application
   
 ![La page de statut](/readme_sources/images/status.png)  
   
@@ -146,3 +149,30 @@ Pour mon Pip-Boy, j'ai ajouté la plupart des musiques de Fallout 4 et Fallout 7
 
 Pour les onglets Données et Carte, le pied de page donne la date et l'heure, donc le Pip-Boy pourrait même être utilisé comme montre :  
 ![Données/Quêtes](/readme_sources/images/quests.png)  
+
+## Le Pip-Boy physique
+
+La partie physique du Pip-Boy est faite de:  
+(Tout ici peut changer à tout moment)  
+  
+- 1 Raspberry 3B+ avec 1Gb RAM et Raspbian installé
+- 1 écran tactile de 5 pouces
+- 1 Powerboost 1000C
+- 1 batterie 6600 mAh
+- 2 codeurs incrémentaux
+- 1 potentiomètre
+- 2 LEDs
+- 1 bouton physique
+- le modèle 3D
+
+### Les branchements
+
+[WIP]
+
+### Le modèle 3D
+
+[WIP]
+
+#### Modifications du modèle
+
+[WIP]
