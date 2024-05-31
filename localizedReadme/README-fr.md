@@ -74,7 +74,7 @@ S'il n'existe pas, le "mode démo" est chargé, utilisant le profil invité mais
   
 Utilisez [`guest.json`](/profiles/guest.json) et [`items.json`](/items.json) pour créer votre propre fichier `local.json`.  
   
-Le fichier [`items.json`](/items.json) stocke chaque objet et avantage existant dans l'inventaire, de sorte que leurs données ne soient pas répétées dans chaque fichier de profil.
+Le fichier [`items.json`](/items.json) stocke chaque objet et compétence existant dans l'inventaire, de sorte que leurs données ne soient pas répétées dans chaque fichier de profil.
 
 ### Personnalisation des couleurs
 

@@ -163,5 +163,24 @@
                 }
             }
         }
+    },
+    "perks": {
+        "special": {
+            "str": "4",
+            "per": "8",
+            "end": "3",
+            "cha": "5",
+            "int": "7",
+            "agi": "3",
+            "luc": "3"
+        },
+        "perks": [
+            "Animal Friend",
+            "Big Leagues",
+            "Bloody Mess",
+            "Pickpocket",
+            "Sniper",
+            "Test Perk"
+        ]
     }
 }
