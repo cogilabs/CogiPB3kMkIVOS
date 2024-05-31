@@ -139,7 +139,7 @@ When the Pip-Boy starts, it creates a randomised playlist of all the songs, then
   
 In the Radio tab, I put the games radios as "unreachable" and my own radio as the only working one. When you activate it, the sound level goes up, essentially "turning on" the radio. If you deactivate it, it turns the sound off again, but *never pauses the music*. That and the fact it starts at 30 seconds in the song, make it feel like a radio. OF course the radio stays activated if you leave the tab.
   
-For the graph, it's randomly generated on tab loading, then just loops, I plan to try to smooth it more in the future.  
+For the graph, it used to be randomly generated on tab loading, but I didn't like the result, so I ended up just generating sinewaves with varying heights.  
   
 For my Pip-Boy I added most songs from Fallout 4 and Fallout 76, which I will of course not distribute here. I do recommend putting in Fallout songs, but you can of course put whatever you want in that folder.  
   

@@ -8,22 +8,19 @@ export function radioWave() {
 
     function generateSmoothSineLikeWave() {
         let path = `M 0,${centerY}`;
-        let previousY = centerY;
-
-        for (let i = 1; i <= numPoints; i++) {
+            
+        for (let i = 0; i <= numPoints; i++) {
             const x = (waveLength / numPoints) * i;
-            const amplitude = minAmplitude + Math.random() * (maxAmplitude - minAmplitude);
-            const y = centerY + amplitude * Math.sin(i * 0.2 * Math.PI); // Fixed frequency
-
-            const controlX1 = x - (waveLength / numPoints) / 2;
-            const controlY1 = previousY;
-            const controlX2 = x - (waveLength / numPoints) / 2;
-            const controlY2 = y;
-
-            path += ` C ${controlX1},${controlY1} ${controlX2},${controlY2} ${x},${y}`;
-
-            previousY = y;
+            let amplitude = minAmplitude + 100;
+            
+            if (i <= numPoints / 2) {
+                amplitude /= 2;
+            }
+            
+            const y = centerY + amplitude * Math.sin(i * 12 * Math.PI / numPoints);
+            path += ` L ${x},${y}`;
         }
+        
         return path;
     }
 

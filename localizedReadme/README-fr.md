@@ -139,7 +139,7 @@ Au démarrage du Pip-Boy, il crée une liste de lecture aléatoire de toutes les
   
 Dans l'onglet Radio, j'ai mis les radios des jeux comme "inaccessibles" et ma propre radio comme la seule fonctionnelle. Lorsque vous l'activez, le volume sonore augmente, "allumant" essentiellement la radio. Si vous la désactivez, le son s'éteint à nouveau, mais *ne met jamais la musique en pause*. Cela et le fait qu'elle commence à 30 secondes dans la chanson, donnent l'impression d'une vraie radio. Bien sûr, la radio reste activée si vous quittez l'onglet.
   
-Pour le graphique, il est généré aléatoirement au chargement de l'onglet, puis boucle simplement, je prévois d'essayer de le lisser davantage à l'avenir.  
+Pour le graphique, il était généré aléatoirement au chargement de l'onglet, mais je n'aimais pas le rendu, alors j'ai opté pour une bête onde sinusoïdale a amplitude variante.  
   
 Pour mon Pip-Boy, j'ai ajouté la plupart des musiques de Fallout 4 et Fallout 76, que je ne distribuerai bien sûr pas ici. Je recommande de mettre des musiques de Fallout, mais vous pouvez bien sûr mettre ce que vous voulez dans ce dossier.  
   
