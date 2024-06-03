@@ -118,7 +118,8 @@ function populateInventory(nickName, tabPlusSubCategory) {
   // Append sorted items to the inventory
   itemsArray.forEach(itemData => {
     const itemElement = document.createElement('div');
-    itemElement.classList.add('itemList-item', 'equipableList-item');
+    if (category === 'stat') itemElement.classList.add('itemList-item', 'perkList-item');
+    else itemElement.classList.add('itemList-item', 'equipableList-item');
     if (profileItems[category][subCategory][itemData.type][itemData.id].equipped === "true") {
       itemElement.classList.add('equipped');
     }
