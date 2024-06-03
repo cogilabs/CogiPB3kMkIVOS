@@ -276,11 +276,6 @@ export function loadSubMenuContent(category) {
           }, 0);
         });
       }
-      /*if (category === "stat/special") {
-        import('./itemLists.js').then(module => {
-          module.initializeItemListActions();
-        });
-      }*/
       if (category === "stat/perks" || category === "stat/special") {
         import('./itemLists.js').then(module => {
           setTimeout(() => {
