@@ -303,5 +303,35 @@
                 }
             }
         }
+    },
+    "stat": {
+        "perks": {
+            "perks": {
+                "animalFriend": {
+                    "name": "Animal Friend",
+                    "description": "Lorem ipsum dolor sit amet"
+                },
+                "bigLeagues": {
+                    "name": "Big Leagues",
+                    "description": "Lorem ipsum dolor sit amet"
+                },
+                "bloodyMess": {
+                    "name": "Bloody Mess",
+                    "description": "Lorem ipsum dolor sit amet"
+                },
+                "pickpocket": {
+                    "name": "Pickpocket",
+                    "description": "Lorem ipsum dolor sit amet"
+                },
+                "sniper": {
+                    "name": "Sniper",
+                    "description": "Lorem ipsum dolor sit amet"
+                },
+                "testPerk": {
+                    "name": "Test Perk",
+                    "description": "Lorem ipsum dolor sit amet"
+                }
+            }
+        }
     }
 }

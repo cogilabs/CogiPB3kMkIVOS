@@ -13,6 +13,7 @@ let isLocalFile = false;
 let itemsData = {};
 let isMusicPlaying = false;
 let isMusicRunning = false;
+let displayName = '';
 
 let hueValue = 120;
 let satValue = 100;
@@ -79,7 +80,8 @@ function setProfile(chosenName) {
             isLocalFile = true;
             const localProfile = JSON.parse(data).config;
             currentProfile = localProfile;
-            nickName = currentProfile.displayName || "Local";
+            nickName = "Local";
+            displayName = currentProfile.displayName;
             hueValue = currentProfile.hue;
             satValue = currentProfile.sat;
             lightValue = currentProfile.light;
@@ -105,7 +107,12 @@ function setProfile(chosenName) {
         .then(data => {
           currentProfile = data.config;
           nickName = currentProfile.displayName;
-          if (chosenName === "Demo") nickName = "Demo";
+          displayName = currentProfile.displayName;
+          if (chosenName === "Demo") {
+            nickName = "Demo";
+            displayName = "DEMO MODE";
+          }
+          if (chosenName === "guest") displayName = '&nbsp;';
           hueValue = currentProfile.hue;
           satValue = currentProfile.sat;
           lightValue = currentProfile.light;
@@ -258,13 +265,7 @@ export function loadSubMenuContent(category) {
         }
       }
       if (category === "stat/status") {
-        document.getElementById("name").innerHTML = nickName;
-        if (nickName === 'Guest') {
-          document.getElementById("name").innerHTML = '&nbsp;';
-        }
-        if (nickName === 'Demo') {
-          document.getElementById("name").innerHTML = 'DEMO MODE';
-        }
+        document.getElementById("name").innerHTML = displayName;
       }
       if (tab === "inv") {
         import('./itemLists.js').then(module => {
@@ -275,9 +276,18 @@ export function loadSubMenuContent(category) {
           }, 0);
         });
       }
-      if (category === "stat/special" || category === "stat/perks") {
+      if (category === "stat/special") {
         import('./itemLists.js').then(module => {
           module.initializeItemListActions();
+        });
+      }
+      if (category === "stat/perks") {
+        import('./itemLists.js').then(module => {
+          setTimeout(() => {
+            module.fetchItemsData().then(() => {
+              module.initializeItemList(nickName, category);
+            });
+          }, 0);
         });
       }
     })

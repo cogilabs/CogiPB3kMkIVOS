@@ -147,23 +147,50 @@
             }
         }
     },
-    "perks": {
+    "stat": {
         "special": {
-            "str": "4",
-            "per": "8",
-            "end": "3",
-            "cha": "5",
-            "int": "7",
-            "agi": "3",
-            "luc": "3"
+            "special": {
+                "str": {
+                    "points": "4"
+                },
+                "per": {
+                    "points": "8"
+                },
+                "end": {
+                    "points": "3"
+                },
+                "cha": {
+                    "points": "5"
+                },
+                "int": {
+                    "points": "7"
+                },
+                "agi": {
+                    "points": "3"
+                },
+                "luc": {
+                    "points": "3"
+                }
+            }
         },
-        "perks": [
-            "Animal Friend",
-            "Big Leagues",
-            "Bloody Mess",
-            "Pickpocket",
-            "Sniper",
-            "Test Perk"
-        ]
+        "perks": {
+            "perks": {
+                "animalFriend": {
+                    "possessed": "true"
+                },
+                "bigLeagues": {
+                    "possessed": "true"
+                },
+                "bloodyMess": {
+                    "possessed": "true"
+                },
+                "pickpocket": {
+                    "possessed": "true"
+                },
+                "sniper": {
+                    "possessed": "true"
+                }
+            }
+        }
     }
 }

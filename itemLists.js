@@ -2,6 +2,7 @@ import { setItemListsKeyDownListener, updateRadio } from './renderer.js';
 
 let itemsData = {};
 let profileItems = {};
+let tries = 0;
 
 export function fetchItemsData() {
   return fetch('items.json')
@@ -15,46 +16,58 @@ export function fetchItemsData() {
 }
 
 export function fetchProfileData(nickName) {
-  const defaultFileName = 'profiles/guest.json';
-  let userFileName = `profiles/${nickName.toLowerCase()}.json`;
-
-  if (nickName == 'Demo') userFileName = 'profiles/guest.json';
-
-  return fetch(userFileName)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('User file not found');
-      }
-      return response.json();
-    })
-    .then(data => {
-      profileItems = data;
-      updateTotalWeight(); // Update total weight after fetching profile data
-    })
-    .catch(error => {
-      console.warn(`Failed to load ${userFileName}, trying ${defaultFileName}.`, error);
-      return fetch(defaultFileName)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Default file not found');
-          }
-          return response.json();
-        })
+  if (nickName != "Local") {
+    const defaultFileName = 'profiles/guest.json';
+    let userFileName = `profiles/${nickName.toLowerCase()}.json`;
+  
+    if (nickName == 'Demo') userFileName = 'profiles/guest.json';
+  
+    return fetch(userFileName)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('User file not found');
+        }
+        return response.json();
+      })
+      .then(data => {
+        profileItems = data;
+        updateTotalWeight(); // Update total weight after fetching profile data
+      })
+      .catch(error => {
+        console.warn(`Failed to load ${userFileName}, trying ${defaultFileName}.`, error);
+        return fetch(defaultFileName)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Default file not found');
+            }
+            return response.json();
+          })
+          .then(data => {
+            profileItems = data;
+            updateTotalWeight(); // Update total weight after fetching default profile data
+          })
+          .catch(error => {
+            console.error('Failed to load profile items:', error);
+          });
+      });
+    } else {
+      const localProfilePath = window.electron.getLocalProfilePath();
+      window.electron.readFile(localProfilePath)
         .then(data => {
-          profileItems = data;
-          updateTotalWeight(); // Update total weight after fetching default profile data
+          profileItems = JSON.parse(data);
+          updateTotalWeight(); // Update total weight after fetching profile data
         })
         .catch(error => {
           console.error('Failed to load profile items:', error);
         });
-    });
+    }
 }
 
 export function initializeItemList(nickName, tabPlusSubCategory) {
   fetchItemsData()
     .then(() => fetchProfileData(nickName))
     .then(() => {
-      populateInventory(tabPlusSubCategory);
+      populateInventory(nickName, tabPlusSubCategory);
       initializeItemListActions();
     })
     .catch(error => {
@@ -62,7 +75,7 @@ export function initializeItemList(nickName, tabPlusSubCategory) {
     });
 }
 
-function populateInventory(tabPlusSubCategory) {
+function populateInventory(nickName, tabPlusSubCategory) {
   const category = tabPlusSubCategory.split("/")[0];
   const subCategory = tabPlusSubCategory.split("/")[1];
   const inventory = document.getElementById('inventory');
@@ -71,10 +84,16 @@ function populateInventory(tabPlusSubCategory) {
     return;
   }
   inventory.innerHTML = '';  // Clear any existing items
-
   if (!profileItems[category] || !profileItems[category][subCategory]) {
-    console.error(`Profile data for ${category}/${subCategory} not found.`);
-    return;
+    if (tries <= 3) {
+      initializeItemList(nickName, tabPlusSubCategory);
+      tries++;
+      return;
+    } else {
+      console.error(`Profile data for ${category}/${subCategory} not found.`);
+      tries = 0;
+      return;
+    }
   }
 
   const itemsArray = [];
@@ -326,22 +345,22 @@ function updateFooterWeight(totalWeight) {
   const weightElement = document.getElementById('weight');
   if (weightElement) {
     weightElement.innerHTML = `<img src="images/weight.svg" height="20" class="black-icon" style="margin: -3.5px 0">&nbsp;&nbsp;${Math.round(totalWeight)}/240`;
-  } else {
-    console.error('Weight element not found in footer.');
-  }
+  } 
 }
 
 function updateTotalWeight() {
   let totalWeight = 0;
   for (let category in profileItems) {
     for (let subCategory in profileItems[category]) {
-      for (let type in profileItems[category][subCategory]) {
-        for (let item in profileItems[category][subCategory][type]) {
-          if (profileItems[category][subCategory][type][item].possessed === "true") {
-            const itemData = itemsData[category][subCategory][type][item];
-            if (itemData) {
-              const itemAmount = profileItems[category][subCategory][type][item].amount || 1;
-              totalWeight += parseFloat(itemData.weight) * itemAmount;
+      if (category == 'inv') {
+        for (let type in profileItems[category][subCategory]) {
+          for (let item in profileItems[category][subCategory][type]) {
+            if (profileItems[category][subCategory][type][item].possessed === "true") {
+              const itemData = itemsData[category][subCategory][type][item];
+              if (itemData) {
+                const itemAmount = profileItems[category][subCategory][type][item].amount || 1;
+                totalWeight += parseFloat(itemData.weight) * itemAmount;
+              }
             }
           }
         }
