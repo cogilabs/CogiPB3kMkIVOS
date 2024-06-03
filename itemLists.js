@@ -2,7 +2,6 @@ import { setItemListsKeyDownListener, updateRadio } from './renderer.js';
 
 let itemsData = {};
 let profileItems = {};
-let tries = 0;
 
 export function fetchItemsData() {
   return fetch('items.json')
@@ -16,66 +15,78 @@ export function fetchItemsData() {
 }
 
 export function fetchProfileData(nickName) {
-  if (nickName != "Local") {
-    const defaultFileName = 'profiles/guest.json';
-    let userFileName = `profiles/${nickName.toLowerCase()}.json`;
-  
-    if (nickName == 'Demo') userFileName = 'profiles/guest.json';
-  
-    return fetch(userFileName)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('User file not found');
-        }
-        return response.json();
-      })
-      .then(data => {
-        profileItems = data;
-        updateTotalWeight(); // Update total weight after fetching profile data
-      })
-      .catch(error => {
-        console.warn(`Failed to load ${userFileName}, trying ${defaultFileName}.`, error);
-        return fetch(defaultFileName)
-          .then(response => {
-            if (!response.ok) {
-              throw new Error('Default file not found');
-            }
-            return response.json();
-          })
-          .then(data => {
-            profileItems = data;
-            updateTotalWeight(); // Update total weight after fetching default profile data
-          })
-          .catch(error => {
-            console.error('Failed to load profile items:', error);
-          });
-      });
+  return new Promise((resolve, reject) => {
+    if (nickName != "Local") {
+      const defaultFileName = 'profiles/guest.json';
+      let userFileName = `profiles/${nickName.toLowerCase()}.json`;
+    
+      if (nickName == 'Demo') userFileName = 'profiles/guest.json';
+    
+      fetch(userFileName)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('User file not found');
+          }
+          return response.json();
+        })
+        .then(data => {
+          profileItems = data;
+          updateTotalWeight(); // Update total weight after fetching profile data
+          resolve();
+        })
+        .catch(error => {
+          console.warn(`Failed to load ${userFileName}, trying ${defaultFileName}.`, error);
+          return fetch(defaultFileName)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Default file not found');
+              }
+              return response.json();
+            })
+            .then(data => {
+              profileItems = data;
+              updateTotalWeight(); // Update total weight after fetching default profile data
+              resolve();
+            })
+            .catch(error => {
+              console.error('Failed to load profile items:', error);
+              reject(error);
+            });
+        });
     } else {
       const localProfilePath = window.electron.getLocalProfilePath();
       window.electron.readFile(localProfilePath)
         .then(data => {
           profileItems = JSON.parse(data);
           updateTotalWeight(); // Update total weight after fetching profile data
+          resolve();
         })
         .catch(error => {
           console.error('Failed to load profile items:', error);
+          reject(error);
         });
     }
+  });
 }
 
 export function initializeItemList(nickName, tabPlusSubCategory) {
+  const subCategory = tabPlusSubCategory.split("/")[1];
   fetchItemsData()
     .then(() => fetchProfileData(nickName))
     .then(() => {
-      populateInventory(nickName, tabPlusSubCategory);
-      initializeItemListActions();
+      if (subCategory !== 'special') {
+        populateInventory(tabPlusSubCategory);
+      } else {
+        updateSpecialAttributes();
+      }
     })
+    .then(() => initializeItemListActions())
     .catch(error => {
       console.error('Error initializing item list:', error);
     });
 }
 
-function populateInventory(nickName, tabPlusSubCategory) {
+function populateInventory(tabPlusSubCategory) {
   const category = tabPlusSubCategory.split("/")[0];
   const subCategory = tabPlusSubCategory.split("/")[1];
   const inventory = document.getElementById('inventory');
@@ -84,16 +95,10 @@ function populateInventory(nickName, tabPlusSubCategory) {
     return;
   }
   inventory.innerHTML = '';  // Clear any existing items
+  
   if (!profileItems[category] || !profileItems[category][subCategory]) {
-    if (tries <= 3) {
-      initializeItemList(nickName, tabPlusSubCategory);
-      tries++;
-      return;
-    } else {
-      console.error(`Profile data for ${category}/${subCategory} not found.`);
-      tries = 0;
-      return;
-    }
+    console.error(`Profile data for ${category}/${subCategory} not found.`);
+    return;
   }
 
   const itemsArray = [];
@@ -351,18 +356,14 @@ function updateFooterWeight(totalWeight) {
 
 function updateTotalWeight() {
   let totalWeight = 0;
-  for (let category in profileItems) {
-    for (let subCategory in profileItems[category]) {
-      if (category == 'inv') {
-        for (let type in profileItems[category][subCategory]) {
-          for (let item in profileItems[category][subCategory][type]) {
-            if (profileItems[category][subCategory][type][item].possessed === "true") {
-              const itemData = itemsData[category][subCategory][type][item];
-              if (itemData) {
-                const itemAmount = profileItems[category][subCategory][type][item].amount || 1;
-                totalWeight += parseFloat(itemData.weight) * itemAmount;
-              }
-            }
+  for (let subCategory in profileItems.inv) {
+    for (let type in profileItems.inv[subCategory]) {
+      for (let item in profileItems.inv[subCategory][type]) {
+        if (profileItems.inv[subCategory][type][item].possessed === "true") {
+          const itemData = itemsData.inv[subCategory][type][item];
+          if (itemData) {
+            const itemAmount = profileItems.inv[subCategory][type][item].amount || 1;
+            totalWeight += parseFloat(itemData.weight) * itemAmount;
           }
         }
       }
@@ -370,4 +371,10 @@ function updateTotalWeight() {
   }
 
   updateFooterWeight(totalWeight);
+}
+
+function updateSpecialAttributes() {
+  for (let attribute in profileItems.stat.special.special) {
+    document.getElementById(attribute).innerHTML = profileItems.stat.special.special[attribute].points;
+  }
 }
