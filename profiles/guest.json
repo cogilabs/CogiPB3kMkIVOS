@@ -166,7 +166,7 @@
     },
     "stat": {
         "special": {
-            "special": {
+            "attributes": {
                 "str": {
                     "points": "4"
                 },

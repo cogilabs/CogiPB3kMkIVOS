@@ -374,7 +374,7 @@ function updateTotalWeight() {
 }
 
 function updateSpecialAttributes() {
-  for (let attribute in profileItems.stat.special.special) {
-    document.getElementById(attribute).innerHTML = profileItems.stat.special.special[attribute].points;
+  for (let attribute in profileItems.stat.special.attributes) {
+    document.getElementById(attribute).innerHTML = profileItems.stat.special.attributes[attribute].points;
   }
 }

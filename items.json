@@ -309,23 +309,28 @@
             "perks": {
                 "animalFriend": {
                     "name": "Animal Friend",
-                    "description": "Lorem ipsum dolor sit amet Animal Friend"
+                    "description": "Lorem ipsum dolor sit amet Animal Friend",
+                    "imageUrl": "/images/vaultBoy.gif"
                 },
                 "bigLeagues": {
                     "name": "Big Leagues",
-                    "description": "Lorem ipsum dolor sit amet Big Leagues"
+                    "description": "Lorem ipsum dolor sit amet Big Leagues",
+                    "imageUrl": "/images/vaultBoy.gif"
                 },
                 "bloodyMess": {
                     "name": "Bloody Mess",
-                    "description": "Lorem ipsum dolor sit amet Bloody Mess"
+                    "description": "Lorem ipsum dolor sit amet Bloody Mess",
+                    "imageUrl": "/images/vaultBoy.gif"
                 },
                 "pickpocket": {
                     "name": "Pickpocket",
-                    "description": "Lorem ipsum dolor sit amet Pickpocket"
+                    "description": "Lorem ipsum dolor sit amet Pickpocket",
+                    "imageUrl": "/images/vaultBoy.gif"
                 },
                 "sniper": {
                     "name": "Sniper",
-                    "description": "Lorem ipsum dolor sit amet Sniper"
+                    "description": "Lorem ipsum dolor sit amet Sniper",
+                    "imageUrl": "/images/vaultBoy.gif"
                 }
             }
         }
