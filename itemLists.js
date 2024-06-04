@@ -293,7 +293,7 @@ function updateItemDetails(itemId, itemType) {
           <td id="dmg">
             <span id="dmg-txt">Damage</span>
             <span id="dmg-val">
-              <span><img src="images/crosshair.png" height="11" class="black-icon"></span><span>${itemData.damageAmount}</span>
+              <span><img src="images/icons/crosshair.png" height="11" class="black-icon"></span><span>${itemData.damageAmount}</span>
             </span>
           </td>
         </tr>
@@ -301,7 +301,7 @@ function updateItemDetails(itemId, itemType) {
         ${itemData.ammoType ? `
         <tr>
           <td id="ammo">
-            <span><img src="images/ammo.svg" height="11" class="black-icon">&nbsp;${getAmmoName(itemData.ammoType)}</span><span>${getAmmoAmount(itemData.ammoType)}</span>
+            <span><img src="images/icons/ammo.svg" height="11" class="black-icon">&nbsp;${getAmmoName(itemData.ammoType)}</span><span>${getAmmoAmount(itemData.ammoType)}</span>
           </td>
         </tr>
         ` : ''}
@@ -371,7 +371,7 @@ function getAmmoAmount(ammoType) {
 function updateFooterWeight(totalWeight) {
   const weightElement = document.getElementById('weight');
   if (weightElement) {
-    weightElement.innerHTML = `<img src="images/weight.svg" height="20" class="black-icon" style="margin: -3.5px 0">&nbsp;&nbsp;${Math.round(totalWeight)}/240`;
+    weightElement.innerHTML = `<img src="images/icons/weight.svg" height="20" class="black-icon" style="margin: -3.5px 0">&nbsp;&nbsp;${Math.round(totalWeight)}/240`;
   } 
 }
 
