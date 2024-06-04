@@ -424,9 +424,6 @@ td.status-overview-separator {
 }
 
 .perk-right-half {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   width: 50%;
 }
 
@@ -443,6 +440,11 @@ td.status-overview-separator {
 .perkList-item.active {
   background-color: var(--light);
   color: var(--darkText);
+}
+
+#perk-img {
+  filter: hue-rotate(var(--hue)) saturate(var(--sat)) brightness(var(--brightness));
+  text-align: center;
 }
 
 /*---*/

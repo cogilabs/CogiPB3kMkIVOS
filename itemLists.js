@@ -271,60 +271,81 @@ function scrollIntoViewIfNeeded(element) {
 
 function updateItemDetails(itemId, itemType) {
   const detailsTable = document.getElementById('details-table');
-  if (!detailsTable) return;
-  const junkComponents = document.getElementById('junk-components');
-  const tabPlusSubCategory = detailsTable.getAttribute('category');
-  const category = tabPlusSubCategory.split("/")[0];
-  const subCategory = tabPlusSubCategory.split("/")[1];
+  const perkDesc = document.getElementById('perk-description');
+  //if (!detailsTable && !perkDesc) return;
+  if (detailsTable) {
+    const junkComponents = document.getElementById('junk-components');
+    const tabPlusSubCategory = detailsTable.getAttribute('category');
+    const category = tabPlusSubCategory.split("/")[0];
+    const subCategory = tabPlusSubCategory.split("/")[1];
 
-  let itemData = null;
+    let itemData = null;
 
-  // Find item data in itemsData
-  if (itemsData[category] && itemsData[category][subCategory] && itemsData[category][subCategory][itemType] && itemsData[category][subCategory][itemType][itemId]) {
-    itemData = itemsData[category][subCategory][itemType][itemId];
-  }
-
-  if (itemData) {
-    let detailsHTML = `
-      ${itemData.damageAmount ? `
-      <tr>
-        <td id="dmg">
-          <span id="dmg-txt">Damage</span>
-          <span id="dmg-val">
-            <span><img src="images/crosshair.png" height="11" class="black-icon"></span><span>${itemData.damageAmount}</span>
-          </span>
-        </td>
-      </tr>
-      ` : ''}
-      ${itemData.ammoType ? `
-      <tr>
-        <td id="ammo">
-          <span><img src="images/ammo.svg" height="11" class="black-icon">&nbsp;${getAmmoName(itemData.ammoType)}</span><span>${getAmmoAmount(itemData.ammoType)}</span>
-        </td>
-      </tr>
-      ` : ''}
-      ${itemData.speed ? `<tr><td><span>Speed</span><span>${itemData.speed}</span></td></tr>` : ''}
-      ${itemData.fireRate ? `<tr><td><span>Fire Rate</span><span>${itemData.fireRate}</span></td></tr>` : ''}
-      ${itemData.range ? `<tr><td><span>Range</span><span>${itemData.range}</span></td></tr>` : ''}
-      ${itemData.accuracy ? `<tr><td><span>Accuracy</span><span>${itemData.accuracy}</span></td></tr>` : ''}
-      ${itemData.weight ? `<tr><td><span>Weight</span><span>${itemData.weight}</span></td></tr>` : ''}
-      ${itemData.value ? `<tr><td><span>Value</span><span>${itemData.value}</span></td></tr>` : ''}
-    `;
-
-    detailsTable.innerHTML = detailsHTML;
-
-    // Check for components if item is junk
-    if (category === 'inv' && subCategory === 'junk' && itemData.components) {
-      let componentsHTML = '';
-      for (let component in itemData.components) {
-        componentsHTML += `<span>${component.charAt(0).toUpperCase() + component.slice(1)} (${itemData.components[component]})</span><br>`;
-      }
-      junkComponents.innerHTML = componentsHTML;
+    // Find item data in itemsData
+    if (itemsData[category] && itemsData[category][subCategory] && itemsData[category][subCategory][itemType] && itemsData[category][subCategory][itemType][itemId]) {
+      itemData = itemsData[category][subCategory][itemType][itemId];
     }
-  } else {
-    console.error('Item data not found.', itemId);
-    detailsTable.innerHTML = '';
-    junkComponents.innerHTML = ''; // Clear components if item data is not found
+
+    if (itemData) {
+      let detailsHTML = `
+        ${itemData.damageAmount ? `
+        <tr>
+          <td id="dmg">
+            <span id="dmg-txt">Damage</span>
+            <span id="dmg-val">
+              <span><img src="images/crosshair.png" height="11" class="black-icon"></span><span>${itemData.damageAmount}</span>
+            </span>
+          </td>
+        </tr>
+        ` : ''}
+        ${itemData.ammoType ? `
+        <tr>
+          <td id="ammo">
+            <span><img src="images/ammo.svg" height="11" class="black-icon">&nbsp;${getAmmoName(itemData.ammoType)}</span><span>${getAmmoAmount(itemData.ammoType)}</span>
+          </td>
+        </tr>
+        ` : ''}
+        ${itemData.speed ? `<tr><td><span>Speed</span><span>${itemData.speed}</span></td></tr>` : ''}
+        ${itemData.fireRate ? `<tr><td><span>Fire Rate</span><span>${itemData.fireRate}</span></td></tr>` : ''}
+        ${itemData.range ? `<tr><td><span>Range</span><span>${itemData.range}</span></td></tr>` : ''}
+        ${itemData.accuracy ? `<tr><td><span>Accuracy</span><span>${itemData.accuracy}</span></td></tr>` : ''}
+        ${itemData.weight ? `<tr><td><span>Weight</span><span>${itemData.weight}</span></td></tr>` : ''}
+        ${itemData.value ? `<tr><td><span>Value</span><span>${itemData.value}</span></td></tr>` : ''}
+      `;
+
+      detailsTable.innerHTML = detailsHTML;
+
+      // Check for components if item is junk
+      if (category === 'inv' && subCategory === 'junk' && itemData.components) {
+        let componentsHTML = '';
+        for (let component in itemData.components) {
+          componentsHTML += `<span>${component.charAt(0).toUpperCase() + component.slice(1)} (${itemData.components[component]})</span><br>`;
+        }
+        junkComponents.innerHTML = componentsHTML;
+      }
+    } else {
+      console.error('Item data not found.', itemId);
+      detailsTable.innerHTML = '';
+      junkComponents.innerHTML = ''; // Clear components if item data is not found
+    }
+  } else if (perkDesc) {
+    const perkImg = document.getElementById('perk-img');
+    const subCategory = perkDesc.getAttribute('category');
+
+    let itemData = null;
+
+    // Find item data in itemsData
+    if (itemsData.stat && itemsData.stat[subCategory] && itemsData.stat[subCategory][itemType] && itemsData.stat[subCategory][itemType][itemId]) {
+      itemData = itemsData.stat[subCategory][itemType][itemId];
+    }
+    if (itemData) {
+      perkDesc.innerHTML = itemData.description;
+      perkImg.src = itemData.imageUrl;
+    } else {
+      console.error('Item data not found.', itemId);
+      perkDesc.innerHTML = '';
+      perkImg.src = ''; // Clear components if item data is not found
+    }
   }
 }
 
@@ -375,6 +396,7 @@ function updateTotalWeight() {
 
 function updateSpecialAttributes() {
   for (let attribute in profileItems.stat.special.attributes) {
-    document.getElementById(attribute).innerHTML = profileItems.stat.special.attributes[attribute].points;
+    document.getElementById(attribute).innerHTML = 
+    `<span>${itemsData.stat.special.attributes[attribute].name}</span><span>${profileItems.stat.special.attributes[attribute].points}</span>`
   }
 }
