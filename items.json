@@ -310,37 +310,37 @@
                 "str": {
                     "name": "Strength",
                     "description": "Strength is a measure of your raw physical power. It affects how much you can carry, and determines the effectiveness of all melee attacks.",
-                    "imageUrl": "images/vaultBoy.gif"
+                    "imageUrl": "images/perks/strength.gif"
                 },
                 "per": {
                     "name": "Perception",
                     "description": "Perception is your environmental awareness and \"sixth sense\", and affects weapon accuracy in V.A.T.S.",
-                    "imageUrl": "images/vaultBoy.gif"
+                    "imageUrl": "images/perks/perception.gif"
                 },
                 "end": {
                     "name": "Endurance",
                     "description": "Endurance is the measure of overall physical fitness, it affects your total health and the action point drain from sprinting.",
-                    "imageUrl": "images/vaultBoy.gif"
+                    "imageUrl": "images/perks/endurance.gif"
                 },
                 "cha": {
                     "name": "Charisma",
                     "description": "Charisma is your ability to charm and convince others. It affects your success to persuade others in dialogue and prices when you barter.",
-                    "imageUrl": "images/vaultBoy.gif"
+                    "imageUrl": "images/perks/charisma.gif"
                 },
                 "int": {
                     "name": "Intelligence",
                     "description": "Intelligence is the measure of your overall mental acuity, and affects the number of experience points earned.",
-                    "imageUrl": "images/vaultBoy.gif"
+                    "imageUrl": "images/perks/intelligence.gif"
                 },
                 "agi": {
                     "name": "Agility",
                     "description": "Agility is a measure of your overall finesse and reflexes, it affects the number of Action Points in V.A.T.S. and your ability to sneak.",
-                    "imageUrl": "images/vaultBoy.gif"
+                    "imageUrl": "images/perks/agility.gif"
                 },
                 "luc": {
                     "name": "Luck",
                     "description": "Luck is a measure of your general good fortune, and affects the recharge rates of critical hits.",
-                    "imageUrl": "images/vaultBoy.gif"
+                    "imageUrl": "images/perks/luck.gif"
                 }
             }
         },
