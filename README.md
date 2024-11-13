@@ -133,7 +133,7 @@ I might add a "world" version where a upload a city map with a fake position arr
 
 ### Radio
 
-The Pip-Boy is equipped with a "working" radio. It's not in any way an AM/FM radio, I want it to be the most roleplay possible. It uses .mp3 files you put is the musics folder.  
+The Pip-Boy is equipped with a "working" radio. It's not in any way an AM/FM radio, I want it to be the most roleplay possible. It uses .mp3 files you put in the musics folder.  
   
 When the Pip-Boy starts, it creates a randomised playlist of all the songs, then takes the first one and plays it *silently* starting at 30 seconds in the song.  
   
