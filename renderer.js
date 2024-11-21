@@ -593,4 +593,5 @@ function playMusic() {
     isMusicRunning = true;
   }
   audio.volume = isMusicPlaying ? 1 : 0;
+  audio.play();
 }
