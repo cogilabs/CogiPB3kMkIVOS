@@ -96,7 +96,7 @@ You'll find four sliders:
 → Represents how bright is your color, because of issues with CSS and image filters, it modifies the brightness *or* the lightness depending on the element it modifies. Values above 60 will not work as intended since lightness kind of also affects saturation.  
   
 - Icon brightness correction  
-→ Since there is know problem with how CSS rotates Hue, also affecting saturation and brightness, I added this slider that helps greatly correcting the difference between text and icons. A square under the slider helps setting this value correctly: The text "You must not see this text" written inside it must not be visible, or at least as little as possible.
+→ Since there is a known problem with how CSS rotates Hue, also affecting saturation and brightness, I added this slider that helps greatly correcting the difference between text and icons. A square under the slider helps setting this value correctly: The text "You must not see this text" written inside it must not be visible, or at least as little as possible.
   
 ![Correction not set](/readme_sources/images/iconCorrection1.PNG) ![Correction set](/readme_sources/images/iconCorrection2.PNG)  
   
@@ -133,7 +133,7 @@ I might add a "world" version where a upload a city map with a fake position arr
 
 ### Radio
 
-The Pip-Boy is equipped with a "working" radio. It's not in any way an AM/FM radio, I want it to be the most roleplay possible. It uses .mp3 files you put is the musics folder.  
+The Pip-Boy is equipped with a "working" radio. It's not in any way an AM/FM radio, I want it to be the most roleplay possible. It uses .mp3 files you put in the musics folder.  
   
 When the Pip-Boy starts, it creates a randomised playlist of all the songs, then takes the first one and plays it *silently* starting at 30 seconds in the song.  
   
