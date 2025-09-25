@@ -20,7 +20,7 @@ const CRT = {
   shimmerSoftnessEnd:   0, // douceur du front sombre -> clair (en px)
   scrollSpeed: -0.06,
   scrollAmplitude: 0.5,
-  fpsCap: 45
+  fpsCap: 30
 };
 
 // --- setup (remplace ton tile 1px x spacing) ---
