@@ -5,6 +5,7 @@
         "sat": "100",
         "light": "60",
         "lightOffset": "100",
+        "satOffset": "0",
         "birthday": "2000/01/01"
     },
     "inv": {

@@ -1,6 +1,6 @@
 <template>
     <div class="container-template" id="settings-template" data-tab="settings">
-        <p>Settings:</p>
+        <p style="margin-top: -10px">Settings:</p>
         <div class="slider-container">
             <label for="hue-slider">Hue</label>
             <input type="range" id="hue-slider" min="0" max="360" step="1">
@@ -21,6 +21,12 @@
             <input type="range" id="light-offset-slider" min="-50" max="100" step="1">
             <span class="slider-val" id="light-offset-val"></span>
         </div>
+        <div class="slider-container">
+            <label for="sat-offset-slider">Icon saturation correction</label>
+            <input type="range" id="sat-offset-slider" min="-50" max="100" step="1">
+            <span class="slider-val" id="sat-offset-val"></span>
+        </div>
+
         <div id="profile-buttons">
             <span>Choose an existing profile:&nbsp;</span>
             <!-- Profile buttons will be populated here dynamically -->

@@ -94,14 +94,14 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .slider-container {
-  margin: 10px 0;
+  margin-bottom: 5px;
   color: var(--light);
   font-family: 'Roboto', sans-serif;
 }
 
 .slider-container label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
   width: fit-content;
   padding: 5px;
 }

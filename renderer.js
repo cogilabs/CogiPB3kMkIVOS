@@ -19,6 +19,7 @@ let hueValue = 120;
 let satValue = 100;
 let lightValue = 60;
 let lightOffsetValue = 0;
+let satOffsetValue = 0;
 
 let birthday = new Date();
 let songList = [];
@@ -86,6 +87,7 @@ function setProfile(chosenName) {
             satValue = currentProfile.sat;
             lightValue = currentProfile.light;
             lightOffsetValue = currentProfile.lightOffset ? currentProfile.lightOffset : 0;
+            satOffsetValue = currentProfile.satOffset ? currentProfile.satOffset : 0;
             birthday = new Date(currentProfile.birthday);
             initializeColorSliders(!(currentTab === 'settings'));
             initializeColorSliders(true);
@@ -117,6 +119,7 @@ function setProfile(chosenName) {
           satValue = currentProfile.sat;
           lightValue = currentProfile.light;
           lightOffsetValue = currentProfile.lightOffset ? currentProfile.lightOffset : 0;
+          satOffsetValue = currentProfile.satOffset ? currentProfile.satOffset : 0;
           birthday = new Date(currentProfile.birthday);
           initializeColorSliders(!(currentTab === 'settings'));
           initializeColorSliders(true);
@@ -316,35 +319,39 @@ function initializeColorSliders(force) {
   const satSlider = document.getElementById('sat-slider');
   const lightSlider = document.getElementById('light-slider');
   const lightOffsetSlider = document.getElementById('light-offset-slider');
+  const satOffsetSlider = document.getElementById('sat-offset-slider');
 
   const hueDisplay = document.getElementById('hue-val');
   const satDisplay = document.getElementById('sat-val');
   const lightDisplay = document.getElementById('light-val');
   const lightOffsetDisplay = document.getElementById('light-offset-val');
+  const satOffsetDisplay = document.getElementById('sat-offset-val');
 
-  if (hueSlider && satSlider && lightSlider && lightOffsetSlider) {
-    hueSlider.value = hueValue;
-    satSlider.value = satValue;
-    lightSlider.value = lightValue;
-    lightOffsetSlider.value = lightOffsetValue;
+  if (hueSlider) hueSlider.value = hueValue;
+  if (satSlider) satSlider.value = satValue;
+  if (lightSlider) lightSlider.value = lightValue;
+  if (lightOffsetSlider) lightOffsetSlider.value = lightOffsetValue;
+  if (satOffsetSlider) satOffsetSlider.value = satOffsetValue;
 
-    hueDisplay.textContent = hueValue;
-    satDisplay.textContent = satValue;
-    lightDisplay.textContent = lightValue;
-    lightOffsetDisplay.textContent = lightOffsetValue;
-  }
+  if (hueDisplay) hueDisplay.textContent = hueValue;
+  if (satDisplay) satDisplay.textContent = satValue;
+  if (lightDisplay) lightDisplay.textContent = lightValue;
+  if (lightOffsetDisplay) lightOffsetDisplay.textContent = lightOffsetValue;
+  if (satOffsetDisplay) satOffsetDisplay.textContent = satOffsetValue;
 
   function updateColor() {
     if (!force) {
-      hueValue = hueSlider.value;
-      satValue = satSlider.value;
-      lightValue = lightSlider.value;
-      lightOffsetValue = lightOffsetSlider.value;
+      if (hueSlider) hueValue = parseInt(hueSlider.value, 10) || 0;
+      if (satSlider) satValue = parseInt(satSlider.value, 10) || 0;
+      if (lightSlider) lightValue = parseInt(lightSlider.value, 10) || 0;
+      if (lightOffsetSlider) lightOffsetValue = parseInt(lightOffsetSlider.value, 10) || 0;
+      if (satOffsetSlider) satOffsetValue = parseInt(satOffsetSlider.value, 10) || 0;
 
-      hueDisplay.textContent = hueValue;
-      satDisplay.textContent = satValue;
-      lightDisplay.textContent = lightValue;
-      lightOffsetDisplay.textContent = lightOffsetValue;
+      if (hueDisplay) hueDisplay.textContent = hueValue;
+      if (satDisplay) satDisplay.textContent = satValue;
+      if (lightDisplay) lightDisplay.textContent = lightValue;
+      if (lightOffsetDisplay) lightOffsetDisplay.textContent = lightOffsetValue;
+      if (satOffsetDisplay) satOffsetDisplay.textContent = satOffsetValue;
     }
 
     const newLight = `hsl(${hueValue}, ${satValue}%, ${lightValue}%)`;
@@ -358,9 +365,14 @@ function initializeColorSliders(force) {
     document.documentElement.style.setProperty('--biHue', `${hueValue - 50}deg`);
     document.documentElement.style.setProperty('--realHue', `${hueValue}deg`);
     document.documentElement.style.setProperty('--sat', `${satValue}%`);
-    document.documentElement.style.setProperty('--biSat', `${satValue*5}%`);
+
+    const baseBiSat = parseInt(satValue, 10) || 0;
+    const offsetBiSat = parseInt(satOffsetValue, 10) || 0;
+    const computedBiSat = (baseBiSat * 5) + (offsetBiSat * 10);
+    document.documentElement.style.setProperty('--biSat', `${computedBiSat}%`);
+
     document.documentElement.style.setProperty('--brightness', `${lightValue * 2}%`);
-    document.documentElement.style.setProperty('--biBrightness', `${(parseInt(lightValue) + parseInt(lightOffsetValue)) * 2}%`);
+    document.documentElement.style.setProperty('--biBrightness', `${(parseInt(lightValue, 10) + parseInt(lightOffsetValue, 10)) * 2}%`);
 
     document.documentElement.style.setProperty('--light', newLight);
     document.documentElement.style.setProperty('--mediumLight', newMedLight);
@@ -370,31 +382,34 @@ function initializeColorSliders(force) {
     document.documentElement.style.setProperty('--darkText', newDarkText);
   }
 
-  hueSlider.addEventListener('input', updateColor);
-  satSlider.addEventListener('input', updateColor);
-  lightSlider.addEventListener('input', updateColor);
-  lightOffsetSlider.addEventListener('input', updateColor);
+  if (hueSlider) hueSlider.addEventListener('input', updateColor);
+  if (satSlider) satSlider.addEventListener('input', updateColor);
+  if (lightSlider) lightSlider.addEventListener('input', updateColor);
+  if (lightOffsetSlider) lightOffsetSlider.addEventListener('input', updateColor);
+  if (satOffsetSlider) satOffsetSlider.addEventListener('input', updateColor);
 
   const profileButtonsContainer = document.getElementById('profile-buttons');
-  profileButtonsContainer.innerHTML = '<span>Choose an existing profile:&nbsp;</span>';
+  if (profileButtonsContainer) {
+    profileButtonsContainer.innerHTML = '<span>Choose an existing profile:&nbsp;</span>';
 
-  if (isLocalFile) {
-    const localButton = document.createElement('button');
-    localButton.className = 'profile-btn';
-    localButton.dataset.profile = "local";
-    localButton.textContent = "Local";
-    localButton.addEventListener('click', () => setProfile("Local"));
-    profileButtonsContainer.appendChild(localButton);
+    if (isLocalFile) {
+      const localButton = document.createElement('button');
+      localButton.className = 'profile-btn';
+      localButton.dataset.profile = "local";
+      localButton.textContent = "Local";
+      localButton.addEventListener('click', () => setProfile("Local"));
+      profileButtonsContainer.appendChild(localButton);
+    }
+
+    profilesList.forEach(profileName => {
+      const button = document.createElement('button');
+      button.className = 'profile-btn';
+      button.dataset.profile = profileName;
+      button.textContent = profileName.charAt(0).toUpperCase() + profileName.slice(1);
+      button.addEventListener('click', () => setProfile(profileName));
+      profileButtonsContainer.appendChild(button);
+    });
   }
-
-  profilesList.forEach(profileName => {
-    const button = document.createElement('button');
-    button.className = 'profile-btn';
-    button.dataset.profile = profileName;
-    button.textContent = profileName.charAt(0).toUpperCase() + profileName.slice(1);
-    button.addEventListener('click', () => setProfile(profileName));
-    profileButtonsContainer.appendChild(button);
-  });
 }
 
 document.addEventListener('keydown', (event) => {
@@ -439,6 +454,7 @@ function initializeSettingsKeyNavigation() {
     document.getElementById('sat-slider'),
     document.getElementById('light-slider'),
     document.getElementById('light-offset-slider'),
+    document.getElementById('sat-offset-slider'),
     ...document.querySelectorAll('.profile-btn')
   ];
 
