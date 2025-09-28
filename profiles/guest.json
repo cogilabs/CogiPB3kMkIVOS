@@ -9,6 +9,9 @@
         "birthday": "2000/01/01"
     },
     "inv": {
+        "caps": {
+            "amount": "152"
+        },
         "weapons": {
             "firearms": {
                 "pistol": {

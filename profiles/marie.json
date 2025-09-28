@@ -9,6 +9,9 @@
         "birthday": "2003/08/26"
     },
     "inv": {
+        "caps": {
+            "amount": "530"
+        },
         "weapons": {
             "firearms": {
                 "pistol": {

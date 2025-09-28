@@ -16,49 +16,46 @@ export function fetchItemsData() {
 
 export function fetchProfileData(nickName) {
   return new Promise((resolve, reject) => {
-    if (nickName != "Local") {
-      const defaultFileName = 'profiles/guest.json';
-      let userFileName = `profiles/${nickName.toLowerCase()}.json`;
-    
-      if (nickName == 'Demo') userFileName = 'profiles/guest.json';
-    
-      fetch(userFileName)
+    function applyProfileData(data) {
+      profileItems = data;
+      updateTotalWeight(); // Update total weight after fetching profile data
+      updateFooterCaps(profileItems?.inv?.caps?.amount ? profileItems.inv.caps.amount : 0);
+    }
+
+    function fetchAndApply(file) {
+      return fetch(file)
         .then(response => {
           if (!response.ok) {
-            throw new Error('User file not found');
+            throw new Error('File not found');
           }
           return response.json();
         })
         .then(data => {
-          profileItems = data;
-          updateTotalWeight(); // Update total weight after fetching profile data
-          resolve();
-        })
+          applyProfileData(data);
+        });
+    }
+
+    if (nickName != "Local") {
+      const defaultFileName = 'profiles/guest.json';
+      let userFileName = `profiles/${nickName.toLowerCase()}.json`;
+    
+      if (nickName == 'Demo') userFileName = defaultFileName;
+    
+      fetchAndApply(userFileName)
         .catch(error => {
           console.warn(`Failed to load ${userFileName}, trying ${defaultFileName}.`, error);
-          return fetch(defaultFileName)
-            .then(response => {
-              if (!response.ok) {
-                throw new Error('Default file not found');
-              }
-              return response.json();
-            })
-            .then(data => {
-              profileItems = data;
-              updateTotalWeight(); // Update total weight after fetching default profile data
-              resolve();
-            })
-            .catch(error => {
-              console.error('Failed to load profile items:', error);
-              reject(error);
-            });
+          return fetchAndApply(defaultFileName);
+        })
+        .then(() => resolve())
+        .catch(error => {
+          console.error('Failed to load profile items:', error);
+          reject(error);
         });
     } else {
       const localProfilePath = window.electron.getLocalProfilePath();
       window.electron.readFile(localProfilePath)
         .then(data => {
-          profileItems = JSON.parse(data);
-          updateTotalWeight(); // Update total weight after fetching profile data
+          applyProfileData(JSON.parse(data));
           resolve();
         })
         .catch(error => {
@@ -372,6 +369,13 @@ function updateFooterWeight(totalWeight) {
   const weightElement = document.getElementById('weight');
   if (weightElement) {
     weightElement.innerHTML = `<img src="images/icons/weight.svg" height="20" class="black-icon" style="margin: -3.5px 0">&nbsp;&nbsp;${Math.round(totalWeight)}/240`;
+  } 
+}
+
+function updateFooterCaps(caps) {
+  const capsElement = document.getElementById('caps');
+  if (capsElement) {
+    capsElement.innerHTML = `<img src="images/icons/caps.svg" height="20" class="black-icon" style="margin: -3.5px 0">&nbsp;&nbsp;${Math.round(caps)}`;
   } 
 }
 
