@@ -196,20 +196,289 @@
         },
         "perks": {
             "perks": {
-                "animalFriend": {
-                    "possessed": "true"
+                "ironFist": {
+                    "possessed": "true",
+                    "rank": "4"
                 },
                 "bigLeagues": {
-                    "possessed": "true"
+                    "possessed": "true",
+                    "rank": "4"
                 },
-                "bloodyMess": {
-                    "possessed": "true"
+                "armorer": {
+                    "possessed": "true",
+                    "rank": "3"
+                },
+                "blacksmith": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "heavyGunner": {
+                    "possessed": "true",
+                    "rank": "4"
+                },
+                "strongBack": {
+                    "possessed": "true",
+                    "rank": "4"
+                },
+                "steadyAim": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "basher": {
+                    "possessed": "true",
+                    "rank": "3"
+                },
+                "rooted": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "painTrain": {
+                    "possessed": "true",
+                    "rank": "2"
                 },
                 "pickpocket": {
-                    "possessed": "true"
+                    "possessed": "true",
+                    "rank": "3"
+                },
+                "rifleman": {
+                    "possessed": "true",
+                    "rank": "4"
+                },
+                "awareness": {
+                    "possessed": "true",
+                    "rank": "1"
+                },
+                "locksmith": {
+                    "possessed": "true",
+                    "rank": "3"
+                },
+                "demolitionExpert": {
+                    "possessed": "true",
+                    "rank": "3"
+                },
+                "nightPerson": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "refractor": {
+                    "possessed": "true",
+                    "rank": "4"
                 },
                 "sniper": {
-                    "possessed": "true"
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "penetrator": {
+                    "possessed": "true",
+                    "rank": "1"
+                },
+                "concentratedFire": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "toughness": {
+                    "possessed": "true",
+                    "rank": "4"
+                },
+                "leadBelly": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "lifeGiver": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "chemResistant": {
+                    "possessed": "true",
+                    "rank": "1"
+                },
+                "aquaboy": {
+                    "possessed": "true",
+                    "rank": "1"
+                },
+                "radResistant": {
+                    "possessed": "true",
+                    "rank": "3"
+                },
+                "adamantiumSkeleton": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "cannibal": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "ghoulish": {
+                    "possessed": "true",
+                    "rank": "3"
+                },
+                "solarPowered": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "capCollector": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "loneWanderer": {
+                    "possessed": "true",
+                    "rank": "3"
+                },
+                "attackDog": {
+                    "possessed": "true",
+                    "rank": "3"
+                },
+                "animalFriend": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "localLeader": {
+                    "possessed": "true",
+                    "rank": "1"
+                },
+                "partyBoy": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "partyGirl": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "inspirational": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "wastelandWhisperer": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "intimidation": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "vans": {
+                    "possessed": "true",
+                    "rank": "1"
+                },
+                "medic": {
+                    "possessed": "true",
+                    "rank": "3"
+                },
+                "gunNut": {
+                    "possessed": "true",
+                    "rank": "3"
+                },
+                "hacker": {
+                    "possessed": "true",
+                    "rank": "3"
+                },
+                "scrapper": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "science": {
+                    "possessed": "true",
+                    "rank": "3"
+                },
+                "chemist": {
+                    "possessed": "true",
+                    "rank": "3"
+                },
+                "roboticsExpert": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "nuclearPhysicist": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "nerdRage": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "gunslinger": {
+                    "possessed": "true",
+                    "rank": "4"
+                },
+                "commando": {
+                    "possessed": "true",
+                    "rank": "4"
+                },
+                "sneak": {
+                    "possessed": "true",
+                    "rank": "4"
+                },
+                "misterSandman": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "actionBoy": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "actionGirl": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "movingTarget": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "ninja": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "quickHands": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "blitz": {
+                    "possessed": "true",
+                    "rank": "1"
+                },
+                "gunFu": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "fortuneFinder": {
+                    "possessed": "true",
+                    "rank": "3"
+                },
+                "scrounger": {
+                    "possessed": "true",
+                    "rank": "3"
+                },
+                "bloodyMess": {
+                    "possessed": "true",
+                    "rank": "3"
+                },
+                "mysteriousStranger": {
+                    "possessed": "true",
+                    "rank": "3"
+                },
+                "idiotSavant": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "betterCriticals": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "criticalBanker": {
+                    "possessed": "true",
+                    "rank": "3"
+                },
+                "grimReapersSprint": {
+                    "possessed": "true",
+                    "rank": "2"
+                },
+                "fourLeafClover": {
+                    "possessed": "true",
+                    "rank": "3"
+                },
+                "ricochet": {
+                    "possessed": "true",
+                    "rank": "2"
                 }
             }
         }

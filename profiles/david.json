@@ -183,19 +183,24 @@
         "perks": {
             "perks": {
                 "animalFriend": {
-                    "possessed": "true"
+                    "possessed": "true",
+                    "rank": "1"
                 },
                 "bigLeagues": {
-                    "possessed": "true"
+                    "possessed": "true",
+                    "rank": "1"
                 },
                 "bloodyMess": {
-                    "possessed": "true"
+                    "possessed": "true",
+                    "rank": "1"
                 },
                 "pickpocket": {
-                    "possessed": "true"
+                    "possessed": "true",
+                    "rank": "1"
                 },
                 "sniper": {
-                    "possessed": "true"
+                    "possessed": "true",
+                    "rank": "1"
                 }
             }
         }

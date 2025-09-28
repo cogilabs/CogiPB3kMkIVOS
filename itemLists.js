@@ -120,7 +120,7 @@ function populateInventory(tabPlusSubCategory) {
   // Append sorted items to the inventory
   itemsArray.forEach(itemData => {
     const itemElement = document.createElement('div');
-    if (category === 'stat') itemElement.classList.add('itemList-item', 'perkList-item');
+    if (category === 'stat') itemElement.classList.add('itemList-item', 'attrList-item', 'perkList-item');
     else itemElement.classList.add('itemList-item', 'equipableList-item');
     if (profileItems[category][subCategory][itemData.type][itemData.id].equipped === "true") {
       itemElement.classList.add('equipped');
@@ -268,8 +268,11 @@ function scrollIntoViewIfNeeded(element) {
 
 function updateItemDetails(itemId, itemType) {
   const detailsTable = document.getElementById('details-table');
+  const attrDesc = document.getElementById('attr-description');
+  const perkRank = document.getElementById('perk-rank');
   const perkDesc = document.getElementById('perk-description');
-  //if (!detailsTable && !perkDesc) return;
+
+  //if (!detailsTable && !attrDesc) return;
   if (detailsTable) {
     const junkComponents = document.getElementById('junk-components');
     const tabPlusSubCategory = detailsTable.getAttribute('category');
@@ -325,9 +328,24 @@ function updateItemDetails(itemId, itemType) {
       detailsTable.innerHTML = '';
       junkComponents.innerHTML = ''; // Clear components if item data is not found
     }
-  } else if (perkDesc) {
-    const perkImg = document.getElementById('perk-img');
-    const subCategory = perkDesc.getAttribute('category');
+  } else if (attrDesc || perkDesc) {
+    let img;
+    let subCategory;
+    let desc;
+    let rankVal;
+    let rank;
+
+    if (attrDesc) {
+      img = document.getElementById('attr-img');
+      subCategory = attrDesc.getAttribute('category');
+      desc = attrDesc;
+    } else {
+      img = document.getElementById('perk-img');
+      subCategory = perkDesc.getAttribute('category');
+      rank = document.getElementById('perk-rank');
+      rankVal = parseInt(profileItems.stat.perks.perks[itemId].rank);
+      desc = perkDesc;
+    }
 
     let itemData = null;
 
@@ -336,12 +354,17 @@ function updateItemDetails(itemId, itemType) {
       itemData = itemsData.stat[subCategory][itemType][itemId];
     }
     if (itemData) {
-      perkDesc.innerHTML = itemData.description;
-      perkImg.src = itemData.imageUrl;
+      if (!rank) {
+        desc.innerHTML = itemData.description;
+      } else {
+        rank.innerHTML = calculateRankStars(rankVal, itemsData.stat.perks.perks[itemId].maxRank);
+        desc.innerHTML = itemsData.stat.perks.perks[itemId][`rank${rankVal}description`];
+      }
+      img.src = itemData.imageUrl;
     } else {
       console.error('Item data not found.', itemId);
-      perkDesc.innerHTML = '';
-      perkImg.src = ''; // Clear components if item data is not found
+      desc.innerHTML = '';
+      img.src = ''; // Clear components if item data is not found
     }
   }
 }
@@ -403,4 +426,16 @@ function updateSpecialAttributes() {
     document.getElementById(attribute).innerHTML = 
     `<span>${itemsData.stat.special.attributes[attribute].name}</span><span>${profileItems.stat.special.attributes[attribute].points}</span>`
   }
+}
+
+function calculateRankStars(rank, maxRank) {
+  let stars = '';
+  for (let i = 1; i <= maxRank; i++) {
+    if (i <= rank) {
+      stars += '★';
+    } else {
+      stars += '☆';
+    }
+  }
+  return stars;
 }
