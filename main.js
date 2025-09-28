@@ -18,12 +18,10 @@ function createWindows() {
     },
   });
 
-  // Fullscreen seulement sur la Pi si tu veux
-  // if (process.platform !== 'win32') mainWin.setFullScreen(true);
+  if (process.platform !== 'win32') mainWin.setFullScreen(true);
 
   mainWin.loadFile('index.html');
 
-  // --- Overlay en FENÊTRE ENFANT (reste au-dessus du parent uniquement) ---
   overlayWin = new BrowserWindow({
     parent: mainWin,
     modal: false,
@@ -34,7 +32,7 @@ function createWindows() {
     hasShadow: false,
     useContentSize: true,
     webPreferences: { backgroundThrottling: false },
-    show: false, // on montrera après le premier sync
+    show: false,
   });
 
   overlayWin.setIgnoreMouseEvents(true, { forward: true });
@@ -42,23 +40,20 @@ function createWindows() {
 
   const syncToContent = () => {
     if (!mainWin || !overlayWin) return;
-    const cb = mainWin.getContentBounds();   // zone client exacte
+    const cb = mainWin.getContentBounds();
     overlayWin.setBounds(cb, /*animate*/false);
-    if (!overlayWin.isVisible()) overlayWin.showInactive(); // ne prend pas le focus
+    if (!overlayWin.isVisible()) overlayWin.showInactive();
   };
 
-  // sync initial + resync sur changements
   mainWin.once('ready-to-show', syncToContent);
   overlayWin.once('ready-to-show', syncToContent);
   ['move','resize','enter-full-screen','leave-full-screen'].forEach(ev =>
     mainWin.on(ev, syncToContent)
   );
 
-  // petite sécurité: re-sync après un court délai (Windows / menus)
   setTimeout(syncToContent, 50);
 }
 
-// ===== IPCs EXISTANTS (inchangés) =====
 ipcMain.handle('read-file', async (_event, filePath) => {
   return new Promise((resolve, reject) => {
     fs.readFile(filePath, 'utf8', (err, data) => {
@@ -85,7 +80,6 @@ ipcMain.handle('get-songs', async () => {
   });
 });
 
-// ===== Cycle de vie =====
 app.whenReady().then(createWindows);
 
 app.on('window-all-closed', () => {

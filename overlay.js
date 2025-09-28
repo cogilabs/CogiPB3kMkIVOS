@@ -1,29 +1,23 @@
 const canvas = document.getElementById('fx');
 const ctx = canvas.getContext('2d', { alpha: true });
 
-const SAFE = { x: 80, y: 0, w: 640, h: window.innerHeight, r: 18 };
+const SAFE = { x: 0, y: 0, w: window.innerWidth, h: window.innerHeight, r: 18 };
 const CRT = {
   scanlinesAlpha: 0.01,
   spacing: 3,
   thickness: 2,
   vignetteAlpha: 0.25,
   shimmerStrength: 0.22,
-  // contrôle spatial du shimmer :
-  // shimmerWavelength = largeur (en px) d'un cycle sombre+clair (augmenter => zones plus larges)
   shimmerWavelength: 250,
-  // vitesse de phase (déjà utilisé t*... avant), modifier pour accélérer/ralentir la descente
   shimmerSpeed: 0.1,
-  // nouveau : duty cycle 0..1 (fraction sombre du cycle)
-  shimmerDuty: 1,        // 0.5 => 50% sombre / 50% clair ; 0.8 => 80% sombre
-  // douceur en px, séparée pour chaque front (start = 0->1, end = 1->0)
-  shimmerSoftnessStart: 20, // douceur du front clair -> sombre (en px)
-  shimmerSoftnessEnd:   0, // douceur du front sombre -> clair (en px)
+  shimmerDuty: 1,
+  shimmerSoftnessStart: 20,
+  shimmerSoftnessEnd:   0,
   scrollSpeed: -0.06,
   scrollAmplitude: 0.5,
   fpsCap: 30
 };
 
-// --- setup (remplace ton tile 1px x spacing) ---
 let tileH, tile, tctx;
 function rebuildTile(){
   tileH = Math.max(1, Math.max(CRT.spacing|0, CRT.shimmerWavelength|0));
@@ -33,7 +27,6 @@ function rebuildTile(){
 }
 rebuildTile();
 
-// dessine une colonne de hauteur tileH avec les lignes + la bande sombre
 function redrawTile(phase) {
   tctx.clearRect(0,0,1,tileH);
   const thickness = Math.min(CRT.thickness|0, CRT.spacing|0);
@@ -72,10 +65,8 @@ let pattern = ctx.createPattern(tile,'repeat');
 
 function fit() {
   const dpr = window.devicePixelRatio || 1;
-  // taille “physique” du canvas = px * DPR
   canvas.width  = Math.floor(window.innerWidth  * dpr);
   canvas.height = Math.floor(window.innerHeight * dpr);
-  // repasse en coordonnées CSS (1 unité = 1 px logique)
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 }
 addEventListener('resize', fit); fit();
@@ -108,15 +99,9 @@ function draw(now=0) {
   const { x, y, w, h, r } = SAFE;
   ctx.save(); roundRectPath(x, y, w, h, r); ctx.clip();
 
-  // update animation time
   t += CRT.scrollSpeed * dt * 60;
   const offset = Math.sin(t) * CRT.scrollAmplitude;
 
-  // -- draw vignette / background first if needed --
-  // (scanlines come from pattern below)
-
-  // redraw tile pattern according to phase (animate shimmer)
-  // phase in px : avance proportionnellement à t
   const phasePx = ((t * CRT.shimmerSpeed) * CRT.shimmerWavelength) % tileH;
   redrawTile(phasePx < 0 ? phasePx + tileH : phasePx);
   pattern = ctx.createPattern(tile, 'repeat');
