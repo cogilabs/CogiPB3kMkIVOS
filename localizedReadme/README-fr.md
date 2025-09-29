@@ -21,6 +21,7 @@ Le **Cogilabs Pip-Boy 3000 Mk4** est une version du Pip-Boy de Fallout 4 que je 
   - [Affichage de l'inventaire](#affichage-de-linventaire)
   - [Carte](#carte)
   - [Radio](#radio)
+  - [Statut](#statut)
   - [Autre](#autre)
 - [Le Pip-Boy physique](#le-pip-boy-physique)
   - [Les branchements](#les-branchements)
@@ -39,7 +40,7 @@ Pour le moment, j'attends la livraison de mes composants, donc je travaille sur 
   
 ![La page de statut](/readme_sources/images/status.png)  
   
-L'application est principalement une reproduction de l'interface de Fallout 4. Pour le contenu, il y a des fichiers de profil. 
+L'application est principalement une reproduction de l'interface de Fallout 4, avec un overlay animé de "scanlines" plutôt sympa. Pour le contenu, il y a des fichiers de profil. 
 
 ### Fichier de profil
   
@@ -55,7 +56,7 @@ Dans votre fichier de profil se trouvent votre :
 → Elle sera utilisée pour calculer votre niveau, le niveau étant votre âge et la barre d'expérience montrant ce qu'il reste avant votre prochain anniversaire.  
   
 - Inventaire  
-→ Tous vos objets seront stockés ici pour affichage dans l'onglet inventaire.  
+→ Tous vos objets et caps seront stockés ici pour affichage dans l'onglet inventaire.  
   
 - Sélection de points SPECIAL et vos compétences  
 → Comme l'inventaire, ils seront stockés ici pour affichage dans l'onglet statut.  
@@ -71,6 +72,8 @@ Vous pouvez les charger en utilisant l'onglet des paramètres (l'espace vide à 
 Ensuite, il y a *votre* profil. 
 Si un fichier de profil nommé `local.json` est placé dans `<dossier personnel>/pipBoy/`, il sera automatiquement chargé au démarrage du Pip-Boy. S'il existe, un bouton "Local" est ajouté à l'onglet des paramètres pour le charger à nouveau s'il a été changé pour un autre.  
 S'il n'existe pas, le "mode démo" est chargé, utilisant le profil invité mais affichant "MODE DÉMO" à la place du nom d'utilisateur sur la page de statut.  
+
+**Nouveau !** Un créateur de profils en cours de développement est disponible [ici](https://cogilabs.eu/pipBoyProfileCreator/).  
   
 Utilisez [`guest.json`](/profiles/guest.json) et [`items.json`](/items.json) pour créer votre propre fichier `local.json`.  
   
@@ -144,6 +147,18 @@ Pour le graphique, il était généré aléatoirement au chargement de l'onglet,
 Pour mon Pip-Boy, j'ai ajouté la plupart des musiques de Fallout 4 et Fallout 76, que je ne distribuerai bien sûr pas ici. Je recommande de mettre des musiques de Fallout, mais vous pouvez bien sûr mettre ce que vous voulez dans ce dossier.  
   
 ![Radio](/readme_sources/images/radio.png) 
+
+### Statut
+
+Dans l'onglet Statut, en plus de la page principale, les attributs S.P.E.C.I.A.L. et les perks sont également disponibles. En complément de la personnalisation des rangs d'attributs dans le fichier de profil, vous pouvez aussi équiper n'importe laquelle des perks présentes dans Fallout 4.
+
+L'onglet SPECIAL affichera chaque attribut, avec son rang, son image animée et sa description.
+
+L'onglet des perks affichera chaque perk présente dans le fichier de profil, avec son image animée, le rang sélectionné (affiché en étoiles), et la description correspondant à ce rang.
+
+![Attributs](/readme_sources/images/attributes.png)
+
+![Perks](/readme_sources/images/perks.png)
 
 ### Autre
 

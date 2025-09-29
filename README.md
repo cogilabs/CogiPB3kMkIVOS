@@ -21,6 +21,7 @@ The **Cogilabs Pip-Boy 3000 Mk4** is a version of Fallout 4's Pip-Boy I'm making
   - [Inventory display](#inventory-display)
   - [Map](#map)
   - [Radio](#radio)
+  - [Status](#status)
   - [Other](#other)
 - [The physical Pip-Boy](#the-physical-pip-boy)
   - [The wiring](#the-wiring)
@@ -39,7 +40,7 @@ For the moment I'm waiting for the delivery of my components, so I'm working on 
   
 ![The Status page](/readme_sources/images/status.png)  
   
-The app is mostly a reproduction of Fallout 4 interface, for the content, there's profile files. 
+The app is mostly a reproduction of Fallout 4 interface, with a pretty cool animated scanlines overlay. For the content, there's profile files. 
 
 ### Profile file
   
@@ -55,7 +56,7 @@ Inside your profile file are your:
 → It will be used to calculate your level, the level itself being your age and the experience bar showing what's left before your next birthday.  
   
 - Inventory  
-→ All your items will be stored there for display in the inventory tab.  
+→ All your items and caps will be stored there for display in the inventory tab.  
   
 - Special points and perks  
 → Like the inventory, they will be stored there for display in the status tab.  
@@ -71,6 +72,8 @@ You can load them using the settings tab (the empty space on the left of the STA
 Then there's *your* profile. 
 If a profile file named `local.json` is placed in `<home folder>/pipBoy/`, it will be automatically loaded on Pip-Boy start. If it exists, a "Local" button is added to the settings tab to load it again if changed for another.  
 If it doesn't exist, the "Demo mode" is loaded, loading the Guest profile but displaying "DEMO MODE" in the username spot on the status page.  
+
+**New!** There is a work in progress profile creator available [here](https://cogilabs.eu/pipBoyProfileCreator/).
   
 Use [`guest.json`](/profiles/guest.json) and [`items.json`](/items.json) to create your own `local.json` file.  
   
@@ -144,6 +147,19 @@ For the graph, it used to be randomly generated on tab loading, but I didn't lik
 For my Pip-Boy I added most songs from Fallout 4 and Fallout 76, which I will of course not distribute here. I do recommend putting in Fallout songs, but you can of course put whatever you want in that folder.  
   
 ![Radio](/readme_sources/images/radio.png) 
+
+### Status
+
+In the Status tab, along with the main page, the S.P.E.C.I.A.L attributes and perks are also available.
+Along with the customisation of attributes ranks in the profile file, you can also equip any of the perks present in Fallout 4.
+
+The SPECIAL tab will show every attribute, with their rank, their animated picture and description.
+
+The perks tab will show any of the perks present in the profile file, with their animated picture, selected rank (shown in stars), and the description *that corresponds to that rank*.
+
+![Attributes](/readme_sources/images/attributes.png)
+
+![Perks](/readme_sources/images/perks.png)
 
 ### Other
 
