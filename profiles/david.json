@@ -1,208 +1,404 @@
 {
-    "config": {
-        "displayName": "David",
-        "hue": "60",
-        "sat": "100",
-        "light": "60",
-        "lightOffset": "100",
-        "satOffset": "-15",
-        "birthday": "1997/02/10"
-    },
-    "inv": {
-        "caps": {
-            "amount": "451"
+  "config": {
+    "displayName": "David",
+    "birthday": "1997/02/10",
+    "hue": "60",
+    "sat": "100",
+    "light": "60",
+    "lightOffset": "100",
+    "satOffset": "-15"
+  },
+  "inv": {
+    "weapons": {
+      "firearms": {
+        "pistol": {
+          "possessed": "true",
+          "equipped": "true"
         },
-        "weapons": {
-            "firearms": {
-                "pistol": {
-                    "possessed": "true",
-                    "equipped": "true"
-                },
-                "fatMan": {
-                    "possessed": "true"
-                },
-                "laserMusket": {
-                    "possessed": "true"
-                },
-                "minigun": {
-                    "possessed": "true"
-                },
-                "pipeBoltPistol": {
-                    "possessed": "true"
-                },
-                "shDblShotgun": {
-                    "possessed": "true"
-                }
-            },
-            "melee": {
-                "bat": {
-                    "possessed": "true"
-                },
-                "machete": {
-                    "possessed": "true"
-                }
-            },
-            "throwables": {
-                "fragMine": {
-                    "possessed": "true",
-                    "amount": "6"
-                },
-                "molotov": {
-                    "possessed": "true",
-                    "amount": "3"
-                }
-            }
+        "fatMan": {
+          "possessed": "true"
         },
-        "apparel": {
-            "armor": {
-                "leatherLeftArm": {
-                    "possessed": "true",
-                    "equipped": "true"
-                },
-                "leatherRightArm": {
-                    "possessed": "true",
-                    "equipped": "true"
-                },
-                "leatherRightLeg": {
-                    "possessed": "true",
-                    "equipped": "true"
-                },
-                "raiderChestPiece": {
-                    "possessed": "true",
-                    "equipped": "true"
-                },
-                "raiderLeftLeg": {
-                    "possessed": "true",
-                    "equipped": "true"
-                }
-            },
-            "misc": {
-                "vault451Suit": {
-                    "possessed": "true",
-                    "equipped": "true"
-                },
-                "miningHelmet": {
-                    "possessed": "true"
-                },
-                "weldingGoggles": {
-                    "possessed": "true",
-                    "equipped": "true"
-                }
-            }
+        "laserMusket": {
+          "possessed": "true"
         },
-        "aid": {
-            "drugs": {
-                "stimpak": {
-                    "possessed": "true",
-                    "amount": "21"
-                },
-                "radaway": {
-                    "possessed": "true",
-                    "amount": "13"
-                },
-                "cure": {
-                    "possessed": "true",
-                    "amount": "3"
-                }
-            }
+        "minigun": {
+          "possessed": "true"
         },
-        "misc": {
-            "tools": {
-                "pin": {
-                    "possessed": "true",
-                    "amount": "25"
-
-                }
-            }
+        "pipeBoltPistol": {
+          "possessed": "true"
         },
-        "junk": {
-            "junk": {
-                "tinCan": {
-                    "possessed": "true",
-                    "amount": "1"
-                },
-                "deskFan": {
-                    "possessed": "true",
-                    "amount": "1"
-                }
-            }
-        },
-        "mods": {
-            "weapons": {
-
-            },
-            "armor": {
-
-            }
-        },
-        "ammo": {
-            "bullet": {
-                "308": {
-                    "possessed": "true",
-                    "amount": "9130"
-                },
-                "10mm": {
-                    "possessed": "true",
-                    "amount": "120"
-                }
-            },
-            "energy": {
-                "cell": {
-                    "possessed": "true",
-                    "amount": "230"
-                }
-            }
+        "shDblShotgun": {
+          "possessed": "true"
         }
-    },
-    "stat": {
-        "special": {
-            "attributes": {
-                "str": {
-                    "points": "4"
-                },
-                "per": {
-                    "points": "8"
-                },
-                "end": {
-                    "points": "3"
-                },
-                "cha": {
-                    "points": "5"
-                },
-                "int": {
-                    "points": "7"
-                },
-                "agi": {
-                    "points": "3"
-                },
-                "luc": {
-                    "points": "3"
-                }
-            }
+      },
+      "melee": {
+        "bat": {
+          "possessed": "true"
         },
-        "perks": {
-            "perks": {
-                "animalFriend": {
-                    "possessed": "true",
-                    "rank": "1"
-                },
-                "bigLeagues": {
-                    "possessed": "true",
-                    "rank": "1"
-                },
-                "bloodyMess": {
-                    "possessed": "true",
-                    "rank": "1"
-                },
-                "pickpocket": {
-                    "possessed": "true",
-                    "rank": "1"
-                },
-                "sniper": {
-                    "possessed": "true",
-                    "rank": "1"
-                }
-            }
+        "machete": {
+          "possessed": "true"
         }
+      },
+      "throwables": {
+        "fragMine": {
+          "possessed": "true",
+          "amount": "6"
+        },
+        "molotov": {
+          "possessed": "true",
+          "amount": "3"
+        }
+      }
+    },
+    "apparel": {
+      "armor": {
+        "leatherLeftArm": {
+          "possessed": "true",
+          "equipped": "true"
+        },
+        "leatherRightArm": {
+          "possessed": "true",
+          "equipped": "true"
+        },
+        "leatherRightLeg": {
+          "possessed": "true",
+          "equipped": "true"
+        },
+        "raiderChestPiece": {
+          "possessed": "true",
+          "equipped": "true"
+        },
+        "raiderLeftLeg": {
+          "possessed": "true",
+          "equipped": "true"
+        }
+      },
+      "misc": {
+        "vault451Suit": {
+          "possessed": "true",
+          "equipped": "true"
+        },
+        "miningHelmet": {
+          "possessed": "true"
+        },
+        "weddingRing": {},
+        "weldingGoggles": {
+          "possessed": "true",
+          "equipped": "true"
+        }
+      }
+    },
+    "aid": {
+      "drugs": {
+        "stimpak": {
+          "possessed": "true",
+          "amount": "21"
+        },
+        "radaway": {
+          "possessed": "true",
+          "amount": "13"
+        },
+        "cure": {
+          "possessed": "true",
+          "amount": "3"
+        }
+      }
+    },
+    "misc": {
+      "tools": {
+        "pin": {
+          "possessed": "true",
+          "amount": "25"
+        }
+      }
+    },
+    "junk": {
+      "junk": {
+        "tinCan": {
+          "possessed": "true",
+          "amount": "1"
+        },
+        "deskFan": {
+          "possessed": "true",
+          "amount": "1"
+        }
+      }
+    },
+    "ammo": {
+      "bullet": {
+        "308": {
+          "possessed": "true",
+          "amount": "9130"
+        },
+        "10mm": {
+          "possessed": "true",
+          "amount": "120"
+        },
+        "5mm": {},
+        "shell": {},
+        "miniNuke": {}
+      },
+      "energy": {
+        "cell": {
+          "possessed": "true",
+          "amount": "230"
+        }
+      }
+    },
+    "caps": {
+      "amount": "451"
     }
+  },
+  "stat": {
+    "special": {
+      "attributes": {
+        "str": {
+          "points": "4"
+        },
+        "per": {
+          "points": "8"
+        },
+        "end": {
+          "points": "3"
+        },
+        "cha": {
+          "points": "5"
+        },
+        "int": {
+          "points": "7"
+        },
+        "agi": {
+          "points": "3"
+        },
+        "luc": {
+          "points": "3"
+        }
+      }
+    },
+    "perks": {
+      "perks": {
+        "ironFist": {
+          "possessed": "false"
+        },
+        "bigLeagues": {
+          "possessed": "false"
+        },
+        "armorer": {
+          "possessed": "false"
+        },
+        "blacksmith": {
+          "possessed": "false"
+        },
+        "heavyGunner": {
+          "possessed": "false"
+        },
+        "strongBack": {
+          "possessed": "false"
+        },
+        "steadyAim": {
+          "possessed": "false"
+        },
+        "basher": {
+          "possessed": "false"
+        },
+        "rooted": {
+          "possessed": "false"
+        },
+        "painTrain": {
+          "possessed": "false"
+        },
+        "pickpocket": {
+          "possessed": "true",
+          "rank": "4"
+        },
+        "rifleman": {
+          "possessed": "true",
+          "rank": "3"
+        },
+        "awareness": {
+          "possessed": "false"
+        },
+        "locksmith": {
+          "possessed": "true",
+          "rank": "3"
+        },
+        "demolitionExpert": {
+          "possessed": "false"
+        },
+        "nightPerson": {
+          "possessed": "false"
+        },
+        "refractor": {
+          "possessed": "false"
+        },
+        "sniper": {
+          "possessed": "true",
+          "rank": "2"
+        },
+        "penetrator": {
+          "possessed": "false"
+        },
+        "concentratedFire": {
+          "possessed": "false"
+        },
+        "toughness": {
+          "possessed": "false"
+        },
+        "leadBelly": {
+          "possessed": "false"
+        },
+        "lifeGiver": {
+          "possessed": "false"
+        },
+        "chemResistant": {
+          "possessed": "false"
+        },
+        "aquaboy": {
+          "possessed": "false"
+        },
+        "radResistant": {
+          "possessed": "false"
+        },
+        "adamantiumSkeleton": {
+          "possessed": "false"
+        },
+        "cannibal": {
+          "possessed": "false"
+        },
+        "ghoulish": {
+          "possessed": "false"
+        },
+        "solarPowered": {
+          "possessed": "false"
+        },
+        "capCollector": {
+          "possessed": "true",
+          "rank": "3"
+        },
+        "loneWanderer": {
+          "possessed": "false"
+        },
+        "attackDog": {
+          "possessed": "false"
+        },
+        "animalFriend": {
+          "possessed": "false"
+        },
+        "localLeader": {
+          "possessed": "false"
+        },
+        "partyBoy": {
+          "possessed": "false"
+        },
+        "partyGirl": {
+          "possessed": "false"
+        },
+        "inspirational": {
+          "possessed": "false"
+        },
+        "wastelandWhisperer": {
+          "possessed": "false"
+        },
+        "intimidation": {
+          "possessed": "false"
+        },
+        "vans": {
+          "possessed": "false"
+        },
+        "medic": {
+          "possessed": "false"
+        },
+        "gunNut": {
+          "possessed": "false"
+        },
+        "hacker": {
+          "possessed": "true",
+          "rank": "4"
+        },
+        "scrapper": {
+          "possessed": "false"
+        },
+        "science": {
+          "possessed": "false"
+        },
+        "chemist": {
+          "possessed": "false"
+        },
+        "roboticsExpert": {
+          "possessed": "false"
+        },
+        "nuclearPhysicist": {
+          "possessed": "false"
+        },
+        "nerdRage": {
+          "possessed": "false"
+        },
+        "gunslinger": {
+          "possessed": "false"
+        },
+        "commando": {
+          "possessed": "false"
+        },
+        "sneak": {
+          "possessed": "true",
+          "rank": "5"
+        },
+        "misterSandman": {
+          "possessed": "false"
+        },
+        "actionBoy": {
+          "possessed": "false"
+        },
+        "actionGirl": {
+          "possessed": "false"
+        },
+        "movingTarget": {
+          "possessed": "false"
+        },
+        "ninja": {
+          "possessed": "true",
+          "rank": "2"
+        },
+        "quickHands": {
+          "possessed": "false"
+        },
+        "blitz": {
+          "possessed": "false"
+        },
+        "gunFu": {
+          "possessed": "false"
+        },
+        "fortuneFinder": {
+          "possessed": "false"
+        },
+        "scrounger": {
+          "possessed": "false"
+        },
+        "bloodyMess": {
+          "possessed": "false"
+        },
+        "mysteriousStranger": {
+          "possessed": "false"
+        },
+        "idiotSavant": {
+          "possessed": "false"
+        },
+        "betterCriticals": {
+          "possessed": "false"
+        },
+        "criticalBanker": {
+          "possessed": "false"
+        },
+        "grimReapersSprint": {
+          "possessed": "false"
+        },
+        "fourLeafClover": {
+          "possessed": "false"
+        },
+        "ricochet": {
+          "possessed": "false"
+        }
+      }
+    }
+  }
 }
