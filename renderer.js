@@ -362,7 +362,7 @@ function initializeColorSliders(force) {
     const newDarkText = `hsla(${hueValue}, ${satValue}%, 2%)`;
 
     document.documentElement.style.setProperty('--hue', `${hueValue - 140}deg`);
-    document.documentElement.style.setProperty('--biHue', `${hueValue - 50}deg`);
+    document.documentElement.style.setProperty('--biHue', `${hueValue - 55}deg`);
     document.documentElement.style.setProperty('--realHue', `${hueValue}deg`);
     document.documentElement.style.setProperty('--sat', `${satValue}%`);
 

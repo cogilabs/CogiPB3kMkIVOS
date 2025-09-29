@@ -464,7 +464,7 @@ td.status-overview-separator {
 }
 
 #perk-img {
-  filter: sepia(1) contrast(1) brightness(0.6) saturate(10) hue-rotate(var(--biHue));
+  filter: sepia(1) contrast(1) brightness(0.6) saturate(4) hue-rotate(var(--biHue));
   margin: auto;
 }
 
