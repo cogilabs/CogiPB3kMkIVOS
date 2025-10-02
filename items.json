@@ -765,7 +765,7 @@
           "rank1description": "You're charming... and dangerous. Women suffer +5% damage in combat, and are easier to persuade in dialogue.",
           "rank2description": "Women now suffer +10% damage in combat, and are even easier to persuade in dialogue. They are also easier to pacify with the Intimidation perk.",
           "rank3description": "Women now suffer +15% damage in combat, and are much easier to persuade in dialogue. They are now even easier to pacify with the Intimidation perk.",
-          "imageUrl": null,
+          "imageUrl": "images/perks/Lady_Killer.png",
           "paired_with": "blackWidow",
           "gender": "M",
           "requirement": {
@@ -780,7 +780,7 @@
           "rank1description": "You're charming... and dangerous. Men suffer +5% damage in combat, and are easier to persuade in dialogue.",
           "rank2description": "Men now suffer +10% damage in combat, and are even easier to persuade in dialogue. They are also easier to pacify with the Intimidation perk.",
           "rank3description": "Men now suffer +15% damage in combat, and are much easier to persuade in dialogue. They are now even easier to pacify with the Intimidation perk.",
-          "imageUrl": null,
+          "imageUrl": "images/perks/Black_Widow.png",
           "paired_with": "ladyKiller",
           "gender": "F",
           "requirement": {
