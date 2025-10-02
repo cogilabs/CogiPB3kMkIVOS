@@ -461,6 +461,7 @@ td.status-overview-separator {
   margin-top: -25px;
   height: 200px;
   text-align: center;
+  display: flex;
 }
 
 #perk-img {
