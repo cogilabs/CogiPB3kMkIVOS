@@ -382,7 +382,7 @@ function getAmmoName(ammoType) {
 function getAmmoAmount(ammoType) {
   for (let type in profileItems.inv.ammo) {
     if (profileItems.inv.ammo[type][ammoType]) {
-      return profileItems.inv.ammo[type][ammoType].amount;
+      return profileItems.inv.ammo[type][ammoType].amount? profileItems.inv.ammo[type][ammoType].amount : 0;
     }
   }
   return 0;
