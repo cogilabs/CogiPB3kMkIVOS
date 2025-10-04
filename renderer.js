@@ -288,6 +288,15 @@ export function loadSubMenuContent(category) {
           }, 0);
         });
       }
+      if (category === "data/quests") {
+        import('./itemLists.js').then(module => {
+          setTimeout(() => {
+            module.fetchItemsData().then(() => {
+              module.initializeItemList(nickName, category);
+            });
+          }, 0);
+        });
+      }
     })
     .catch(error => console.error('Failed to load content:', error));
 }

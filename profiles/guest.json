@@ -482,5 +482,26 @@
                 }
             }
         }
+    },
+    "data": {
+        "quests": {
+            "quests": {
+                "testQuest": {
+                    "name": "A Test Quest",
+                    "description": "This is a test quest.\nComplete the objectives to finish the quest.\nThen the quest will be complete, and you'll have a sense of accomplishment.",
+                    "active": "false",
+                    "objectives": {
+                        "findTheItem": {
+                            "description": "Find the mysterious item",
+                            "completed": "true"
+                        },
+                        "returnToNPC": {
+                            "description": "Bring the item back to the quest giver",
+                            "completed": "false"
+                        }
+                    }
+                }
+            }
+        }
     }
 }

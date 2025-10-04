@@ -84,6 +84,7 @@ export function initializeItemList(nickName, tabPlusSubCategory) {
 }
 
 function populateInventory(tabPlusSubCategory) {
+  console.log('Populating inventory for:', tabPlusSubCategory);
   const category = tabPlusSubCategory.split("/")[0];
   const subCategory = tabPlusSubCategory.split("/")[1];
   const inventory = document.getElementById('inventory');
@@ -106,10 +107,15 @@ function populateInventory(tabPlusSubCategory) {
       if (profileItems[category][subCategory][type][item].possessed === "true") {
         const itemData = itemsData[category][subCategory][type][item];
         if (itemData) {
+          console.log(`Adding item: ${item} of type: ${type}`);
           itemsArray.push({ id: item, type: type, ...itemData });
         } else {
           console.warn(`Item data for ${item} not found in items.json.`);
         }
+      } 
+      if (tabPlusSubCategory === 'data/quests') {
+        console.log(profileItems[category][subCategory][type][item]);
+        itemsArray.push({ id: item, type: type, ...profileItems[category][subCategory][type][item] });
       }
     }
   }
@@ -121,6 +127,7 @@ function populateInventory(tabPlusSubCategory) {
   itemsArray.forEach(itemData => {
     const itemElement = document.createElement('div');
     if (category === 'stat') itemElement.classList.add('itemList-item', 'attrList-item', 'perkList-item');
+    else if (tabPlusSubCategory === 'data/quests') itemElement.classList.add('itemList-item', 'questList-item');
     else itemElement.classList.add('itemList-item', 'equipableList-item');
     if (profileItems[category][subCategory][itemData.type][itemData.id].equipped === "true") {
       itemElement.classList.add('equipped');
@@ -271,6 +278,7 @@ function updateItemDetails(itemId, itemType) {
   const attrDesc = document.getElementById('attr-description');
   const perkRank = document.getElementById('perk-rank');
   const perkDesc = document.getElementById('perk-description');
+  const questDesc = document.getElementById('quest-description');
 
   //if (!detailsTable && !attrDesc) return;
   if (detailsTable) {
@@ -342,7 +350,7 @@ function updateItemDetails(itemId, itemType) {
     } else {
       img = document.getElementById('perk-img');
       subCategory = perkDesc.getAttribute('category');
-      rank = document.getElementById('perk-rank');
+      rank = perkRank;
       rankVal = parseInt(profileItems.stat.perks.perks[itemId].rank);
       desc = perkDesc;
     }
@@ -366,6 +374,9 @@ function updateItemDetails(itemId, itemType) {
       desc.innerHTML = '';
       img.src = ''; // Clear components if item data is not found
     }
+  } else if (questDesc) {
+    questDesc.innerHTML = profileItems.data.quests.quests[itemId].description.replace(/\n/g, '<br>');
+
   }
 }
 

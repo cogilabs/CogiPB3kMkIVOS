@@ -276,6 +276,11 @@ td.status-overview-separator {
   margin: 0 20px;
 }
 
+.questList-half {
+  height: 340px;
+  margin: 0;
+}
+
 .inv-left-half {
   width: 60%;
 }
@@ -366,7 +371,7 @@ td.status-overview-separator {
 
 /*---*/
 
-.equipableList, .perkList {
+.equipableList, .perkList, .questList {
   height: 100%;
   overflow-y: auto;
   scrollbar-width: thin;
@@ -423,11 +428,20 @@ td.status-overview-separator {
   width: 50%;
 }
 
+.quests-left-half {
+  margin-right: 0;
+  width: 50%;
+}
+
 .perk-right-half, .attr-right-half {
   width: 50%;
 }
 
-.perkList-item, .attrList-item {
+.quests-right-half {
+  width: 50%;
+}
+
+.perkList-item, .attrList-item, .questList-item {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -437,13 +451,17 @@ td.status-overview-separator {
   padding-left: 10px;
 }
 
-.perkList-item.active, .attrList-item.active {
+.perkList-item.active, .attrList-item.active, .questList-item.active {
   background-color: var(--light);
   color: var(--darkText);
 }
 
 .perkList {
   width: 280px;
+}
+
+.questList {
+  width: 95%;
 }
 
 #perk-img, #attr-img {
@@ -478,6 +496,11 @@ td.status-overview-separator {
 
 #perk-description {
   margin-top: -10px;
+}
+
+#quest-description, .quest-objectives {
+  margin: 0;
+  height: 50%;
 }
 
 /*---*/
