@@ -4,8 +4,8 @@
         "hue": "120",
         "sat": "100",
         "light": "60",
-        "lightOffset": "100",
-        "satOffset": "0",
+        "lightOffset": "5",
+        "satOffset": "-10",
         "birthday": "2000/01/01"
     },
     "inv": {
@@ -488,16 +488,79 @@
             "quests": {
                 "testQuest": {
                     "name": "A Test Quest",
-                    "description": "This is a test quest.\nComplete the objectives to finish the quest.\nThen the quest will be complete, and you'll have a sense of accomplishment.",
-                    "active": "false",
+                    "description": "This is a test quest.\nI must complete the objectives to finish the quest.\nThen the quest will be complete, and I'll have a sense of accomplishment.",
+                    "equipped": "true",
                     "objectives": {
                         "findTheItem": {
                             "description": "Find the mysterious item",
                             "completed": "true"
                         },
+                        "longObjectiveTest": {
+                            "description": "(Optional) This is a very long objective, maybe I should learn to write shorter objectives, it would fit the list waaay better!",
+                            "completed": "true"
+                        },
                         "returnToNPC": {
                             "description": "Bring the item back to the quest giver",
                             "completed": "false"
+                        }
+                    }
+                },
+                "rescueMission": {
+                    "name": "Rescue at Vault 82",
+                    "description": "Survivors are trapped in Vault 82.\nThe radiation levels are rising and time is running out.\nI must reach them before it's too late.",
+                    "objectives": {
+                        "findVaultEntrance": {
+                            "description": "Locate Vault 82 entrance",
+                            "completed": "true"
+                        },
+                        "disableSecuritySystem": {
+                            "description": "Disable the security system",
+                            "completed": "true"
+                        },
+                        "rescueSurvivors": {
+                            "description": "Lead survivors to safety",
+                            "completed": "false"
+                        }
+                    }
+                },
+                "supplyRun": {
+                    "name": "Medical Supply Run",
+                    "description": "The settlement is running low on medical supplies.\nI need to find stimpaks and antibiotics.\nThe nearby hospital might have what we need.",
+                    "equipped": "true",
+                    "objectives": {
+                        "clearEnemies": {
+                            "description": "Clear hospital of hostiles",
+                            "completed": "false"
+                        },
+                        "gatherSupplies": {
+                            "description": "Collect medical supplies",
+                            "completed": "false"
+                        },
+                        "returnToSettlement": {
+                            "description": "Return to settlement with supplies",
+                            "completed": "false"
+                        }
+                    }
+                },
+                "mysteriousSignal": {
+                    "name": "The Mysterious Broadcast",
+                    "description": "I've picked up a strange signal on my Pip-Boy.\nIt seems to be coming from an old radio tower.\nI should investigate to find the source.",
+                    "objectives": {
+                        "triangulateSignal": {
+                            "description": "Triangulate the source of the signal",
+                            "completed": "true"
+                        },
+                        "reachRadioTower": {
+                            "description": "Reach the abandoned radio tower",
+                            "completed": "true"
+                        },
+                        "findTransmitter": {
+                            "description": "Locate the transmission device",
+                            "completed": "true"
+                        },
+                        "decodeMessage": {
+                            "description": "Decode the mysterious message",
+                            "completed": "true"
                         }
                     }
                 }

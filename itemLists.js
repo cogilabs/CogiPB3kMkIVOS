@@ -121,13 +121,13 @@ function populateInventory(tabPlusSubCategory) {
   }
 
   // Sort items alphabetically by name
-  itemsArray.sort((a, b) => a.name.localeCompare(b.name));
+  if (tabPlusSubCategory !== 'data/quests') itemsArray.sort((a, b) => a.name.localeCompare(b.name));
 
   // Append sorted items to the inventory
   itemsArray.forEach(itemData => {
     const itemElement = document.createElement('div');
     if (category === 'stat') itemElement.classList.add('itemList-item', 'attrList-item', 'perkList-item');
-    else if (tabPlusSubCategory === 'data/quests') itemElement.classList.add('itemList-item', 'questList-item');
+    else if (tabPlusSubCategory === 'data/quests') itemElement.classList.add('itemList-item', 'questList-item', 'equipableList-item');
     else itemElement.classList.add('itemList-item', 'equipableList-item');
     if (profileItems[category][subCategory][itemData.type][itemData.id].equipped === "true") {
       itemElement.classList.add('equipped');
@@ -279,6 +279,7 @@ function updateItemDetails(itemId, itemType) {
   const perkRank = document.getElementById('perk-rank');
   const perkDesc = document.getElementById('perk-description');
   const questDesc = document.getElementById('quest-description');
+  const questObjectives = document.getElementById('quest-objectives');
 
   //if (!detailsTable && !attrDesc) return;
   if (detailsTable) {
@@ -375,8 +376,46 @@ function updateItemDetails(itemId, itemType) {
       img.src = ''; // Clear components if item data is not found
     }
   } else if (questDesc) {
-    questDesc.innerHTML = profileItems.data.quests.quests[itemId].description.replace(/\n/g, '<br>');
+    const questsRoot = profileItems?.data?.quests;
+    let quest = null;
+    if (questsRoot) {
+      if (questsRoot.quests && questsRoot.quests[itemId]) {
+        quest = questsRoot.quests[itemId];
+      } else {
+        for (let t in questsRoot) {
+          if (questsRoot[t] && questsRoot[t][itemId]) {
+            quest = questsRoot[t][itemId];
+            break;
+          }
+        }
+      }
+    }
 
+    if (quest) {
+      if (questDesc) questDesc.innerHTML = (quest.description || '').replace(/\n/g, '<br>');
+
+      if (questObjectives) {
+        let html = '<ul class="objectives-list">';
+        if (quest.objectives) {
+          const entries = Object.entries(quest.objectives);
+          const notDone = [];
+          const done = [];
+          for (const [key, objective] of entries) {
+            const completed = objective.completed === true || objective.completed === 'true';
+            if (completed) done.push({ key, objective });
+            else notDone.push({ key, objective });
+          }
+          const ordered = notDone.concat(done);
+          html += ordered.map(({ key, objective }) =>
+            `<li class="objective ${objective.completed === true || objective.completed === 'true' ? 'completed' : ''}"><div class="checkmark">${objective.completed === true || objective.completed === 'true' ? '✓' : ''}</div><div class="objective-description">${objective.description || objective.name || key}</div></li>`
+          ).join('');
+        }
+        html += '</ul>';
+        questObjectives.innerHTML = html;
+      }
+    }
+
+    return;
   }
 }
 

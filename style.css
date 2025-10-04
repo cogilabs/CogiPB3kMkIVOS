@@ -377,7 +377,7 @@ td.status-overview-separator {
   scrollbar-width: thin;
 }
 
-.equipableList span {
+.equipableList span, .questList span {
   margin-left: -10px;
 }
 
@@ -429,6 +429,7 @@ td.status-overview-separator {
 }
 
 .quests-left-half {
+  margin-left: 20px;
   margin-right: 0;
   width: 50%;
 }
@@ -449,6 +450,11 @@ td.status-overview-separator {
   font-weight: bold;
   padding: 7px;
   padding-left: 10px;
+}
+
+.questList-item {
+  display: list-item;
+  padding: 5px 7px;
 }
 
 .perkList-item.active, .attrList-item.active, .questList-item.active {
@@ -515,4 +521,36 @@ td.status-overview-separator {
 .map-image {
   filter: invert(var(--invertMap)) sepia(1) contrast(4) brightness(1) hue-rotate(var(--biHue));
   zoom: 1.5;
+}
+
+/*---*/
+
+.objectives-list {
+  list-style: none;
+  padding-left: 0;
+  padding-right: 9px;
+  margin: 6px 0 0 0;
+}
+.objective {
+  padding: 3px 5px;
+  background: var(--medium);
+  margin: 3px;
+}
+.checkmark {
+  display: inline-block;
+  width: 16px;
+  font-weight: bold;
+  vertical-align: top;
+  margin-top: -2px;
+}
+.objective-description {
+  display: inline-block;
+  width: calc(100% - 16px);
+}
+.objective.completed {
+  color: var(--mediumLight);
+  background: var(--mediumDark);
+}
+.objective span {
+  margin-left: 6px;
 }
