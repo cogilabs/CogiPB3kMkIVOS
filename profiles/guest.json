@@ -499,6 +499,10 @@
                             "description": "(Optional) This is a very long objective, maybe I should learn to write shorter objectives, it would fit the list waaay better!",
                             "completed": "true"
                         },
+                        "secondLongObjectiveToTestScroll": {
+                            "description": "(Optional) Another long objective to test scrolling in the objectives list. It seems to work well, but I should probably avoid making objectives this long in the future.",
+                            "completed": "true"
+                        },
                         "returnToNPC": {
                             "description": "Bring the item back to the quest giver",
                             "completed": "false"

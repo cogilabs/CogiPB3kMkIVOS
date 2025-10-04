@@ -554,3 +554,7 @@ td.status-overview-separator {
 .objective span {
   margin-left: 6px;
 }
+#quest-objectives {
+    height: 48%;
+    overflow-y: auto;
+}
