@@ -129,6 +129,16 @@ function populateInventory(tabPlusSubCategory) {
     if (category === 'stat') itemElement.classList.add('itemList-item', 'attrList-item', 'perkList-item');
     else if (tabPlusSubCategory === 'data/quests') itemElement.classList.add('itemList-item', 'questList-item', 'equipableList-item');
     else itemElement.classList.add('itemList-item', 'equipableList-item');
+
+    // profile entry for this item (safe access)
+    const itemProfile = profileItems[category] && profileItems[category][subCategory] && profileItems[category][subCategory][itemData.type] && profileItems[category][subCategory][itemData.type][itemData.id] ? profileItems[category][subCategory][itemData.type][itemData.id] : null;
+    // if quest and has objectives, mark completed when all objectives are completed
+    if (tabPlusSubCategory === 'data/quests' && itemProfile && itemProfile.objectives) {
+      const objectivesValues = Object.values(itemProfile.objectives);
+      const allDone = objectivesValues.length > 0 && objectivesValues.every(o => o && (o.completed === true || o.completed === 'true'));
+      if (allDone) itemElement.classList.add('completed');
+    }
+
     if (profileItems[category][subCategory][itemData.type][itemData.id].equipped === "true") {
       itemElement.classList.add('equipped');
     }
@@ -174,12 +184,12 @@ export function handleItemListsKeys(event, itemListsItem) {
         setItemActive(itemListsItem[newIndex]);
       }
       break;
-    case 'KeyD':
+    case 'KeyD': // TODO: Implement properly for inventory
       if(itemListsItem[Array.from(itemListsItem).indexOf(activeItem)].parentElement.id === 'radio-list') {
         setEquippedState(itemListsItem[Array.from(itemListsItem).indexOf(activeItem)], 'equip');
       }
       break;
-    case 'KeyA':
+    case 'KeyA': // TODO: Implement properly for inventory
       if(itemListsItem[Array.from(itemListsItem).indexOf(activeItem)].parentElement.id === 'radio-list') {
         setEquippedState(itemListsItem[Array.from(itemListsItem).indexOf(activeItem)], 'unequip');
       }

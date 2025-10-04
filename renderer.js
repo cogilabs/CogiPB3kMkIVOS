@@ -497,13 +497,13 @@ function initializeSettingsKeyNavigation() {
             elements[currentElementIndex].classList.add('selected');
           }
           break;
-        case 'KeyA':
+        case 'KeyQ':
           if (elements[currentElementIndex].type === 'range') {
             elements[currentElementIndex].value = Math.max(elements[currentElementIndex].min, elements[currentElementIndex].value - 1);
             elements[currentElementIndex].dispatchEvent(new Event('input'));
           }
           break;
-        case 'KeyD':
+        case 'KeyE':
           if (elements[currentElementIndex].type === 'range') {
             elements[currentElementIndex].value = Math.min(elements[currentElementIndex].max, parseInt(elements[currentElementIndex].value) + 1);
             elements[currentElementIndex].dispatchEvent(new Event('input'));

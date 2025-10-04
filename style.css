@@ -558,3 +558,10 @@ td.status-overview-separator {
     height: 48%;
     overflow-y: auto;
 }
+.questList-item.completed.active {
+    background-color: var(--mediumLight);
+    color: var(--darkText);
+}
+.questList-item.completed {
+    color: var(--mediumLight);
+}

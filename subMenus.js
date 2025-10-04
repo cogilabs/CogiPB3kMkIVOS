@@ -20,13 +20,13 @@ export function handleSubMenusKeys(event, submenuItems) {
     const activeItem = document.querySelector('.sub-nav-item.active');
     let newIndex;
     switch (event.code) {
-    case 'KeyD':
+    case 'KeyE':
         if (Array.from(submenuItems).indexOf(activeItem) != submenuItems.length - 1) {
             newIndex = (Array.from(submenuItems).indexOf(activeItem) + 1);
             setActiveAndCenter(submenuItems[newIndex]);
         }
         break;
-    case 'KeyA':
+    case 'KeyQ':
         if (Array.from(submenuItems).indexOf(activeItem) != 0) {
             newIndex = (Array.from(submenuItems).indexOf(activeItem) - 1);
             setActiveAndCenter(submenuItems[newIndex]);
