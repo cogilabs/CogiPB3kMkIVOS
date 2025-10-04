@@ -22,6 +22,7 @@ The **Cogilabs Pip-Boy 3000 Mk4** is a version of Fallout 4's Pip-Boy I'm making
   - [Map](#map)
   - [Radio](#radio)
   - [Status](#status)
+  - [Quests](#quests)
   - [Other](#other)
 - [The physical Pip-Boy](#the-physical-pip-boy)
   - [The wiring](#the-wiring)
@@ -161,10 +162,16 @@ The perks tab will show any of the perks present in the profile file, with their
 
 ![Perks](/readme_sources/images/perks.png)
 
+### Quests
+
+The user can set quests in their profile file (and soon via the profile creator tool).
+Those quests are displayed in the order they are declared in the file, except of course for those that are completed, they appear under the non-completed ones.  
+
+![Data/Quests](/readme_sources/images/quests.png)  
+
 ### Other
 
-For the Data and Map tabs, the footer gives the date and time, so the Pip-Boy could even be used as a watch:  
-![Data/Quests](/readme_sources/images/quests.png)  
+For the Data and Map tabs, the footer gives the date and time, so the Pip-Boy could even be used as a watch, see screenshots above.
 
 ## The physical Pip-Boy
 

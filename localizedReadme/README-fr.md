@@ -22,6 +22,7 @@ Le **Cogilabs Pip-Boy 3000 Mk4** est une version du Pip-Boy de Fallout 4 que je 
   - [Carte](#carte)
   - [Radio](#radio)
   - [Statut](#statut)
+  - [Quêtes](#quêtes)
   - [Autre](#autre)
 - [Le Pip-Boy physique](#le-pip-boy-physique)
   - [Les branchements](#les-branchements)
@@ -160,10 +161,16 @@ L'onglet des perks affichera chaque perk présente dans le fichier de profil, av
 
 ![Perks](/readme_sources/images/perks.png)
 
+### Quêtes
+
+L'utilisateur peut définir des quêtes dans son fichier de profil (et bientôt via l'outil de création de profils).  
+Ces quêtes sont affichées dans l'ordre où elles sont déclarées dans le fichier. Celles qui sont complétées apparaissent, bien sûr, sous les quêtes non complétées.  
+
+![Données/Quêtes](/readme_sources/images/quests.png)  
+
 ### Autre
 
-Pour les onglets Données et Carte, le pied de page donne la date et l'heure, donc le Pip-Boy pourrait même être utilisé comme montre :  
-![Données/Quêtes](/readme_sources/images/quests.png)  
+Pour les onglets Données et Carte, le pied de page affiche la date et l'heure, donc le Pip-Boy pourrait même être utilisé comme montre, voir les captures ci-dessus.
 
 ## Le Pip-Boy physique
 
