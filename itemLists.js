@@ -84,10 +84,13 @@ export function initializeItemList(nickName, tabPlusSubCategory) {
 }
 
 function populateInventory(tabPlusSubCategory) {
-  console.log('Populating inventory for:', tabPlusSubCategory);
   const category = tabPlusSubCategory.split("/")[0];
   const subCategory = tabPlusSubCategory.split("/")[1];
   const inventory = document.getElementById('inventory');
+  const completedQuests = document.getElementById('completed-quests');
+  if (tabPlusSubCategory === 'data/quests' && completedQuests) {
+    completedQuests.innerHTML = ''; // Clear any existing items
+  }
   if (!inventory) {
     console.error('Inventory element not found.');
     return;
@@ -107,14 +110,12 @@ function populateInventory(tabPlusSubCategory) {
       if (profileItems[category][subCategory][type][item].possessed === "true") {
         const itemData = itemsData[category][subCategory][type][item];
         if (itemData) {
-          console.log(`Adding item: ${item} of type: ${type}`);
           itemsArray.push({ id: item, type: type, ...itemData });
         } else {
           console.warn(`Item data for ${item} not found in items.json.`);
         }
       } 
       if (tabPlusSubCategory === 'data/quests') {
-        console.log(profileItems[category][subCategory][type][item]);
         itemsArray.push({ id: item, type: type, ...profileItems[category][subCategory][type][item] });
       }
     }
@@ -149,8 +150,16 @@ function populateInventory(tabPlusSubCategory) {
       itemElement.innerHTML += ` (${profileItems[category][subCategory][itemData.type][itemData.id].amount})`;
     }
     itemElement.addEventListener('click', setItemActiveHandler);  // Add click listener
-    inventory.appendChild(itemElement);
+    if (tabPlusSubCategory !== 'data/quests') inventory.appendChild(itemElement);
+    else {
+      if (!itemElement.classList.contains('completed')) {
+        inventory.appendChild(itemElement);
+      } else {
+        if (completedQuests) completedQuests.appendChild(itemElement);
+      }
+    }
   });
+  if (tabPlusSubCategory === 'data/quests') if (completedQuests.children.length > 0) completedQuests.style.display = 'block';
 }
 
 export function initializeItemListActions() {

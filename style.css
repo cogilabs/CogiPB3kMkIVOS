@@ -468,6 +468,7 @@ td.status-overview-separator {
 
 .questList {
   width: 95%;
+  height: fit-content;
 }
 
 #perk-img, #attr-img {
@@ -555,13 +556,19 @@ td.status-overview-separator {
   margin-left: 6px;
 }
 #quest-objectives {
-    height: 48%;
-    overflow-y: auto;
+  height: 48%;
+  overflow-y: auto;
 }
 .questList-item.completed.active {
-    background-color: var(--mediumLight);
-    color: var(--darkText);
+  background-color: var(--mediumLight);
+  color: var(--darkText);
 }
 .questList-item.completed {
-    color: var(--mediumLight);
+  color: var(--mediumLight);
+}
+#completed-quests {
+  display:none;
+  margin-top: 16px;
+  padding-top: 15px;
+  border-top: var(--light) 1px solid;
 }
