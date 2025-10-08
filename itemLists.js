@@ -20,6 +20,11 @@ export function fetchProfileData(nickName) {
       profileItems = data;
       updateTotalWeight(); // Update total weight after fetching profile data
       updateFooterCaps(profileItems?.inv?.caps?.amount ? profileItems.inv.caps.amount : 0);
+      try {
+        updateLimbGaugesFromProfile();
+      } catch (err) {
+        console.warn('Failed to update limb gauges from profile:', err);
+      }
     }
 
     function fetchAndApply(file) {
@@ -507,4 +512,80 @@ function calculateRankStars(rank, maxRank) {
     }
   }
   return stars;
+}
+
+const LIMB_KEYS = ['limbHead','limbRightArm','limbLeftArm','limbRightLeg','limbLeftLeg','limbTorso'];
+
+function _clamp(n, a=0, b=100){ return Math.max(a, Math.min(b, Number(n) || 0)); }
+
+function setGaugePercentById(limbId, percent){
+  const container = document.getElementById(limbId);
+  const gauge = container ? container.querySelector('.gauge-small') : document.querySelector(`#${limbId} .gauge-small`);
+  if (!gauge) return false;
+  const p = _clamp(percent);
+  const vb = gauge.viewBox && gauge.viewBox.baseVal ? gauge.viewBox.baseVal : null;
+  const viewW = vb ? vb.width : gauge.clientWidth || 37;
+  const stroke = 1;
+  const maxFillW = Math.max(0, viewW - stroke);
+  const newW = (maxFillW * p / 100);
+  const fillRect = gauge.querySelector('.g-fill');
+  if (fillRect) {
+    const finalW = newW < 0.5 ? 0 : newW.toFixed(2);
+    fillRect.setAttribute('width', finalW);
+  }
+  gauge.setAttribute('aria-valuenow', String(Math.round(p)));
+  return p;
+}
+
+export function updateLimbGaugesFromProfile(retries = 5, delayMs = 120){
+  const limbSource = (profileItems && profileItems.stat && profileItems.stat.health && profileItems.stat.health.limbs) ? profileItems.stat.health.limbs : null;
+  const values = {};
+  if (!limbSource) {
+    LIMB_KEYS.forEach(k => values[k] = 100);
+  } else {
+    const map = {
+      limbHead: limbSource.head,
+      limbRightArm: limbSource.rightArm,
+      limbLeftArm: limbSource.leftArm,
+      limbRightLeg: limbSource.rightLeg,
+      limbLeftLeg: limbSource.leftLeg,
+      limbTorso: limbSource.torso
+    };
+    LIMB_KEYS.forEach(k => values[k] = _clamp(map[k] ?? 100));
+  }
+  const averageFromProfile = LIMB_KEYS.reduce((acc, k) => acc + (Number(values[k]) || 0), 0) / LIMB_KEYS.length;
+  const healthElNow = document.getElementById('health-points');
+  if (healthElNow) {
+    healthElNow.style.width = `${averageFromProfile}%`;
+  }
+
+  let foundCount = 0;
+  LIMB_KEYS.forEach(k => {
+    const res = setGaugePercentById(k, values[k]);
+    if (res !== false) { foundCount++; }
+  });
+
+  if (foundCount === 0 && retries > 0) {
+    setTimeout(() => updateLimbGaugesFromProfile(retries - 1, delayMs), delayMs);
+  }
+
+  try { console.debug('updateLimbGaugesFromProfile', { values, foundCount }); } catch(e){}
+  const result = { values, average: averageFromProfile, foundCount };
+  return result;
+}
+
+export function setLimbValue(limbId, value){
+  if (!LIMB_KEYS.includes(limbId)) return false;
+  const p = _clamp(value);
+  setGaugePercentById(limbId, p);
+  const current = LIMB_KEYS.reduce((acc, k) => {
+    const g = document.querySelector(`#${k} .gauge-small`);
+    const v = g ? Number(g.getAttribute('aria-valuenow') || 0) : 0;
+    return acc + v;
+  }, 0);
+  const avg = current / LIMB_KEYS.length;
+  try { document.documentElement.style.setProperty('--health-percent', `${avg}%`); } catch(e) {}
+  const healthEl = document.getElementById('health-points');
+  if (healthEl) healthEl.style.width = `${avg}%`;
+  return true;
 }

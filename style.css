@@ -227,7 +227,7 @@ button.selected {
 }
 
 #health-points {
-  width: 95%;
+  width: 0%;
 }
 
 /*---*/
@@ -572,3 +572,80 @@ td.status-overview-separator {
   padding-top: 15px;
   border-top: var(--light) 1px solid;
 }
+
+/*---*/
+
+#limbHealth {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-image: url(images/vaultBoy.gif);
+  background-size: 125px 232.5px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: none;
+  position: relative;
+  margin-bottom: 3.62px;
+}
+#limbHealth::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url(images/vaultBoy.gif);
+  background-size: 125px 232.5px;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: hue-rotate(var(--hue)) saturate(var(--sat)) brightness(var(--brightness));
+  pointer-events: none;
+  z-index: -1;
+}
+#limbHealth > * { 
+  position: relative; 
+  z-index: 1; 
+}
+
+.limbBar {
+  height: 83.33px;
+  width: 83.33px;
+}
+
+.limbBar #gauge-small, .limbBar .gauge-small {
+  display: block;
+  width: 37px;
+  height: 9px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.limbBar .gauge-small .g-fill { 
+  fill: var(--light); 
+}
+.limbBar .gauge-small .g-bg  { 
+  stroke: var(--light); 
+}
+
+#limbRightArm .gauge-small { position: absolute; 
+  top: 6px; left: 6px; 
+}
+#limbLeftArm .gauge-small { 
+  position: absolute; 
+  top: 6px; 
+  right: 6px; 
+}
+#limbRightLeg .gauge-small { 
+  position: absolute; 
+  left: 6px; 
+  top: 50%; transform: translateY(-50%); 
+}
+#limbLeftLeg .gauge-small { 
+  position: absolute; 
+  right: 6px; 
+  top: 50%; transform: translateY(-50%); 
+}
+#limbTorso .gauge-small { 
+  position: absolute; 
+  bottom: 0px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+}
+
+.limbBar { position: relative; }

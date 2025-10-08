@@ -50,12 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
   
-  fetch('items.json')
-    .then(response => response.json())
-    .then(data => {
-      itemsData = data;
-      return setProfile("Local");
-    })
+  import('./itemLists.js')
+    .then(module => module.fetchItemsData())
+    .then(() => setProfile("Local"))
     .then(() => {
       setActiveTab(currentTab);
       if (currentTab === "stat") {
@@ -91,7 +88,9 @@ function setProfile(chosenName) {
             birthday = new Date(currentProfile.birthday);
             initializeColorSliders(!(currentTab === 'settings'));
             initializeColorSliders(true);
-            resolve();
+              import('./itemLists.js').then(module => {
+                module.fetchProfileData('Local').finally(() => resolve());
+              }).catch(() => resolve());
           } else {
             isLocalFile = false;
             setProfile(nickName).then(resolve).catch(reject);
@@ -123,7 +122,9 @@ function setProfile(chosenName) {
           birthday = new Date(currentProfile.birthday);
           initializeColorSliders(!(currentTab === 'settings'));
           initializeColorSliders(true);
-          resolve();
+          import('./itemLists.js').then(module => {
+            module.fetchProfileData(chosenName).finally(() => resolve());
+          }).catch(() => resolve());
         })
         .catch(error => {
           console.error(`Profile for ${chosenName} not found, loading profile Guest.`, error);
@@ -153,7 +154,9 @@ function calculateLevel() {
   const levelProgress = 100 * (1 - (totalDaysLeft / 365));
 
   if (document.getElementById("currentLevel")) document.getElementById("currentLevel").innerHTML = "LEVEL " + level + '<span class="loading-bar" id="level-bar"><span id="levels"></span></span>';
-  if (document.getElementById("levels")) document.getElementById("levels").setAttribute('style', 'width: ' + levelProgress + '%');
+  if (document.getElementById("levels")) {
+    document.getElementById("levels").setAttribute('style', 'width: ' + levelProgress + '%');
+  }
 }
 
 function setActiveTab(tab) {
@@ -263,12 +266,21 @@ export function loadSubMenuContent(category) {
       if (tableContent) {
         if (footerContent) {
           tableContent.innerHTML = footerContent.innerHTML;
+          import('./itemLists.js').then(module => {
+            try { module.updateLimbGaugesFromProfile(); } catch (e) { /* ignore */ }
+            setTimeout(() => {
+              const healthEl = document.getElementById('health-points');
+            }, 120);
+          }).catch(() => {});
         } else {
           tableContent.innerHTML = '';
         }
       }
       if (category === "stat/status") {
         document.getElementById("name").innerHTML = displayName;
+        import('./itemLists.js').then(module => {
+          try { module.updateLimbGaugesFromProfile(); } catch (e) { console.warn('Failed to update limb gauges after loading status subpage', e); }
+        }).catch(err => console.warn('Failed to import itemLists for limb update', err));
       }
       if (tab === "inv") {
         import('./itemLists.js').then(module => {

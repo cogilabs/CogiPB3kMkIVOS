@@ -169,6 +169,16 @@
         }
     },
     "stat": {
+        "health": {
+            "limbs": {
+                "head": 80,
+                "rightArm": 90,
+                "leftArm": 90,
+                "rightLeg": 80,
+                "leftLeg": 100,
+                "torso": 85
+            }
+        },
         "special": {
             "attributes": {
                 "str": {
