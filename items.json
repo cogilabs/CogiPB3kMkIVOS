@@ -580,7 +580,7 @@
           "maxRank": "3",
           "mainDescription": "Improve scoped aiming and grant scoped-rifle bonuses; accuracy and headshot benefits increase per rank.",
           "rank1description": "It's all about focus. You have improved control and can hold your breath longer when aiming with scopes.",
-          "rank2description": "\"Non-automatic, scoped rifles have a chance of knocking down your target.\" Chance is 15%",
+          "rank2description": "Non-automatic, scoped rifles have a chance of knocking down your target.",
           "rank3description": "Non-automatic, scoped rifles gain +25% accuracy to head shot in V.A.T.S.",
           "imageUrl": "images/perks/Sniper.gif",
           "requirement": {
