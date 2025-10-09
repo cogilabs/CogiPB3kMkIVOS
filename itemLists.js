@@ -464,7 +464,8 @@ function getAmmoAmount(ammoType) {
 function updateFooterWeight(totalWeight) {
   const weightElement = document.getElementById('weight');
   if (weightElement) {
-    weightElement.innerHTML = `<img src="images/icons/weight.svg" height="20" class="black-icon" style="margin: -3.5px 0">&nbsp;&nbsp;${Math.round(totalWeight)}/240`;
+    const capacity = computeCarryCapacity(profileItems) || 240;
+    weightElement.innerHTML = `<img src="images/icons/weight.svg" height="20" class="black-icon" style="margin: -3.5px 0">&nbsp;&nbsp;${Math.round(totalWeight)}/${capacity}`;
   } 
 }
 
@@ -590,6 +591,37 @@ export function setLimbValue(limbId, value){
   }
   try { updateFooterHPSummary(profileItems, avg); } catch(e) {}
   return true;
+}
+
+export function computeCarryCapacity(profileRoot) {
+  try {
+    const root = profileRoot && Object.keys(profileRoot).length ? profileRoot : profileItems || {};
+    const special = root?.stat?.special?.attributes || {};
+    const perks = root?.stat?.perks?.perks || {};
+
+    const STR = Number(special.str?.points || 0);
+
+    const strongBack = perks.strongBack || {};
+    const sbRank = Number(strongBack.rank || 0);
+    const hasStrongBack = strongBack.possessed === 'true' || strongBack.possessed === true;
+    let strongBackBonus = 0;
+    if (hasStrongBack) {
+      strongBackBonus = sbRank === 1 ? 25 : (sbRank >= 2 ? 50 : 0);
+    }
+
+    const loneWanderer = perks.loneWanderer || {};
+    const lwRank = Number(loneWanderer.rank || 0);
+    const hasLoneWanderer = loneWanderer.possessed === 'true' || loneWanderer.possessed === true;
+    let loneWandererBonus = 0;
+    if (hasLoneWanderer) {
+      loneWandererBonus = lwRank === 1 ? 50 : (lwRank >= 2 ? 100 : 0);
+    }
+
+    const capacity = Math.round(200 + (STR * 10) + strongBackBonus + loneWandererBonus);
+    return capacity;
+  } catch (e) {
+    return 240; // fallback
+  }
 }
 
 function computeMaxHP(profileRoot) {
