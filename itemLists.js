@@ -1,4 +1,4 @@
-import { setItemListsKeyDownListener, updateRadio } from './renderer.js';
+import { setItemListsKeyDownListener, updateRadio, getCachedLevel, calculateLevelAndProgress } from './renderer.js';
 
 let itemsData = {};
 let profileItems = {};
@@ -103,7 +103,6 @@ function populateInventory(tabPlusSubCategory) {
   inventory.innerHTML = '';  // Clear any existing items
   
   if (!profileItems[category] || !profileItems[category][subCategory]) {
-    console.error(`Profile data for ${category}/${subCategory} not found.`);
     return;
   }
 
@@ -558,6 +557,7 @@ export function updateLimbGaugesFromProfile(retries = 5, delayMs = 120){
   if (healthElNow) {
     healthElNow.style.width = `${averageFromProfile}%`;
   }
+  try { updateFooterHPSummary(profileItems, averageFromProfile); } catch(e) {}
 
   let foundCount = 0;
   LIMB_KEYS.forEach(k => {
@@ -584,8 +584,43 @@ export function setLimbValue(limbId, value){
     return acc + v;
   }, 0);
   const avg = current / LIMB_KEYS.length;
-  try { document.documentElement.style.setProperty('--health-percent', `${avg}%`); } catch(e) {}
   const healthEl = document.getElementById('health-points');
-  if (healthEl) healthEl.style.width = `${avg}%`;
+  if (healthEl) {
+    healthEl.style.width = `${avg}%`;
+  }
+  try { updateFooterHPSummary(profileItems, avg); } catch(e) {}
   return true;
+}
+
+function computeMaxHP(profileRoot) {
+  try {
+    const cfg = profileRoot?.config ? profileRoot.config : profileRoot;
+    const special = profileRoot?.stat?.special?.attributes || {};
+    const perks = profileRoot?.stat?.perks?.perks || {};
+    const END = Number(special.end?.points || 0);
+    // Determine level: prefer birthday in the profile, otherwise fall back to cached level
+    let level = 1;
+    const bday = profileRoot?.config?.birthday || profileRoot?.birthday;
+    if (bday) {
+      try { level = calculateLevelAndProgress(bday).level; } catch(e) { level = getCachedLevel() || 1; }
+    } else {
+      level = getCachedLevel() || 1;
+    }
+    const lifeGiver = perks.lifeGiver || {};
+    const lifeGiverRank = Number(lifeGiver.rank || 0);
+    const hasLifeGiver = lifeGiver.possessed === 'true' || lifeGiver.possessed === true;
+    const extra = hasLifeGiver ? (lifeGiverRank * 20) : 0;
+    const maxHP = Math.round(80 + (END * 5) + ((Math.max(1, level) - 1) * 2.5) + extra);
+    return { maxHP, level };
+  } catch(e) { return { maxHP: 100, level: 1 }; }
+}
+
+function updateFooterHPSummary(profileRoot, averagePercent) {
+  try {
+    const hpCell = document.getElementById('hp-summary');
+    if (!hpCell) return;
+    const { maxHP } = computeMaxHP(profileRoot);
+    const currentHP = Math.round(maxHP * (Number(averagePercent || 0) / 100));
+    hpCell.innerText = `HP ${currentHP}/${maxHP}`;
+  } catch(e) {}
 }

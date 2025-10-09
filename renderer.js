@@ -25,6 +25,9 @@ let birthday = new Date();
 let songList = [];
 let currentSongIndex = 0;
 
+let cachedLevel = 1;
+let cachedLevelProgress = 0;
+
 export function setSubMenusKeyDownListener(newListener) {
   if (subMenuskeyDownListener) {
     document.removeEventListener('keydown', subMenuskeyDownListener);
@@ -56,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(() => {
       setActiveTab(currentTab);
       if (currentTab === "stat") {
-        calculateLevel();
+        updateLevelUI();
       }
     })
     .catch(error => console.error('Error loading items data or setting profile:', error));
@@ -86,6 +89,7 @@ function setProfile(chosenName) {
             lightOffsetValue = currentProfile.lightOffset ? currentProfile.lightOffset : 0;
             satOffsetValue = currentProfile.satOffset ? currentProfile.satOffset : 0;
             birthday = new Date(currentProfile.birthday);
+            updateLevelUI();
             initializeColorSliders(!(currentTab === 'settings'));
             initializeColorSliders(true);
               import('./itemLists.js').then(module => {
@@ -120,6 +124,7 @@ function setProfile(chosenName) {
           lightOffsetValue = currentProfile.lightOffset ? currentProfile.lightOffset : 0;
           satOffsetValue = currentProfile.satOffset ? currentProfile.satOffset : 0;
           birthday = new Date(currentProfile.birthday);
+          updateLevelUI();
           initializeColorSliders(!(currentTab === 'settings'));
           initializeColorSliders(true);
           import('./itemLists.js').then(module => {
@@ -138,26 +143,38 @@ function setProfile(chosenName) {
   });
 }
 
-function calculateLevel() {
-  const today = new Date();
-  const birthdate = new Date(birthday);
-  let level = today.getFullYear() - birthdate.getFullYear();
-
-  let birthDayThisYear = new Date(`${today.getFullYear()}-${birthdate.getMonth() + 1}-${birthdate.getDate()}`);
-  if (today > birthDayThisYear) {
-    birthDayThisYear.setFullYear(today.getFullYear() + 1);
-  } else {
-    level--;
-  }
-
-  let totalDaysLeft = Math.round(Math.abs(birthDayThisYear.getTime() - today.getTime()) / 86400000);
-  const levelProgress = 100 * (1 - (totalDaysLeft / 365));
-
+function updateLevelUI() {
+  const { level, levelProgress } = calculateLevelAndProgress(birthday);
   if (document.getElementById("currentLevel")) document.getElementById("currentLevel").innerHTML = "LEVEL " + level + '<span class="loading-bar" id="level-bar"><span id="levels"></span></span>';
   if (document.getElementById("levels")) {
     document.getElementById("levels").setAttribute('style', 'width: ' + levelProgress + '%');
   }
 }
+
+export function calculateLevelAndProgress(birthdayStr) {
+  try {
+    if (!birthdayStr) return { level: 1, levelProgress: 0 };
+    const today = new Date();
+    const birthdate = new Date(birthdayStr);
+    let level = today.getFullYear() - birthdate.getFullYear();
+    let birthDayThisYear = new Date(`${today.getFullYear()}-${birthdate.getMonth() + 1}-${birthdate.getDate()}`);
+    if (today > birthDayThisYear) {
+      birthDayThisYear.setFullYear(today.getFullYear() + 1);
+    } else {
+      level--;
+    }
+    let totalDaysLeft = Math.round(Math.abs(birthDayThisYear.getTime() - today.getTime()) / 86400000);
+    const levelProgress = 100 * (1 - (totalDaysLeft / 365));
+    const out = { level: Math.max(1, level), levelProgress };
+    try { cachedLevel = out.level; cachedLevelProgress = out.levelProgress; } catch(e){}
+    return out;
+  } catch (e) {
+    return { level: 1, levelProgress: 0 };
+  }
+}
+
+export function getCachedLevel() { return cachedLevel; }
+export function getCachedLevelProgress() { return cachedLevelProgress; }
 
 function setActiveTab(tab) {
   if (subMenuskeyDownListener) {
@@ -192,7 +209,7 @@ function setActiveTab(tab) {
     currentTab = tab;
 
     if (tab === "stat") {
-      calculateLevel();
+      updateLevelUI();
     }
 		if (tab === "data" || tab === "map") {
       updateDateAndTimeContinuously();
