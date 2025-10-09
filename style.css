@@ -508,6 +508,7 @@ td.status-overview-separator {
 #quest-description, .quest-objectives {
   margin: 0;
   height: 50%;
+  overflow-y: auto;
 }
 
 /*---*/
