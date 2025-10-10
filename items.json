@@ -11,7 +11,9 @@
           "range": "83",
           "accuracy": "60",
           "weight": "3.5",
-          "value": "50"
+          "value": "50",
+          "image": "images/weapons/10mm_pistol.png",
+          "icon": ""
         },
         "fatMan": {
           "name": "Fat Man",
@@ -22,7 +24,9 @@
           "range": "117",
           "accuracy": "63",
           "weight": "30.7",
-          "value": "512"
+          "value": "512",
+          "image": "images/weapons/Fat_man.png",
+          "icon": ""
         },
         "laserMusket": {
           "name": "Laser Musket",
@@ -33,7 +37,9 @@
           "range": "215",
           "accuracy": "72",
           "weight": "15.4",
-          "value": "73"
+          "value": "73",
+          "image": "images/weapons/Laser_musket.png",
+          "icon": ""
         },
         "minigun": {
           "name": "Minigun",
@@ -44,7 +50,9 @@
           "range": "131",
           "accuracy": "35",
           "weight": "27.4",
-          "value": "382"
+          "value": "382",
+          "image": "images/weapons/Minigun.png",
+          "icon": ""
         },
         "pipeBoltPistol": {
           "name": "Pipe Bolt-Action Pistol",
@@ -55,7 +63,9 @@
           "range": "95",
           "accuracy": "63",
           "weight": "3.2",
-          "value": "30"
+          "value": "30",
+          "image": "images/weapons/Pipe_bolt-action.png",
+          "icon": ""
         },
         "shDblShotgun": {
           "name": "Short Double-Barrel Shotgun",
@@ -66,7 +76,9 @@
           "range": "47",
           "accuracy": "16",
           "weight": "9",
-          "value": "39"
+          "value": "39",
+          "image": "images/weapons/Double-barrel_shotgun.png",
+          "icon": ""
         }
       },
       "melee": {
@@ -75,14 +87,18 @@
           "damageAmount": "28",
           "speed": "SLOW",
           "weight": "3",
-          "value": "25"
+          "value": "25",
+          "image": "images/weapons/Baseball_bat.png",
+          "icon": ""
         },
         "machete": {
           "name": "Machete",
           "damageAmount": "24",
           "speed": "MEDIUM",
           "weight": "2",
-          "value": "25"
+          "value": "25",
+          "image": "images/weapons/Machete.png",
+          "icon": ""
         }
       },
       "throwables": {
@@ -94,7 +110,9 @@
           "range": "93",
           "accuracy": "0",
           "weight": "0.5",
-          "value": "50"
+          "value": "50",
+          "image": "images/weapons/Fragmine.webp",
+          "icon": ""
         },
         "molotov": {
           "name": "Molotov Cocktail",
@@ -104,7 +122,9 @@
           "range": "93",
           "accuracy": "0",
           "weight": "0.5",
-          "value": "20"
+          "value": "20",
+          "image": "images/weapons/Molotov_cocktail.png",
+          "icon": ""
         }
       }
     },

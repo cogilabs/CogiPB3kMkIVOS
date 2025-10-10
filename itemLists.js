@@ -298,6 +298,7 @@ function scrollIntoViewIfNeeded(element) {
 
 function updateItemDetails(itemId, itemType) {
   const detailsTable = document.getElementById('details-table');
+  const weaponImage = document.getElementById('weapon-img');
   const attrDesc = document.getElementById('attr-description');
   const perkRank = document.getElementById('perk-rank');
   const perkDesc = document.getElementById('perk-description');
@@ -354,6 +355,10 @@ function updateItemDetails(itemId, itemType) {
           componentsHTML += `<span>${component.charAt(0).toUpperCase() + component.slice(1)} (${itemData.components[component]})</span><br>`;
         }
         junkComponents.innerHTML = componentsHTML;
+      }
+      if (weaponImage) {
+        console.log(itemData)
+        weaponImage.src = itemData.image;
       }
     } else {
       console.error('Item data not found.', itemId);

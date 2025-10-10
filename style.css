@@ -471,7 +471,7 @@ td.status-overview-separator {
   height: fit-content;
 }
 
-#perk-img, #attr-img {
+#perk-img, #attr-img, #weapon-img {
   text-align: center;
   max-width: 100%;
   height: auto;
@@ -489,9 +489,18 @@ td.status-overview-separator {
   display: flex;
 }
 
-#perk-img {
+.weapon-image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+}
+
+#perk-img, #weapon-img {
   filter: sepia(1) contrast(1) brightness(0.6) saturate(4) hue-rotate(var(--biHue));
   margin: auto;
+  display: block;
+  max-height: 200px;
 }
 
 #perk-rank {
