@@ -45,6 +45,14 @@ export function setItemListsKeyDownListener(newListener) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  try {
+    const platform = (window.electron && window.electron.getPlatform && window.electron.getPlatform()) || navigator.platform || '';
+    // On Windows we want 'unset' (for dev), on other platforms use 'none' for production (e.g., RPi)
+    const cursorVal = (platform === 'win32' || platform.indexOf('Win') === 0) ? 'unset' : 'none';
+    document.documentElement.style.setProperty('--cursor', cursorVal);
+  } catch (e) {
+    // ignore if platform detection fails
+  }
   const menuItems = document.querySelectorAll('#menu .nav-item');
   
   menuItems.forEach(item => {
