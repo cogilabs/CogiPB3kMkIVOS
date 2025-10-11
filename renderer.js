@@ -303,6 +303,11 @@ export function loadSubMenuContent(category) {
       }
       if (category === "stat/status") {
         document.getElementById("name").innerHTML = displayName;
+        if (displayName === "DEMO MODE") {
+          document.getElementById("name").classList.add("slow-blink");
+        } else {
+          document.getElementById("name").classList.remove("slow-blink");
+        }
         import('./itemLists.js').then(module => {
           try { module.updateLimbGaugesFromProfile(); } catch (e) { console.warn('Failed to update limb gauges after loading status subpage', e); }
         }).catch(err => console.warn('Failed to import itemLists for limb update', err));
