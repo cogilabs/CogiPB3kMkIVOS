@@ -310,6 +310,11 @@ export function loadSubMenuContent(category) {
         }
         import('./itemLists.js').then(module => {
           try { module.updateLimbGaugesFromProfile(); } catch (e) { console.warn('Failed to update limb gauges after loading status subpage', e); }
+          try { module.updateEquippedStats(); } catch(e) { console.warn('Failed to update equipped stats after loading status subpage', e); }
+          const retryDelays = [150, 350, 800];
+          retryDelays.forEach((d, i) => setTimeout(() => {
+            try { module.updateEquippedStats(); } catch(e) { /* ignore */ }
+          }, d));
         }).catch(err => console.warn('Failed to import itemLists for limb update', err));
       }
       if (tab === "inv") {

@@ -28,14 +28,14 @@ try:
             if dtState != clkState:
                 counter += 1
                 print("Clockwise")
-                ui.write(e.EV_KEY, e.KEY_D, 1)  # Press D key
-                ui.write(e.EV_KEY, e.KEY_D, 0)  # Release D key
+                ui.write(e.EV_KEY, e.KEY_E, 1)  # Press E key
+                ui.write(e.EV_KEY, e.KEY_E, 0)  # Release E key
                 ui.syn()
             else:
                 counter -= 1
                 print("Counterclockwise")
-                ui.write(e.EV_KEY, e.KEY_A, 1)  # Press A key
-                ui.write(e.EV_KEY, e.KEY_A, 0)  # Release A key
+                ui.write(e.EV_KEY, e.KEY_Q, 1)  # Press Q key
+                ui.write(e.EV_KEY, e.KEY_Q, 0)  # Release Q key
                 ui.syn()
             time.sleep(0.01)
         clkLastState = clkState

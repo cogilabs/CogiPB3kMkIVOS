@@ -204,8 +204,7 @@
         "miningHelmet": {
           "name": "Mining Helmet",
           "slots": [
-            "head",
-            "eyes"
+            "head"
           ],
           "dmgRes": {
             "bullet": "3"

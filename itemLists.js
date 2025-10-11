@@ -25,6 +25,7 @@ export function fetchProfileData(nickName) {
       } catch (err) {
         console.warn('Failed to update limb gauges from profile:', err);
       }
+      try { updateEquippedStats(); } catch(e) {}
     }
 
     function fetchAndApply(file) {
@@ -133,6 +134,7 @@ export function updateApparelDisplay(){
         }
       }
     }
+    try { updateEquippedStats(); } catch(e) {}
   }
 }
 
@@ -226,6 +228,7 @@ export function initializeItemListActions() {
 
   setItemListsKeyDownListener((event) => handleItemListsKeys(event, itemListItems));
   setItemActive(itemListItems[0]);
+  try { updateEquippedStats(); } catch(e) {}
 }
 
 // Define a global function to handle left and right arrow key navigation
@@ -293,6 +296,7 @@ export function setItemActive(selectedItem) {
   const itemType = selectedItem.getAttribute('item-type');
   if (itemId != "loading")
     updateItemDetails(itemId, itemType);
+  try { updateEquippedStats(); } catch(e) {}
 }
 
 function setEquippedState(selectedItem, state) {
@@ -325,6 +329,100 @@ function setEquippedState(selectedItem, state) {
     }
   }
   updateRadio(selectedItem);
+  try { updateEquippedStats(); } catch(e) {}
+}
+
+export function updateEquippedStats() {
+  try {
+    console.debug && console.debug('updateEquippedStats called');
+    let damage = null;
+    if (profileItems && profileItems.inv && profileItems.inv.weapons) {
+      const weaponTypes = Object.keys(profileItems.inv.weapons);
+      for (let t = 0; t < weaponTypes.length; t++) {
+        const type = weaponTypes[t];
+        const entries = profileItems.inv.weapons[type] || {};
+        for (let id in entries) {
+          const ent = entries[id];
+          if (ent && (ent.equipped === true || ent.equipped === 'true')) {
+            const def = itemsData.inv && itemsData.inv.weapons && itemsData.inv.weapons[type] && itemsData.inv.weapons[type][id] ? itemsData.inv.weapons[type][id] : null;
+            if (def && def.damageAmount) {
+              damage = def.damageAmount;
+              break;
+            }
+            if (def && def.damageAmount === undefined && def.damage) {
+              damage = def.damage;
+              break;
+            }
+          }
+        }
+        if (damage !== null) break;
+      }
+    }
+
+    const res = { bullet: 0, energy: 0, radiation: 0 };
+    if (profileItems && profileItems.inv && profileItems.inv.apparel) {
+      for (let type in profileItems.inv.apparel) {
+        const entries = profileItems.inv.apparel[type] || {};
+        for (let id in entries) {
+          const ent = entries[id];
+          if (ent && (ent.equipped === true || ent.equipped === 'true')) {
+            const def = itemsData.inv && itemsData.inv.apparel && itemsData.inv.apparel[type] && itemsData.inv.apparel[type][id] ? itemsData.inv.apparel[type][id] : null;
+            if (def && def.dmgRes) {
+              const dr = def.dmgRes;
+              res.bullet += parseFloat(dr.bullet || dr.bulletDamage || 0) || 0;
+              res.energy += parseFloat(dr.energy || 0) || 0;
+              res.radiation += parseFloat(dr.radiation || dr.rad || 0) || 0;
+            }
+          }
+        }
+      }
+    }
+
+    const setIfExists = (id, value) => {
+      try {
+        const el = document.getElementById(id);
+        if (el) el.innerText = String(value);
+      } catch(e) {}
+    };
+
+    setIfExists('damageVal', damage !== null ? damage : '0');
+    setIfExists('resBulletVal', Math.round(res.bullet));
+    setIfExists('resEnergyVal', Math.round(res.energy));
+    setIfExists('resRadiationVal', Math.round(res.radiation));
+    
+    const setDisplay = (id, show, display = 'table-cell') => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.style.display = show ? display : 'none';
+    };
+
+    const hasDamage = Number(damage) !== 0;
+    setDisplay('damageValContainer', hasDamage, '');
+
+    const resMap = {
+      bullet: 'resBulletValContainer',
+      energy: 'resEnergyValContainer',
+      radiation: 'resRadiationValContainer'
+    };
+
+    const anyRes = Object.keys(resMap).some(key => (Number(res[key]) || 0) > 0);
+    Object.entries(resMap).forEach(([key, id]) => {
+      setDisplay(id, (Number(res[key]) || 0) > 0, 'table-cell');
+    });
+
+    setDisplay('helmetContainer', anyRes, 'table-cell');
+
+    const sep = document.getElementById('statusOverviewSeparator');
+    if (sep) {
+      sep.style.display = (!hasDamage || !anyRes) ? 'none' : '';
+    }
+
+    console.debug && console.debug('updateEquippedStats result', { damage, res });
+    return { damage, res };
+  } catch (e) {
+    console.warn('updateEquippedStats failed', e);
+    return null;
+  }
 }
 
 function clearApparelBlink() {
