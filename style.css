@@ -4,6 +4,16 @@
   cursor: var(--cursor);
 }
 
+.slow-blink {
+  animation: slow-blink 1s ease-in-out infinite;
+  will-change: opacity;
+}
+
+@keyframes slow-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
 body {
   background-color: var(--darkText);
   margin: 0;
@@ -61,7 +71,7 @@ body {
   border-bottom: none;
 }
 
-#vault-boy {
+#vault-boy, .apparel-img {
   filter: hue-rotate(var(--hue)) saturate(var(--sat)) brightness(var(--brightness));
 }
 
@@ -659,3 +669,46 @@ td.status-overview-separator {
 }
 
 .limbBar { position: relative; }
+
+/*---*/
+
+.apparel-image-container {
+  position: relative;
+  height: 200px;
+  text-align: center;
+}
+.apparel-image-container > img {
+  position: fixed;
+  right: 120px;
+}
+#apparel-background {
+  z-index: 10;
+}
+#apparel-left_leg {
+  display: none;
+  z-index: 11;
+}
+#apparel-right_leg {
+  display: none;
+  z-index: 12;
+}
+#apparel-torso {
+  display: none;
+  z-index: 13;
+}
+#apparel-left_arm {
+  display: none;
+  z-index: 14;
+}
+#apparel-right_arm {
+  display: none;
+  z-index: 15;
+}
+#apparel-eyes {
+  display: none;
+  z-index: 16;
+}
+#apparel-head {
+  display: none;
+  z-index: 17;
+}

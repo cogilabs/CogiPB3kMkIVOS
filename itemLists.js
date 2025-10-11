@@ -78,6 +78,11 @@ export function initializeItemList(nickName, tabPlusSubCategory) {
     .then(() => {
       if (subCategory !== 'special') {
         populateInventory(tabPlusSubCategory);
+        if (subCategory === 'apparel') {
+          try {
+            updateApparelDisplay();
+          } catch (e) { console.warn('Failed to update apparel display on init:', e); }
+        }
       } else {
         updateSpecialAttributes();
       }
@@ -86,6 +91,49 @@ export function initializeItemList(nickName, tabPlusSubCategory) {
     .catch(error => {
       console.error('Error initializing item list:', error);
     });
+}
+
+export function updateApparelDisplay(){
+  const apparelBg = document.getElementById('apparel-background');
+  const apparelSlots = {
+    head: document.getElementById('apparel-head'),
+    eyes: document.getElementById('apparel-eyes'),
+    torso: document.getElementById('apparel-torso'),
+    left_arm: document.getElementById('apparel-left_arm'),
+    right_arm: document.getElementById('apparel-right_arm'),
+    left_leg: document.getElementById('apparel-left_leg'),
+    right_leg: document.getElementById('apparel-right_leg'),
+  };
+
+  if (!apparelBg) return;
+
+  Object.keys(apparelSlots).forEach(k => {
+    const el = apparelSlots[k];
+    if (el) {
+      el.style.display = 'none';
+      if (el.dataset && el.dataset.prevDisplay !== undefined) delete el.dataset.prevDisplay;
+      el.classList.remove('slow-blink');
+    }
+  });
+
+  const profileApparel = profileItems.inv && profileItems.inv.apparel ? profileItems.inv.apparel : null;
+  if (!profileApparel) return;
+
+  for (let type in profileApparel) {
+    for (let id in profileApparel[type]) {
+      const entry = profileApparel[type][id];
+      if (entry && (entry.equipped === true || entry.equipped === 'true')) {
+        const itemDef = itemsData.inv && itemsData.inv.apparel && itemsData.inv.apparel[type] && itemsData.inv.apparel[type][id] ? itemsData.inv.apparel[type][id] : null;
+        if (itemDef && itemDef.slots) {
+          for (let slotKey in itemDef.slots) {
+            const slotName = itemDef.slots[slotKey];
+            const slotEl = apparelSlots[slotName];
+            if (slotEl) slotEl.style.display = 'block';
+          }
+        }
+      }
+    }
+  }
 }
 
 function populateInventory(tabPlusSubCategory) {
@@ -219,6 +267,7 @@ export function setItemActive(selectedItem) {
     console.error('No item selected to set as active.');
     return;
   }
+  try { clearApparelBlink(); } catch(e) {}
 
   if (selectedItem.parentElement.id === 'radio-list') {
     selectedItem.classList.forEach(currentClass => {
@@ -278,6 +327,22 @@ function setEquippedState(selectedItem, state) {
   updateRadio(selectedItem);
 }
 
+function clearApparelBlink() {
+  const apparelSlots = [
+    'apparel-head','apparel-eyes','apparel-torso','apparel-left_arm','apparel-right_arm','apparel-left_leg','apparel-right_leg'
+  ];
+  apparelSlots.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (el.dataset && el.dataset.prevDisplay !== undefined) {
+      el.style.display = el.dataset.prevDisplay;
+      delete el.dataset.prevDisplay;
+    } else {
+    }
+    el.classList.remove('slow-blink');
+  });
+}
+
 function scrollIntoViewIfNeeded(element) {
   const listContainer = document.getElementsByClassName('itemList');
 
@@ -304,6 +369,16 @@ function updateItemDetails(itemId, itemType) {
   const perkDesc = document.getElementById('perk-description');
   const questDesc = document.getElementById('quest-description');
   const questObjectives = document.getElementById('quest-objectives');
+  const apparelBg = document.getElementById('apparel-background');
+  const apparelSlots = {
+    head: document.getElementById('apparel-head'),
+    eyes: document.getElementById('apparel-eyes'),
+    torso: document.getElementById('apparel-torso'),
+    left_arm: document.getElementById('apparel-left_arm'),
+    right_arm: document.getElementById('apparel-right_arm'),
+    left_leg: document.getElementById('apparel-left_leg'),
+    right_leg: document.getElementById('apparel-right_leg'),
+  };
 
   //if (!detailsTable && !attrDesc) return;
   if (detailsTable) {
@@ -348,6 +423,23 @@ function updateItemDetails(itemId, itemType) {
 
       detailsTable.innerHTML = detailsHTML;
 
+      if (apparelBg) {
+        if (itemData.slots) {
+          for (let slot in itemData.slots) {
+            const slotName = itemData.slots[slot];
+            const slotEl = apparelSlots[slotName];
+            if (!slotEl) continue;
+            try {
+              if (slotEl.dataset && slotEl.dataset.prevDisplay === undefined) {
+                slotEl.dataset.prevDisplay = slotEl.style.display || window.getComputedStyle(slotEl).display || 'none';
+              }
+            } catch(e) {}
+            slotEl.style.display = 'block';
+            slotEl.classList.add('slow-blink');
+          }
+        }
+      }
+
       // Check for components if item is junk
       if (category === 'inv' && subCategory === 'junk' && itemData.components) {
         let componentsHTML = '';
@@ -357,7 +449,6 @@ function updateItemDetails(itemId, itemType) {
         junkComponents.innerHTML = componentsHTML;
       }
       if (weaponImage) {
-        console.log(itemData)
         weaponImage.src = itemData.image;
       }
     } else {

@@ -132,6 +132,9 @@
       "armor": {
         "leatherLeftArm": {
           "name": "Leather Left Arm",
+          "slots": [
+            "left_arm"
+          ],
           "dmgRes": {
             "bullet": "1",
             "energy": "3"
@@ -141,6 +144,9 @@
         },
         "leatherRightArm": {
           "name": "Leather Right Arm",
+          "slots": [
+            "right_arm"
+          ],
           "dmgRes": {
             "bullet": "1",
             "energy": "3"
@@ -150,6 +156,9 @@
         },
         "leatherRightLeg": {
           "name": "Leather Right Leg",
+          "slots": [
+            "right_leg"
+          ],
           "dmgRes": {
             "bullet": "2",
             "energy": "5"
@@ -159,6 +168,9 @@
         },
         "raiderChestPiece": {
           "name": "Raider Chest Piece",
+          "slots": [
+            "torso"
+          ],
           "dmgRes": {
             "bullet": "4",
             "energy": "2"
@@ -168,6 +180,9 @@
         },
         "raiderLeftLeg": {
           "name": "Raider Left Leg",
+          "slots": [
+            "left_leg"
+          ],
           "dmgRes": {
             "bullet": "2",
             "energy": "2"
@@ -188,6 +203,10 @@
         },
         "miningHelmet": {
           "name": "Mining Helmet",
+          "slots": [
+            "head",
+            "eyes"
+          ],
           "dmgRes": {
             "bullet": "3"
           },
@@ -201,6 +220,9 @@
         },
         "weldingGoggles": {
           "name": "Welding Goggles",
+          "slots": [
+            "eyes"
+          ],
           "special": {
             "PER": "1"
           },
