@@ -111,7 +111,7 @@
           "accuracy": "0",
           "weight": "0.5",
           "value": "50",
-          "image": "images/inventory/weapons/Fragmine.webp",
+          "image": "images/inventory/weapons/Fragmine.png",
           "icon": ""
         },
         "molotov": {
