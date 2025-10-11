@@ -112,11 +112,13 @@ Cette page de paramètres permet des configurations sympas comme par exemple cel
 
 Dans l'onglet inventaire, votre inventaire (défini dans votre fichier de profil) sera affiché.  
   
-![Inv/Armes](/readme_sources/images/weapons.png)  
+![Inv/weapons](/readme_sources/images/weapons.png)  
    
-![Inv/Vêtements](/readme_sources/images/apparel.png)  
+![Inv/apparel](/readme_sources/images/apparel.png)  
    
-![Inv/soins](/readme_sources/images/aid.png)  
+![Inv/aid](/readme_sources/images/aid.png)  
+  
+![Inv/junk](/readme_sources/images/junk.png)  
    
 Les statistiques des objets (dans le tableau) proviennent du fichier [`items.json`](/items.json), à l'exception de la quantité de munitions, qui provient de votre fichier de profil.  
   

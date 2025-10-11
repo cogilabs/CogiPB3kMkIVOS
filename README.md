@@ -117,6 +117,8 @@ In the inventory tab will be shown your inventory (set in your profile file).
 ![Inv/Apparel](/readme_sources/images/apparel.png)  
    
 ![Inv/aid](/readme_sources/images/aid.png)  
+  
+![Inv/junk](/readme_sources/images/junk.png)  
    
 The stats of the items (in the table) come from the [`items.json`](/items.json) file, except for the amount of ammo, which comes from your profile file.  
   

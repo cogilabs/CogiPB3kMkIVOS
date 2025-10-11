@@ -298,7 +298,7 @@ function scrollIntoViewIfNeeded(element) {
 
 function updateItemDetails(itemId, itemType) {
   const detailsTable = document.getElementById('details-table');
-  const weaponImage = document.getElementById('weapon-img');
+  const weaponImage = document.getElementById('inv-img');
   const attrDesc = document.getElementById('attr-description');
   const perkRank = document.getElementById('perk-rank');
   const perkDesc = document.getElementById('perk-description');

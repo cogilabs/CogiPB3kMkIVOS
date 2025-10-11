@@ -12,7 +12,7 @@
           "accuracy": "60",
           "weight": "3.5",
           "value": "50",
-          "image": "images/weapons/10mm_pistol.png",
+          "image": "images/inventory/weapons/10mm_pistol.png",
           "icon": ""
         },
         "fatMan": {
@@ -25,7 +25,7 @@
           "accuracy": "63",
           "weight": "30.7",
           "value": "512",
-          "image": "images/weapons/Fat_man.png",
+          "image": "images/inventory/weapons/Fat_man.png",
           "icon": ""
         },
         "laserMusket": {
@@ -38,7 +38,7 @@
           "accuracy": "72",
           "weight": "15.4",
           "value": "73",
-          "image": "images/weapons/Laser_musket.png",
+          "image": "images/inventory/weapons/Laser_musket.png",
           "icon": ""
         },
         "minigun": {
@@ -51,7 +51,7 @@
           "accuracy": "35",
           "weight": "27.4",
           "value": "382",
-          "image": "images/weapons/Minigun.png",
+          "image": "images/inventory/weapons/Minigun.png",
           "icon": ""
         },
         "pipeBoltPistol": {
@@ -64,7 +64,7 @@
           "accuracy": "63",
           "weight": "3.2",
           "value": "30",
-          "image": "images/weapons/Pipe_bolt-action.png",
+          "image": "images/inventory/weapons/Pipe_bolt-action.png",
           "icon": ""
         },
         "shDblShotgun": {
@@ -77,7 +77,7 @@
           "accuracy": "16",
           "weight": "9",
           "value": "39",
-          "image": "images/weapons/Double-barrel_shotgun.png",
+          "image": "images/inventory/weapons/Double-barrel_shotgun.png",
           "icon": ""
         }
       },
@@ -88,7 +88,7 @@
           "speed": "SLOW",
           "weight": "3",
           "value": "25",
-          "image": "images/weapons/Baseball_bat.png",
+          "image": "images/inventory/weapons/Baseball_bat.png",
           "icon": ""
         },
         "machete": {
@@ -97,7 +97,7 @@
           "speed": "MEDIUM",
           "weight": "2",
           "value": "25",
-          "image": "images/weapons/Machete.png",
+          "image": "images/inventory/weapons/Machete.png",
           "icon": ""
         }
       },
@@ -111,7 +111,7 @@
           "accuracy": "0",
           "weight": "0.5",
           "value": "50",
-          "image": "images/weapons/Fragmine.webp",
+          "image": "images/inventory/weapons/Fragmine.webp",
           "icon": ""
         },
         "molotov": {
@@ -123,7 +123,7 @@
           "accuracy": "0",
           "weight": "0.5",
           "value": "20",
-          "image": "images/weapons/Molotov_cocktail.png",
+          "image": "images/inventory/weapons/Molotov_cocktail.png",
           "icon": ""
         }
       }
@@ -214,32 +214,38 @@
         "stimpak": {
           "name": "Stimpak",
           "weight": "0.8",
-          "value": "30"
+          "value": "30",
+          "image": "images/inventory/aid/Stimpak.png"
         },
         "radaway": {
           "name": "Radaway",
           "weight": "0.3",
-          "value": "25"
+          "value": "25",
+          "image": "images/inventory/aid/RadAway.png"
         },
         "cure": {
           "name": "Cure",
           "weight": "0.3",
-          "value": "20"
+          "value": "20",
+          "image": "images/inventory/aid/Cure.png"
         },
         "buffout": {
           "name": "Buffout",
           "weight": "0.3",
-          "value": "30"
+          "value": "30",
+          "image": "images/inventory/aid/Buffout.png"
         },
         "psycho": {
           "name": "Psycho",
           "weight": "0.3",
-          "value": "30"
+          "value": "30",
+          "image": "images/inventory/aid/Psycho.png"
         },
         "mentats": {
           "name": "Mentats",
           "weight": "0.3",
-          "value": "30"
+          "value": "30",
+          "image": "images/inventory/aid/Mentats.png"
         }
       }
     },
@@ -248,7 +254,8 @@
         "pin": {
           "name": "Bobby Pin",
           "weight": "0",
-          "value": "1"
+          "value": "1",
+          "image": "images/inventory/misc/Bobby_Pin.png"
         }
       }
     },
@@ -260,7 +267,8 @@
             "steel": "1"
           },
           "weight": "0.1",
-          "value": "1"
+          "value": "1",
+          "image": "images/inventory/junk/tin_can.png"
         },
         "deskFan": {
           "name": "Desk Fan",
@@ -270,7 +278,8 @@
             "steel": "2"
           },
           "weight": "3",
-          "value": "4"
+          "value": "4",
+          "image": "images/inventory/junk/Office_desk_fan.png"
         }
       }
     },
@@ -283,34 +292,40 @@
         "308": {
           "name": ".308 Round",
           "weight": "0",
-          "value": "3"
+          "value": "3",
+          "image": "images/inventory/ammo/308_38_Round.webp"
         },
         "10mm": {
           "name": "10mm Round",
           "weight": "0",
-          "value": "2"
+          "value": "2",
+          "image": "images/inventory/ammo/10mm_round.png"
         },
         "5mm": {
           "name": "5mm Round",
           "weight": "0",
-          "value": "1"
+          "value": "1",
+          "image": "images/inventory/ammo/5mm_round.png"
         },
         "shell": {
           "name": "Shotgun Shell",
           "weight": "0",
-          "value": "3"
+          "value": "3",
+          "image": "images/inventory/ammo/shotgun_shell.png"
         },
         "miniNuke": {
           "name": "Mini Nuke",
           "weight": "0",
-          "value": "100"
+          "value": "100",
+          "image": "images/inventory/ammo/mini_nuke.png"
         }
       },
       "energy": {
         "cell": {
           "name": "Fusion Cell",
           "weight": "0",
-          "value": "3"
+          "value": "3",
+          "image": "images/inventory/ammo/Fusion_cell.png"
         }
       }
     }
