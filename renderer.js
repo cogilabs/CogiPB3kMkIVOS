@@ -36,10 +36,10 @@ let glitchWeights = {
 };
 
 let autoGlitchWeights = {
-  'glitch-scanline': 800,
-  'glitch-flicker': 800,
-  'glitch-slice': 0,
-  'glitch-noise': 10,
+  'glitch-scanline': 50,
+  'glitch-flicker': 50,
+  'glitch-slice': 10,
+  'glitch-noise': 0,
   'glitch-jitter': 0,
 };
 
