@@ -386,35 +386,38 @@ export function updateEquippedStats() {
     };
 
     setIfExists('damageVal', damage !== null ? damage : '0');
-    setIfExists('resBulletVal', Math.round(res.bullet));
-    setIfExists('resEnergyVal', Math.round(res.energy));
-    setIfExists('resRadiationVal', Math.round(res.radiation));
-    
+
+    const bulletVal = Math.round(res.bullet || 0);
+    const energyVal = Math.round(res.energy || 0);
+    const radVal = Math.round(res.radiation || 0);
+
+    setIfExists('resBulletVal', bulletVal);
+    setIfExists('resEnergyVal', energyVal);
+    setIfExists('resRadiationVal', radVal);
+
     const setDisplay = (id, show, display = 'table-cell') => {
       const el = document.getElementById(id);
       if (!el) return;
       el.style.display = show ? display : 'none';
     };
 
-    const hasDamage = Number(damage) !== 0;
-    setDisplay('damageValContainer', hasDamage, '');
+    const nonZeroResCount = [bulletVal, energyVal, radVal].filter(v => Number(v) !== 0).length;
 
-    const resMap = {
-      bullet: 'resBulletValContainer',
-      energy: 'resEnergyValContainer',
-      radiation: 'resRadiationValContainer'
-    };
+    setDisplay('resBulletValContainer', bulletVal !== 0, 'table-cell');
+    setDisplay('resEnergyValContainer', energyVal !== 0, 'table-cell');
+    setDisplay('resRadiationValContainer', radVal !== 0, 'table-cell');
 
-    const anyRes = Object.keys(resMap).some(key => (Number(res[key]) || 0) > 0);
-    Object.entries(resMap).forEach(([key, id]) => {
-      setDisplay(id, (Number(res[key]) || 0) > 0, 'table-cell');
-    });
+    setDisplay('helmetContainer', true, 'table-cell');
 
-    setDisplay('helmetContainer', anyRes, 'table-cell');
+    if (nonZeroResCount === 0) {
+      setDisplay('resBulletValContainer', true, 'table-cell');
+      setDisplay('resEnergyValContainer', false);
+      setDisplay('resRadiationValContainer', false);
+    }
 
     const sep = document.getElementById('statusOverviewSeparator');
     if (sep) {
-      sep.style.display = (!hasDamage || !anyRes) ? 'none' : '';
+      sep.style.display = '';
     }
 
     console.debug && console.debug('updateEquippedStats result', { damage, res });
