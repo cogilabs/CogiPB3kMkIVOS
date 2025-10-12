@@ -321,11 +321,34 @@ td.status-overview-separator {
   padding: 0;
 }
 
-#dmg span {
+#res {
+  background-color: unset;
+  border-spacing: 0;
+  padding: 0;
+  width: 100%;
+}
+
+#res-icons {
+  justify-content: flex-end !important;
+  margin-left: 1px;
+  width: 89px;
+}
+
+#res-txt {
+  justify-content: flex-start !important;
+  margin-right: 1px;
+  width: 89px;
+}
+
+#res span {
   display: table-cell;
 }
 
-#dmg > span {
+.res-val {
+  margin-left: 5px;
+}
+
+#dmg > span, #res > span {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -338,7 +361,7 @@ td.status-overview-separator {
   width: 150px;
 }
 
-#dmg-val {
+#dmg-val, #res-val {
   width: 50px;
   transform: translateX(2px);
 }
