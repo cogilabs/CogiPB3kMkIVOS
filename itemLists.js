@@ -334,7 +334,6 @@ function setEquippedState(selectedItem, state) {
 
 export function updateEquippedStats() {
   try {
-    console.debug && console.debug('updateEquippedStats called');
     let damage = null;
     if (profileItems && profileItems.inv && profileItems.inv.weapons) {
       const weaponTypes = Object.keys(profileItems.inv.weapons);
@@ -420,7 +419,6 @@ export function updateEquippedStats() {
       sep.style.display = '';
     }
 
-    console.debug && console.debug('updateEquippedStats result', { damage, res });
     return { damage, res };
   } catch (e) {
     console.warn('updateEquippedStats failed', e);
@@ -772,7 +770,6 @@ export function updateLimbGaugesFromProfile(retries = 5, delayMs = 120){
     setTimeout(() => updateLimbGaugesFromProfile(retries - 1, delayMs), delayMs);
   }
 
-  try { console.debug('updateLimbGaugesFromProfile', { values, foundCount }); } catch(e){}
   const result = { values, average: averageFromProfile, foundCount };
   return result;
 }

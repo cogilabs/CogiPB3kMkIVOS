@@ -10,7 +10,6 @@ let nickName = "Demo";
 const profilesList = ["guest", "david", "marie"];
 let currentProfile = {};
 let isLocalFile = false;
-let itemsData = {};
 let isMusicPlaying = false;
 let isMusicRunning = false;
 let displayName = '';
@@ -36,6 +35,14 @@ let glitchWeights = {
   'glitch-jitter': 3,
 };
 
+let autoGlitchWeights = {
+  'glitch-scanline': 800,
+  'glitch-flicker': 800,
+  'glitch-slice': 0,
+  'glitch-noise': 10,
+  'glitch-jitter': 0,
+};
+
 export function getGlitchWeights() {
   return Object.assign({}, glitchWeights);
 }
@@ -50,15 +57,32 @@ export function setGlitchWeights(newWeights) {
 }
 
 function pickWeightedEffect() {
-  const entries = Object.entries(glitchWeights).filter(([, w]) => w > 0);
+  return pickWeightedEffectFrom(glitchWeights);
+}
+
+function pickWeightedEffectFrom(weightsMap) {
+  const entries = Object.entries(weightsMap || {}).filter(([, w]) => Number(w) > 0);
   if (entries.length === 0) return null;
-  const total = entries.reduce((s, [, w]) => s + w, 0);
+  const total = entries.reduce((s, [, w]) => s + Number(w), 0);
   let r = Math.random() * total;
   for (const [effect, weight] of entries) {
     if (r < weight) return effect;
     r -= weight;
   }
   return entries[entries.length - 1][0];
+}
+
+export function getAutoGlitchWeights() {
+  return Object.assign({}, autoGlitchWeights);
+}
+
+export function setAutoGlitchWeights(newWeights) {
+  Object.keys(autoGlitchWeights).forEach(k => {
+    if (newWeights && Object.prototype.hasOwnProperty.call(newWeights, k)) {
+      const v = Number(newWeights[k]);
+      autoGlitchWeights[k] = isFinite(v) && v >= 0 ? v : autoGlitchWeights[k];
+    }
+  });
 }
 
 export function setSubMenusKeyDownListener(newListener) {
@@ -106,6 +130,8 @@ document.addEventListener('DOMContentLoaded', () => {
     .catch(error => console.error('Error loading items data or setting profile:', error));
   
   getSongs().then(() => playMusic());
+
+  try { if (autoGlitchConfig && autoGlitchConfig.enabled) scheduleNextAutoGlitch(); } catch (e) { /* ignore if scheduler not available yet */ }
 });
 
 function addLeadingZero(num) {
@@ -703,8 +729,8 @@ function playMusic() {
   audio.play();
 }
 
-function triggerRandomGlitch() {
-  const chosen = pickWeightedEffect() || 'glitch-flicker';
+function triggerRandomGlitch(auto = false) {
+  const chosen = (auto ? pickWeightedEffectFrom(autoGlitchWeights) : pickWeightedEffect()) || 'glitch-flicker';
   const container = document.getElementById('innerBody');
   if (!container) return;
 
@@ -797,4 +823,65 @@ function triggerRandomGlitch() {
     overlay.innerHTML = '';
     overlay.style.zIndex = '';
   }, 600);
+}
+
+let autoGlitchConfig = {
+  enabled: true,
+  minDelaySec: 10,
+  maxDelaySec: 30,
+  chancePerAttempt: 1.0, // [0..1]
+};
+
+let autoGlitchTimeoutId = null;
+
+function scheduleNextAutoGlitch() {
+  if (!autoGlitchConfig.enabled) return;
+  const min = Math.max(0, Number(autoGlitchConfig.minDelaySec) || 0);
+  const max = Math.max(min, Number(autoGlitchConfig.maxDelaySec) || min);
+  const delay = (Math.random() * (max - min) + min) * 1000;
+  if (autoGlitchTimeoutId) clearTimeout(autoGlitchTimeoutId);
+  autoGlitchTimeoutId = setTimeout(() => {
+    autoGlitchTimeoutId = null;
+    try {
+      if (!autoGlitchConfig.enabled) return scheduleNextAutoGlitch();
+      if (document.hidden) return scheduleNextAutoGlitch();
+      if (document.body.classList.contains('glitch-active')) return scheduleNextAutoGlitch();
+      if (currentTab === 'settings') return scheduleNextAutoGlitch();
+
+      if (Math.random() <= (Number(autoGlitchConfig.chancePerAttempt) || 0)) {
+        triggerRandomGlitch(true);
+      }
+    } catch (e) {
+      // swallow errors and continue scheduling
+    }
+    scheduleNextAutoGlitch();
+  }, delay);
+}
+
+export function enableAutoGlitch(enable) {
+  autoGlitchConfig.enabled = !!enable;
+  if (autoGlitchConfig.enabled) {
+    scheduleNextAutoGlitch();
+  } else {
+    if (autoGlitchTimeoutId) {
+      clearTimeout(autoGlitchTimeoutId);
+      autoGlitchTimeoutId = null;
+    }
+  }
+}
+
+export function setAutoGlitchConfig(newCfg) {
+  if (!newCfg || typeof newCfg !== 'object') return;
+  if (Object.prototype.hasOwnProperty.call(newCfg, 'minDelaySec')) autoGlitchConfig.minDelaySec = Math.max(0, Number(newCfg.minDelaySec) || 0);
+  if (Object.prototype.hasOwnProperty.call(newCfg, 'maxDelaySec')) autoGlitchConfig.maxDelaySec = Math.max(0, Number(newCfg.maxDelaySec) || 0);
+  if (Object.prototype.hasOwnProperty.call(newCfg, 'chancePerAttempt')) {
+    const c = Number(newCfg.chancePerAttempt);
+    autoGlitchConfig.chancePerAttempt = isFinite(c) ? Math.min(1, Math.max(0, c)) : autoGlitchConfig.chancePerAttempt;
+  }
+  if (Object.prototype.hasOwnProperty.call(newCfg, 'enabled')) autoGlitchConfig.enabled = !!newCfg.enabled;
+  if (autoGlitchConfig.enabled) scheduleNextAutoGlitch();
+}
+
+export function getAutoGlitchConfig() {
+  return Object.assign({}, autoGlitchConfig);
 }
