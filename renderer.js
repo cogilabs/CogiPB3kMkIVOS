@@ -36,9 +36,9 @@ let glitchWeights = {
 };
 
 let autoGlitchWeights = {
-  'glitch-scanline': 50,
-  'glitch-flicker': 50,
-  'glitch-slice': 10,
+  'glitch-scanline': 2,
+  'glitch-flicker': 2,
+  'glitch-slice': 1,
   'glitch-noise': 0,
   'glitch-jitter': 0,
 };
@@ -827,7 +827,7 @@ function triggerRandomGlitch(auto = false) {
 
 let autoGlitchConfig = {
   enabled: true,
-  minDelaySec: 10,
+  minDelaySec: 5,
   maxDelaySec: 30,
   chancePerAttempt: 1.0, // [0..1]
 };
