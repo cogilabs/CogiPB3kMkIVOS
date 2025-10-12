@@ -12,42 +12,28 @@
     "weapons": {
       "firearms": {
         "pistol": {
+          "possessed": "true"
+        },
+        "fatMan": {},
+        "laserMusket": {
           "possessed": "true",
           "equipped": "true"
         },
-        "fatMan": {
-          "possessed": "true"
-        },
-        "laserMusket": {
-          "possessed": "true"
-        },
-        "minigun": {
-          "possessed": "true"
-        },
+        "minigun": {},
         "pipeBoltPistol": {
           "possessed": "true"
         },
-        "shDblShotgun": {
-          "possessed": "true"
-        }
+        "shDblShotgun": {}
       },
       "melee": {
-        "bat": {
-          "possessed": "true"
-        },
+        "bat": {},
         "machete": {
           "possessed": "true"
         }
       },
       "throwables": {
-        "fragMine": {
-          "possessed": "true",
-          "amount": "6"
-        },
-        "molotov": {
-          "possessed": "true",
-          "amount": "3"
-        }
+        "fragMine": {},
+        "molotov": {}
       }
     },
     "apparel": {
@@ -81,7 +67,9 @@
         "miningHelmet": {
           "possessed": "true"
         },
-        "weddingRing": {},
+        "weddingRing": {
+          "possessed": "true"
+        },
         "weldingGoggles": {
           "possessed": "true",
           "equipped": "true"
@@ -101,7 +89,10 @@
         "cure": {
           "possessed": "true",
           "amount": "3"
-        }
+        },
+        "buffout": {},
+        "psycho": {},
+        "mentats": {}
       }
     },
     "misc": {
@@ -116,7 +107,7 @@
       "junk": {
         "tinCan": {
           "possessed": "true",
-          "amount": "1"
+          "amount": "3"
         },
         "deskFan": {
           "possessed": "true",
@@ -150,16 +141,6 @@
     }
   },
   "stat": {
-    "health": {
-      "limbs": {
-        "head": 100,
-        "rightArm": 100,
-        "leftArm": 100,
-        "rightLeg": 75,
-        "leftLeg": 100,
-        "torso": 85
-      }
-    },
     "special": {
       "attributes": {
         "str": {
@@ -214,12 +195,23 @@
         "sneak": {
           "possessed": "true",
           "rank": "5"
-        },
-        "ninja": {
-          "possessed": "true",
-          "rank": "2"
         }
       }
+    },
+    "health": {
+      "limbs": {
+        "head": "100",
+        "rightArm": "100",
+        "leftArm": "100",
+        "torso": "85",
+        "rightLeg": "75",
+        "leftLeg": "100"
+      }
+    }
+  },
+  "data": {
+    "quests": {
+      "quests": {}
     }
   }
 }
