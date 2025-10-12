@@ -4,26 +4,23 @@
   cursor: var(--cursor);
 }
 
-/* Glitch effects for tab switching (monochrome CRT-style) */
 .glitch-overlay {
   position: absolute;
   pointer-events: none;
-  z-index: 10; /* below navbar which is z-index:60 */
+  z-index: 10;
   background: transparent;
   overflow: hidden;
 }
 
-/* Make sure overlay visually sits exactly over #innerBody when positioned */
 .glitch-overlay.fixed {
   position: fixed;
 }
 
-/* Overlay-specific visuals (mirror innerBody pseudo-element rules but for the overlay) */
 .glitch-overlay.glitch-scanline::after {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: repeating-linear-gradient(transparent 0 3px, rgba(0,0,0,0.16) 3px 4px);
+  background-image: repeating-linear-gradient(transparent 0 3px, rgba(0,0,0,5) 3px 4px);
   background-size: 100% 4px;
   animation: crt-scanline 380ms steps(2) 1;
   pointer-events: none;
@@ -71,19 +68,15 @@
   pointer-events: none;
 }
 
-/* While glitch active, make nav items visually stand out so they don't 'disappear' under effects */
 .glitch-active .nav-item {
   position: relative;
-  z-index: 99999; /* keep above overlay */
+  z-index: 99999;
   text-shadow: 0 0 6px rgba(0,0,0,0.9), 0 0 8px rgba(255,255,255,0.7);
 }
 
-/* Slight background to nav items during glitch to ensure readability */
 .glitch-active .nav-item { background-color: rgba(0,0,0,0.12); }
 
-/* strong scanline + slight shift for CRT look */
 .glitch-scanline {
-  /* marker class: visuals are rendered on ::after */
   will-change: opacity;
 }
 @keyframes crt-scanline {
@@ -93,22 +86,18 @@
   100% { opacity: 0; transform: translateY(0); }
 }
 
-/* brief flicker / phosphor bloom */
 .glitch-flicker {
-  /* marker class: visuals are rendered on ::after */
   will-change: opacity;
 }
 @keyframes crt-flicker {
   0% { opacity: 0; filter: brightness(1); }
-  20% { opacity: 0.9; filter: brightness(1.6); }
+  20% { opacity: 0.9; filter: brightness(16); }
   50% { opacity: 0.8; filter: brightness(0.8); }
   80% { opacity: 0.4; filter: brightness(1.1); }
   100% { opacity: 0; filter: brightness(1); }
 }
 
-/* horizontal slice displacement illusion */
 .glitch-slice {
-  /* marker class: visuals are rendered on ::after */
   will-change: transform, opacity;
 }
 @keyframes crt-slice {
@@ -119,9 +108,7 @@
   100% { transform: translateX(0); opacity: 0; }
 }
 
-/* noise/grain using multiple narrow gradients */
 .glitch-noise {
-  /* marker class: visuals are rendered on ::after */
   will-change: opacity;
 }
 @keyframes crt-noise {
@@ -131,20 +118,17 @@
   100% { opacity: 0; transform: translateY(0); }
 }
 
-/* small whole-interface jitter for displacement */
 .glitch-jitter {
-  /* marker class: visuals are rendered on ::after */
   will-change: transform;
 }
 @keyframes crt-jitter {
   0% { transform: translate(0,0) scale(1); filter: contrast(1); }
-  15% { transform: translate(-6px,1px) scale(1.005) rotate(-0.3deg); filter: contrast(1.05); }
-  45% { transform: translate(8px,-3px) scale(0.995) rotate(0.6deg); filter: contrast(0.98); }
-  75% { transform: translate(-4px,1px) scale(1.002) rotate(-0.2deg); filter: contrast(1.02); }
+  15% { transform: translate(-6px,1px) scale(1.005); filter: contrast(1.05); }
+  45% { transform: translate(8px,-3px) scale(0.995); filter: contrast(0.98); }
+  75% { transform: translate(-4px,1px) scale(1.002); filter: contrast(1.02); }
   100% { transform: translate(0,0) scale(1); filter: none; }
 }
 
-/* Apply glitch effects to the whole innerBody via classes on #innerBody */
 #innerBody.glitch-scanline::after,
 #innerBody.glitch-flicker::after,
 #innerBody.glitch-slice::after,
@@ -154,36 +138,29 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  /* Keep overlays below the navigation so tabs remain visible */
   z-index: 5;
 }
 
-/* scanline overlay */
 #innerBody.glitch-scanline::after {
   background-image: repeating-linear-gradient(transparent 0 3px, rgba(0,0,0,0.16) 3px 4px);
   background-size: 100% 4px;
   animation: crt-scanline 380ms steps(2) 1;
 }
 
-/* flicker bloom */
 #innerBody.glitch-flicker::after {
   background: linear-gradient(rgba(255,255,255,0.06), rgba(255,255,255,0.015));
   mix-blend-mode: screen;
   animation: crt-flicker 320ms linear 1;
 }
 
-/* slice effect uses multiple thin bands in ::after */
 #innerBody.glitch-slice::after {
   background-image: linear-gradient(transparent, transparent), repeating-linear-gradient(to bottom, transparent 0 16px, rgba(0,0,0,0.10) 16px 18px);
-  /* don't multiply too strongly — keep subtle */
   background-blend-mode: normal;
   opacity: 0.95;
   animation: crt-slice 320ms steps(3) 1;
 }
 
-/* noise grain */
 #innerBody.glitch-noise::after {
-  /* very subtle noise to avoid blacking the screen */
   background-image: radial-gradient(rgba(0,0,0,0.008) 1px, transparent 1px), radial-gradient(rgba(0,0,0,0.008) 1px, transparent 1px);
   background-size: 4px 4px, 6px 6px;
   background-position: 0 0, 1px 2px;
@@ -192,25 +169,20 @@
   animation: crt-noise 260ms steps(2) 1;
 }
 
-/* jitter will apply transform to the whole innerBody */
-/* jitter implemented via pseudo-element to avoid moving nav items */
 #innerBody.glitch-jitter::after {
   animation: crt-jitter 300ms steps(3) 1;
   background: transparent;
 }
 
-/* Slight extra emphasis: flash border/top scanline for visibility */
 #innerBody.glitch-flicker {
   box-shadow: 0 0 10px rgba(255,255,255,0.035) inset;
 }
 
-/* Ensure navbar sits above glitch overlays so tabs remain visible */
 .navbar {
   z-index: 60;
 }
 .navbar .nav-item { position: relative; z-index: 70; }
 
-/* Ensure the pseudo-element sits above content but below any overlays like HUD */
 #innerBody { position: relative; }
 
 .slow-blink {
