@@ -212,6 +212,9 @@ function setActiveTab(tab) {
     activeItem.classList.add('active');
   }
 
+  // Trigger a brief random glitch effect on the interface when switching tabs
+  try { triggerRandomGlitch(); } catch (e) { /* ignore if glitch fails */ }
+
   loadTabContent(tab).then(() => {
     savedTab = currentTab;
     currentTab = tab;
@@ -666,4 +669,124 @@ function playMusic() {
   }
   audio.volume = isMusicPlaying ? 1 : 0;
   audio.play();
+}
+
+// --- Glitch utilities (monochrome CRT variants) ---
+function triggerRandomGlitch() {
+  const effects = ['glitch-scanline', 'glitch-flicker', 'glitch-slice', 'glitch-noise', 'glitch-jitter'];
+  //const effects = ['glitch-jitter'];
+  const chosen = effects[Math.floor(Math.random() * effects.length)];
+  const container = document.getElementById('innerBody');
+  if (!container) return;
+
+  // create or reuse a global overlay element that sits above innerBody but below navbar
+  let overlay = document.querySelector('.glitch-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.className = 'glitch-overlay fixed';
+    document.body.appendChild(overlay);
+  }
+
+  // size and position overlay to match innerBody
+  const rect = container.getBoundingClientRect();
+  overlay.style.left = rect.left + 'px';
+  overlay.style.top = rect.top + 'px';
+  overlay.style.width = rect.width + 'px';
+  overlay.style.height = rect.height + 'px';
+
+  // apply chosen effect class to overlay
+  const allClasses = ['glitch-scanline','glitch-flicker','glitch-slice','glitch-noise','glitch-jitter'];
+  overlay.classList.remove(...allClasses);
+  overlay.classList.add(chosen);
+
+  // bring overlay above navbar visually so it can animate content;
+  // nav items remain readable because .glitch-active sets them to very high z-index
+  overlay.style.zIndex = 80;
+
+  // mark body as glitch-active so we can keep nav items readable
+  document.body.classList.add('glitch-active');
+
+  // force reflow to restart animation
+  void overlay.offsetWidth;
+
+  // If we want moving content for slice/jitter, create cloned slices or cloned element
+  if (chosen === 'glitch-slice' || chosen === 'glitch-jitter') {
+    // Clear any existing children
+    overlay.innerHTML = '';
+    const rectInner = container.getBoundingClientRect();
+    // Create a container to hold clones
+    const cloneWrapper = document.createElement('div');
+    cloneWrapper.style.position = 'absolute';
+    cloneWrapper.style.left = '0';
+    cloneWrapper.style.top = '0';
+    cloneWrapper.style.width = '100%';
+    cloneWrapper.style.height = '100%';
+    cloneWrapper.style.overflow = 'hidden';
+    overlay.appendChild(cloneWrapper);
+
+    if (chosen === 'glitch-slice') {
+      const slices = Math.round(Math.random()*17 + 3);
+      const sliceH = Math.round(rectInner.height / slices);
+      for (let i = 0; i < slices; i++) {
+        const slice = document.createElement('div');
+        slice.style.position = 'absolute';
+        slice.style.left = '0';
+        slice.style.width = '100%';
+        slice.style.height = sliceH + 'px';
+        slice.style.top = (i * sliceH) + 'px';
+        slice.style.overflow = 'hidden';
+        // clone innerBody contents
+        const cloned = container.cloneNode(true);
+        cloned.style.position = 'relative';
+        cloned.style.left = '0';
+        cloned.style.top = '0';
+        // offset the cloned element so only the slice area shows
+        cloned.style.transform = 'translate3d(0,0,0)';
+        // set transition for movement
+        cloned.style.transition = `transform 420ms cubic-bezier(.2,.7,.2,1)`;
+        // shift the inner content so the slice mask aligns
+        cloned.style.marginTop = (-i * sliceH) + 'px';
+        slice.appendChild(cloned);
+        cloneWrapper.appendChild(slice);
+        // force reflow then apply random horizontal shift
+        void cloned.offsetWidth;
+        const shift = (Math.random() > 0.5 ? 1 : -1) * (8 + Math.round(Math.random() * 16));
+        cloned.style.transform = `translateX(${shift}px)`;
+      }
+    } else if (chosen === 'glitch-jitter') {
+      // single cloned element that will jitter/rotate
+      const cloned = container.cloneNode(true);
+      cloned.style.position = 'absolute';
+      cloned.style.left = '0';
+      cloned.style.top = '0';
+      cloned.style.width = '100%';
+      cloned.style.height = '100%';
+      cloned.style.transition = `transform 420ms cubic-bezier(.2,.7,.2,1)`;
+      cloneWrapper.appendChild(cloned);
+      void cloned.offsetWidth;
+      const tx = (Math.random() > 0.5 ? 1 : -1) * (6 + Math.round(Math.random() * 8));
+      const ty = (Math.random() > 0.5 ? 1 : -1) * (2 + Math.round(Math.random() * 4));
+  // smaller rotation range for less tilt: ~0.2deg..1.0deg
+  const rot = (Math.random() > 0.5 ? 1 : -1) * (0.2 + Math.random() * 0.8);
+  cloned.style.transform = `translate(${tx}px, ${ty}px) rotate(0deg)`;
+    }
+
+    // cleanup after animation
+    setTimeout(() => {
+      overlay.classList.remove(chosen);
+      overlay.innerHTML = '';
+      document.body.classList.remove('glitch-active');
+      // reset zIndex
+      overlay.style.zIndex = '';
+    }, 200);
+    return;
+  }
+
+  // remove class after animations finish for non-moving effects
+  setTimeout(() => {
+    overlay.classList.remove(chosen);
+    document.body.classList.remove('glitch-active');
+    overlay.innerHTML = '';
+    overlay.style.zIndex = '';
+  }, 600);
 }
