@@ -28,9 +28,9 @@ let cachedLevel = 1;
 let cachedLevelProgress = 0;
 
 let glitchWeights = {
-  'glitch-scanline': 7,
-  'glitch-flicker': 7,
-  'glitch-slice': 10,
+  'glitch-scanline': 10,
+  'glitch-flicker': 10,
+  'glitch-slice': 8,
   'glitch-noise': 5,
   'glitch-jitter': 3,
 };
