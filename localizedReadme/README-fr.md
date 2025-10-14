@@ -2,7 +2,7 @@
 [→ In English](/README.md)
 
 <p align="center">
-    <!--<img alt="Bannière" title="Bannière" src="/readme_sources/images/banner.png">-->
+    <img alt="Bannière" title="Bannière" src="/readme_sources/images/banner.png">
 </p>
 <p align="center">
     <a href="https://electronjs.org/" target="_blank"><img alt="Badge Electron" title="Construit avec Electron !" src="https://img.shields.io/badge/Electron-4E44B6?style=for-the-badge&logo=electron&logoColor=white"/></a>

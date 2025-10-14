@@ -2,7 +2,7 @@
 [→ En Français](/localizedReadme/README-fr.md)
 
 <p align="center">
-    <!--<img alt="Banner" title="Banner" src="/readme_sources/images/banner.png">-->
+    <img alt="Banner" title="Banner" src="/readme_sources/images/banner.png">-
 </p>
 <p align="center">
     <a href="https://electronjs.org/" target="_blank"><img alt="Electron badge" title="Built with Electron!" src="https://img.shields.io/badge/Electron-4E44B6?style=for-the-badge&logo=electron&logoColor=white"/></a>
