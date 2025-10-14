@@ -500,7 +500,7 @@ function updateItemDetails(itemId, itemType) {
           <td id="dmg">
             <span id="dmg-txt">Damage</span>
             <span id="dmg-val">
-              <span><img src="images/icons/crosshair.png" height="11" class="black-icon"></span><span>${itemData.damageAmount}</span>
+              <span><img src="images/icons/crosshair.svg" height="11" class="black-icon"></span><span>${itemData.damageAmount}</span>
             </span>
           </td>
         </tr>
@@ -514,8 +514,8 @@ function updateItemDetails(itemId, itemType) {
         ` : ''}
         ${itemData.dmgRes ? `<tr><td id="res"><span id="res-txt">Resistance</span><span id="res-icons">` : ''}
         ${itemData.dmgRes?.bullet ? `<span class="res-val"><span class="res-icon"> <img src="images/icons/shield.svg" height="11" width="11" class="black-icon">&nbsp;</span><span>${itemData.dmgRes.bullet}</span></span>` : ``}
-        ${itemData.dmgRes?.energy ? `<span class="res-val"><span class="res-icon"> <img src="images/icons/energy.png" height="11" width="11" class="black-icon">&nbsp;</span><span>${itemData.dmgRes.energy}</span></span>` : ``}
-        ${itemData.dmgRes?.radiation ? `<span class="res-val"><span class="res-icon"> <img src="images/icons/rad.png" height="11" width="11" class="black-icon">&nbsp;</span><span>${itemData.dmgRes.radiation}</span></span>` : ``}
+        ${itemData.dmgRes?.energy ? `<span class="res-val"><span class="res-icon"> <img src="images/icons/energy.svg" height="11" width="11" class="black-icon">&nbsp;</span><span>${itemData.dmgRes.energy}</span></span>` : ``}
+        ${itemData.dmgRes?.radiation ? `<span class="res-val"><span class="res-icon"> <img src="images/icons/rad.svg" height="11" width="11" class="black-icon">&nbsp;</span><span>${itemData.dmgRes.radiation}</span></span>` : ``}
         ${itemData.dmgRes ? `</span></td></tr>` : ''}
         ${itemData.speed ? `<tr><td><span>Speed</span><span>${itemData.speed}</span></td></tr>` : ''}
         ${itemData.fireRate ? `<tr><td><span>Fire Rate</span><span>${itemData.fireRate}</span></td></tr>` : ''}
