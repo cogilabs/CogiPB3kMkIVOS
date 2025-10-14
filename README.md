@@ -27,6 +27,7 @@ The **Cogilabs Pip-Boy 3000 Mk4** is a version of Fallout 4's Pip-Boy I'm making
 - [The physical Pip-Boy](#the-physical-pip-boy)
   - [The wiring](#the-wiring)
   - [The 3D model](#the-3d-model)
+- [Licensing & Credits](#licensing--credits)
 
 ## Introduction
 
@@ -201,3 +202,20 @@ The physical part of the Pip-Boy is made of:
 #### Modifications to the model
 
 [WIP]
+
+---
+
+## Licensing & Credits
+
+This project combines original work and fan-made content.
+
+- The **code** is released under the [MIT License](./LICENSE.md).
+- The **UI icons**, **interface visuals**, and other **original assets** are licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).
+- The **modified 3D model** is shared under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), based on the *Pip-Boy 3000 Mark IV* by Ytec3D.
+- The **Roboto** font is used under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+- **Fallout-related content** (Vault Boy, perks, item images, etc.) is © Bethesda Softworks / ZeniMax Media and used here under *fair use* for a non-commercial fan project.
+
+For full details, please refer to:
+- [LICENSE.md](./LICENSE.md) - MIT license for the code  
+- [LICENSES.md](./LICENSES.md) - summary of all licenses  
+- [ATTRIBUTIONS.md](./ATTRIBUTIONS.md) - detailed credits and sources
