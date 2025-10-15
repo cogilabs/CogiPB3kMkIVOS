@@ -61,7 +61,13 @@ Dans votre fichier de profil se trouvent votre :
 → Tous vos objets et caps seront stockés ici pour affichage dans l'onglet inventaire.  
   
 - Sélection de points SPECIAL et vos compétences  
-→ Comme l'inventaire, ils seront stockés ici pour affichage dans l'onglet statut.  
+→ Comme l'inventaire, ils seront stockés ici et utilisés pour le calcul de la santé maximale et de la capacité maximale de transport, ainsi que pour affichage dans l'onglet statut.  
+
+- Santé  
+→ Vos points de vie individuels des membres peuvent être définis dans le fichier de profil et sont utilisés pour calculer vos points de vie actuels.  
+  
+- Quêtes  
+→ Vous pouvez définir vos propres quêtes pour les afficher dans l'onglet Données.  
   
 Trois fichiers de profil sont codés en dur :  
   
@@ -75,11 +81,12 @@ Ensuite, il y a *votre* profil.
 Si un fichier de profil nommé `local.json` est placé dans `<dossier personnel>/pipBoy/`, il sera automatiquement chargé au démarrage du Pip-Boy. S'il existe, un bouton "Local" est ajouté à l'onglet des paramètres pour le charger à nouveau s'il a été changé pour un autre.  
 S'il n'existe pas, le "mode démo" est chargé, utilisant le profil invité mais affichant "MODE DÉMO" à la place du nom d'utilisateur sur la page de statut.  
 
-**Nouveau !** Un créateur de profils en cours de développement est disponible [ici](https://cogilabs.eu/pipBoyProfileCreator/).  
+**Nouveau !** Un ***outil de creation de profil*** en cours de développement est disponible [ici](https://cogilabs.eu/pipBoyProfileCreator/).  
+Je recommande de l'utiliser pour créer votre fichier de profil.  
   
-Utilisez [`guest.json`](/profiles/guest.json) et [`items.json`](/items.json) pour créer votre propre fichier `local.json`.  
+Mais si vous ne souhaitez pas l'utiliser, vous pouvez vous baser sur [`guest.json`](/profiles/guest.json) et [`items.json`](/items.json) pour créer votre propre fichier `local.json`.  
   
-Le fichier [`items.json`](/items.json) stocke chaque objet et compétence existant dans l'inventaire, de sorte que leurs données ne soient pas répétées dans chaque fichier de profil.
+Le fichier [`items.json`](/items.json) stocke chaque objet et perk existant, de sorte que leurs données ne soient pas répétées dans chaque fichier de profil.
 
 ### Personnalisation des couleurs
 
@@ -89,7 +96,7 @@ Pour faciliter la personnalisation, j'ai opté pour une sélection HSL : Hue, Sa
   
 ![La page des paramètres](/readme_sources/images/settings.png)  
   
-Vous trouverez quatre curseurs :  
+Vous trouverez cinq curseurs :  
   
 - Teinte  
 → La teinte est essentiellement la couleur, représentée par l'angle sur un cercle chromatique de 0 (Rouge) à 360 (Rouge aussi puisque c'est une rotation complète). 120 est la teinte du Pip-Boy de FO4.  
@@ -101,7 +108,10 @@ Vous trouverez quatre curseurs :
 → Représente la luminosité de votre couleur. En raison de problèmes avec CSS et les filtres d'image, cela modifie la luminosité *ou* la clarté en fonction de l'élément qu'il modifie. Les valeurs supérieures à 60 ne fonctionneront pas comme prévu, car la clarté affecte également la saturation.  
   
 - Correction de la luminosité des icônes  
-→ Comme il y a un problème connu avec la rotation des teintes par CSS, affectant également la saturation et la luminosité, j'ai ajouté ce curseur qui aide grandement à corriger la différence entre le texte et les icônes. Un carré sous le curseur aide à régler cette valeur correctement : le texte "Vous ne devez pas voir ce texte" écrit à l'intérieur ne doit pas être visible, ou du moins aussi peu que possible.
+→ Comme il y a un problème connu avec la rotation des teintes par CSS, affectant également la saturation et la luminosité, j'ai ajouté ce curseur qui aide grandement à corriger la différence entre le texte et les icônes. Un carré sous le curseur aide à régler cette valeur correctement : le texte "Vous ne devez pas voir ce texte" écrit à l'intérieur ne doit pas être visible, ou du moins aussi peu que possible.  
+  
+ - Correction de la saturation des icônes
+ → Aide encore plus à corriger la différence entre le texte et les icônes.
   
 ![Correction non réglée](/readme_sources/images/iconCorrection1.PNG) ![Correction réglée](/readme_sources/images/iconCorrection2.PNG)  
   
@@ -125,7 +135,9 @@ Les statistiques des objets (dans le tableau) proviennent du fichier [`items.jso
   
 Pour le moment, l'état équipé est statique (ce qui a du sens pour un cosplay) et est défini dans le fichier de profil.
   
-Les pieds de page sont interactifs, le poids est calculé en fonction de votre inventaire actuel. Le pied de page de l'onglet des armes affichera les dégâts de votre arme équipée (pour l'instant seulement le 10mm), le pied de page de l'onglet des vêtements affiche la protection de l'armure, et celui des soins votre barre de HP.  
+Les pieds de page sont interactifs, le poids est calculé en fonction de votre inventaire actuel. Le pied de page de l'onglet des armes affichera les dégâts de votre arme équipée, le pied de page de l'onglet des vêtements affiche la protection de l'armure, et celui des soins votre barre de HP.  
+  
+Les icônes sur la page de statut sont également interactives et affichent les valeurs de dégâts et de protection d'armure.
   
 ### Carte
 
@@ -151,6 +163,8 @@ Pour le graphique, il était généré aléatoirement au chargement de l'onglet,
 Pour mon Pip-Boy, j'ai ajouté la plupart des musiques de Fallout 4 et Fallout 76, que je ne distribuerai bien sûr pas ici. Je recommande de mettre des musiques de Fallout, mais vous pouvez bien sûr mettre ce que vous voulez dans ce dossier.  
   
 ![Radio](/readme_sources/images/radio.png) 
+  
+Comme des amis souhaitent me rejoindre quand j'aurais terminé le projet, je travaille actuellement sur une méthode pour synchroniser la radio entre plusieurs Pip-Boys afin que des amis puissent l'utiliser simultanément.
 
 ### Statut
 
@@ -166,7 +180,7 @@ L'onglet des perks affichera chaque perk présente dans le fichier de profil, av
 
 ### Quêtes
 
-L'utilisateur peut définir des quêtes dans son fichier de profil (et bientôt via l'outil de création de profils).  
+L'utilisateur peut définir des quêtes dans son fichier via [l'outil de création de profils](https://cogilabs.eu/pipBoyProfileCreator/).  
 Ces quêtes sont affichées dans l'ordre où elles sont déclarées dans le fichier. Celles qui sont complétées apparaissent, bien sûr, sous les quêtes non complétées.  
 
 ![Données/Quêtes](/readme_sources/images/quests.png)  

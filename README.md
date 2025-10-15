@@ -61,9 +61,15 @@ Inside your profile file are your:
 → All your items and caps will be stored there for display in the inventory tab.  
   
 - Special points and perks  
-→ Like the inventory, they will be stored there for display in the status tab.  
+→ Like the inventory, they will be stored there to be used in max health and max carry capacity calculation and for display in the status tab.  
   
-Three profile files are hardcoded:  
+- Health  
+→ You individual limbs health points can be set and will be used to calculate your current health points.  
+  
+- Quests  
+→ You can have your own quests for display in the data tab.  
+  
+For the moment, three profile files are hardcoded:  
   
 - The Guest profile which is default FO4 green, has standard items and perks, born 01/01/2000, and *doesn't display a name on the status page* (Useful to let your friends try it without your name on it)  
 - My own profile, displaying "David", being yellow and of course custom inventory and perks.  
@@ -75,9 +81,10 @@ Then there's *your* profile.
 If a profile file named `local.json` is placed in `<home folder>/pipBoy/`, it will be automatically loaded on Pip-Boy start. If it exists, a "Local" button is added to the settings tab to load it again if changed for another.  
 If it doesn't exist, the "Demo mode" is loaded, loading the Guest profile but displaying "DEMO MODE" in the username spot on the status page.  
 
-**New!** There is a work in progress profile creator available [here](https://cogilabs.eu/pipBoyProfileCreator/).
+**New!** There is a work in progress ***profile creator*** available [here](https://cogilabs.eu/pipBoyProfileCreator/).  
+I recommend using it to create your profile file.  
   
-Use [`guest.json`](/profiles/guest.json) and [`items.json`](/items.json) to create your own `local.json` file.  
+But if you don't want to, you can use [`guest.json`](/profiles/guest.json) and [`items.json`](/items.json) to create your own `local.json` file.  
   
 The [`items.json`](/items.json) file stores every existing inventory item and perk, so their data is not repeated in every profile file.
 
@@ -89,7 +96,7 @@ To make the customisation easier, I opted for HSL selection: Hue, Saturation and
   
 ![The Settings page](/readme_sources/images/settings.png)  
   
-You'll find four sliders:  
+You'll find five sliders:  
   
 - Hue  
 → The hue is essentially the tint, represented by the angle on a chromatic circle from 0 (Red) to 360 (Red also since it's a full rotation). 120 is the FO4 Pip-Boy tint.  
@@ -101,7 +108,10 @@ You'll find four sliders:
 → Represents how bright is your color, because of issues with CSS and image filters, it modifies the brightness *or* the lightness depending on the element it modifies. Values above 60 will not work as intended since lightness kind of also affects saturation.  
   
 - Icon brightness correction  
-→ Since there is a known problem with how CSS rotates Hue, also affecting saturation and brightness, I added this slider that helps greatly correcting the difference between text and icons. A square under the slider helps setting this value correctly: The text "You must not see this text" written inside it must not be visible, or at least as little as possible.
+→ Since there is a known problem with how CSS rotates Hue, also affecting saturation and brightness, I added this slider that helps greatly correcting the difference between text and icons. A square under the slider helps setting this value correctly: The text "You must not see this text" written inside it must not be visible, or at least as little as possible.  
+  
+- Icon saturation correction
+→ Helps even more correcting the difference between text and icons
   
 ![Correction not set](/readme_sources/images/iconCorrection1.PNG) ![Correction set](/readme_sources/images/iconCorrection2.PNG)  
   
@@ -125,7 +135,9 @@ The stats of the items (in the table) come from the [`items.json`](/items.json) 
   
 For the moment the equipped state is static (makes sense for a cosplay) and are set in the profile file.
   
-The footers are interactive, the weight is calculated in function of your current inventory. The weapons tab footer will show the damage of your equipped weapon (only shows 10mm for now), the apparel tab footer show armor protection, and the aid one your HP bar.  
+The footers are interactive, the weight is calculated in function of your current inventory. The weapons tab footer will show the damage of your equipped weapon, the apparel tab footer show armor protection, and the aid one your HP bar.  
+  
+The icons on the Status page are also interactive and also show the damage and armor protection values.
   
 ### Map
 
@@ -151,6 +163,8 @@ For the graph, it used to be randomly generated on tab loading, but I didn't lik
 For my Pip-Boy I added most songs from Fallout 4 and Fallout 76, which I will of course not distribute here. I do recommend putting in Fallout songs, but you can of course put whatever you want in that folder.  
   
 ![Radio](/readme_sources/images/radio.png) 
+  
+Since some friends want to join me when I'll be finished with this project, I'm currently working on a way to synchronize the radio between several Pip-Boys.
 
 ### Status
 
@@ -167,7 +181,7 @@ The perks tab will show any of the perks present in the profile file, with their
 
 ### Quests
 
-The user can set quests in their profile file (and soon via the profile creator tool).
+The user can set quests in their profile file via the [profile creator tool](https://cogilabs.eu/pipBoyProfileCreator/).
 Those quests are displayed in the order they are declared in the file, except of course for those that are completed, they appear under the non-completed ones.  
 
 ![Data/Quests](/readme_sources/images/quests.png)  
