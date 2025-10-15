@@ -208,15 +208,15 @@ La partie physique du Pip-Boy est faite de:
 
 Ce projet combine du travail original et du contenu créé par des fans.
 
-- Le **code** est publié sous la [licence MIT](./LICENSE.md).
+- Le **code** est publié sous la [licence MIT](/LICENSE.md).
 - Les **icônes d’interface**, **visuels originaux** et autres **éléments graphiques** sont publiés sous la licence [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/deed.fr).
 - Le **modèle 3D modifié** est partagé sous la licence [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.fr), basé sur le modèle *Pip-Boy 3000 Mark IV* de Ytec3D.
 - La police **Roboto** est utilisée sous la [licence Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0).
 - Le **contenu lié à Fallout** (Vault Boy, perks, images d’objets, etc.) est © Bethesda Softworks / ZeniMax Media et est utilisé ici dans le cadre du *fair use* (usage loyal) pour un projet de fan non commercial.
 
 Pour plus de détails, consultez :
-- [LICENSE.md](./LICENSE.md) - licence MIT du code  
-- [LICENSES.md](./LICENSES.md) - résumé de toutes les licences  
-- [ATTRIBUTIONS.md](./ATTRIBUTIONS.md) - crédits et sources détaillés  
+- [LICENSE.md](/LICENSE.md) - licence MIT du code  
+- [LICENSES.md](/LICENSES.md) - résumé de toutes les licences  
+- [ATTRIBUTIONS.md](/ATTRIBUTIONS.md) - crédits et sources détaillés  
 
 *Remarque : ces documents sont rédigés en anglais.*
