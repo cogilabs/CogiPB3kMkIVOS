@@ -130,203 +130,237 @@
     },
     "apparel": {
       "armor": {
-        "leatherChestPiece": {
-          "name": "Leather Chest Piece",
+        "combatChest": {
+          "name": "Combat Armor Chest Piece",
+          "image": "images/inventory/apparel/Fo4_combat_armor_chest_piece.png",
           "slots": [
             "torso"
           ],
           "dmgRes": {
-            "bullet": "3",
+            "bullet": "15",
+            "energy": "15"
+          },
+          "weight": "8",
+          "value": "60",
+          "set": "combat"
+        },
+        "combatHelmet": {
+          "name": "Combat Armor Helmet",
+          "image": "images/inventory/apparel/Fo4_combat_armor_helmet.png",
+          "slots": [
+            "head"
+          ],
+          "dmgRes": {
+            "bullet": "10",
             "energy": "10"
           },
-          "weight": "5",
+          "weight": "4",
           "value": "25",
-          "set": "leather"
+          "set": "combat"
         },
-        "leatherLeftArm": {
-          "name": "Leather Left Arm",
+        "combatLeftArm": {
+          "name": "Combat Armor Left Arm",
+          "image": "images/inventory/apparel/Fo4_combat_armor_arm.png",
           "slots": [
             "left_arm"
           ],
           "dmgRes": {
-            "bullet": "1",
-            "energy": "3"
+            "bullet": "9",
+            "energy": "9"
           },
           "weight": "2",
-          "value": "8",
-          "set": "leather"
+          "value": "25",
+          "set": "combat"
         },
-        "leatherLeftLeg": {
-          "name": "Leather Left Leg",
+        "combatLeftLeg": {
+          "name": "Combat Armor Left Leg",
+          "image": "images/inventory/apparel/Fo4_combat_armor_leg.png",
           "slots": [
             "left_leg"
           ],
           "dmgRes": {
-            "bullet": "2",
-            "energy": "5"
+            "bullet": "8",
+            "energy": "8"
           },
           "weight": "2",
-          "value": "10",
-          "set": "leather"
+          "value": "25",
+          "set": "combat"
         },
-        "leatherRightArm": {
-          "name": "Leather Right Arm",
+        "combatRightArm": {
+          "name": "Combat Armor Right Arm",
+          "image": "images/inventory/apparel/Fo4_combat_armor_arm.png",
           "slots": [
             "right_arm"
           ],
           "dmgRes": {
-            "bullet": "1",
-            "energy": "3"
+            "bullet": "9",
+            "energy": "9"
           },
           "weight": "2",
-          "value": "8",
-          "set": "leather"
+          "value": "25",
+          "set": "combat"
         },
-        "leatherRightLeg": {
-          "name": "Leather Right Leg",
+        "combatRightLeg": {
+          "name": "Combat Armor Right Leg",
+          "image": "images/inventory/apparel/Fo4_combat_armor_leg.png",
           "slots": [
             "right_leg"
           ],
           "dmgRes": {
-            "bullet": "2",
-            "energy": "5"
+            "bullet": "8",
+            "energy": "8"
           },
           "weight": "2",
-          "value": "10",
-          "set": "leather"
-        },
-        "sturdyLeatherChestPiece": {
-          "name": "Sturdy Leather Chest Piece",
+          "value": "25",
+          "set": "combat"
+        }
+
+        ,
+        "sturdyCombatChest": {
+          "name": "Sturdy Combat Armor Chest Piece",
+          "image": "images/inventory/apparel/Fo4_combat_armor_chest_piece.png",
           "slots": [
             "torso"
           ],
           "dmgRes": {
-            "bullet": "14",
-            "energy": "23"
+            "bullet": "25",
+            "energy": "25"
           },
-          "weight": "10",
-          "value": "50",
-          "set": "sturdyLeather"
+          "weight": "12",
+          "value": "140",
+          "set": "sturdyCombat"
         },
-        "sturdyLeatherLeftArm": {
-          "name": "Sturdy Leather Left Arm",
+        "sturdyCombatLeftArm": {
+          "name": "Sturdy Combat Armor Left Arm",
+          "image": "images/inventory/apparel/Fo4_combat_armor_arm.png",
           "slots": [
             "left_arm"
           ],
           "dmgRes": {
-            "bullet": "6",
-            "energy": "11"
+            "bullet": "13",
+            "energy": "13"
           },
           "weight": "5",
-          "value": "18",
-          "set": "sturdyLeather"
+          "value": "85",
+          "set": "sturdyCombat"
         },
-        "sturdyLeatherLeftLeg": {
-          "name": "Sturdy Leather Left Leg",
+        "sturdyCombatLeftLeg": {
+          "name": "Sturdy Combat Armor Left Leg",
+          "image": "images/inventory/apparel/Fo4_combat_armor_leg.png",
           "slots": [
             "left_leg"
           ],
           "dmgRes": {
-            "bullet": "7",
-            "energy": "13"
+            "bullet": "12",
+            "energy": "12"
           },
-          "weight": "5",
-          "value": "20",
-          "set": "sturdyLeather"
+          "weight": "7",
+          "value": "105",
+          "set": "sturdyCombat"
         },
-        "sturdyLeatherRightArm": {
-          "name": "Sturdy Leather Right Arm",
+        "sturdyCombatRightArm": {
+          "name": "Sturdy Combat Armor Right Arm",
+          "image": "images/inventory/apparel/Fo4_combat_armor_arm.png",
           "slots": [
             "right_arm"
           ],
           "dmgRes": {
-            "bullet": "6",
-            "energy": "11"
+            "bullet": "13",
+            "energy": "13"
           },
           "weight": "5",
-          "value": "18",
-          "set": "sturdyLeather"
+          "value": "85",
+          "set": "sturdyCombat"
         },
-        "sturdyLeatherRightLeg": {
-          "name": "Sturdy Leather Right Leg",
+        "sturdyCombatRightLeg": {
+          "name": "Sturdy Combat Armor Right Leg",
+          "image": "images/inventory/apparel/Fo4_combat_armor_leg.png",
           "slots": [
             "right_leg"
           ],
           "dmgRes": {
-            "bullet": "7",
-            "energy": "13"
+            "bullet": "12",
+            "energy": "12"
           },
-          "weight": "5",
-          "value": "20",
-          "set": "sturdyLeather"
-        },
-        "heavyLeatherChestPiece": {
-          "name": "Heavy Leather Chest Piece",
+          "weight": "7",
+          "value": "105",
+          "set": "sturdyCombat"
+        }
+
+        ,
+        "heavyCombatChest": {
+          "name": "Heavy Combat Armor Chest Piece",
+          "image": "images/inventory/apparel/Fo4_combat_armor_chest_piece.png",
           "slots": [
             "torso"
           ],
           "dmgRes": {
-            "bullet": "14",
-            "energy": "36"
+            "bullet": "35",
+            "energy": "35"
           },
-          "weight": "15",
-          "value": "75",
-          "set": "heavyLeather"
+          "weight": "16",
+          "value": "220",
+          "set": "heavyCombat"
         },
-        "heavyLeatherLeftArm": {
-          "name": "Heavy Leather Left Arm",
+        "heavyCombatLeftArm": {
+          "name": "Heavy Combat Armor Left Arm",
+          "image": "images/inventory/apparel/Fo4_combat_armor_arm.png",
           "slots": [
             "left_arm"
           ],
           "dmgRes": {
-            "bullet": "11",
-            "energy": "18"
+            "bullet": "17",
+            "energy": "17"
           },
-          "weight": "17",
-          "value": "28",
-          "set": "heavyLeather"
+          "weight": "7",
+          "value": "145",
+          "set": "heavyCombat"
         },
-        "heavyLeatherLeftLeg": {
-          "name": "Heavy Leather Left Leg",
+        "heavyCombatLeftLeg": {
+          "name": "Heavy Combat Armor Left Leg",
+          "image": "images/inventory/apparel/Fo4_combat_armor_leg.png",
           "slots": [
             "left_leg"
           ],
           "dmgRes": {
-            "bullet": "11",
-            "energy": "18"
+            "bullet": "16",
+            "energy": "16"
           },
           "weight": "7",
-          "value": "30",
-          "set": "heavyLeather"
+          "value": "185",
+          "set": "heavyCombat"
         },
-        "heavyLeatherRightArm": {
-          "name": "Heavy Leather Right Arm",
+        "heavyCombatRightArm": {
+          "name": "Heavy Combat Armor Right Arm",
+          "image": "images/inventory/apparel/Fo4_combat_armor_arm.png",
           "slots": [
             "right_arm"
           ],
           "dmgRes": {
-            "bullet": "11",
-            "energy": "18"
+            "bullet": "17",
+            "energy": "17"
           },
-          "weight": "17",
-          "value": "28",
-          "set": "heavyLeather"
+          "weight": "7",
+          "value": "145",
+          "set": "heavyCombat"
         },
-        "heavyLeatherRightLeg": {
-          "name": "Heavy Leather Right Leg",
+        "heavyCombatRightLeg": {
+          "name": "Heavy Combat Armor Right Leg",
+          "image": "images/inventory/apparel/Fo4_combat_armor_leg.png",
           "slots": [
             "right_leg"
           ],
           "dmgRes": {
-            "bullet": "11",
-            "energy": "18"
+            "bullet": "16",
+            "energy": "16"
           },
-          "weight": "7",
-          "value": "30",
-          "set": "heavyLeather"
+          "weight": "9",
+          "value": "185",
+          "set": "heavyCombat"
         },
-        "raiderChestPiece": {
+        "raiderChest": {
           "name": "Raider Chest Piece",
+          "image": "images/inventory/apparel/Raider_chest_piece.png",
           "slots": [
             "torso"
           ],
@@ -340,6 +374,7 @@
         },
         "raiderLeftArm": {
           "name": "Raider Left Arm",
+          "image": "images/inventory/apparel/Raider_left_arm.png",
           "slots": [
             "left_arm"
           ],
@@ -353,6 +388,7 @@
         },
         "raiderLeftLeg": {
           "name": "Raider Left Leg",
+          "image": "images/inventory/apparel/Raider_left_leg.png",
           "slots": [
             "left_leg"
           ],
@@ -366,6 +402,7 @@
         },
         "raiderRightArm": {
           "name": "Raider Right Arm",
+          "image": "images/inventory/apparel/Raider_right_arm.png",
           "slots": [
             "right_arm"
           ],
@@ -379,6 +416,7 @@
         },
         "raiderRightLeg": {
           "name": "Raider Right Leg",
+          "image": "images/inventory/apparel/Raider_right_leg.png",
           "slots": [
             "right_leg"
           ],
@@ -390,8 +428,9 @@
           "value": "8",
           "set": "raider"
         },
-        "sturdyRaiderChestPiece": {
+        "sturdyRaiderChest": {
           "name": "Sturdy Raider Chest Piece",
+          "image": "images/inventory/apparel/Fo4_raider_chest_piece.png",
           "slots": [
             "torso"
           ],
@@ -405,6 +444,7 @@
         },
         "sturdyRaiderLeftArm": {
           "name": "Sturdy Raider Left Arm",
+          "image": "images/inventory/apparel/Fo4_raider_left_arm.png",
           "slots": [
             "left_arm"
           ],
@@ -418,6 +458,7 @@
         },
         "sturdyRaiderLeftLeg": {
           "name": "Sturdy Raider Left Leg",
+          "image": "images/inventory/apparel/Fo4_raider_left_leg.png",
           "slots": [
             "left_leg"
           ],
@@ -431,6 +472,7 @@
         },
         "sturdyRaiderRightArm": {
           "name": "Sturdy Raider Right Arm",
+          "image": "images/inventory/apparel/Fo4_raider_right_arm.png",
           "slots": [
             "right_arm"
           ],
@@ -444,6 +486,7 @@
         },
         "sturdyRaiderRightLeg": {
           "name": "Sturdy Raider Right Leg",
+          "image": "images/inventory/apparel/Fo4_raider_right_leg.png",
           "slots": [
             "right_leg"
           ],
@@ -455,8 +498,9 @@
           "value": "13",
           "set": "sturdyRaider"
         },
-        "heavyRaiderChestPiece": {
+        "heavyRaiderChest": {
           "name": "Heavy Raider Chest Piece",
+          "image": "images/inventory/apparel/Fo4_raider_chest_piece.png",
           "slots": [
             "torso"
           ],
@@ -470,6 +514,7 @@
         },
         "heavyRaiderLeftArm": {
           "name": "Heavy Raider Left Arm",
+          "image": "images/inventory/apparel/Fo4_raider_left_arm.png",
           "slots": [
             "left_arm"
           ],
@@ -483,6 +528,7 @@
         },
         "heavyRaiderLeftLeg": {
           "name": "Heavy Raider Left Leg",
+          "image": "images/inventory/apparel/Fo4_raider_left_leg.png",
           "slots": [
             "left_leg"
           ],
@@ -496,6 +542,7 @@
         },
         "heavyRaiderRightArm": {
           "name": "Heavy Raider Right Arm",
+          "image": "images/inventory/apparel/Fo4_raider_right_arm.png",
           "slots": [
             "right_arm"
           ],
@@ -509,6 +556,7 @@
         },
         "heavyRaiderRightLeg": {
           "name": "Heavy Raider Right Leg",
+          "image": "images/inventory/apparel/Fo4_raider_right_leg.png",
           "slots": [
             "right_leg"
           ],
@@ -520,8 +568,571 @@
           "value": "18",
           "set": "heavyRaider"
         },
-        "metalChestPiece": {
+        "leatherChest": {
+          "name": "Leather Chest Piece",
+          "image": "images/inventory/apparel/Leather_chest_piece.png",
+          "slots": [
+            "torso"
+          ],
+          "dmgRes": {
+            "bullet": "3",
+            "energy": "10"
+          },
+          "weight": "5",
+          "value": "25",
+          "set": "leather"
+        },
+        "leatherLeftArm": {
+          "name": "Leather Left Arm",
+          "image": "images/inventory/apparel/Leather_arm.png",
+          "slots": [
+            "left_arm"
+          ],
+          "dmgRes": {
+            "bullet": "1",
+            "energy": "3"
+          },
+          "weight": "2",
+          "value": "8",
+          "set": "leather"
+        },
+        "leatherLeftLeg": {
+          "name": "Leather Left Leg",
+          "image": "images/inventory/apparel/Leather_leg.png",
+          "slots": [
+            "left_leg"
+          ],
+          "dmgRes": {
+            "bullet": "2",
+            "energy": "5"
+          },
+          "weight": "2",
+          "value": "10",
+          "set": "leather"
+        },
+        "leatherRightArm": {
+          "name": "Leather Right Arm",
+          "image": "images/inventory/apparel/Leather_arm.png",
+          "slots": [
+            "right_arm"
+          ],
+          "dmgRes": {
+            "bullet": "1",
+            "energy": "3"
+          },
+          "weight": "2",
+          "value": "8",
+          "set": "leather"
+        },
+        "leatherRightLeg": {
+          "name": "Leather Right Leg",
+          "image": "images/inventory/apparel/Leather_leg.png",
+          "slots": [
+            "right_leg"
+          ],
+          "dmgRes": {
+            "bullet": "2",
+            "energy": "5"
+          },
+          "weight": "2",
+          "value": "10",
+          "set": "leather"
+        },
+        "sturdyLeatherChest": {
+          "name": "Sturdy Leather Chest Piece",
+          "image": "images/inventory/apparel/Leather_chest_piece.png",
+          "slots": [
+            "torso"
+          ],
+          "dmgRes": {
+            "bullet": "14",
+            "energy": "23"
+          },
+          "weight": "10",
+          "value": "50",
+          "set": "sturdyLeather"
+        },
+        "sturdyLeatherLeftArm": {
+          "name": "Sturdy Leather Left Arm",
+          "image": "images/inventory/apparel/Leather_arm.png",
+          "slots": [
+            "left_arm"
+          ],
+          "dmgRes": {
+            "bullet": "6",
+            "energy": "11"
+          },
+          "weight": "5",
+          "value": "18",
+          "set": "sturdyLeather"
+        },
+        "sturdyLeatherLeftLeg": {
+          "name": "Sturdy Leather Left Leg",
+          "image": "images/inventory/apparel/Leather_leg.png",
+          "slots": [
+            "left_leg"
+          ],
+          "dmgRes": {
+            "bullet": "7",
+            "energy": "13"
+          },
+          "weight": "5",
+          "value": "20",
+          "set": "sturdyLeather"
+        },
+        "sturdyLeatherRightArm": {
+          "name": "Sturdy Leather Right Arm",
+          "image": "images/inventory/apparel/Leather_arm.png",
+          "slots": [
+            "right_arm"
+          ],
+          "dmgRes": {
+            "bullet": "6",
+            "energy": "11"
+          },
+          "weight": "5",
+          "value": "18",
+          "set": "sturdyLeather"
+        },
+        "sturdyLeatherRightLeg": {
+          "name": "Sturdy Leather Right Leg",
+          "image": "images/inventory/apparel/Leather_leg.png",
+          "slots": [
+            "right_leg"
+          ],
+          "dmgRes": {
+            "bullet": "7",
+            "energy": "13"
+          },
+          "weight": "5",
+          "value": "20",
+          "set": "sturdyLeather"
+        },
+        "heavyLeatherChest": {
+          "name": "Heavy Leather Chest Piece",
+          "image": "images/inventory/apparel/Leather_chest_piece.png",
+          "slots": [
+            "torso"
+          ],
+          "dmgRes": {
+            "bullet": "14",
+            "energy": "36"
+          },
+          "weight": "15",
+          "value": "75",
+          "set": "heavyLeather"
+        },
+        "heavyLeatherLeftArm": {
+          "name": "Heavy Leather Left Arm",
+          "image": "images/inventory/apparel/Leather_arm.png",
+          "slots": [
+            "left_arm"
+          ],
+          "dmgRes": {
+            "bullet": "11",
+            "energy": "18"
+          },
+          "weight": "17",
+          "value": "28",
+          "set": "heavyLeather"
+        },
+        "heavyLeatherLeftLeg": {
+          "name": "Heavy Leather Left Leg",
+          "image": "images/inventory/apparel/Leather_leg.png",
+          "slots": [
+            "left_leg"
+          ],
+          "dmgRes": {
+            "bullet": "11",
+            "energy": "18"
+          },
+          "weight": "7",
+          "value": "30",
+          "set": "heavyLeather"
+        },
+        "heavyLeatherRightArm": {
+          "name": "Heavy Leather Right Arm",
+          "image": "images/inventory/apparel/Leather_arm.png",
+          "slots": [
+            "right_arm"
+          ],
+          "dmgRes": {
+            "bullet": "11",
+            "energy": "18"
+          },
+          "weight": "17",
+          "value": "28",
+          "set": "heavyLeather"
+        },
+        "heavyLeatherRightLeg": {
+          "name": "Heavy Leather Right Leg",
+          "image": "images/inventory/apparel/Leather_leg.png",
+          "slots": [
+            "right_leg"
+          ],
+          "dmgRes": {
+            "bullet": "11",
+            "energy": "18"
+          },
+          "weight": "7",
+          "value": "30",
+          "set": "heavyLeather"
+        },
+        "synthChestPiece": {
+          "name": "Synth Chest Piece",
+          "image": "images/inventory/apparel/Synth_chest_piece.png",
+          "slots": [
+            "torso"
+          ],
+          "dmgRes": {
+            "bullet": "12",
+            "energy": "17"
+          },
+          "weight": "7",
+          "value": "76",
+          "set": "synth"
+        },
+        "synthFieldHelmet": {
+          "name": "Synth Field Helmet",
+          "image": "images/inventory/apparel/Synth_field_helmet.png",
+          "slots": [
+            "head",
+            "eyes",
+            "mouth"
+          ],
+          "dmgRes": {
+            "bullet": "9",
+            "energy": "11"
+          },
+          "weight": "3",
+          "value": "33",
+          "set": "synth"
+        },
+        "synthHelmet": {
+          "name": "Synth Helmet",
+          "image": "images/inventory/apparel/Synth_helmet.png",
+          "slots": [
+            "head"
+          ],
+          "dmgRes": {
+            "bullet": "9",
+            "energy": "11"
+          },
+          "weight": "3",
+          "value": "33",
+          "set": "synth"
+        },
+        "synthLeftArm": {
+          "name": "Synth Left Arm",
+          "image": "images/inventory/apparel/Synth_arm.png",
+          "slots": [
+            "left_arm"
+          ],
+          "dmgRes": {
+            "bullet": "7",
+            "energy": "10"
+          },
+          "weight": "3",
+          "value": "30",
+          "set": "synth"
+        },
+        "synthLeftLeg": {
+          "name": "Synth Left Leg",
+          "image": "images/inventory/apparel/Synth_leg.png",
+          "slots": [
+            "left_leg"
+          ],
+          "dmgRes": {
+            "bullet": "6",
+            "energy": "9"
+          },
+          "weight": "3",
+          "value": "30",
+          "set": "synth"
+        },
+        "synthRightArm": {
+          "name": "Synth Right Arm",
+          "image": "images/inventory/apparel/Synth_arm.png",
+          "slots": [
+            "right_arm"
+          ],
+          "dmgRes": {
+            "bullet": "7",
+            "energy": "10"
+          },
+          "weight": "3",
+          "value": "30",
+          "set": "synth"
+        },
+        "synthRightLeg": {
+          "name": "Synth Right Leg",
+          "image": "images/inventory/apparel/Synth_leg.png",
+          "slots": [
+            "right_leg"
+          ],
+          "dmgRes": {
+            "bullet": "6",
+            "energy": "9"
+          },
+          "weight": "3",
+          "value": "30",
+          "set": "synth"
+        },
+        "sturdySynthChestPiece": {
+          "name": "Sturdy Synth Chest Piece",
+          "image": "images/inventory/apparel/Synth_chest_piece.png",
+          "slots": [
+            "torso"
+          ],
+          "dmgRes": {
+            "bullet": "25",
+            "energy": "29"
+          },
+          "weight": "12",
+          "value": "125",
+          "set": "sturdySynth"
+        },
+        "sturdySynthLeftArm": {
+          "name": "Sturdy Synth Left Arm",
+          "image": "images/inventory/apparel/Synth_arm.png",
+          "slots": [
+            "left_arm"
+          ],
+          "dmgRes": {
+            "bullet": "12",
+            "energy": "15"
+          },
+          "weight": "7",
+          "value": "70",
+          "set": "sturdySynth"
+        },
+        "sturdySynthLeftLeg": {
+          "name": "Sturdy Synth Left Leg",
+          "image": "images/inventory/apparel/Synth_leg.png",
+          "slots": [
+            "left_leg"
+          ],
+          "dmgRes": {
+            "bullet": "11",
+            "energy": "14"
+          },
+          "weight": "7",
+          "value": "80",
+          "set": "sturdySynth"
+        },
+        "sturdySynthRightArm": {
+          "name": "Sturdy Synth Right Arm",
+          "image": "images/inventory/apparel/Synth_arm.png",
+          "slots": [
+            "right_arm"
+          ],
+          "dmgRes": {
+            "bullet": "12",
+            "energy": "15"
+          },
+          "weight": "7",
+          "value": "70",
+          "set": "sturdySynth"
+        },
+        "sturdySynthRightLeg": {
+          "name": "Sturdy Synth Right Leg",
+          "image": "images/inventory/apparel/Synth_leg.png",
+          "slots": [
+            "right_leg"
+          ],
+          "dmgRes": {
+            "bullet": "11",
+            "energy": "14"
+          },
+          "weight": "7",
+          "value": "80",
+          "set": "sturdySynth"
+        },
+        "heavySynthChestPiece": {
+          "name": "Heavy Synth Chest Piece",
+          "image": "images/inventory/apparel/Synth_chest_piece.png",
+          "slots": [
+            "torso"
+          ],
+          "dmgRes": {
+            "bullet": "37",
+            "energy": "42"
+          },
+          "weight": "17",
+          "value": "175",
+          "set": "heavySynth"
+        },
+        "heavySynthLeftArm": {
+          "name": "Heavy Synth Left Arm",
+          "image": "images/inventory/apparel/Synth_arm.png",
+          "slots": [
+            "left_arm"
+          ],
+          "dmgRes": {
+            "bullet": "17",
+            "energy": "20"
+          },
+          "weight": "10",
+          "value": "110",
+          "set": "heavySynth"
+        },
+        "heavySynthLeftLeg": {
+          "name": "Heavy Synth Left Leg",
+          "image": "images/inventory/apparel/Synth_leg.png",
+          "slots": [
+            "left_leg"
+          ],
+          "dmgRes": {
+            "bullet": "16",
+            "energy": "19"
+          },
+          "weight": "10",
+          "value": "130",
+          "set": "heavySynth"
+        },
+        "heavySynthRightArm": {
+          "name": "Heavy Synth Right Arm",
+          "image": "images/inventory/apparel/Synth_arm.png",
+          "slots": [
+            "right_arm"
+          ],
+          "dmgRes": {
+            "bullet": "17",
+            "energy": "20"
+          },
+          "weight": "10",
+          "value": "110",
+          "set": "heavySynth"
+        },
+        "heavySynthRightLeg": {
+          "name": "Heavy Synth Right Leg",
+          "image": "images/inventory/apparel/Synth_leg.png",
+          "slots": [
+            "right_leg"
+          ],
+          "dmgRes": {
+            "bullet": "16",
+            "energy": "19"
+          },
+          "weight": "10",
+          "value": "130",
+          "set": "heavySynth"
+        },
+        "mark2SynthChest": {
+          "name": "Mark 2 Synth Chest Piece",
+          "image": "images/inventory/apparel/Mark_2_synth_armor_chest_piece.png",
+          "slots": [
+            "torso"
+          ],
+          "dmgRes": {
+            "bullet": "18",
+            "energy": "23"
+          },
+          "weight": "4.4",
+          "value": "1643",
+          "set": "mark2Synth"
+        },
+        "mark2SynthHelmet": {
+          "name": "Mark 2 Synth Helmet",
+          "image": "images/inventory/apparel/Mark_2_synth_armor_helmet.png",
+          "slots": [
+            "head"
+          ],
+          "dmgRes": {
+            "bullet": "17",
+            "energy": "18"
+          },
+          "weight": "6",
+          "value": "713",
+          "set": "mark2Synth"
+        },
+        "mark3SynthChest": {
+          "name": "Mark 3 Synth Chest Piece",
+          "image": "images/inventory/apparel/Mark_3_synth_armor_chest_piece.png",
+          "slots": [
+            "torso"
+          ],
+          "dmgRes": {
+            "bullet": "30",
+            "energy": "48"
+          },
+          "weight": "16.5",
+          "value": "4084",
+          "set": "mark3Synth"
+        },
+        "mark3SynthRightArm": {
+          "name": "Mark 3 Synth Right Arm",
+          "image": "images/inventory/apparel/Mark_3_synth_armor_right_arm.png",
+          "slots": [
+            "right_arm"
+          ],
+          "dmgRes": {
+            "bullet": "16",
+            "energy": "19"
+          },
+          "weight": "8.7",
+          "value": "2790",
+          "set": "mark3Synth"
+        },
+        "mark4SynthChest": {
+          "name": "Mark 4 Synth Chest Piece",
+          "image": "images/inventory/apparel/SynthHeavy.png",
+          "slots": [
+            "torso"
+          ],
+          "dmgRes": {
+            "bullet": "49",
+            "energy": "54"
+          },
+          "weight": "23.1",
+          "value": "8552",
+          "set": "mark4Synth"
+        },
+        "mark4SynthLeftLeg": {
+          "name": "Mark 4 Synth Left Leg",
+          "image": "images/inventory/apparel/SynthHeavy.png",
+          "slots": [
+            "left_leg"
+          ],
+          "dmgRes": {
+            "bullet": "22",
+            "energy": "25"
+          },
+          "weight": "13.3",
+          "value": "6305",
+          "set": "mark4Synth"
+        },
+        "unyieldingSynthChest": {
+          "name": "Unyielding Synth Chest Piece",
+          "image": "images/inventory/apparel/Synth_chest_piece.png",
+          "slots": [
+            "torso"
+          ],
+          "dmgRes": {
+            "bullet": "39",
+            "energy": "42"
+          },
+          "weight": "17",
+          "value": "475",
+          "set": "mark4Synth"
+        },
+        "acadiaShield": {
+          "name": "Acadia's Shield",
+          "image": "images/inventory/apparel/FO4FH_Acadia's_Shield.png",
+          "slots": [
+            "torso"
+          ],
+          "dmgRes": {
+            "bullet": "39",
+            "energy": "44"
+          },
+          "weight": "17",
+          "value": "475",
+          "set": "mark4Synth"
+        },
+        "metalChest": {
           "name": "Metal Chest Piece",
+          "image": "images/inventory/apparel/Metal_chest_piece.png",
           "slots": [
             "torso"
           ],
@@ -535,6 +1146,7 @@
         },
         "metalLeftArm": {
           "name": "Metal Left Arm",
+          "image": "images/inventory/apparel/Metal_arm.png",
           "slots": [
             "left_arm"
           ],
@@ -548,6 +1160,7 @@
         },
         "metalLeftLeg": {
           "name": "Metal Left Leg",
+          "image": "images/inventory/apparel/Metal_leg.png",
           "slots": [
             "left_leg"
           ],
@@ -561,6 +1174,7 @@
         },
         "metalRightArm": {
           "name": "Metal Right Arm",
+          "image": "images/inventory/apparel/Metal_arm.png",
           "slots": [
             "right_arm"
           ],
@@ -574,6 +1188,7 @@
         },
         "metalRightLeg": {
           "name": "Metal Right Leg",
+          "image": "images/inventory/apparel/Metal_leg.png",
           "slots": [
             "right_leg"
           ],
@@ -585,8 +1200,9 @@
           "value": "15",
           "set": "metal"
         },
-        "sturdyMetalChestPiece": {
+        "sturdyMetalChest": {
           "name": "Sturdy Metal Chest Piece",
+          "image": "images/inventory/apparel/Metal_chest_piece.png",
           "slots": [
             "torso"
           ],
@@ -600,6 +1216,7 @@
         },
         "sturdyMetalLeftArm": {
           "name": "Sturdy Metal Left Arm",
+          "image": "images/inventory/apparel/Metal_arm.png",
           "slots": [
             "left_arm"
           ],
@@ -613,6 +1230,7 @@
         },
         "sturdyMetalLeftLeg": {
           "name": "Sturdy Metal Left Leg",
+          "image": "images/inventory/apparel/Metal_leg.png",
           "slots": [
             "left_leg"
           ],
@@ -626,6 +1244,7 @@
         },
         "sturdyMetalRightArm": {
           "name": "Sturdy Metal Right Arm",
+          "image": "images/inventory/apparel/Metal_arm.png",
           "slots": [
             "right_arm"
           ],
@@ -639,6 +1258,7 @@
         },
         "sturdyMetalRightLeg": {
           "name": "Sturdy Metal Right Leg",
+          "image": "images/inventory/apparel/Metal_leg.png",
           "slots": [
             "right_leg"
           ],
@@ -650,8 +1270,9 @@
           "value": "65",
           "set": "sturdyMetal"
         },
-        "heavyMetalChestPiece": {
+        "heavyMetalChest": {
           "name": "Heavy Metal Chest Piece",
+          "image": "images/inventory/apparel/Metal_chest_piece.png",
           "slots": [
             "torso"
           ],
@@ -665,6 +1286,7 @@
         },
         "heavyMetalLeftArm": {
           "name": "Heavy Metal Left Arm",
+          "image": "images/inventory/apparel/Metal_arm.png",
           "slots": [
             "left_arm"
           ],
@@ -678,6 +1300,7 @@
         },
         "heavyMetalLeftLeg": {
           "name": "Heavy Metal Left Leg",
+          "image": "images/inventory/apparel/Metal_leg.png",
           "slots": [
             "left_leg"
           ],
@@ -691,6 +1314,7 @@
         },
         "heavyMetalRightArm": {
           "name": "Heavy Metal Right Arm",
+          "image": "images/inventory/apparel/Metal_arm.png",
           "slots": [
             "right_arm"
           ],
@@ -704,6 +1328,7 @@
         },
         "heavyMetalRightLeg": {
           "name": "Heavy Metal Right Leg",
+          "image": "images/inventory/apparel/Metal_leg.png",
           "slots": [
             "right_leg"
           ],
