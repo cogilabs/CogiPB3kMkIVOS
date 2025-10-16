@@ -1343,10 +1343,11 @@
       },
       "misc": {
         "vault451Suit": {
+          "name": "Vault 451 Jumpsuit",
+          "image": "images/inventory/apparel/Vault451Suit.png",
           "slots": [
             "outfit"
           ],
-          "name": "Vault 451 Jumpsuit",
           "dmgRes": {
             "bullet": "5",
             "radiation": "10"
@@ -1356,6 +1357,7 @@
         },
         "miningHelmet": {
           "name": "Mining Helmet",
+          "image": "images/inventory/apparel/Fo4_mining_helmet_grey_yellow.png",
           "slots": [
             "head"
           ],
@@ -1367,11 +1369,13 @@
         },
         "weddingRing": {
           "name": "Wedding Ring",
+          "image": "images/inventory/apparel/Fo4_wedding_ring.png",
           "weight": "0",
           "value": "250"
         },
         "weldingGoggles": {
           "name": "Welding Goggles",
+          "image": "images/inventory/apparel/Welding_goggles.png",
           "slots": [
             "eyes"
           ],
