@@ -130,6 +130,19 @@
     },
     "apparel": {
       "armor": {
+        "leatherChestPiece": {
+          "name": "Leather Chest Piece",
+          "slots": [
+            "torso"
+          ],
+          "dmgRes": {
+            "bullet": "3",
+            "energy": "10"
+          },
+          "weight": "5",
+          "value": "25",
+          "set": "leather"
+        },
         "leatherLeftArm": {
           "name": "Leather Left Arm",
           "slots": [
@@ -140,7 +153,21 @@
             "energy": "3"
           },
           "weight": "2",
-          "value": "8"
+          "value": "8",
+          "set": "leather"
+        },
+        "leatherLeftLeg": {
+          "name": "Leather Left Leg",
+          "slots": [
+            "left_leg"
+          ],
+          "dmgRes": {
+            "bullet": "2",
+            "energy": "5"
+          },
+          "weight": "2",
+          "value": "10",
+          "set": "leather"
         },
         "leatherRightArm": {
           "name": "Leather Right Arm",
@@ -152,7 +179,8 @@
             "energy": "3"
           },
           "weight": "2",
-          "value": "8"
+          "value": "8",
+          "set": "leather"
         },
         "leatherRightLeg": {
           "name": "Leather Right Leg",
@@ -164,7 +192,138 @@
             "energy": "5"
           },
           "weight": "2",
-          "value": "10"
+          "value": "10",
+          "set": "leather"
+        },
+        "sturdyLeatherChestPiece": {
+          "name": "Sturdy Leather Chest Piece",
+          "slots": [
+            "torso"
+          ],
+          "dmgRes": {
+            "bullet": "14",
+            "energy": "23"
+          },
+          "weight": "10",
+          "value": "50",
+          "set": "sturdyLeather"
+        },
+        "sturdyLeatherLeftArm": {
+          "name": "Sturdy Leather Left Arm",
+          "slots": [
+            "left_arm"
+          ],
+          "dmgRes": {
+            "bullet": "6",
+            "energy": "11"
+          },
+          "weight": "5",
+          "value": "18",
+          "set": "sturdyLeather"
+        },
+        "sturdyLeatherLeftLeg": {
+          "name": "Sturdy Leather Left Leg",
+          "slots": [
+            "left_leg"
+          ],
+          "dmgRes": {
+            "bullet": "7",
+            "energy": "13"
+          },
+          "weight": "5",
+          "value": "20",
+          "set": "sturdyLeather"
+        },
+        "sturdyLeatherRightArm": {
+          "name": "Sturdy Leather Right Arm",
+          "slots": [
+            "right_arm"
+          ],
+          "dmgRes": {
+            "bullet": "6",
+            "energy": "11"
+          },
+          "weight": "5",
+          "value": "18",
+          "set": "sturdyLeather"
+        },
+        "sturdyLeatherRightLeg": {
+          "name": "Sturdy Leather Right Leg",
+          "slots": [
+            "right_leg"
+          ],
+          "dmgRes": {
+            "bullet": "7",
+            "energy": "13"
+          },
+          "weight": "5",
+          "value": "20",
+          "set": "sturdyLeather"
+        },
+        "heavyLeatherChestPiece": {
+          "name": "Heavy Leather Chest Piece",
+          "slots": [
+            "torso"
+          ],
+          "dmgRes": {
+            "bullet": "14",
+            "energy": "36"
+          },
+          "weight": "15",
+          "value": "75",
+          "set": "heavyLeather"
+        },
+        "heavyLeatherLeftArm": {
+          "name": "Heavy Leather Left Arm",
+          "slots": [
+            "left_arm"
+          ],
+          "dmgRes": {
+            "bullet": "11",
+            "energy": "18"
+          },
+          "weight": "17",
+          "value": "28",
+          "set": "heavyLeather"
+        },
+        "heavyLeatherLeftLeg": {
+          "name": "Heavy Leather Left Leg",
+          "slots": [
+            "left_leg"
+          ],
+          "dmgRes": {
+            "bullet": "11",
+            "energy": "18"
+          },
+          "weight": "7",
+          "value": "30",
+          "set": "heavyLeather"
+        },
+        "heavyLeatherRightArm": {
+          "name": "Heavy Leather Right Arm",
+          "slots": [
+            "right_arm"
+          ],
+          "dmgRes": {
+            "bullet": "11",
+            "energy": "18"
+          },
+          "weight": "17",
+          "value": "28",
+          "set": "heavyLeather"
+        },
+        "heavyLeatherRightLeg": {
+          "name": "Heavy Leather Right Leg",
+          "slots": [
+            "right_leg"
+          ],
+          "dmgRes": {
+            "bullet": "11",
+            "energy": "18"
+          },
+          "weight": "7",
+          "value": "30",
+          "set": "heavyLeather"
         },
         "raiderChestPiece": {
           "name": "Raider Chest Piece",
@@ -176,7 +335,21 @@
             "energy": "2"
           },
           "weight": "7",
-          "value": "18"
+          "value": "18",
+          "set": "raider"
+        },
+        "raiderLeftArm": {
+          "name": "Raider Left Arm",
+          "slots": [
+            "left_arm"
+          ],
+          "dmgRes": {
+            "bullet": "1",
+            "energy": "1"
+          },
+          "weight": "3",
+          "value": "6",
+          "set": "raider"
         },
         "raiderLeftLeg": {
           "name": "Raider Left Leg",
@@ -188,11 +361,366 @@
             "energy": "2"
           },
           "weight": "3",
-          "value": "8"
+          "value": "8",
+          "set": "raider"
+        },
+        "raiderRightArm": {
+          "name": "Raider Right Arm",
+          "slots": [
+            "right_arm"
+          ],
+          "dmgRes": {
+            "bullet": "1",
+            "energy": "1"
+          },
+          "weight": "3",
+          "value": "6",
+          "set": "raider"
+        },
+        "raiderRightLeg": {
+          "name": "Raider Right Leg",
+          "slots": [
+            "right_leg"
+          ],
+          "dmgRes": {
+            "bullet": "2",
+            "energy": "2"
+          },
+          "weight": "3",
+          "value": "8",
+          "set": "raider"
+        },
+        "sturdyRaiderChestPiece": {
+          "name": "Sturdy Raider Chest Piece",
+          "slots": [
+            "torso"
+          ],
+          "dmgRes": {
+            "bullet": "14",
+            "energy": "11"
+          },
+          "weight": "12",
+          "value": "33",
+          "set": "sturdyRaider"
+        },
+        "sturdyRaiderLeftArm": {
+          "name": "Sturdy Raider Left Arm",
+          "slots": [
+            "left_arm"
+          ],
+          "dmgRes": {
+            "bullet": "6",
+            "energy": "6"
+          },
+          "weight": "7",
+          "value": "81",
+          "set": "sturdyRaider"
+        },
+        "sturdyRaiderLeftLeg": {
+          "name": "Sturdy Raider Left Leg",
+          "slots": [
+            "left_leg"
+          ],
+          "dmgRes": {
+            "bullet": "7",
+            "energy": "7"
+          },
+          "weight": "7",
+          "value": "13",
+          "set": "sturdyRaider"
+        },
+        "sturdyRaiderRightArm": {
+          "name": "Sturdy Raider Right Arm",
+          "slots": [
+            "right_arm"
+          ],
+          "dmgRes": {
+            "bullet": "6",
+            "energy": "6"
+          },
+          "weight": "7",
+          "value": "81",
+          "set": "sturdyRaider"
+        },
+        "sturdyRaiderRightLeg": {
+          "name": "Sturdy Raider Right Leg",
+          "slots": [
+            "right_leg"
+          ],
+          "dmgRes": {
+            "bullet": "7",
+            "energy": "7"
+          },
+          "weight": "7",
+          "value": "13",
+          "set": "sturdyRaider"
+        },
+        "heavyRaiderChestPiece": {
+          "name": "Heavy Raider Chest Piece",
+          "slots": [
+            "torso"
+          ],
+          "dmgRes": {
+            "bullet": "24",
+            "energy": "20"
+          },
+          "weight": "17",
+          "value": "48",
+          "set": "heavyRaider"
+        },
+        "heavyRaiderLeftArm": {
+          "name": "Heavy Raider Left Arm",
+          "slots": [
+            "left_arm"
+          ],
+          "dmgRes": {
+            "bullet": "11",
+            "energy": "11"
+          },
+          "weight": "10",
+          "value": "156",
+          "set": "heavyRaider"
+        },
+        "heavyRaiderLeftLeg": {
+          "name": "Heavy Raider Left Leg",
+          "slots": [
+            "left_leg"
+          ],
+          "dmgRes": {
+            "bullet": "12",
+            "energy": "12"
+          },
+          "weight": "10",
+          "value": "18",
+          "set": "heavyRaider"
+        },
+        "heavyRaiderRightArm": {
+          "name": "Heavy Raider Right Arm",
+          "slots": [
+            "right_arm"
+          ],
+          "dmgRes": {
+            "bullet": "11",
+            "energy": "11"
+          },
+          "weight": "10",
+          "value": "156",
+          "set": "heavyRaider"
+        },
+        "heavyRaiderRightLeg": {
+          "name": "Heavy Raider Right Leg",
+          "slots": [
+            "right_leg"
+          ],
+          "dmgRes": {
+            "bullet": "12",
+            "energy": "12"
+          },
+          "weight": "10",
+          "value": "18",
+          "set": "heavyRaider"
+        },
+        "metalChestPiece": {
+          "name": "Metal Chest Piece",
+          "slots": [
+            "torso"
+          ],
+          "dmgRes": {
+            "bullet": "12",
+            "energy": "5"
+          },
+          "weight": "8",
+          "value": "40",
+          "set": "metal"
+        },
+        "metalLeftArm": {
+          "name": "Metal Left Arm",
+          "slots": [
+            "left_arm"
+          ],
+          "dmgRes": {
+            "bullet": "3",
+            "energy": "7"
+          },
+          "weight": "3",
+          "value": "15",
+          "set": "metal"
+        },
+        "metalLeftLeg": {
+          "name": "Metal Left Leg",
+          "slots": [
+            "left_leg"
+          ],
+          "dmgRes": {
+            "bullet": "3",
+            "energy": "7"
+          },
+          "weight": "3",
+          "value": "15",
+          "set": "metal"
+        },
+        "metalRightArm": {
+          "name": "Metal Right Arm",
+          "slots": [
+            "right_arm"
+          ],
+          "dmgRes": {
+            "bullet": "3",
+            "energy": "7"
+          },
+          "weight": "3",
+          "value": "15",
+          "set": "metal"
+        },
+        "metalRightLeg": {
+          "name": "Metal Right Leg",
+          "slots": [
+            "right_leg"
+          ],
+          "dmgRes": {
+            "bullet": "7",
+            "energy": "3"
+          },
+          "weight": "3",
+          "value": "15",
+          "set": "metal"
+        },
+        "sturdyMetalChestPiece": {
+          "name": "Sturdy Metal Chest Piece",
+          "slots": [
+            "torso"
+          ],
+          "dmgRes": {
+            "bullet": "25",
+            "energy": "15"
+          },
+          "weight": "15",
+          "value": "115",
+          "set": "sturdyMetal"
+        },
+        "sturdyMetalLeftArm": {
+          "name": "Sturdy Metal Left Arm",
+          "slots": [
+            "left_arm"
+          ],
+          "dmgRes": {
+            "bullet": "15",
+            "energy": "8"
+          },
+          "weight": "8",
+          "value": "65",
+          "set": "sturdyMetal"
+        },
+        "sturdyMetalLeftLeg": {
+          "name": "Sturdy Metal Left Leg",
+          "slots": [
+            "left_leg"
+          ],
+          "dmgRes": {
+            "bullet": "15",
+            "energy": "8"
+          },
+          "weight": "8",
+          "value": "65",
+          "set": "sturdyMetal"
+        },
+        "sturdyMetalRightArm": {
+          "name": "Sturdy Metal Right Arm",
+          "slots": [
+            "right_arm"
+          ],
+          "dmgRes": {
+            "bullet": "15",
+            "energy": "8"
+          },
+          "weight": "8",
+          "value": "65",
+          "set": "sturdyMetal"
+        },
+        "sturdyMetalRightLeg": {
+          "name": "Sturdy Metal Right Leg",
+          "slots": [
+            "right_leg"
+          ],
+          "dmgRes": {
+            "bullet": "15",
+            "energy": "8"
+          },
+          "weight": "8",
+          "value": "65",
+          "set": "sturdyMetal"
+        },
+        "heavyMetalChestPiece": {
+          "name": "Heavy Metal Chest Piece",
+          "slots": [
+            "torso"
+          ],
+          "dmgRes": {
+            "bullet": "37",
+            "energy": "25"
+          },
+          "weight": "23",
+          "value": "190",
+          "set": "heavyMetal"
+        },
+        "heavyMetalLeftArm": {
+          "name": "Heavy Metal Left Arm",
+          "slots": [
+            "left_arm"
+          ],
+          "dmgRes": {
+            "bullet": "22",
+            "energy": "13"
+          },
+          "weight": "13",
+          "value": "115",
+          "set": "heavyMetal"
+        },
+        "heavyMetalLeftLeg": {
+          "name": "Heavy Metal Left Leg",
+          "slots": [
+            "left_leg"
+          ],
+          "dmgRes": {
+            "bullet": "22",
+            "energy": "13"
+          },
+          "weight": "13",
+          "value": "115",
+          "set": "heavyMetal"
+        },
+        "heavyMetalRightArm": {
+          "name": "Heavy Metal Right Arm",
+          "slots": [
+            "right_arm"
+          ],
+          "dmgRes": {
+            "bullet": "22",
+            "energy": "13"
+          },
+          "weight": "13",
+          "value": "115",
+          "set": "heavyMetal"
+        },
+        "heavyMetalRightLeg": {
+          "name": "Heavy Metal Right Leg",
+          "slots": [
+            "right_leg"
+          ],
+          "dmgRes": {
+            "bullet": "22",
+            "energy": "13"
+          },
+          "weight": "13",
+          "value": "115",
+          "set": "heavyMetal"
         }
       },
       "misc": {
         "vault451Suit": {
+          "slots": [
+            "outfit"
+          ],
           "name": "Vault 451 Jumpsuit",
           "dmgRes": {
             "bullet": "5",
