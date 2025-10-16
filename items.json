@@ -430,7 +430,7 @@
         },
         "sturdyRaiderChest": {
           "name": "Sturdy Raider Chest Piece",
-          "image": "images/inventory/apparel/Fo4_raider_chest_piece.png",
+          "image": "images/inventory/apparel/Raider_chest_piece.png",
           "slots": [
             "torso"
           ],
@@ -444,7 +444,7 @@
         },
         "sturdyRaiderLeftArm": {
           "name": "Sturdy Raider Left Arm",
-          "image": "images/inventory/apparel/Fo4_raider_left_arm.png",
+          "image": "images/inventory/apparel/Raider_left_arm.png",
           "slots": [
             "left_arm"
           ],
@@ -458,7 +458,7 @@
         },
         "sturdyRaiderLeftLeg": {
           "name": "Sturdy Raider Left Leg",
-          "image": "images/inventory/apparel/Fo4_raider_left_leg.png",
+          "image": "images/inventory/apparel/Raider_left_leg.png",
           "slots": [
             "left_leg"
           ],
@@ -472,7 +472,7 @@
         },
         "sturdyRaiderRightArm": {
           "name": "Sturdy Raider Right Arm",
-          "image": "images/inventory/apparel/Fo4_raider_right_arm.png",
+          "image": "images/inventory/apparel/Raider_right_arm.png",
           "slots": [
             "right_arm"
           ],
@@ -486,7 +486,7 @@
         },
         "sturdyRaiderRightLeg": {
           "name": "Sturdy Raider Right Leg",
-          "image": "images/inventory/apparel/Fo4_raider_right_leg.png",
+          "image": "images/inventory/apparel/Raider_right_leg.png",
           "slots": [
             "right_leg"
           ],
@@ -500,7 +500,7 @@
         },
         "heavyRaiderChest": {
           "name": "Heavy Raider Chest Piece",
-          "image": "images/inventory/apparel/Fo4_raider_chest_piece.png",
+          "image": "images/inventory/apparel/Raider_chest_piece.png",
           "slots": [
             "torso"
           ],
@@ -514,7 +514,7 @@
         },
         "heavyRaiderLeftArm": {
           "name": "Heavy Raider Left Arm",
-          "image": "images/inventory/apparel/Fo4_raider_left_arm.png",
+          "image": "images/inventory/apparel/Raider_left_arm.png",
           "slots": [
             "left_arm"
           ],
@@ -528,7 +528,7 @@
         },
         "heavyRaiderLeftLeg": {
           "name": "Heavy Raider Left Leg",
-          "image": "images/inventory/apparel/Fo4_raider_left_leg.png",
+          "image": "images/inventory/apparel/Raider_left_leg.png",
           "slots": [
             "left_leg"
           ],
@@ -542,7 +542,7 @@
         },
         "heavyRaiderRightArm": {
           "name": "Heavy Raider Right Arm",
-          "image": "images/inventory/apparel/Fo4_raider_right_arm.png",
+          "image": "images/inventory/apparel/Raider_right_arm.png",
           "slots": [
             "right_arm"
           ],
@@ -556,7 +556,7 @@
         },
         "heavyRaiderRightLeg": {
           "name": "Heavy Raider Right Leg",
-          "image": "images/inventory/apparel/Fo4_raider_right_leg.png",
+          "image": "images/inventory/apparel/Raider_right_leg.png",
           "slots": [
             "right_leg"
           ],
