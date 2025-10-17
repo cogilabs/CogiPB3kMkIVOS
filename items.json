@@ -2546,5 +2546,47 @@
         }
       }
     }
+  },
+  "sets": {
+    "combat": {
+      "name": "Combat Armor",
+      "parentSet": null
+    },
+    "sturdyCombat": {
+      "name": "Sturdy Combat Armor",
+      "parentSet": "combat"
+    },
+    "heavyCombat": {
+      "name": "Heavy Combat Armor",
+      "parentSet": "combat"
+    },
+    "raider": {
+      "name": "Raider Armor",
+      "parentSet": null
+    },
+    "sturdyRaider": {
+      "name": "Sturdy Raider Armor",
+      "parentSet": "raider"
+    },
+    "heavyRaider": {
+      "name": "Heavy Raider Armor",
+      "parentSet": "raider"
+    },
+    "leather": {
+      "name": "Leather Armor",
+      "parentSet": null
+    },
+    "sturdyLeather": {
+      "name": "Sturdy Leather Armor",
+      "parentSet": "leather"
+    },
+    "heavyLeather": {
+      "name": "Heavy Leather Armor",
+      "parentSet": "leather"
+    },
+    "synth": {
+      "name": "Synth Armor",
+      "parentSet": null
+    }
   }
 }
