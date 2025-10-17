@@ -2587,6 +2587,38 @@
     "synth": {
       "name": "Synth Armor",
       "parentSet": null
+    },
+    "sturdySynth": {
+      "name": "Synth Armor",
+      "parentSet": "synth"
+    },
+    "heavySynth": {
+      "name": "Synth Synth Armor",
+      "parentSet": "synth"
+    },
+    "mark2Synth": {
+      "name": "Mark 2 Synth Armor",
+      "parentSet": "synth"
+    },
+    "mark3Synth": {
+      "name": "Mark 3 Synth Armor",
+      "parentSet": "synth"
+    },
+    "mark4Synth": {
+      "name": "Mark 4 Synth Armor",
+      "parentSet": "synth"
+    },
+    "metal": {
+      "name": "Metal Armor",
+      "parentSet": null
+    },
+    "sturdyMetal": {
+      "name": "Sturdy Metal Armor",
+      "parentSet": "metal"
+    },
+    "heavyMetal": {
+      "name": "Heavy Metal Armor",
+      "parentSet": "metal"
     }
   }
 }
