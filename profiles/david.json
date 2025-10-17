@@ -38,23 +38,23 @@
     },
     "apparel": {
       "armor": {
-        "leatherLeftArm": {
+        "synthLeftArm": {
           "possessed": "true",
           "equipped": "true"
         },
-        "leatherRightArm": {
+        "synthLeftLeg": {
           "possessed": "true",
           "equipped": "true"
         },
-        "leatherRightLeg": {
+        "synthRightArm": {
           "possessed": "true",
           "equipped": "true"
         },
-        "raiderChestPiece": {
+        "synthRightLeg": {
           "possessed": "true",
           "equipped": "true"
         },
-        "raiderLeftLeg": {
+        "mark4SynthChest": {
           "possessed": "true",
           "equipped": "true"
         }
@@ -63,9 +63,6 @@
         "vault451Suit": {
           "possessed": "true",
           "equipped": "true"
-        },
-        "miningHelmet": {
-          "possessed": "true"
         },
         "weddingRing": {
           "possessed": "true"
@@ -211,7 +208,92 @@
   },
   "data": {
     "quests": {
-      "quests": {}
+      "quests": {
+        "A_Test_Quest": {
+          "name": "A Test Quest",
+          "description": "This is a test quest.\nI must complete the objectives to finish the quest.\nThen the quest will be complete, and I'll have a sense of accomplishment.",
+          "equipped": "true",
+          "objectives": {
+            "o001": {
+              "description": "Find the mysterious item",
+              "completed": "true"
+            },
+            "o002": {
+              "description": "(Optional) This is a very long objective, maybe I should learn to write shorter objectives, it would fit the list waaay better!",
+              "completed": "true"
+            },
+            "o003": {
+              "description": "(Optional) Another long objective to test scrolling in the objectives list. It seems to work well, but I should probably avoid making objectives this long in the future.",
+              "completed": "true"
+            },
+            "o004": {
+              "description": "Bring the item back to the quest giver",
+              "completed": "false"
+            }
+          }
+        },
+        "Rescue_at_Vault_82": {
+          "name": "Rescue at Vault 82",
+          "description": "Survivors are trapped in Vault 82.\nThe radiation levels are rising and time is running out.\nI must reach them before it's too late.",
+          "equipped": "false",
+          "objectives": {
+            "o001": {
+              "description": "Locate Vault 82 entrance",
+              "completed": "true"
+            },
+            "o002": {
+              "description": "Disable the security system",
+              "completed": "true"
+            },
+            "o003": {
+              "description": "Lead survivors to safety",
+              "completed": "false"
+            }
+          }
+        },
+        "Medical_Supply_Run": {
+          "name": "Medical Supply Run",
+          "description": "The settlement is running low on medical supplies.\nI need to find stimpaks and antibiotics.\nThe nearby hospital might have what we need.",
+          "equipped": "true",
+          "objectives": {
+            "o001": {
+              "description": "Clear hospital of hostiles",
+              "completed": "false"
+            },
+            "o002": {
+              "description": "Collect medical supplies",
+              "completed": "false"
+            },
+            "o003": {
+              "description": "Return to settlement with supplies",
+              "completed": "false"
+            }
+          }
+        },
+        "The_Mysterious_Broadcast": {
+          "name": "The Mysterious Broadcast",
+          "description": "I've picked up a strange signal on my Pip-Boy.\nIt seems to be coming from an old radio tower.\nI should investigate to find the source.",
+          "equipped": "false",
+          "objectives": {
+            "o001": {
+              "description": "Triangulate the source of the signal",
+              "completed": "true"
+            },
+            "o002": {
+              "description": "Reach the abandoned radio tower",
+              "completed": "true"
+            },
+            "o003": {
+              "description": "Locate the transmission device",
+              "completed": "true"
+            },
+            "o004": {
+              "description": "Decode the mysterious message",
+              "completed": "true"
+            }
+          }
+        }
+      }
     }
   }
 }
