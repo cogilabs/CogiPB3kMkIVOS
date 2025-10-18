@@ -96,7 +96,7 @@ To make the customisation easier, I opted for HSL selection: Hue, Saturation and
   
 ![The Settings page](/readme_sources/images/settings.png)  
   
-You'll find five sliders:  
+You'll find three sliders:  
   
 - Hue  
 → The hue is essentially the tint, represented by the angle on a chromatic circle from 0 (Red) to 360 (Red also since it's a full rotation). 120 is the FO4 Pip-Boy tint.  
@@ -106,6 +106,10 @@ You'll find five sliders:
   
 - Lightness  
 → Represents how bright is your color, not to be confused with *brightness*, values of lightness above 60 also affect the saturation.  
+  
+This settings page allows for neat configs like for instance my fiancees:  
+    
+![Pink Status page](/readme_sources/images/pinkStatus.png)
 
 ### Inventory display
 

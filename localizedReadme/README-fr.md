@@ -96,7 +96,7 @@ Pour faciliter la personnalisation, j'ai opté pour une sélection HSL : Hue, Sa
   
 ![La page des paramètres](/readme_sources/images/settings.png)  
   
-Vous trouverez cinq curseurs :  
+Vous trouverez trois curseurs :  
   
 - Teinte  
 → La teinte est essentiellement la couleur, représentée par l'angle sur un cercle chromatique de 0 (Rouge) à 360 (Rouge aussi puisque c'est une rotation complète). 120 est la teinte du Pip-Boy de FO4.  
@@ -106,6 +106,10 @@ Vous trouverez cinq curseurs :
   
 - Clarté  
 → Représente la clarté de votre couleur. Attention : clarte ≠ luminosité, au dessus de 60, la clarté affecte également la saturation.  
+  
+Cette page de paramètres permet des configurations sympas comme par exemple celle de ma fiancée :  
+    
+![Page de statut rose](/readme_sources/images/pinkStatus.png)
 
 ### Affichage de l'inventaire
 
