@@ -17,8 +17,6 @@ let displayName = '';
 let hueValue = 120;
 let satValue = 100;
 let lightValue = 60;
-//let lightOffsetValue = 0;
-//let satOffsetValue = 0;
 
 let birthday = new Date();
 let songList = [];
@@ -189,8 +187,6 @@ function setProfile(chosenName) {
             hueValue = currentProfile.hue;
             satValue = currentProfile.sat;
             lightValue = currentProfile.light;
-            //lightOffsetValue = currentProfile.lightOffset ? currentProfile.lightOffset : 0;
-            //satOffsetValue = currentProfile.satOffset ? currentProfile.satOffset : 0;
             birthday = new Date(currentProfile.birthday);
             updateLevelUI();
             initializeColorSliders(!(currentTab === 'settings'));
@@ -224,8 +220,6 @@ function setProfile(chosenName) {
           hueValue = currentProfile.hue;
           satValue = currentProfile.sat;
           lightValue = currentProfile.light;
-          //lightOffsetValue = currentProfile.lightOffset ? currentProfile.lightOffset : 0;
-          //satOffsetValue = currentProfile.satOffset ? currentProfile.satOffset : 0;
           birthday = new Date(currentProfile.birthday);
           updateLevelUI();
           initializeColorSliders(!(currentTab === 'settings'));
@@ -471,61 +465,153 @@ function initializeColorSliders(force) {
   const hueSlider = document.getElementById('hue-slider');
   const satSlider = document.getElementById('sat-slider');
   const lightSlider = document.getElementById('light-slider');
-  //const lightOffsetSlider = document.getElementById('light-offset-slider');
-  //const satOffsetSlider = document.getElementById('sat-offset-slider');
 
   const hueDisplay = document.getElementById('hue-val');
   const satDisplay = document.getElementById('sat-val');
   const lightDisplay = document.getElementById('light-val');
-  //const lightOffsetDisplay = document.getElementById('light-offset-val');
-  //const satOffsetDisplay = document.getElementById('sat-offset-val');
 
   if (hueSlider) hueSlider.value = hueValue;
   if (satSlider) satSlider.value = satValue;
   if (lightSlider) lightSlider.value = lightValue;
-  //if (lightOffsetSlider) lightOffsetSlider.value = lightOffsetValue;
-  //if (satOffsetSlider) satOffsetSlider.value = satOffsetValue;
 
   if (hueDisplay) hueDisplay.textContent = hueValue;
   if (satDisplay) satDisplay.textContent = satValue;
   if (lightDisplay) lightDisplay.textContent = lightValue;
-  //if (lightOffsetDisplay) lightOffsetDisplay.textContent = lightOffsetValue;
-  //if (satOffsetDisplay) satOffsetDisplay.textContent = satOffsetValue;
 
   function updateColor() {
     if (!force) {
       if (hueSlider) hueValue = parseInt(hueSlider.value, 10) || 0;
       if (satSlider) satValue = parseInt(satSlider.value, 10) || 0;
       if (lightSlider) lightValue = parseInt(lightSlider.value, 10) || 0;
-      //if (lightOffsetSlider) lightOffsetValue = parseInt(lightOffsetSlider.value, 10) || 0;
-      //if (satOffsetSlider) satOffsetValue = parseInt(satOffsetSlider.value, 10) || 0;
 
       if (hueDisplay) hueDisplay.textContent = hueValue;
       if (satDisplay) satDisplay.textContent = satValue;
       if (lightDisplay) lightDisplay.textContent = lightValue;
-      //if (lightOffsetDisplay) lightOffsetDisplay.textContent = lightOffsetValue;
-      //if (satOffsetDisplay) satOffsetDisplay.textContent = satOffsetValue;
     }
 
+    const normalizeAngle = a => ((a % 360) + 360) % 360;
+
+    document.documentElement.style.setProperty('--hue', `${normalizeAngle(hueValue - 140)}deg`);
+    document.documentElement.style.setProperty('--sat', `${satValue}%`);
+    document.documentElement.style.setProperty('--brightness', `${lightValue * 2}%`);
+    
+    let invHueCorrection = 40;
+    if (hueValue >= 65 && hueValue <= 110) {
+      if (hueValue < 80) {
+      const t = (hueValue - 70) / 10;
+      invHueCorrection = Math.round(45 + t * (55 - 45));
+      } else if (hueValue <= 100) {
+      invHueCorrection = 55;
+      } else {
+      const t = (hueValue - 100) / 10;
+      invHueCorrection = Math.round(55 + t * (40 - 55));
+      }
+    }
+
+    let vbSatStopper = 1.0;
+    let apparelSatStopper = 1.0;
+    let perkSatStopper = 1.0;
+    let imgSatStopper = 1.0;
+
+    let imgBrightnessVar = lightValue;
+    let perkBrightnessVar = lightValue / 1.2;
+    let mapBrightnessVar = lightValue * 2;
+
+    if (mapBrightnessVar > 100) mapBrightnessVar = 100;
+
+    if (lightValue >= 70) {
+      perkSatStopper = Math.max(0, 1.0 - Math.min(1, (lightValue - 70) / 30));
+      vbSatStopper = Math.max(0, 1.0 - Math.min(1, (lightValue - 70) / 30));
+      apparelSatStopper = Math.max(0, 1.0 - Math.min(1, (lightValue - 70) / 30));
+    }
+    if (lightValue >= 60) {
+      imgSatStopper = Math.max(0, 1.0 - Math.min(1, (lightValue - 60) / 40));
+    }
+    let effectMultiplier = 1.0;
+    if (lightValue >= 70) {
+      effectMultiplier = Math.max(0, 1.0 - Math.min(1, (lightValue - 70) / 30));
+      if (satValue < 10) {
+        effectMultiplier = effectMultiplier * satValue / 10;
+      }
+    }
+
+    const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+    const hueDistance = (h, center) => {
+      const d = Math.abs(h - center);
+      return Math.min(d, 360 - d);
+    };
+
+    let huePenalty = 0;
+    if (hueValue <= 40 || hueValue >= 320) {
+      const dist = (hueValue >= 320) ? hueDistance(hueValue, 360) : hueDistance(hueValue, 0);
+      const t = clamp(1 - (dist / 40), 0, 1);
+      huePenalty = 0.18 + t * 0.22;
+    } else if (hueValue >= 180 && hueValue < 300) {
+      const dist = hueDistance(hueValue, 240);
+      const t = clamp(1 - (dist / 60), 0, 1);
+      huePenalty = 0.08 + t * 0.18;
+    }
+    
+    let vbSatCorrection = 1.0;
+    let apparelSatCorrection = 1.0;
+    let perkSatCorrection = 1.0;
+    let imgSatCorrection = 1.0;
+
+    if (huePenalty > 0) {
+    huePenalty = huePenalty * effectMultiplier;
+      const rootStyle = getComputedStyle(document.documentElement);
+      const cssSatBoostVb = parseFloat(rootStyle.getPropertyValue('--satBoost-vb')) || 1.0;
+      const cssSatBoostApparel = parseFloat(rootStyle.getPropertyValue('--satBoost-apparel')) || 1.0;
+      const cssSatBoostPerk = parseFloat(rootStyle.getPropertyValue('--satBoost-perk')) || 1.0;
+      const cssSatBoostImg = parseFloat(rootStyle.getPropertyValue('--satBoost-img')) || 1.0;
+
+      let zoneMultiplier = 1.0;
+      let zone = 'none';
+      if (hueValue <= 40 || hueValue >= 320) { zone = 'red'; zoneMultiplier = 0.7; }
+      else if (hueValue >= 180 && hueValue < 300) { zone = 'purple'; zoneMultiplier = 1.2; }
+
+      const baseBoostFactor = 1 + huePenalty * zoneMultiplier;
+
+      const finalBoostVb = Math.min(zone === 'purple' ? 3.0 : 2.2, Math.max(0.2, cssSatBoostVb * baseBoostFactor));
+      const finalBoostApparel = Math.min(zone === 'purple' ? 2.8 : 2.0, Math.max(0.2, cssSatBoostApparel * baseBoostFactor));
+      const finalBoostPerk = Math.min(zone === 'purple' ? 2.5 : 2.0, Math.max(0.2, cssSatBoostPerk * baseBoostFactor));
+      const finalBoostImg = Math.min(zone === 'purple' ? 3.5 : 2.5, Math.max(0.2, cssSatBoostImg * baseBoostFactor));
+
+      vbSatCorrection = Math.min(4.0, Math.max(0.2, perkSatCorrection * finalBoostVb));
+      apparelSatCorrection = Math.min(3.0, Math.max(0.2, perkSatCorrection * finalBoostApparel));
+      perkSatCorrection = Math.min(3.0, Math.max(0.2, perkSatCorrection * finalBoostPerk));
+      imgSatCorrection = Math.min(4.0, Math.max(0.2, imgSatCorrection * finalBoostImg));
+
+      perkBrightnessVar = Math.max(4, Math.round(perkBrightnessVar * (1 - huePenalty)));
+      imgBrightnessVar = Math.max(6, Math.round(imgBrightnessVar * (1 - huePenalty * 0.6)));
+    }
+
+    const apparelBrightnessVar = Math.max(5, Math.round((lightValue * 1.7) * (1 - huePenalty * 0.6)));
+    const vbBrightnessVar = Math.max(6, Math.round((lightValue * 2) * (1 - huePenalty * 0.6)));
+
+    document.documentElement.style.setProperty('--biHue', `${normalizeAngle(hueValue - 45)}deg`);
+    document.documentElement.style.setProperty('--perkHue', `${normalizeAngle(hueValue - 45)}deg`);
+    document.documentElement.style.setProperty('--invHue', `${normalizeAngle(hueValue - invHueCorrection)}deg`);
+    document.documentElement.style.setProperty('--realHue', `${normalizeAngle(hueValue)}deg`);
+
+    document.documentElement.style.setProperty('--imgSat', `${(satValue * 8) * imgSatCorrection * imgSatStopper}%`);
+    document.documentElement.style.setProperty('--perkSat', `${(satValue * 5) * perkSatCorrection * perkSatStopper}%`);
+    document.documentElement.style.setProperty('--vbSat', `${(satValue) * vbSatCorrection * vbSatStopper}%`);
+    document.documentElement.style.setProperty('--apparelSat', `${(satValue * 1.2) * apparelSatCorrection * apparelSatStopper}%`);
+    document.documentElement.style.setProperty('--mapSat', `${(satValue) * imgSatCorrection * imgSatStopper}%`);
+
+    document.documentElement.style.setProperty('--imgBrightness', `${imgBrightnessVar}%`);
+    document.documentElement.style.setProperty('--perkBrightness', `${perkBrightnessVar}%`);
+    document.documentElement.style.setProperty('--apparelBrightness', `${apparelBrightnessVar}%`);
+    document.documentElement.style.setProperty('--vbBrightness', `${vbBrightnessVar}%`);
+    document.documentElement.style.setProperty('--mapBrightness', `${mapBrightnessVar}%`);
+    
     const newLight = `hsl(${hueValue}, ${satValue}%, ${lightValue}%)`;
     const newMedLight = `hsla(${hueValue}, ${satValue}%, ${lightValue}%, 0.3)`;
     const newMed = `hsla(${hueValue}, ${satValue}%, ${lightValue}%, 0.2)`;
     const newMedDark = `hsla(${hueValue}, ${satValue}%, ${lightValue}%, 0.1)`;
     const newDark = `hsla(${hueValue}, ${satValue}%, ${lightValue}%, 0.02)`;
-    const newDarkText = `hsla(${hueValue}, ${satValue}%, 2%)`;
-
-    document.documentElement.style.setProperty('--hue', `${hueValue - 140}deg`);
-    document.documentElement.style.setProperty('--biHue', `${hueValue - 55}deg`);
-    document.documentElement.style.setProperty('--realHue', `${hueValue}deg`);
-    document.documentElement.style.setProperty('--sat', `${satValue}%`);
-
-    const baseBiSat = parseInt(satValue, 10) || 0;
-    //const offsetBiSat = parseInt(satOffsetValue, 10) || 0;
-    //const computedBiSat = (baseBiSat * 5) + (offsetBiSat * 10);
-    //document.documentElement.style.setProperty('--biSat', `${computedBiSat}%`);
-
-    document.documentElement.style.setProperty('--brightness', `${lightValue * 2}%`);
-    //document.documentElement.style.setProperty('--biBrightness', `${(parseInt(lightValue, 10) + parseInt(lightOffsetValue, 10)) * 2}%`);
+    const newDarkText = `hsla(${hueValue}, ${satValue * imgSatStopper}%, 2%)`;
 
     document.documentElement.style.setProperty('--light', newLight);
     document.documentElement.style.setProperty('--mediumLight', newMedLight);
@@ -538,8 +624,6 @@ function initializeColorSliders(force) {
   if (hueSlider) hueSlider.addEventListener('input', updateColor);
   if (satSlider) satSlider.addEventListener('input', updateColor);
   if (lightSlider) lightSlider.addEventListener('input', updateColor);
-  //if (lightOffsetSlider) lightOffsetSlider.addEventListener('input', updateColor);
-  //if (satOffsetSlider) satOffsetSlider.addEventListener('input', updateColor);
 
   const profileButtonsContainer = document.getElementById('profile-buttons');
   if (profileButtonsContainer) {
@@ -606,8 +690,6 @@ function initializeSettingsKeyNavigation() {
     document.getElementById('hue-slider'),
     document.getElementById('sat-slider'),
     document.getElementById('light-slider'),
-    //document.getElementById('light-offset-slider'),
-    //document.getElementById('sat-offset-slider'),
     ...document.querySelectorAll('.profile-btn')
   ];
 
