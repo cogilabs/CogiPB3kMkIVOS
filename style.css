@@ -256,7 +256,7 @@ body {
 }
 
 .black-icon {
-  filter: grayscale(1) brightness(200) contrast(0) sepia(100%) hue-rotate(var(--biHue)) saturate(var(--biSat)) brightness(var(--biBrightness));
+  color: var(--light);
 }
 
 /*---*/
@@ -284,7 +284,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .slider-container {
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   color: var(--light);
   font-family: 'Roboto', sans-serif;
 }

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "electron main.js"
+    "start": "electron main.js",
+    "build:sprite": "node ./scripts/build-icon-sprite.js"
   },
   "keywords": [],
   "author": "",

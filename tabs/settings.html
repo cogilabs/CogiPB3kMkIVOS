@@ -16,7 +16,7 @@
             <input type="range" id="light-slider" min="0" max="100" step="1">
             <span class="slider-val" id="light-val"></span>
         </div>
-        <div class="slider-container">
+        <!--<div class="slider-container">
             <label for="light-offset-slider">Icon brightness correction</label>
             <input type="range" id="light-offset-slider" min="-50" max="100" step="1">
             <span class="slider-val" id="light-offset-val"></span>
@@ -25,7 +25,7 @@
             <label for="sat-offset-slider">Icon saturation correction</label>
             <input type="range" id="sat-offset-slider" min="-50" max="100" step="1">
             <span class="slider-val" id="sat-offset-val"></span>
-        </div>
+        </div>-->
 
         <div id="profile-buttons">
             <span>Choose an existing profile:&nbsp;</span>
@@ -33,12 +33,10 @@
         </div>
         <img id="vault-boy" src="images/vaultBoy.gif" alt="Vault-Boy" height="50">
         <p style="display: inline-block; background-color: var(--light); width: 50px; height: 50px">
-            <img src="images/icons/noText.svg" class="black-icon" height="40" style="margin: 5px"/>
+            <svg class="black-icon" height="40" width="40" style="margin: 5px" role="img" aria-label="No Text"><use href="#icon-noText"></use></svg>
         </p>
         <table style="display: inline-block">
             <tr>
-                <td style="background-color: var(--light); width: 43px; height: 43px">
-                </td>
                 <td style="background-color: var(--mediumLight); width: 43px; height: 43px">
                 </td>
                 <td style="background-color: var(--medium); width: 43px; height: 43px">

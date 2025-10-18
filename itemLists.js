@@ -500,7 +500,7 @@ function updateItemDetails(itemId, itemType) {
           <td id="dmg">
             <span id="dmg-txt">Damage</span>
             <span id="dmg-val">
-              <span><img src="images/icons/crosshair.svg" height="11" class="black-icon"></span><span>${itemData.damageAmount}</span>
+              <span><svg class="black-icon" height="11" width="11" role="img"><use href="#icon-crosshair"></use></svg></span><span>${itemData.damageAmount}</span>
             </span>
           </td>
         </tr>
@@ -508,14 +508,14 @@ function updateItemDetails(itemId, itemType) {
         ${itemData.ammoType ? `
         <tr>
           <td id="ammo">
-            <span><img src="images/icons/ammo.svg" height="11" class="black-icon">&nbsp;${getAmmoName(itemData.ammoType)}</span><span>${getAmmoAmount(itemData.ammoType)}</span>
+            <span><svg class="black-icon" height="11" width="11" role="img"><use href="#icon-ammo"></use></svg>&nbsp;${getAmmoName(itemData.ammoType)}</span><span>${getAmmoAmount(itemData.ammoType)}</span>
           </td>
         </tr>
         ` : ''}
         ${itemData.dmgRes ? `<tr><td id="res"><span id="res-txt">Resistance</span><span id="res-icons">` : ''}
-        ${itemData.dmgRes?.bullet ? `<span class="res-val"><span class="res-icon"> <img src="images/icons/shield.svg" height="11" width="11" class="black-icon">&nbsp;</span><span>${itemData.dmgRes.bullet}</span></span>` : ``}
-        ${itemData.dmgRes?.energy ? `<span class="res-val"><span class="res-icon"> <img src="images/icons/energy.svg" height="11" width="11" class="black-icon">&nbsp;</span><span>${itemData.dmgRes.energy}</span></span>` : ``}
-        ${itemData.dmgRes?.radiation ? `<span class="res-val"><span class="res-icon"> <img src="images/icons/rad.svg" height="11" width="11" class="black-icon">&nbsp;</span><span>${itemData.dmgRes.radiation}</span></span>` : ``}
+        ${itemData.dmgRes?.bullet ? `<span class="res-val"><span class="res-icon"> <svg class="black-icon" height="11" width="11" role="img"><use href="#icon-shield"></use></svg>&nbsp;</span><span>${itemData.dmgRes.bullet}</span></span>` : ``}
+        ${itemData.dmgRes?.energy ? `<span class="res-val"><span class="res-icon"> <svg class="black-icon" height="11" width="11" role="img"><use href="#icon-energy"></use></svg>&nbsp;</span><span>${itemData.dmgRes.energy}</span></span>` : ``}
+        ${itemData.dmgRes?.radiation ? `<span class="res-val"><span class="res-icon"> <svg class="black-icon" height="11" width="11" role="img"><use href="#icon-rad"></use></svg>&nbsp;</span><span>${itemData.dmgRes.radiation}</span></span>` : ``}
         ${itemData.dmgRes ? `</span></td></tr>` : ''}
         ${itemData.speed ? `<tr><td><span>Speed</span><span>${itemData.speed}</span></td></tr>` : ''}
         ${itemData.fireRate ? `<tr><td><span>Fire Rate</span><span>${itemData.fireRate}</span></td></tr>` : ''}
@@ -665,14 +665,14 @@ function updateFooterWeight(totalWeight) {
   const weightElement = document.getElementById('weight');
   if (weightElement) {
     const capacity = computeCarryCapacity(profileItems) || 240;
-    weightElement.innerHTML = `<img src="images/icons/weight.svg" height="20" class="black-icon" style="margin: -3.5px 0">&nbsp;&nbsp;${Math.round(totalWeight)}/${capacity}`;
+    weightElement.innerHTML = `<svg class="black-icon" height="20" width="20" style="margin: -3.5px 0" role="img"><use href="#icon-weight"></use></svg>&nbsp;&nbsp;${Math.round(totalWeight)}/${capacity}`;
   } 
 }
 
 function updateFooterCaps(caps) {
   const capsElement = document.getElementById('caps');
   if (capsElement) {
-    capsElement.innerHTML = `<img src="images/icons/caps.svg" height="20" class="black-icon" style="margin: -3.5px 0">&nbsp;&nbsp;${Math.round(caps)}`;
+    capsElement.innerHTML = `<svg class="black-icon" height="20" width="20" style="margin: -3.5px 0" role="img"><use href="#icon-caps"></use></svg>&nbsp;&nbsp;${Math.round(caps)}`;
   } 
 }
 

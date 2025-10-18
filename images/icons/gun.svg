@@ -39,7 +39,7 @@
        clipPathUnits="userSpaceOnUse"
        id="clipPath6259">
       <rect
-         style="fill:#000000;fill-rule:evenodd;stroke:none;stroke-width:24.7341;stroke-linecap:square;stroke-linejoin:bevel;paint-order:stroke markers fill"
+         style="fill:currentColor;fill-rule:evenodd;stroke:none;stroke-width:24.7341;stroke-linecap:square;stroke-linejoin:bevel;paint-order:stroke markers fill"
          id="rect6261"
          width="9.9687691"
          height="5.4714322"
@@ -55,7 +55,7 @@
      id="layer1"
      transform="translate(-2.2581797,-5.6933588)">
     <rect
-       style="fill:#000000;fill-rule:evenodd;stroke:none;stroke-width:9.68844;stroke-linecap:square;stroke-linejoin:bevel;paint-order:stroke markers fill"
+       style="fill:currentColor;fill-rule:evenodd;stroke:none;stroke-width:9.68844;stroke-linecap:square;stroke-linejoin:bevel;paint-order:stroke markers fill"
        id="rect6252"
        width="6.5050445"
        height="4.5197387"
@@ -66,7 +66,7 @@
        clip-path="url(#clipPath6259)"
        transform="translate(-1.54178,0.52800686)" />
     <rect
-       style="fill:#000000;fill-rule:evenodd;stroke:none;stroke-width:13.2292;stroke-linecap:square;stroke-linejoin:bevel;paint-order:stroke markers fill"
+       style="fill:currentColor;fill-rule:evenodd;stroke:none;stroke-width:13.2292;stroke-linecap:square;stroke-linejoin:bevel;paint-order:stroke markers fill"
        id="rect2570"
        width="9.2836275"
        height="6.5236301"
@@ -75,7 +75,7 @@
        ry="1.1532261"
        rx="0.975806" />
     <rect
-       style="fill:#000000;fill-rule:evenodd;stroke:none;stroke-width:13.2292;stroke-linecap:square;stroke-linejoin:bevel;paint-order:stroke markers fill"
+       style="fill:currentColor;fill-rule:evenodd;stroke:none;stroke-width:13.2292;stroke-linecap:square;stroke-linejoin:bevel;paint-order:stroke markers fill"
        id="rect3298"
        width="75.021744"
        height="15.556349"
@@ -84,7 +84,7 @@
        ry="1.4193548"
        rx="2.3951614" />
     <rect
-       style="fill:#000000;fill-rule:evenodd;stroke:none;stroke-width:13.2292;stroke-linecap:square;stroke-linejoin:bevel;paint-order:stroke markers fill"
+       style="fill:currentColor;fill-rule:evenodd;stroke:none;stroke-width:13.2292;stroke-linecap:square;stroke-linejoin:bevel;paint-order:stroke markers fill"
        id="rect3300"
        width="67.494484"
        height="3.2618151"
@@ -93,7 +93,7 @@
        ry="1.4193543"
        rx="5.0564537" />
     <rect
-       style="fill:#000000;fill-rule:evenodd;stroke:none;stroke-width:9.25826;stroke-linecap:square;stroke-linejoin:bevel;paint-order:stroke markers fill"
+       style="fill:currentColor;fill-rule:evenodd;stroke:none;stroke-width:9.25826;stroke-linecap:square;stroke-linejoin:bevel;paint-order:stroke markers fill"
        id="rect3302"
        width="15.975372"
        height="12.545443"
@@ -103,11 +103,11 @@
        rx="0.77658302" />
     <path
        id="rect6350"
-       style="fill-rule:evenodd;stroke-width:11.6631;stroke-linecap:square;stroke-linejoin:bevel;paint-order:stroke markers fill"
+       style="fill:currentColor;fill-rule:evenodd;stroke-width:11.6631;stroke-linecap:square;stroke-linejoin:bevel;paint-order:stroke markers fill"
        d="m 67.3857,5.7235947 7.52184,-0.029869 c 3.216194,-0.012771 5.060619,0.3023883 7.426309,1.8017066 1.641834,1.0405556 2.615656,6.5147127 3.135371,8.0788517 1.095761,3.297809 -2.404859,2.694753 -6.111262,2.694753 H 67.3857 c -3.706403,0 -6.690258,-2.797633 -6.690258,-6.272721 0,-3.475088 2.983884,-6.258004 6.690258,-6.2727213 z"
        sodipodi:nodetypes="ssssssss" />
     <rect
-       style="fill:#000000;fill-rule:evenodd;stroke:none;stroke-width:13.2292;stroke-linecap:square;stroke-linejoin:bevel;paint-order:stroke markers fill"
+       style="fill:currentColor;fill-rule:evenodd;stroke:none;stroke-width:13.2292;stroke-linecap:square;stroke-linejoin:bevel;paint-order:stroke markers fill"
        id="rect289"
        width="2.6189141"
        height="4.815423"
@@ -117,28 +117,28 @@
        ry="0.68181676" />
     <path
        id="path6318"
-       style="fill-rule:evenodd;stroke-width:16.0602;stroke-linecap:square;stroke-linejoin:bevel;paint-order:stroke markers fill"
+       style="fill:currentColor;fill-rule:evenodd;stroke-width:16.0602;stroke-linecap:square;stroke-linejoin:bevel;paint-order:stroke markers fill"
        transform="matrix(0.97341856,-0.22903343,0.18828274,0.98211487,0,0)"
        d="m 55.865559,35.947208 c 6.816963,-1.682757 13.323257,-7.016577 20.313635,-5.509702 2.000168,0.431164 3.837202,2.078845 4.855542,3.876119 0.644,1.136599 0.31163,2.559811 0.492501,3.837365 0.18224,1.287228 -0.153483,2.772301 0.597116,3.856281 0.757651,1.094164 2.84693,0.800056 3.46147,1.976812 0.190986,0.365711 0.174887,0.944889 -0.125819,1.204638 -0.987551,0.853044 -2.694963,-0.370059 -3.998186,-0.145622 -1.254918,0.216118 -2.4398,0.763692 -3.520878,1.409611 -1.181141,0.705705 -2.705781,1.337647 -3.157751,2.644955 -0.380661,1.741372 2.957454,13.509873 3.86741,19.419868 0.451056,2.817573 1.235184,15.429086 -0.613085,15.211308 C 74.095868,82.88599 62.548779,82.37609 55.865559,78.654865 55.54905,78.478632 55.216415,78.222117 55.096294,77.882173 c -0.883688,-2.500848 0.803324,-5.150939 0.907869,-7.761942 0.152125,-3.799309 -0.2937,-7.62402 -0.410928,-11.435783 -0.173155,-5.630296 0.641837,-11.139731 -0.43194,-16.889706 -0.282832,-1.514539 -2.271066,-3.968854 -4.024783,-4.794005 -2.2564,-1.061671 3.162428,-0.666811 4.729047,-1.053529 z"
        sodipodi:nodetypes="aaaaaaaaacccaaaassa" />
     <path
        id="rect6353"
-       style="fill-rule:evenodd;stroke-width:13.2292;stroke-linecap:square;stroke-linejoin:bevel;paint-order:stroke markers fill"
+       style="fill:currentColor;fill-rule:evenodd;stroke-width:13.2292;stroke-linecap:square;stroke-linejoin:bevel;paint-order:stroke markers fill"
        d="m 82.922949,9.4839894 c 1.34116,-0.2894413 2.682319,-0.5788826 4.023479,-0.8683239 0.600319,0.021589 0.862713,0.2121405 1.103987,0.4449324 0.174329,0.4644482 0.179696,1.1400991 0.0161,1.5834271 -0.499119,0.907979 -0.998238,1.815958 -1.497357,2.723937 -0.315859,1.070485 -0.631718,2.140969 -0.947577,3.211454 -1.50658,-0.429446 -3.013159,-0.858891 -4.519739,-1.288337 0.607036,-1.935697 1.214071,-3.871393 1.821107,-5.8070896 z"
        sodipodi:nodetypes="cccccccc" />
     <path
        id="rect6356"
-       style="fill-rule:evenodd;stroke-width:13.2292;stroke-linecap:square;stroke-linejoin:bevel;paint-order:stroke markers fill"
+       style="fill:currentColor;fill-rule:evenodd;stroke-width:13.2292;stroke-linecap:square;stroke-linejoin:bevel;paint-order:stroke markers fill"
        d="m 36.618963,24.815924 c -2.813011,-0.285106 10.598864,-0.434688 7.910777,-0.01493 -0.619534,0.09674 -1.176025,0.57596 -1.531226,1.092693 -0.323748,0.470976 -0.354119,1.093309 -0.429897,1.659779 -0.27727,2.07271 -0.861758,6.018384 0.431097,8.288681 0.813039,1.427724 0.772425,3.581683 -0.575709,3.286369 -1.065147,-0.233325 -1.74252,-1.561147 -2.205878,-2.598566 -1.241876,-2.780456 -0.588441,-6.07645 -1.241102,-9.050879 -0.122888,-0.560051 -0.139625,-1.200543 -0.501304,-1.645456 -0.445203,-0.54766 -1.154566,-0.94652 -1.856758,-1.01769 z"
        sodipodi:nodetypes="ssasssaaas" />
     <path
        id="rect6360"
-       style="fill-rule:evenodd;stroke-width:13.2292;stroke-linecap:square;stroke-linejoin:bevel;paint-order:stroke markers fill"
+       style="fill:currentColor;fill-rule:evenodd;stroke-width:13.2292;stroke-linecap:square;stroke-linejoin:bevel;paint-order:stroke markers fill"
        d="m 42.462309,35.027974 c 0.629876,1.058215 0.902715,1.366798 1.615703,1.668501 5.178403,2.191254 11.528161,0.921447 16.868812,-0.01457 1.05158,-0.184303 2.200592,-1.990311 2.287637,-3.02677 0.274103,-3.26376 2.468891,9.468246 1.33684,7.864034 -0.625682,-0.886644 -1.91026,-1.710498 -2.995197,-1.687575 -2.031307,0.04292 -15.642885,1.295357 -19.166596,-0.716846 0,0 -0.644019,-5.257457 0.0528,-4.086774 z"
        sodipodi:nodetypes="sassssss" />
     <path
        id="rect6367"
-       style="fill-rule:evenodd;stroke-width:13.2292;stroke-linecap:square;stroke-linejoin:bevel;paint-order:stroke markers fill"
+       style="fill:currentColor;fill-rule:evenodd;stroke-width:13.2292;stroke-linecap:square;stroke-linejoin:bevel;paint-order:stroke markers fill"
        d="m 52.568698,24.79092 c 0.05803,-0.711908 2.408314,-0.796273 2.389486,0 -0.01936,0.818753 -0.700378,4.270859 -1.917735,5.969854 -1.276423,1.781431 -4.21345,3.675572 -5.280592,3.916646 -0.697741,0.157623 -1.721215,-1.247395 -1.224612,-1.762247 0.693795,-0.719289 3.399571,-1.807047 4.484144,-3.317181 0.982066,-1.367407 1.491444,-4.097175 1.549309,-4.807072 z"
        sodipodi:nodetypes="ssassas" />
   </g>
