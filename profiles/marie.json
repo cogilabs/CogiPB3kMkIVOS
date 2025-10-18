@@ -1,203 +1,206 @@
 {
-    "config": {
-        "displayName": "Marie",
-        "hue": "320",
-        "sat": "60",
-        "light": "80",
-        "birthday": "2003/08/26"
+  "config": {
+    "displayName": "Marie",
+    "hue": "320",
+    "sat": "60",
+    "light": "80",
+    "birthday": "2003/08/26"
+  },
+  "inv": {
+    "caps": {
+    "amount": "530"
     },
-    "inv": {
-        "caps": {
-            "amount": "530"
+    "weapons": {
+      "firearms": {
+        "pistol": {
+          "possessed": "true"
         },
-        "weapons": {
-            "firearms": {
-                "pistol": {
-                    "possessed": "true"
-                },
-                "fatMan": {
-                    "possessed": "true"
-                },
-                "minigun": {
-                    "possessed": "true"
-                }
-            },
-            "melee": {
-                "bat": {
-                    "possessed": "true"
-                },
-                "machete": {
-                    "possessed": "true",
-                    "equipped": "true"
-                }
-            },
-            "throwables": {
-                "fragMine": {
-                    "possessed": "true",
-                    "amount": "52"
-                }
-            }
+        "fatMan": {
+          "possessed": "true"
         },
-        "apparel": {
-            "armor": {
-                "leatherLeftArm": {
-                    "possessed": "true",
-                    "equipped": "true"
-                },
-                "leatherRightArm": {
-                    "possessed": "true",
-                    "equipped": "true"
-                },
-                "leatherRightLeg": {
-                    "possessed": "true",
-                    "equipped": "true"
-                },
-                "raiderChestPiece": {
-                    "possessed": "true",
-                    "equipped": "true"
-                },
-                "raiderLeftLeg": {
-                    "possessed": "true",
-                    "equipped": "true"
-                }
-            },
-            "misc": {
-                "vault451Suit": {
-                    "possessed": "true",
-                    "equipped": "true"
-                },
-                "miningHelmet": {
-                    "possessed": "true"
-                },
-                "weldingGoggles": {
-                    "possessed": "true"
-                }
-            }
-        },
-        "aid": {
-            "drugs": {
-                "stimpak": {
-                    "possessed": "true",
-                    "amount": "21"
-                },
-                "radaway": {
-                    "possessed": "true",
-                    "amount": "13"
-                },
-                "buffout": {
-                    "possessed": "true",
-                    "amount": "6"
-                },
-                "psycho": {
-                    "possessed": "true",
-                    "amount": "8"
-                },
-                "cure": {
-                    "possessed": "true",
-                    "amount": "3"
-                },
-                "mentats": {
-                    "possessed": "true",
-                    "amount": "5"
-                }
-            }
-        },
-        "misc": {
-            "tools": {
-                "pin": {
-                    "possessed": "true",
-                    "amount": "25"
-                }
-            }
-        },
-        "junk": {
-            "junk": {
-                "tinCan": {
-                    "possessed": "true",
-                    "amount": "2"
-                },
-                "deskFan": {
-                    "possessed": "true",
-                    "amount": "1"
-                }
-            }
-        },
-        "mods": {
-            "weapons": {
-
-            },
-            "armor": {
-
-            }
-        },
-        "ammo": {
-            "bullet": {
-                "308": {
-                    "possessed": "true",
-                    "amount": "2534"
-                },
-                "10mm": {
-                    "possessed": "true",
-                    "amount": "120"
-                }
-            },
-            "energy": {
-                "cell": {
-                    "possessed": "true",
-                    "amount": "230"
-                }
-            }
+        "minigun": {
+          "possessed": "true"
         }
+      },
+      "melee": {
+        "bat": {
+          "possessed": "true"
+        },
+        "machete": {
+          "possessed": "true",
+          "equipped": "true"
+        }
+      },
+      "throwables": {
+        "fragMine": {
+          "possessed": "true",
+          "amount": "52"
+        }
+      }
     },
-    "stat": {
-        "special": {
-            "attributes": {
-                "str": {
-                    "points": "4"
-                },
-                "per": {
-                    "points": "8"
-                },
-                "end": {
-                    "points": "3"
-                },
-                "cha": {
-                    "points": "5"
-                },
-                "int": {
-                    "points": "3"
-                },
-                "agi": {
-                    "points": "3"
-                },
-                "luc": {
-                    "points": "7"
-                }
-            }
+    "apparel": {
+      "armor": {
+        "raiderChest": {
+          "possessed": "true",
+          "equipped": "true"
         },
-        "perks": {
-            "perks": {
-                "animalFriend": {
-                    "possessed": "true",
-                    "rank": "1"
-                },
-                "bigLeagues": {
-                    "possessed": "true",
-                    "rank": "1"
-                },
-                "bloodyMess": {
-                    "possessed": "true",
-                    "rank": "1"
-                },
-                "pickpocket": {
-                    "possessed": "true",
-                    "rank": "1"
-                },
-                "sniper": {
-                    "possessed": "true",
-                    "rank": "1"
-                }
-            }
+        "raiderLeftLeg": {
+          "possessed": "true",
+          "equipped": "true"
+        },
+        "leatherLeftArm": {
+          "possessed": "true",
+          "equipped": "true"
+        },
+        "leatherLeftLeg": {},
+        "leatherRightArm": {
+          "possessed": "true",
+          "equipped": "true"
+        },
+        "leatherRightLeg": {
+          "possessed": "true",
+          "equipped": "true"
         }
+      },
+      "misc": {
+        "vault451Suit": {
+          "possessed": "true",
+          "equipped": "true"
+        },
+        "miningHelmet": {
+          "possessed": "true"
+        },
+        "weldingGoggles": {
+          "possessed": "true"
+        }
+      }
+    },
+    "aid": {
+      "drugs": {
+        "stimpak": {
+          "possessed": "true",
+          "amount": "21"
+        },
+        "radaway": {
+          "possessed": "true",
+          "amount": "13"
+        },
+        "buffout": {
+          "possessed": "true",
+          "amount": "6"
+        },
+        "psycho": {
+          "possessed": "true",
+          "amount": "8"
+        },
+        "cure": {
+            "possessed": "true",
+            "amount": "3"
+        },
+        "mentats": {
+          "possessed": "true",
+          "amount": "5"
+        }
+      }
+    },
+    "misc": {
+      "tools": {
+        "pin": {
+          "possessed": "true",
+          "amount": "25"
+        }
+      }
+    },
+    "junk": {
+      "junk": {
+        "tinCan": {
+          "possessed": "true",
+          "amount": "2"
+        },
+        "deskFan": {
+          "possessed": "true",
+          "amount": "1"
+        }
+      }
+    },
+    "ammo": {
+      "bullet": {
+        "308": {
+          "possessed": "true",
+          "amount": "2534"
+        },
+        "10mm": {
+          "possessed": "true",
+          "amount": "120"
+        }
+      },
+      "energy": {
+        "cell": {
+          "possessed": "true",
+          "amount": "230"
+        }
+      }
     }
+  },
+  "stat": {
+    "special": {
+      "attributes": {
+        "str": {
+          "points": "4"
+        },
+        "per": {
+          "points": "8"
+        },
+        "end": {
+          "points": "3"
+        },
+        "cha": {
+          "points": "5"
+        },
+        "int": {
+          "points": "3"
+        },
+        "agi": {
+          "points": "3"
+        },
+        "luc": {
+          "points": "7"
+        }
+      }
+    },
+    "perks": {
+      "perks": {
+        "bigLeagues": {
+          "possessed": "true",
+          "rank": "1"
+        },
+        "pickpocket": {
+          "possessed": "true",
+          "rank": "1"
+        },
+        "sniper": {
+          "possessed": "true",
+          "rank": "1"
+        },
+        "animalFriend": {
+          "possessed": "true",
+          "rank": "1"
+        },
+        "bloodyMess": {
+          "possessed": "true",
+          "rank": "1"
+        }
+      }
+    },
+    "health": {
+      "limbs": {
+        "head": "100",
+        "rightArm": "100",
+        "leftArm": "100",
+        "torso": "100",
+        "rightLeg": "100",
+        "leftLeg": "100"
+      }
+    }
+  }
 }

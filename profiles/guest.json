@@ -1,318 +1,310 @@
 {
-    "config": {
-        "displayName": "Guest",
-        "hue": "120",
-        "sat": "100",
-        "light": "60",
-        "birthday": "2000/01/01"
+  "config": {
+    "displayName": "Guest",
+    "hue": "120",
+    "sat": "100",
+    "light": "60",
+    "birthday": "2000/01/01"
+  },
+  "inv": {
+    "caps": {
+      "amount": "576"
     },
-    "inv": {
-        "caps": {
-            "amount": "576"
+    "weapons": {
+      "firearms": {
+        "pistol": {
+          "possessed": "true",
+          "equipped": "true"
         },
-        "weapons": {
-            "firearms": {
-                "pistol": {
-                    "possessed": "true",
-                    "equipped": "true"
-                },
-                "fatMan": {
-                    "possessed": "true"
-                },
-                "laserMusket": {
-                    "possessed": "true"
-                },
-                "minigun": {
-                    "possessed": "true"
-                },
-                "pipeBoltPistol": {
-                    "possessed": "true"
-                },
-                "shDblShotgun": {
-                    "possessed": "true"
-                }
-            },
-            "melee": {
-                "bat": {
-                    "possessed": "true"
-                },
-                "machete": {
-                    "possessed": "true"
-                }
-            },
-            "throwables": {
-                "fragMine": {
-                    "possessed": "true",
-                    "amount": "6"
-                },
-                "molotov": {
-                    "possessed": "true",
-                    "amount": "3"
-                }
-            }
+        "fatMan": {
+          "possessed": "true"
         },
-        "apparel": {
-            "armor": {
-                "leatherLeftArm": {
-                    "possessed": "true",
-                    "equipped": "true"
-                },
-                "leatherRightArm": {
-                    "possessed": "true",
-                    "equipped": "true"
-                },
-                "leatherRightLeg": {
-                    "possessed": "true",
-                    "equipped": "true"
-                },
-                "raiderChestPiece": {
-                    "possessed": "true",
-                    "equipped": "true"
-                },
-                "raiderLeftLeg": {
-                    "possessed": "true",
-                    "equipped": "true"
-                }
-            },
-            "misc": {
-                "vault451Suit": {
-                    "possessed": "true",
-                    "equipped": "true"
-                },
-                "miningHelmet": {
-                    "possessed": "true"
-                },
-                "weddingRing": {
-                    "possessed": "true",
-                    "equipped": "true"
-                },
-                "weldingGoggles": {
-                    "possessed": "true"
-                }
-            }
+        "laserMusket": {
+          "possessed": "true"
         },
-        "aid": {
-            "drugs": {
-                "stimpak": {
-                    "possessed": "true",
-                    "amount": "21"
-                },
-                "radaway": {
-                    "possessed": "true",
-                    "amount": "13"
-                },
-                "buffout": {
-                    "possessed": "true",
-                    "amount": "6"
-                },
-                "psycho": {
-                    "possessed": "true",
-                    "amount": "8"
-                },
-                "cure": {
-                    "possessed": "true",
-                    "amount": "3"
-                },
-                "mentats": {
-                    "possessed": "true",
-                    "amount": "5"
-                }
-            }
+        "minigun": {
+          "possessed": "true"
         },
-        "misc": {
-            "tools": {
-                "pin": {
-                    "possessed": "true",
-                    "amount": "21"
-                }
-            }
+        "pipeBoltPistol": {
+          "possessed": "true"
         },
-        "junk": {
-            "junk": {
-                "tinCan": {
-                    "possessed": "true",
-                    "amount": "2"
-                },
-                "deskFan": {
-                    "possessed": "true",
-                    "amount": "1"
-                }
-            }
-        },
-        "mods": {
-            "weapons": {
-
-            },
-            "armor": {
-
-            }
-        },
-        "ammo": {
-            "bullet": {
-                "308": {
-                    "possessed": "true",
-                    "amount": "2534"
-                },
-                "10mm": {
-                    "possessed": "true",
-                    "amount": "120"
-                }
-            },
-            "energy": {
-                "cell": {
-                    "possessed": "true",
-                    "amount": "230"
-                }
-            }
+        "shDblShotgun": {
+          "possessed": "true"
         }
+      },
+      "melee": {
+        "bat": {
+          "possessed": "true"
+        },
+        "machete": {
+          "possessed": "true"
+        }
+      },
+      "throwables": {
+        "fragMine": {
+          "possessed": "true",
+          "amount": "6"
+        },
+        "molotov": {
+          "possessed": "true",
+          "amount": "3"
+        }
+      }
     },
-    "stat": {
-        "health": {
-            "limbs": {
-                "head": 80,
-                "rightArm": 90,
-                "leftArm": 90,
-                "rightLeg": 80,
-                "leftLeg": 100,
-                "torso": 85
-            }
+    "apparel": {
+      "armor": {
+        "raiderChest": {
+          "possessed": "true",
+          "equipped": "true"
         },
-        "special": {
-            "attributes": {
-                "str": {
-                    "points": "4"
-                },
-                "per": {
-                    "points": "8"
-                },
-                "end": {
-                    "points": "3"
-                },
-                "cha": {
-                    "points": "5"
-                },
-                "int": {
-                    "points": "7"
-                },
-                "agi": {
-                    "points": "3"
-                },
-                "luc": {
-                    "points": "3"
-                }
-            }
+        "raiderLeftLeg": {
+          "possessed": "true",
+          "equipped": "true"
         },
-        "perks": {
-            "perks": {
-                "bigLeagues": {
-                    "possessed": "true",
-                    "rank": "4"
-                },
-                "pickpocket": {
-                    "possessed": "true",
-                    "rank": "3"
-                },
-                "sniper": {
-                    "possessed": "true",
-                    "rank": "2"
-                },
-                "animalFriend": {
-                    "possessed": "true",
-                    "rank": "2"
-                },
-                "bloodyMess": {
-                    "possessed": "true",
-                    "rank": "3"
-                }
-            }
+        "leatherLeftArm": {
+          "possessed": "true",
+          "equipped": "true"
+        },
+        "leatherRightArm": {
+          "possessed": "true",
+          "equipped": "true"
+        },
+        "leatherRightLeg": {
+          "possessed": "true",
+          "equipped": "true"
         }
+      },
+      "misc": {
+        "vault451Suit": {
+          "possessed": "true",
+          "equipped": "true"
+        },
+        "miningHelmet": {
+          "possessed": "true"
+        },
+        "weddingRing": {
+          "possessed": "true",
+          "equipped": "true"
+        },
+        "weldingGoggles": {
+          "possessed": "true"
+        }
+      }
     },
-    "data": {
-        "quests": {
-            "quests": {
-                "testQuest": {
-                    "name": "A Test Quest",
-                    "description": "This is a test quest.\nI must complete the objectives to finish the quest.\nThen the quest will be complete, and I'll have a sense of accomplishment.",
-                    "equipped": "true",
-                    "objectives": {
-                        "findTheItem": {
-                            "description": "Find the mysterious item",
-                            "completed": "true"
-                        },
-                        "longObjectiveTest": {
-                            "description": "(Optional) This is a very long objective, maybe I should learn to write shorter objectives, it would fit the list waaay better!",
-                            "completed": "true"
-                        },
-                        "secondLongObjectiveToTestScroll": {
-                            "description": "(Optional) Another long objective to test scrolling in the objectives list. It seems to work well, but I should probably avoid making objectives this long in the future.",
-                            "completed": "true"
-                        },
-                        "returnToNPC": {
-                            "description": "Bring the item back to the quest giver",
-                            "completed": "false"
-                        }
-                    }
-                },
-                "rescueMission": {
-                    "name": "Rescue at Vault 82",
-                    "description": "Survivors are trapped in Vault 82.\nThe radiation levels are rising and time is running out.\nI must reach them before it's too late.",
-                    "objectives": {
-                        "findVaultEntrance": {
-                            "description": "Locate Vault 82 entrance",
-                            "completed": "true"
-                        },
-                        "disableSecuritySystem": {
-                            "description": "Disable the security system",
-                            "completed": "true"
-                        },
-                        "rescueSurvivors": {
-                            "description": "Lead survivors to safety",
-                            "completed": "false"
-                        }
-                    }
-                },
-                "supplyRun": {
-                    "name": "Medical Supply Run",
-                    "description": "The settlement is running low on medical supplies.\nI need to find stimpaks and antibiotics.\nThe nearby hospital might have what we need.",
-                    "equipped": "true",
-                    "objectives": {
-                        "clearEnemies": {
-                            "description": "Clear hospital of hostiles",
-                            "completed": "false"
-                        },
-                        "gatherSupplies": {
-                            "description": "Collect medical supplies",
-                            "completed": "false"
-                        },
-                        "returnToSettlement": {
-                            "description": "Return to settlement with supplies",
-                            "completed": "false"
-                        }
-                    }
-                },
-                "mysteriousSignal": {
-                    "name": "The Mysterious Broadcast",
-                    "description": "I've picked up a strange signal on my Pip-Boy.\nIt seems to be coming from an old radio tower.\nI should investigate to find the source.",
-                    "objectives": {
-                        "triangulateSignal": {
-                            "description": "Triangulate the source of the signal",
-                            "completed": "true"
-                        },
-                        "reachRadioTower": {
-                            "description": "Reach the abandoned radio tower",
-                            "completed": "true"
-                        },
-                        "findTransmitter": {
-                            "description": "Locate the transmission device",
-                            "completed": "true"
-                        },
-                        "decodeMessage": {
-                            "description": "Decode the mysterious message",
-                            "completed": "true"
-                        }
-                    }
-                }
-            }
+    "aid": {
+      "drugs": {
+        "stimpak": {
+          "possessed": "true",
+          "amount": "21"
+        },
+        "radaway": {
+          "possessed": "true",
+          "amount": "13"
+        },
+        "cure": {
+          "possessed": "true",
+          "amount": "3"
+        },
+        "buffout": {
+          "possessed": "true",
+          "amount": "6"
+        },
+        "psycho": {
+          "possessed": "true",
+          "amount": "8"
+        },
+        "mentats": {
+          "possessed": "true",
+          "amount": "5"
         }
+      }
+    },
+    "misc": {
+      "tools": {
+        "pin": {
+          "possessed": "true",
+          "amount": "21"
+        }
+      }
+    },
+    "junk": {
+      "junk": {
+        "tinCan": {
+          "possessed": "true",
+          "amount": "2"
+        },
+        "deskFan": {
+          "possessed": "true",
+          "amount": "1"
+        }
+      }
+    },
+    "ammo": {
+      "bullet": {
+        "308": {
+          "possessed": "true",
+          "amount": "2534"
+        },
+        "10mm": {
+          "possessed": "true",
+          "amount": "120"
+        }
+      },
+      "energy": {
+        "cell": {
+          "possessed": "true",
+          "amount": "230"
+        }
+      }
     }
+  },
+  "stat": {
+    "health": {
+      "limbs": {
+        "head": "80",
+        "rightArm": "90",
+        "leftArm": "90",
+        "torso": "85",
+        "rightLeg": "80",
+        "leftLeg": "100"
+      }
+    },
+    "special": {
+      "attributes": {
+        "str": {
+          "points": "4"
+        },
+        "per": {
+          "points": "8"
+        },
+        "end": {
+          "points": "3"
+        },
+        "cha": {
+          "points": "5"
+        },
+        "int": {
+          "points": "7"
+        },
+        "agi": {
+          "points": "3"
+        },
+        "luc": {
+          "points": "3"
+        }
+      }
+    },
+    "perks": {
+      "perks": {
+        "bigLeagues": {
+          "possessed": "true",
+          "rank": "4"
+        },
+        "pickpocket": {
+          "possessed": "true",
+          "rank": "3"
+        },
+        "sniper": {
+          "possessed": "true",
+          "rank": "2"
+        },
+        "animalFriend": {
+          "possessed": "true",
+          "rank": "2"
+        },
+        "bloodyMess": {
+          "possessed": "true",
+          "rank": "3"
+        }
+      }
+    }
+  },
+  "data": {
+    "quests": {
+      "quests": {
+        "A_Test_Quest": {
+          "name": "A Test Quest",
+          "description": "This is a test quest.\nI must complete the objectives to finish the quest.\nThen the quest will be complete, and I'll have a sense of accomplishment.",
+          "equipped": "true",
+          "objectives": {
+            "o001": {
+              "description": "Find the mysterious item",
+              "completed": "true"
+            },
+            "o002": {
+              "description": "(Optional) This is a very long objective, maybe I should learn to write shorter objectives, it would fit the list waaay better!",
+              "completed": "true"
+            },
+            "o003": {
+              "description": "(Optional) Another long objective to test scrolling in the objectives list. It seems to work well, but I should probably avoid making objectives this long in the future.",
+              "completed": "true"
+            },
+            "o004": {
+              "description": "Bring the item back to the quest giver",
+              "completed": "false"
+            }
+          }
+        },
+        "Rescue_at_Vault_82": {
+          "name": "Rescue at Vault 82",
+          "description": "Survivors are trapped in Vault 82.\nThe radiation levels are rising and time is running out.\nI must reach them before it's too late.",
+          "objectives": {
+            "o001": {
+              "description": "Locate Vault 82 entrance",
+              "completed": "true"
+            },
+            "o002": {
+              "description": "Disable the security system",
+              "completed": "true"
+            },
+            "o003": {
+              "description": "Lead survivors to safety",
+              "completed": "false"
+            }
+          }
+        },
+        "Medical_Supply_Run": {
+          "name": "Medical Supply Run",
+          "description": "The settlement is running low on medical supplies.\nI need to find stimpaks and antibiotics.\nThe nearby hospital might have what we need.",
+          "equipped": "true",
+          "objectives": {
+            "o001": {
+              "description": "Clear hospital of hostiles",
+              "completed": "false"
+            },
+            "o002": {
+              "description": "Collect medical supplies",
+              "completed": "false"
+            },
+            "o003": {
+              "description": "Return to settlement with supplies",
+              "completed": "false"
+            }
+          }
+        },
+        "The_Mysterious_Broadcast": {
+          "name": "The Mysterious Broadcast",
+          "description": "I've picked up a strange signal on my Pip-Boy.\nIt seems to be coming from an old radio tower.\nI should investigate to find the source.",
+          "objectives": {
+            "o001": {
+              "description": "Triangulate the source of the signal",
+              "completed": "true"
+            },
+            "o002": {
+              "description": "Reach the abandoned radio tower",
+              "completed": "true"
+            },
+            "o003": {
+              "description": "Locate the transmission device",
+              "completed": "true"
+            },
+            "o004": {
+              "description": "Decode the mysterious message",
+              "completed": "true"
+            }
+          }
+        }
+      }
+    }
+  }
 }
