@@ -104,20 +104,8 @@ Vous trouverez cinq curseurs :
 - Saturation  
 → Indique l'intensité de votre couleur, de 0 (noir et blanc) à 100 (très coloré).  
   
-- Luminosité  
-→ Représente la luminosité de votre couleur. En raison de problèmes avec CSS et les filtres d'image, cela modifie la luminosité *ou* la clarté en fonction de l'élément qu'il modifie. Les valeurs supérieures à 60 ne fonctionneront pas comme prévu, car la clarté affecte également la saturation.  
-  
-- Correction de la luminosité des icônes  
-→ Comme il y a un problème connu avec la rotation des teintes par CSS, affectant également la saturation et la luminosité, j'ai ajouté ce curseur qui aide grandement à corriger la différence entre le texte et les icônes. Un carré sous le curseur aide à régler cette valeur correctement : le texte "Vous ne devez pas voir ce texte" écrit à l'intérieur ne doit pas être visible, ou du moins aussi peu que possible.  
-  
- - Correction de la saturation des icônes
- → Aide encore plus à corriger la différence entre le texte et les icônes.
-  
-![Correction non réglée](/readme_sources/images/iconCorrection1.PNG) ![Correction réglée](/readme_sources/images/iconCorrection2.PNG)  
-  
-Cette page de paramètres permet des configurations sympas comme par exemple celle de ma fiancée :  
-    
-![Page de statut rose](/readme_sources/images/pinkStatus.png)
+- Clarté  
+→ Représente la clarté de votre couleur. Attention : clarte ≠ luminosité, au dessus de 60, la clarté affecte également la saturation.  
 
 ### Affichage de l'inventaire
 
