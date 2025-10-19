@@ -419,6 +419,8 @@ export function updateEquippedStats() {
       sep.style.display = '';
     }
 
+    try { updateFooterAPSummary(profileItems); } catch(e) {}
+
     return { damage, res };
   } catch (e) {
     console.warn('updateEquippedStats failed', e);
@@ -853,5 +855,44 @@ function updateFooterHPSummary(profileRoot, averagePercent) {
     const { maxHP } = computeMaxHP(profileRoot);
     const currentHP = Math.round(maxHP * (Number(averagePercent || 0) / 100));
     hpCell.innerText = `HP ${currentHP}/${maxHP}`;
+  } catch(e) {}
+}
+
+function computeMaxAP(profileRoot) {
+  try {
+    const root = profileRoot && Object.keys(profileRoot).length ? profileRoot : profileItems || {};
+    const special = root?.stat?.special?.attributes || {};
+    const perks = root?.stat?.perks?.perks || {};
+
+    const AGI = Number(special.agi?.points || 0);
+
+    let maxAP = 60 + (10 * AGI);
+
+    const quickHands = perks.quickHands || {};
+    const qhRank = Number(quickHands.rank || 0);
+    const hasQuickHands = quickHands.possessed === 'true' || quickHands.possessed === true;
+    if (hasQuickHands && qhRank >= 3) {
+      maxAP += 10;
+    }
+
+    const loneWanderer = perks.loneWanderer || {};
+    const lwRank = Number(loneWanderer.rank || 0);
+    const hasLoneWanderer = loneWanderer.possessed === 'true' || loneWanderer.possessed === true;
+    if (hasLoneWanderer && lwRank >= 4) {
+      maxAP += 25;
+    }
+
+    return Math.round(maxAP);
+  } catch (e) {
+    return 90;
+  }
+}
+
+function updateFooterAPSummary(profileRoot) {
+  try {
+    const apCell = document.getElementById('ap-summary');
+    if (!apCell) return;
+    const maxAP = computeMaxAP(profileRoot);
+    apCell.innerText = `AP ${maxAP}/${maxAP}`;
   } catch(e) {}
 }
