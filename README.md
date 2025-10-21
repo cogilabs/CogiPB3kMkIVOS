@@ -42,7 +42,7 @@ For the moment I'm waiting for the delivery of my components, so I'm working on 
   
 ![The Status page](/readme_sources/images/status.png)  
   
-The app is mostly a reproduction of Fallout 4 interface, with a pretty cool animated scanlines overlay. For the content, there's profile files. 
+The app is mostly a reproduction of Fallout 4 interface, with a pretty cool animated scanlines overlay and "glitch" animations. For the content, there's profile files. 
 
 ### Profile file
   
@@ -105,7 +105,7 @@ You'll find three sliders:
 → Is how "powerfull" is your color, from 0 (black and white) to 100 (Really colorful).  
   
 - Lightness  
-→ Represents how bright is your color, not to be confused with *brightness*, values of lightness above 60 also affect the saturation.  
+→ Represents how "bright" is your color, not to be confused with *brightness*, values of lightness above 60 also affect the saturation.  
   
 This settings page allows for neat configs like for instance my fiancees:  
     
@@ -125,7 +125,7 @@ In the inventory tab will be shown your inventory (set in your profile file).
    
 The stats of the items (in the table) come from the [`items.json`](/items.json) file, except for the amount of ammo, which comes from your profile file.  
   
-For the moment the equipped state is static (makes sense for a cosplay) and are set in the profile file.
+For the moment the equipped state is static (makes sense for a cosplay) and is set in the profile file.
   
 The footers are interactive, the weight is calculated in function of your current inventory. The weapons tab footer will show the damage of your equipped weapon, the apparel tab footer show armor protection, and the aid one your HP bar.  
   

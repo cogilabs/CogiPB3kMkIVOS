@@ -42,7 +42,7 @@ Pour le moment, j'attends la livraison de mes composants, donc je travaille sur 
   
 ![La page de statut](/readme_sources/images/status.png)  
   
-L'application est principalement une reproduction de l'interface de Fallout 4, avec un overlay animé de "scanlines" plutôt sympa. Pour le contenu, il y a des fichiers de profil. 
+L'application est principalement une reproduction de l'interface de Fallout 4, avec un overlay animé de "scanlines" plutôt sympa et des animations "glitch". Pour le contenu, il y a des fichiers de profil. 
 
 ### Fichier de profil
   
